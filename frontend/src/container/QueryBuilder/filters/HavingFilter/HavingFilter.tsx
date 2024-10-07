@@ -4,7 +4,7 @@ import { ENTITY_VERSION_V4 } from 'constants/app';
 // ** Constants
 import { HAVING_OPERATORS, initialHavingValues } from 'constants/queryBuilder';
 import { HavingFilterTag } from 'container/QueryBuilder/components';
-import { HavingTagRenderProps } from 'container/QueryBuilder/components/HavingFilterTag/HavingFilterTag.interfaces';
+import type { HavingTagRenderProps } from 'container/QueryBuilder/components/HavingFilterTag/HavingFilterTag.interfaces';
 // ** Hooks
 import { useTagValidation } from 'hooks/queryBuilder/useTagValidation';
 import {
@@ -14,14 +14,17 @@ import {
 // ** Helpers
 import { transformStringWithPrefix } from 'lib/query/transformStringWithPrefix';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Having, HavingForm } from 'types/api/queryBuilder/queryBuilderData';
+import type {
+	Having,
+	HavingForm,
+} from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
-import { SelectOption } from 'types/common/select';
+import type { SelectOption } from 'types/common/select';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { getHavingObject, isValidHavingValue } from '../utils';
 // ** Types
-import { HavingFilterProps } from './HavingFilter.interfaces';
+import type { HavingFilterProps } from './HavingFilter.interfaces';
 
 export function HavingFilter({
 	entityVersion,
@@ -32,9 +35,8 @@ export function HavingFilter({
 	const [searchText, setSearchText] = useState<string>('');
 	const [options, setOptions] = useState<SelectOption<string, string>[]>([]);
 	const [localValues, setLocalValues] = useState<string[]>([]);
-	const [currentFormValue, setCurrentFormValue] = useState<HavingForm>(
-		initialHavingValues,
-	);
+	const [currentFormValue, setCurrentFormValue] =
+		useState<HavingForm>(initialHavingValues);
 	const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
 	const { isMulti } = useTagValidation(
@@ -91,8 +93,8 @@ export function HavingFilter({
 				);
 
 				newOptions = filteredOperators.map((opt) => ({
-					label: `${columnName} ${opt} ${restValue && restValue.join(' ')}`,
-					value: `${columnName} ${opt} ${restValue && restValue.join(' ')}`,
+					label: `${columnName} ${opt} ${restValue?.join(' ')}`,
+					value: `${columnName} ${opt} ${restValue?.join(' ')}`,
 				}));
 			}
 

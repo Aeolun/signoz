@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { ErrorResponse, SuccessResponse } from 'types/api';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
 
 function useFetch<PayloadProps, FunctionParams>(
 	functions: {
-		(props: FunctionParams): Promise<
-			SuccessResponse<PayloadProps> | ErrorResponse
-		>;
+		(
+			props: FunctionParams,
+		): Promise<SuccessResponse<PayloadProps> | ErrorResponse>;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		(arg0: any): Promise<SuccessResponse<PayloadProps> | ErrorResponse>;
 	},

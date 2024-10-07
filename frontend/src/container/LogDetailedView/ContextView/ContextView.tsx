@@ -1,7 +1,7 @@
 import './ContextView.styles.scss';
 
-import { ILog } from 'types/api/logs/log';
-import { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { ILog } from 'types/api/logs/log';
+import type { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 
 import ContextLogRenderer from './ContextLogRenderer';
 

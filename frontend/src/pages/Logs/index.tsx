@@ -13,21 +13,21 @@ import history from 'lib/history';
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { SET_LOGS_ORDER } from 'types/actions/logs';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { ILogsReducer } from 'types/reducer/logs';
 import { popupContainer } from 'utils/selectPopupContainer';
 
+import PopoverContent from './PopoverContent';
 import {
+	type OrderPreferenceItems,
 	defaultSelectStyle,
 	logsOptions,
 	orderItems,
-	OrderPreferenceItems,
 } from './config';
 import { useSelectedLogView } from './hooks';
-import PopoverContent from './PopoverContent';
 import SpaceContainer from './styles';
 
 function OldLogsExplorer(): JSX.Element {
@@ -54,13 +54,15 @@ function OldLogsExplorer(): JSX.Element {
 		[linesPerRow, handleLinesPerRowChange],
 	);
 
-	const isFormatButtonVisible = useMemo(() => logsOptions.includes(viewMode), [
-		viewMode,
-	]);
+	const isFormatButtonVisible = useMemo(
+		() => logsOptions.includes(viewMode),
+		[viewMode],
+	);
 
-	const selectedViewModeOption = useMemo(() => viewModeOption.value.toString(), [
-		viewModeOption.value,
-	]);
+	const selectedViewModeOption = useMemo(
+		() => viewModeOption.value.toString(),
+		[viewModeOption.value],
+	);
 
 	const onChangeVeiwMode = useCallback(
 		(key: string) => {

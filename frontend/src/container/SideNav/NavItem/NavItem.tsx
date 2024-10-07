@@ -5,7 +5,7 @@ import './NavItem.styles.scss';
 import { Tag } from 'antd';
 import cx from 'classnames';
 
-import { SidebarItem } from '../sideNav.types';
+import type { SidebarItem } from '../sideNav.types';
 
 export default function NavItem({
 	item,

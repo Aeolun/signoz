@@ -1,10 +1,10 @@
 import { apiV3 } from 'api/apiV1';
 import { ENVIRONMENT } from 'constants/env';
 import { LIVE_TAIL_HEARTBEAT_TIMEOUT } from 'constants/liveTail';
-import { EventListener, EventSourcePolyfill } from 'event-source-polyfill';
+import { type EventListener, EventSourcePolyfill } from 'event-source-polyfill';
 import {
+	type PropsWithChildren,
 	createContext,
-	PropsWithChildren,
 	useCallback,
 	useContext,
 	useEffect,
@@ -13,8 +13,8 @@ import {
 	useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 interface IEventSourceContext {
 	eventSourceInstance: EventSourcePolyfill | null;

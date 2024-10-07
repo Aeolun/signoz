@@ -1,6 +1,6 @@
 import { themeColors } from 'constants/theme';
 import { limit } from 'lib/getChartData';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 const positionCss: CSSProperties['position'] = 'absolute';
 

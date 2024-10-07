@@ -1,5 +1,5 @@
 import { OPERATORS } from 'constants/queryBuilder';
-import { Having } from 'types/api/queryBuilder/queryBuilderData';
+import type { Having } from 'types/api/queryBuilder/queryBuilderData';
 
 export const transformHavingToStringValue = (having: Having[]): string[] => {
 	const result: string[] = having.map((item) => {
@@ -18,7 +18,7 @@ export const transformFromStringToHaving = (havingStr: string): Having => {
 	const operator = Object.entries(OPERATORS).find(([, value]) => value === op);
 
 	const currentValue = values.reduce<number[]>((acc, strNum) => {
-		const num = parseFloat(strNum);
+		const num = Number.parseFloat(strNum);
 		if (Number.isNaN(num)) {
 			return acc;
 		}

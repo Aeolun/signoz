@@ -1,5 +1,5 @@
-import { ILog } from 'types/api/logs/log';
-import { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { ILog } from 'types/api/logs/log';
+import type { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
 
 export type LogsExplorerListProps = {
 	isLoading: boolean;

@@ -1,5 +1,5 @@
 import { Select, Spin } from 'antd';
-import { OrderByFilterProps } from 'container/QueryBuilder/filters/OrderByFilter/OrderByFilter.interfaces';
+import type { OrderByFilterProps } from 'container/QueryBuilder/filters/OrderByFilter/OrderByFilter.interfaces';
 import { useOrderByFilter } from 'container/QueryBuilder/filters/OrderByFilter/useOrderByFilter';
 import { selectStyle } from 'container/QueryBuilder/filters/QueryBuilderSearch/config';
 import { useGetAggregateKeys } from 'hooks/queryBuilder/useGetAggregateKeys';

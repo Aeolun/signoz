@@ -12,29 +12,29 @@ import {
 	SearchOutlined,
 	WarningOutlined,
 } from '@ant-design/icons';
-import { Dropdown, Input, MenuProps, Tooltip, Typography } from 'antd';
+import { Dropdown, Input, type MenuProps, Tooltip, Typography } from 'antd';
 import Spinner from 'components/Spinner';
 import { QueryParams } from 'constants/query';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import useCreateAlerts from 'hooks/queryBuilder/useCreateAlerts';
 import useComponentPermission from 'hooks/useComponentPermission';
 import history from 'lib/history';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { isEmpty } from 'lodash-es';
 import { X } from 'lucide-react';
 import { unparse } from 'papaparse';
-import { ReactNode, useCallback, useMemo, useState } from 'react';
-import { UseQueryResult } from 'react-query';
+import { type ReactNode, useCallback, useMemo, useState } from 'react';
+import type { UseQueryResult } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { Widgets } from 'types/api/dashboard/getAll';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type AppReducer from 'types/reducer/app';
 
-import { errorTooltipPosition, WARNING_MESSAGE } from './config';
+import { WARNING_MESSAGE, errorTooltipPosition } from './config';
 import { MENUITEM_KEYS_VS_LABELS, MenuItemKeys } from './contants';
-import { MenuItem } from './types';
+import type { MenuItem } from './types';
 import { generateMenuList, isTWidgetOptions } from './utils';
 
 interface IWidgetHeaderProps {

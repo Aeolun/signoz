@@ -1,5 +1,5 @@
-import { SelectProps } from 'antd';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { SelectProps } from 'antd';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
 export const getOptionsFromKeys = (
 	keys: BaseAutocompleteData[],

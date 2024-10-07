@@ -1,8 +1,8 @@
+import afterLogin from 'AppRoutes/utils';
 import { Button, Form, Input, Space, Tooltip, Typography } from 'antd';
 import getUserVersion from 'api/user/getVersion';
 import loginApi from 'api/user/login';
 import loginPrecheckApi from 'api/user/loginPrecheck';
-import afterLogin from 'AppRoutes/utils';
 import ROUTES from 'constants/routes';
 import { useNotifications } from 'hooks/useNotifications';
 import history from 'lib/history';
@@ -10,9 +10,9 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { PayloadProps as PrecheckResultType } from 'types/api/user/loginPrecheck';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { PayloadProps as PrecheckResultType } from 'types/api/user/loginPrecheck';
+import type AppReducer from 'types/reducer/app';
 
 import { FormContainer, FormWrapper, Label, ParentContainer } from './styles';
 
@@ -41,7 +41,9 @@ function Login({
 
 	const [precheckResult, setPrecheckResult] = useState<PrecheckResultType>({
 		sso: false,
+		ldap: false,
 		ssoUrl: '',
+		ldapDomain: '',
 		canSelfRegister: false,
 		isUser: true,
 	});
@@ -136,7 +138,7 @@ function Login({
 		setPrecheckInProcess(false);
 	};
 
-	const { sso, canSelfRegister } = precheckResult;
+	const { sso, ldap, ldapDomain, canSelfRegister } = precheckResult;
 
 	const onSubmitHandler: () => Promise<void> = async () => {
 		try {
@@ -156,6 +158,7 @@ function Login({
 			const response = await loginApi({
 				email,
 				password,
+				method: precheckResult.ldap ? 'ldap' : 'password',
 			});
 			if (response.statusCode === 200) {
 				await afterLogin(
@@ -218,6 +221,7 @@ function Login({
 					<Label htmlFor="signupEmail">{t('label_email')}</Label>
 					<FormContainer.Item name="email">
 						<Input
+							addonBefore={ldapDomain ? `${ldapDomain}` : undefined}
 							type="email"
 							id="loginEmail"
 							data-testid="email"
@@ -239,9 +243,11 @@ function Login({
 								disabled={isLoading}
 							/>
 						</FormContainer.Item>
-						<Tooltip title={t('prompt_forgot_password')}>
-							<Typography.Link>{t('forgot_password')}</Typography.Link>
-						</Tooltip>
+						{precheckComplete && !ldap && (
+							<Tooltip title={t('prompt_forgot_password')}>
+								<Typography.Link>{t('forgot_password')}</Typography.Link>
+							</Tooltip>
+						)}
 					</ParentContainer>
 				)}
 				<Space
@@ -261,7 +267,7 @@ function Login({
 							{t('button_initiate_login')}
 						</Button>
 					)}
-					{precheckComplete && !sso && (
+					{precheckComplete && !sso && !ldap && (
 						<Button
 							disabled={isLoading}
 							loading={isLoading}
@@ -270,6 +276,17 @@ function Login({
 							data-attr="signup"
 						>
 							{t('button_login')}
+						</Button>
+					)}
+					{precheckComplete && ldap && (
+						<Button
+							disabled={isLoading}
+							loading={isLoading}
+							type="primary"
+							htmlType="submit"
+							data-attr="signup"
+						>
+							{t('login_with_ldap')}
 						</Button>
 					)}
 

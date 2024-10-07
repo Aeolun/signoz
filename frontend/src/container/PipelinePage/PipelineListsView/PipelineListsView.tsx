@@ -2,49 +2,44 @@ import './styles.scss';
 
 import { ExclamationCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Card, Modal, Table, Typography } from 'antd';
-import { ExpandableConfig } from 'antd/es/table/interface';
+import type { ExpandableConfig } from 'antd/es/table/interface';
 import logEvent from 'api/common/logEvent';
 import savePipeline from 'api/pipeline/post';
 import { useNotifications } from 'hooks/useNotifications';
 import { isUndefined } from 'lodash-es';
 import cloneDeep from 'lodash-es/cloneDeep';
-import React, {
-	useCallback,
-	useEffect,
-	useMemo,
-	useRef,
-	useState,
-} from 'react';
+import type React from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useTranslation } from 'react-i18next';
 import {
 	ActionMode,
 	ActionType,
-	Pipeline,
-	PipelineData,
-	ProcessorData,
+	type Pipeline,
+	type PipelineData,
+	type ProcessorData,
 } from 'types/api/pipeline/def';
 import { v4 } from 'uuid';
 
-import { tableComponents } from '../config';
 import PipelinesSearchSection from '../Layouts/Pipeline/PipelinesSearchSection';
+import { tableComponents } from '../config';
 import AddNewPipeline from './AddNewPipeline';
 import AddNewProcessor from './AddNewProcessor';
-import { pipelineColumns } from './config';
 import ModeAndConfiguration from './ModeAndConfiguration';
 import PipelineExpanView from './PipelineExpandView';
 import SaveConfigButton from './SaveConfigButton';
+import DragAction from './TableComponents/DragAction';
+import PipelineActions from './TableComponents/PipelineActions';
+import PreviewAction from './TableComponents/PipelineActions/components/PreviewAction';
+import TableExpandIcon from './TableComponents/TableExpandIcon';
+import { pipelineColumns } from './config';
 import {
 	AlertContentWrapper,
 	AlertModalTitle,
 	Container,
 	FooterButton,
 } from './styles';
-import DragAction from './TableComponents/DragAction';
-import PipelineActions from './TableComponents/PipelineActions';
-import PreviewAction from './TableComponents/PipelineActions/components/PreviewAction';
-import TableExpandIcon from './TableComponents/TableExpandIcon';
 import {
 	getDataOnSearch,
 	getEditedDataSource,
@@ -129,15 +124,11 @@ function PipelineListsView({
 		[expandedPipelineId, currPipelineData],
 	);
 
-	const [
-		selectedProcessorData,
-		setSelectedProcessorData,
-	] = useState<ProcessorData>();
+	const [selectedProcessorData, setSelectedProcessorData] =
+		useState<ProcessorData>();
 
-	const [
-		selectedPipelineData,
-		setSelectedPipelineData,
-	] = useState<PipelineData>();
+	const [selectedPipelineData, setSelectedPipelineData] =
+		useState<PipelineData>();
 
 	const [expandedRowKeys, setExpandedRowKeys] = useState<Array<string>>();
 	const [showSaveButton, setShowSaveButton] = useState<string>();
@@ -463,7 +454,7 @@ function PipelineListsView({
 		({
 			index,
 			moveRow: movePipelineRow,
-		} as React.HTMLAttributes<unknown>);
+		}) as React.HTMLAttributes<unknown>;
 
 	const expandableConfig: ExpandableConfig<PipelineData> = {
 		expandedRowKeys,

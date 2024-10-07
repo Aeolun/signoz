@@ -1,4 +1,3 @@
-import { mockPipelineFilter, pipelineMockData } from '../mocks/pipeline';
 import {
 	processorFields,
 	processorTypes,
@@ -10,6 +9,7 @@ import {
 	getRecordIndex,
 	getTableColumn,
 } from '../PipelineListsView/utils';
+import { mockPipelineFilter, pipelineMockData } from '../mocks/pipeline';
 
 jest.mock('uplot', () => {
 	const paths = {

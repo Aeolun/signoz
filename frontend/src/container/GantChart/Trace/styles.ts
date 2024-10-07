@@ -1,8 +1,8 @@
 import { volcano } from '@ant-design/colors';
 import styled, {
 	css,
-	DefaultTheme,
-	ThemedCssFunction,
+	type DefaultTheme,
+	type ThemedCssFunction,
 } from 'styled-components';
 
 interface Props {
@@ -17,8 +17,7 @@ export const Wrapper = styled.ul<Props>`
 	position: relative;
 	z-index: 1;
 	ul {
-		border-left: ${({ isOnlyChild }): StyledCSS =>
-			isOnlyChild && 'none'} !important;
+		border-left: ${({ isOnlyChild }): StyledCSS => isOnlyChild && 'none'} !important;
 
 		${({ isOnlyChild }): StyledCSS =>
 			isOnlyChild &&
@@ -65,8 +64,7 @@ export const CardComponent = styled.div<Props>`
 	justify-content: center;
 	align-items: center;
 	padding: 1px 8px;
-	background: ${({ isDarkMode }): StyledCSS =>
-		isDarkMode ? '#1d1d1d' : '#ddd'};
+	background: ${({ isDarkMode }): StyledCSS => (isDarkMode ? '#1d1d1d' : '#ddd')};
 	height: 22px;
 `;
 

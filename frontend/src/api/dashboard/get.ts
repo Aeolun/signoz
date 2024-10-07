@@ -1,7 +1,7 @@
 import axios from 'api';
-import { ApiResponse } from 'types/api';
-import { Props } from 'types/api/dashboard/get';
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type { ApiResponse } from 'types/api';
+import type { Props } from 'types/api/dashboard/get';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 
 const getDashboard = (props: Props): Promise<Dashboard> =>
 	axios

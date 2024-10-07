@@ -3,11 +3,16 @@ import './TimePreference.styles.scss';
 import { DownOutlined } from '@ant-design/icons';
 import { Button, Dropdown, Typography } from 'antd';
 import TimeItems, {
-	timePreferance,
-	timePreferenceType,
+	type timePreferance,
+	type timePreferenceType,
 } from 'container/NewWidget/RightContainer/timeItems';
 import { Globe } from 'lucide-react';
-import { Dispatch, SetStateAction, useCallback, useMemo } from 'react';
+import {
+	type Dispatch,
+	type SetStateAction,
+	useCallback,
+	useMemo,
+} from 'react';
 
 import { menuItems } from './config';
 

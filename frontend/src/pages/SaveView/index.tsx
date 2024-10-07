@@ -7,7 +7,7 @@ import {
 	Input,
 	Modal,
 	Table,
-	TableProps,
+	type TableProps,
 	Typography,
 } from 'antd';
 import logEvent from 'api/common/logEvent';
@@ -31,15 +31,15 @@ import {
 	Trash2,
 	X,
 } from 'lucide-react';
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { type ChangeEvent, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
-import { ViewProps } from 'types/api/saveViews/types';
+import type { AppState } from 'store/reducers';
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type { ViewProps } from 'types/api/saveViews/types';
 import { DataSource } from 'types/common/queryBuilder';
-import AppReducer from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
 import { USER_ROLES } from 'types/roles';
 
 import { ROUTES_VS_SOURCEPAGE, SOURCEPAGE_VS_ROUTES } from './constants';
@@ -56,10 +56,8 @@ function SaveView(): JSX.Element {
 	const [color, setColor] = useState(Color.BG_SIENNA_500);
 	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 	const [activeViewName, setActiveViewName] = useState<string>('');
-	const [
-		activeCompositeQuery,
-		setActiveCompositeQuery,
-	] = useState<ICompositeMetricQuery | null>(null);
+	const [activeCompositeQuery, setActiveCompositeQuery] =
+		useState<ICompositeMetricQuery | null>(null);
 	const [searchValue, setSearchValue] = useState<string>('');
 	const [dataSource, setDataSource] = useState<ViewProps[]>([]);
 	const { t } = useTranslation(['explorer']);
@@ -117,10 +115,8 @@ function SaveView(): JSX.Element {
 		setSearchValue('');
 	};
 
-	const {
-		mutateAsync: deleteViewAsync,
-		isLoading: isDeleteLoading,
-	} = useDeleteView(activeViewKey);
+	const { mutateAsync: deleteViewAsync, isLoading: isDeleteLoading } =
+		useDeleteView(activeViewKey);
 
 	const onDeleteHandler = (): void => {
 		deleteViewHandler({
@@ -133,16 +129,14 @@ function SaveView(): JSX.Element {
 		});
 	};
 
-	const {
-		mutateAsync: updateViewAsync,
-		isLoading: isViewUpdating,
-	} = useUpdateView({
-		compositeQuery: activeCompositeQuery || ({} as ICompositeMetricQuery),
-		viewKey: activeViewKey,
-		extraData: JSON.stringify({ color }),
-		sourcePage: sourcepage || DataSource.LOGS,
-		viewName: newViewName,
-	});
+	const { mutateAsync: updateViewAsync, isLoading: isViewUpdating } =
+		useUpdateView({
+			compositeQuery: activeCompositeQuery || ({} as ICompositeMetricQuery),
+			viewKey: activeViewKey,
+			extraData: JSON.stringify({ color }),
+			sourcePage: sourcepage || DataSource.LOGS,
+			viewName: newViewName,
+		});
 
 	const logEventCalledRef = useRef(false);
 	useEffect(() => {

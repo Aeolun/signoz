@@ -1,7 +1,7 @@
 import { DeleteOutlined } from '@ant-design/icons';
-import { Card, Select, SelectProps, Space } from 'antd';
+import { Card, Select, type SelectProps, Space } from 'antd';
 import { themeColors } from 'constants/theme';
-import { FunctionComponent } from 'react';
+import type { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
 export const SearchIconWrapper = styled(Card)<{ $isDarkMode: boolean }>`

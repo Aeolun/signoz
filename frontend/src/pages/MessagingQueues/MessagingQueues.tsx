@@ -12,11 +12,11 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
 import { isCloudUser } from 'utils/app';
 
+import { ComingSoon } from './MQCommon/MQCommon';
 import {
 	KAFKA_SETUP_DOC_LINK,
 	MessagingQueuesViewType,
 } from './MessagingQueuesUtils';
-import { ComingSoon } from './MQCommon/MQCommon';
 
 function MessagingQueues(): JSX.Element {
 	const history = useHistory();

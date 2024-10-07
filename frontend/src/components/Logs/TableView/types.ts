@@ -1,7 +1,7 @@
-import { ColumnsType, ColumnType } from 'antd/es/table';
-import { FontSize } from 'container/OptionsMenu/types';
-import { IField } from 'types/api/logs/fields';
-import { ILog } from 'types/api/logs/log';
+import type { ColumnType, ColumnsType } from 'antd/es/table';
+import type { FontSize } from 'container/OptionsMenu/types';
+import type { IField } from 'types/api/logs/fields';
+import type { ILog } from 'types/api/logs/log';
 
 export type ColumnTypeRender<T = unknown> = ReturnType<
 	NonNullable<ColumnType<T>['render']>

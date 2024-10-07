@@ -15,13 +15,13 @@ import logEvent from 'api/common/logEvent';
 import ROUTES from 'constants/routes';
 import {
 	ChannelType,
-	EmailChannel,
-	MsTeamsChannel,
-	OpsgenieChannel,
-	PagerChannel,
-	SlackChannel,
+	type EmailChannel,
+	type MsTeamsChannel,
+	type OpsgenieChannel,
+	type PagerChannel,
+	type SlackChannel,
 	ValidatePagerChannel,
-	WebhookChannel,
+	type WebhookChannel,
 } from 'container/CreateAlertChannels/config';
 import FormAlertChannels from 'container/FormAlertChannels';
 import { useNotifications } from 'hooks/useNotifications';

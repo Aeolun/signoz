@@ -8,11 +8,11 @@ import { PencilIcon } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { UPDATE_USER } from 'types/actions/app';
-import AppReducer from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
 
 import { NameInput } from '../styles';
 

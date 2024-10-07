@@ -9,9 +9,9 @@ import { GetMetricQueryRange } from 'lib/dashboard/getQueryResults';
 import { getUPlotChartOptions } from 'lib/uPlotLib/getUplotChartOptions';
 import { getUPlotChartData } from 'lib/uPlotLib/utils/getUplotChartData';
 import { useMemo, useRef } from 'react';
-import { useQueries, UseQueryResult } from 'react-query';
-import { SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import { type UseQueryResult, useQueries } from 'react-query';
+import type { SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
 import { getPodQueryPayload, podWidgetInfo } from './constants';
 

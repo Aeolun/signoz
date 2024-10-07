@@ -6,10 +6,10 @@ import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { PayloadProps } from 'types/api/metrics/getTopOperations';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { Tags } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { PayloadProps } from 'types/api/metrics/getTopOperations';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { Tags } from 'types/reducer/trace';
 
 function TopOperation(): JSX.Element {
 	const { maxTime, minTime } = useSelector<AppState, GlobalReducer>(

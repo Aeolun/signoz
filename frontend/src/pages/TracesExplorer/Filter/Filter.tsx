@@ -13,26 +13,29 @@ import { useGetCompositeQueryParam } from 'hooks/queryBuilder/useGetCompositeQue
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { isArray, isEqual } from 'lodash-es';
 import {
-	Dispatch,
-	SetStateAction,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query, TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type {
+	Query,
+	TagFilterItem,
+} from 'types/api/queryBuilder/queryBuilderData';
 import { v4 as uuid } from 'uuid';
 
+import { Section } from './Section';
 import {
-	AllTraceFilterKeys,
 	AllTraceFilterKeyValue,
+	type AllTraceFilterKeys,
 	AllTraceFilterOptions,
-	FilterType,
-	HandleRunProps,
+	type FilterType,
+	type HandleRunProps,
 	unionTagFilterItems,
 } from './filterUtils';
-import { Section } from './Section';
 
 interface FilterProps {
 	setOpen: Dispatch<SetStateAction<boolean>>;
@@ -40,12 +43,13 @@ interface FilterProps {
 
 export function Filter(props: FilterProps): JSX.Element {
 	const { setOpen } = props;
-	const [selectedFilters, setSelectedFilters] = useState<
-		Record<
-			AllTraceFilterKeys,
-			{ values: string[] | string; keys: BaseAutocompleteData }
-		>
-	>();
+	const [selectedFilters, setSelectedFilters] =
+		useState<
+			Record<
+				AllTraceFilterKeys,
+				{ values: string[] | string; keys: BaseAutocompleteData }
+			>
+		>();
 
 	const { currentQuery, redirectWithQueryBuilderData } = useQueryBuilder();
 	const compositeQuery = useGetCompositeQueryParam();
@@ -240,19 +244,17 @@ export function Filter(props: FilterProps): JSX.Element {
 					</Button>
 				</Tooltip>
 			</Flex>
-			<>
-				{AllTraceFilterOptions.filter(
-					(i) => i !== 'durationNanoMax' && i !== 'durationNanoMin',
-				).map((panelName) => (
-					<Section
-						key={panelName}
-						panelName={panelName}
-						selectedFilters={selectedFilters}
-						setSelectedFilters={setSelectedFilters}
-						handleRun={handleRun}
-					/>
-				))}
-			</>
+			{AllTraceFilterOptions.filter(
+				(i) => i !== 'durationNanoMax' && i !== 'durationNanoMin',
+			).map((panelName) => (
+				<Section
+					key={panelName}
+					panelName={panelName}
+					selectedFilters={selectedFilters}
+					setSelectedFilters={setSelectedFilters}
+					handleRun={handleRun}
+				/>
+			))}
 		</>
 	);
 }

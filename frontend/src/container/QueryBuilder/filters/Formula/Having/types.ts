@@ -1,5 +1,5 @@
-import { HavingFilterTagProps } from 'container/QueryBuilder/components/HavingFilterTag/HavingFilterTag.interfaces';
-import {
+import type { HavingFilterTagProps } from 'container/QueryBuilder/components/HavingFilterTag/HavingFilterTag.interfaces';
+import type {
 	Having,
 	IBuilderFormula,
 } from 'types/api/queryBuilder/queryBuilderData';

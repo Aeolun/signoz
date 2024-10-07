@@ -1,6 +1,6 @@
 import axios from 'api';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/dashboard/update';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/dashboard/update';
 
 const updateDashboard = async (
 	props: Props,

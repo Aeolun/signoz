@@ -1,6 +1,6 @@
 import getStartEndRangeTime from 'lib/getStartEndRangeTime';
 import store from 'store';
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 
 export const getDashboardVariables = (
 	variables?: Dashboard['data']['variables'],
@@ -17,8 +17,8 @@ export const getDashboardVariables = (
 		});
 
 		const variablesTuple: Record<string, unknown> = {
-			SIGNOZ_START_TIME: parseInt(start, 10) * 1e3,
-			SIGNOZ_END_TIME: parseInt(end, 10) * 1e3,
+			SIGNOZ_START_TIME: Number.parseInt(start, 10) * 1e3,
+			SIGNOZ_END_TIME: Number.parseInt(end, 10) * 1e3,
 		};
 
 		Object.entries(variables).forEach(([, value]) => {

@@ -1,20 +1,27 @@
-import { Form, FormInstance, Input, Select, Switch, Typography } from 'antd';
-import { Store } from 'antd/lib/form/interface';
+import {
+	Form,
+	type FormInstance,
+	Input,
+	Select,
+	Switch,
+	Typography,
+} from 'antd';
+import type { Store } from 'antd/lib/form/interface';
 import UpgradePrompt from 'components/Upgrade/UpgradePrompt';
 import { FeatureKeys } from 'constants/features';
 import ROUTES from 'constants/routes';
 import {
 	ChannelType,
-	EmailChannel,
-	OpsgenieChannel,
-	PagerChannel,
-	SlackChannel,
-	WebhookChannel,
+	type EmailChannel,
+	type OpsgenieChannel,
+	type PagerChannel,
+	type SlackChannel,
+	type WebhookChannel,
 } from 'container/CreateAlertChannels/config';
 import useFeatureFlags from 'hooks/useFeatureFlag';
 import { isFeatureKeys } from 'hooks/useFeatureFlag/utils';
 import history from 'lib/history';
-import { Dispatch, ReactElement, SetStateAction } from 'react';
+import type { Dispatch, ReactElement, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import EmailSettings from './Settings/Email';
@@ -146,7 +153,8 @@ function FormAlertChannels({
 						{!isOssFeature?.active && (
 							<Select.Option value="msteams" key="msteams" data-testid="select-option">
 								<div>
-									Microsoft Teams {!isUserOnEEPlan && '(Supported in Paid Plans Only)'}{' '}
+									Microsoft Teams {!isUserOnEEPlan &&
+										'(Supported in Paid Plans Only)'}{' '}
 								</div>
 							</Select.Option>
 						)}

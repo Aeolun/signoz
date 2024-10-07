@@ -5,14 +5,14 @@ import {
 } from 'constants/queryBuilder';
 import getStep from 'lib/getStep';
 import store from 'store';
-import { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
 import {
 	MetricAggregateOperator,
-	QueryBuilderData,
+	type QueryBuilderData,
 	Temporality,
 } from 'types/common/queryBuilder';
 
-import {
+import type {
 	BuilderQueriesProps,
 	BuilderQuerieswithFormulaProps,
 } from '../Tabs/types';

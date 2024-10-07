@@ -11,7 +11,7 @@ import { isCloudUser } from 'utils/app';
 import { getTotalRPS } from 'utils/services';
 
 import { getColumns } from '../Columns/ServiceColumn';
-import ServiceTableProps from '../types';
+import type ServiceTableProps from '../types';
 
 function ServiceTraceTable({
 	services,

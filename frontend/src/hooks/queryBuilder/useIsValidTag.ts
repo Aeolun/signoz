@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { OperatorType } from './useOperatorType';
+import type { OperatorType } from './useOperatorType';
 
 export const validationMapper: Record<
 	OperatorType,
@@ -16,7 +16,7 @@ export const useIsValidTag = (
 	operatorType: OperatorType,
 	resultLength: number,
 ): boolean =>
-	useMemo(() => validationMapper[operatorType]?.(resultLength), [
-		operatorType,
-		resultLength,
-	]);
+	useMemo(
+		() => validationMapper[operatorType]?.(resultLength),
+		[operatorType, resultLength],
+	);

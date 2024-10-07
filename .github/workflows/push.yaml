@@ -5,8 +5,14 @@ on:
     branches:
       - main
       - develop
+      - alt-develop
     tags:
       - v*
+
+env:
+  FRONTEND_DOCKER_IMAGE: signoz-frontend
+  QUERY_SERVICE_DOCKER_IMAGE: signoz-query-service
+  REPONAME: aeolun
 
 jobs:
   image-build-and-push-query-service:

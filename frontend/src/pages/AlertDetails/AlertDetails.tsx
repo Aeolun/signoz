@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 
 import AlertHeader from './AlertHeader/AlertHeader';
 import { useGetAlertRuleDetails, useRouteTabUtils } from './hooks';
-import { AlertDetailsStatusRendererProps } from './types';
+import type { AlertDetailsStatusRendererProps } from './types';
 
 function AlertDetailsStatusRenderer({
 	isLoading,

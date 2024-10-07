@@ -6,15 +6,15 @@ import { parseQuery } from 'lib/logql';
 import isEqual from 'lodash-es/isEqual';
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import {
 	SET_SEARCH_QUERY_PARSED_PAYLOAD,
 	SET_SEARCH_QUERY_STRING,
 } from 'types/actions/logs';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 import { getGlobalTime } from './utils';
 

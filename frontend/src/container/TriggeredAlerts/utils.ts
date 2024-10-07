@@ -1,6 +1,6 @@
-import { Alerts } from 'types/api/alerts/getTriggered';
+import type { Alerts } from 'types/api/alerts/getTriggered';
 
-import { Value } from './Filter';
+import type { Value } from './Filter';
 
 export const FilterAlerts = (
 	allAlerts: Alerts[],

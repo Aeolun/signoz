@@ -1,8 +1,8 @@
 import { Form, Input } from 'antd';
-import React from 'react';
+import type React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { MsTeamsChannel } from '../../CreateAlertChannels/config';
+import type { MsTeamsChannel } from '../../CreateAlertChannels/config';
 
 function MsTeams({ setSelectedConfig }: MsTeamsProps): JSX.Element {
 	const { t } = useTranslation('channels');

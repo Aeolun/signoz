@@ -8,8 +8,9 @@ import history from 'lib/history';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AlertTypes } from 'types/api/alerts/alertTypes';
-import { AlertDef } from 'types/api/alerts/def';
+import type { AlertDef } from 'types/api/alerts/def';
 
+import SelectAlertType from './SelectAlertType';
 import { ALERT_TYPE_VS_SOURCE_MAPPING } from './config';
 import {
 	alertDefaults,
@@ -17,7 +18,6 @@ import {
 	logAlertDefaults,
 	traceAlertDefaults,
 } from './defaults';
-import SelectAlertType from './SelectAlertType';
 
 function CreateRules(): JSX.Element {
 	const [initValues, setInitValues] = useState<AlertDef | null>(null);

@@ -1,4 +1,4 @@
-import { Radio, RadioChangeEvent, Space, Typography } from 'antd';
+import { Radio, type RadioChangeEvent, Space, Typography } from 'antd';
 import {
 	OnboardingMethods,
 	useOnboardingContext,

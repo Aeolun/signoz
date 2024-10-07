@@ -1,7 +1,7 @@
 import logEvent from 'api/common/logEvent';
 import { ALERTS_DATA_SOURCE_MAP } from 'constants/alerts';
-import { AlertTypes } from 'types/api/alerts/alertTypes';
-import { GettableAlert } from 'types/api/alerts/get';
+import type { AlertTypes } from 'types/api/alerts/alertTypes';
+import type { GettableAlert } from 'types/api/alerts/get';
 
 export const filterAlerts = (
 	allAlertRules: GettableAlert[],

@@ -4,16 +4,16 @@ import getResetPasswordToken from 'api/user/getResetPasswordToken';
 import ROUTES from 'constants/routes';
 import { useNotifications } from 'hooks/useNotifications';
 import {
-	ChangeEventHandler,
-	Dispatch,
-	SetStateAction,
+	type ChangeEventHandler,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCopyToClipboard } from 'react-use';
-import { ROLES } from 'types/roles';
+import type { ROLES } from 'types/roles';
 
 import { InputGroup, SelectDrawer, Title } from './styles';
 
@@ -60,12 +60,10 @@ function EditMembersDetails({
 		}
 	}, [state.error, state.value, t, notifications]);
 
-	const onPasswordChangeHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
-		(event) => {
+	const onPasswordChangeHandler: ChangeEventHandler<HTMLInputElement> =
+		useCallback((event) => {
 			setPasswordLink(event.target.value);
-		},
-		[],
-	);
+		}, []);
 
 	const onGeneratePasswordHandler = async (): Promise<void> => {
 		try {

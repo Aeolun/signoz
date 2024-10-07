@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/react';
 import { Card } from 'antd';
-import { NotificationInstance } from 'antd/es/notification/interface';
+import type { NotificationInstance } from 'antd/es/notification/interface';
 import ROUTES from 'constants/routes';
 import Filters from 'container/Trace/Filters';
 import TraceGraph from 'container/Trace/Graph';
@@ -11,21 +11,26 @@ import { useNotifications } from 'hooks/useNotifications';
 import getStep from 'lib/getStep';
 import history from 'lib/history';
 import ErrorBoundaryFallback from 'pages/ErrorBoundaryFallback/ErrorBoundaryFallback';
-import { MouseEventHandler, useCallback, useEffect, useState } from 'react';
+import {
+	type MouseEventHandler,
+	useCallback,
+	useEffect,
+	useState,
+} from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { type Dispatch, bindActionCreators } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { GetInitialTraceFilter } from 'store/actions/trace/getInitialFilter';
 import {
 	GetSpansAggregate,
-	GetSpansAggregateProps,
+	type GetSpansAggregateProps,
 } from 'store/actions/trace/getInitialSpansAggregate';
-import { GetSpans, GetSpansProps } from 'store/actions/trace/getSpans';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import { GetSpans, type GetSpansProps } from 'store/actions/trace/getSpans';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { RESET_TRACE_FILTER } from 'types/actions/trace';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { TraceReducer } from 'types/reducer/trace';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { TraceReducer } from 'types/reducer/trace';
 
 import {
 	ClearAllFilter,

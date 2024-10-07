@@ -1,6 +1,6 @@
 import logEvent from 'api/common/logEvent';
 import getTopLevelOperations, {
-	ServiceDataProps,
+	type ServiceDataProps,
 } from 'api/metrics/getTopLevelOperations';
 import { FeatureKeys } from 'constants/features';
 import { QueryParams } from 'constants/query';
@@ -17,26 +17,26 @@ import {
 import useUrlQuery from 'hooks/useUrlQuery';
 import getStep from 'lib/getStep';
 import history from 'lib/history';
-import { OnClickPluginOpts } from 'lib/uPlotLib/plugins/onClickPlugin';
+import type { OnClickPluginOpts } from 'lib/uPlotLib/plugins/onClickPlugin';
 import { defaultTo } from 'lodash-es';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { UpdateTimeInterval } from 'store/actions';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { v4 as uuid } from 'uuid';
 
-import { GraphTitle, SERVICE_CHART_ID } from '../constant';
 import { getWidgetQueryBuilder } from '../MetricsApplication.factory';
 import {
 	errorPercentage,
 	operationPerSec,
 } from '../MetricsPageQueries/OverviewQueries';
+import { GraphTitle, SERVICE_CHART_ID } from '../constant';
 import { Col, ColApDexContainer, ColErrorContainer, Row } from '../styles';
 import ApDex from './Overview/ApDex';
 import GraphControlsPanel from './Overview/GraphControlsPanel/GraphControlsPanel';
@@ -45,7 +45,7 @@ import TopLevelOperation from './Overview/TopLevelOperations';
 import TopOperation from './Overview/TopOperation';
 import TopOperationMetrics from './Overview/TopOperationMetrics';
 import { Button, Card } from './styles';
-import { IServiceName } from './types';
+import type { IServiceName } from './types';
 import {
 	generateExplorerPath,
 	handleNonInQueryRange,
@@ -68,29 +68,22 @@ function Application(): JSX.Element {
 	const { queries } = useResourceAttribute();
 	const urlQuery = useUrlQuery();
 
-	const isSpanMetricEnabled = useFeatureFlag(FeatureKeys.USE_SPAN_METRICS)
-		?.active;
-
-	const handleSetTimeStamp = useCallback((selectTime: number) => {
-		setSelectedTimeStamp(selectTime);
-	}, []);
+	const isSpanMetricEnabled = useFeatureFlag(
+		FeatureKeys.USE_SPAN_METRICS,
+	)?.active;
 
 	const dispatch = useDispatch();
 	const handleGraphClick = useCallback(
-		(type: string): OnClickPluginOpts['onClick'] => (
-			xValue,
-			yValue,
-			mouseX,
-			mouseY,
-		): Promise<void> =>
-			onGraphClickHandler(handleSetTimeStamp)(
-				xValue,
-				yValue,
-				mouseX,
-				mouseY,
-				type,
-			),
-		[handleSetTimeStamp],
+		(type: string): OnClickPluginOpts['onClick'] =>
+			(xValue, yValue, mouseX, mouseY): Promise<void> =>
+				onGraphClickHandler(setSelectedTimeStamp)(
+					xValue,
+					yValue,
+					mouseX,
+					mouseY,
+					type,
+				),
+		[setSelectedTimeStamp],
 	);
 
 	const logEventCalledRef = useRef(false);
@@ -213,33 +206,34 @@ function Application(): JSX.Element {
 			timestamp: number,
 			apmToTraceQuery: Query,
 			isViewLogsClicked?: boolean,
-		): (() => void) => (): void => {
-			const currentTime = timestamp;
-			const endTime = timestamp + stepInterval;
-			console.log(endTime, stepInterval);
+		): (() => void) =>
+			(): void => {
+				const currentTime = timestamp;
+				const endTime = timestamp + stepInterval;
+				console.log(endTime, stepInterval);
 
-			const urlParams = new URLSearchParams(search);
-			urlParams.set(QueryParams.startTime, currentTime.toString());
-			urlParams.set(QueryParams.endTime, endTime.toString());
-			urlParams.delete(QueryParams.relativeTime);
-			const avialableParams = routeConfig[ROUTES.TRACE];
-			const queryString = getQueryString(avialableParams, urlParams);
+				const urlParams = new URLSearchParams(search);
+				urlParams.set(QueryParams.startTime, currentTime.toString());
+				urlParams.set(QueryParams.endTime, endTime.toString());
+				urlParams.delete(QueryParams.relativeTime);
+				const avialableParams = routeConfig[ROUTES.TRACE];
+				const queryString = getQueryString(avialableParams, urlParams);
 
-			const JSONCompositeQuery = encodeURIComponent(
-				JSON.stringify(apmToTraceQuery),
-			);
+				const JSONCompositeQuery = encodeURIComponent(
+					JSON.stringify(apmToTraceQuery),
+				);
 
-			const newPath = generateExplorerPath(
-				isViewLogsClicked,
-				urlParams,
-				servicename,
-				selectedTraceTags,
-				JSONCompositeQuery,
-				queryString,
-			);
+				const newPath = generateExplorerPath(
+					isViewLogsClicked,
+					urlParams,
+					servicename,
+					selectedTraceTags,
+					JSONCompositeQuery,
+					queryString,
+				);
 
-			history.push(newPath);
-		},
+				history.push(newPath);
+			},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[stepInterval],
 	);

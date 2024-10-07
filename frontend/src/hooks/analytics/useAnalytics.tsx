@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 import { extractDomain } from 'utils/app';
 
 const useAnalytics = (): any => {
@@ -8,7 +8,7 @@ const useAnalytics = (): any => {
 
 	// Segment Page View - analytics.page([category], [name], [properties], [options], [callback]);
 	const trackPageView = (pageName: string): void => {
-		if (user && user.email) {
+		if (user?.email) {
 			window.analytics.page(null, pageName, {
 				userId: user.email,
 			});
@@ -19,7 +19,7 @@ const useAnalytics = (): any => {
 		eventName: string,
 		properties?: Record<string, unknown>,
 	): void => {
-		if (user && user.email) {
+		if (user?.email) {
 			const context = {
 				context: {
 					groupId: extractDomain(user?.email),

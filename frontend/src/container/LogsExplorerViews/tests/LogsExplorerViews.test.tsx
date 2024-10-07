@@ -1,5 +1,6 @@
-import { render, RenderResult } from '@testing-library/react';
+import { type RenderResult, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import i18n from 'ReactI18';
 import { useGetExplorerQueryRange } from 'hooks/queryBuilder/useGetExplorerQueryRange';
 import { logsQueryRangeSuccessResponse } from 'mocks-server/__mockdata__/logs_query_range';
 import { server } from 'mocks-server/server';
@@ -11,7 +12,6 @@ import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { VirtuosoMockContext } from 'react-virtuoso';
-import i18n from 'ReactI18';
 import store from 'store';
 
 import LogsExplorerViews from '..';
@@ -47,17 +47,13 @@ jest.mock(
 	'container/TimeSeriesView/TimeSeriesView',
 	() =>
 		// eslint-disable-next-line func-names, @typescript-eslint/explicit-function-return-type, react/display-name
-		function () {
-			return <div>Time Series Chart</div>;
-		},
+		() => <div>Time Series Chart</div>,
 );
 jest.mock(
 	'container/LogsExplorerChart',
 	() =>
 		// eslint-disable-next-line func-names, @typescript-eslint/explicit-function-return-type, react/display-name
-		function () {
-			return <div>Histogram Chart</div>;
-		},
+		() => <div>Histogram Chart</div>,
 );
 
 jest.mock('api/common/getQueryStats', () => ({

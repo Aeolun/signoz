@@ -11,10 +11,10 @@ import useFetch from 'hooks/useFetch';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { AlertTypes } from 'types/api/alerts/alertTypes';
-import { AlertDef, Labels } from 'types/api/alerts/def';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { AlertTypes } from 'types/api/alerts/alertTypes';
+import type { AlertDef, Labels } from 'types/api/alerts/def';
+import type AppReducer from 'types/reducer/app';
 import { requireErrorMessage } from 'utils/form/requireErrorMessage';
 import { popupContainer } from 'utils/selectPopupContainer';
 
@@ -51,10 +51,8 @@ function BasicInfo({
 		role,
 	);
 
-	const [
-		shouldBroadCastToAllChannels,
-		setShouldBroadCastToAllChannels,
-	] = useState(false);
+	const [shouldBroadCastToAllChannels, setShouldBroadCastToAllChannels] =
+		useState(false);
 
 	useEffect(() => {
 		const hasPreferredChannels =

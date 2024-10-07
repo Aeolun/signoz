@@ -1,6 +1,8 @@
 export interface PayloadProps {
 	sso: boolean;
 	ssoUrl?: string;
+	ldap: boolean;
+	ldapDomain?: string;
 	canSelfRegister?: boolean;
 	isUser: boolean;
 }

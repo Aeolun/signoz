@@ -32,7 +32,7 @@ function EditRules(): JSX.Element {
 		{
 			queryFn: () =>
 				get({
-					id: parseInt(ruleId || '', 10),
+					id: Number.parseInt(ruleId || '', 10),
 				}),
 			enabled: isValidRuleId,
 			refetchOnMount: false,
@@ -89,7 +89,7 @@ function EditRules(): JSX.Element {
 	return (
 		<div className="edit-rules-container">
 			<EditRulesContainer
-				ruleId={parseInt(ruleId, 10)}
+				ruleId={Number.parseInt(ruleId, 10)}
 				initialValue={data.payload.data}
 			/>
 		</div>

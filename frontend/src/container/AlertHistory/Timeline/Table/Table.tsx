@@ -11,14 +11,8 @@ import { useTranslation } from 'react-i18next';
 import { timelineTableColumns } from './useTimelineTable';
 
 function TimelineTable(): JSX.Element {
-	const {
-		isLoading,
-		isRefetching,
-		isError,
-		data,
-		isValidRuleId,
-		ruleId,
-	} = useGetAlertRuleDetailsTimelineTable();
+	const { isLoading, isRefetching, isError, data, isValidRuleId, ruleId } =
+		useGetAlertRuleDetailsTimelineTable();
 
 	const { timelineData, totalItems } = useMemo(() => {
 		const response = data?.payload?.data;

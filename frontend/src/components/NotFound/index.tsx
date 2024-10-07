@@ -4,8 +4,8 @@ import { LOCALSTORAGE } from 'constants/localStorage';
 import ROUTES from 'constants/routes';
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { Dispatch } from 'redux';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type AppActions from 'types/actions';
 import { LOGGED_IN } from 'types/actions/app';
 
 import { defaultText } from './constant';

@@ -1,4 +1,4 @@
-import { SettingPeriod } from 'container/GeneralSettings';
+import type { SettingPeriod } from 'container/GeneralSettings';
 
 const converIntoHr = (value: number, peroid: SettingPeriod): number => {
 	if (peroid === 'day') {

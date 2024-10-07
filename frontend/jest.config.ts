@@ -15,10 +15,11 @@ const config: Config.InitialOptions = {
 		extensionsToTreatAsEsm: ['.ts'],
 		'ts-jest': {
 			useESM: true,
+			isolatedModules: true,
 		},
 	},
 	testMatch: ['<rootDir>/src/**/*?(*.)(test).(ts|js)?(x)'],
-	preset: 'ts-jest/presets/js-with-ts-esm',
+	preset: 'ts-jest',
 	transform: {
 		'^.+\\.(ts|tsx)?$': 'ts-jest',
 		'^.+\\.(js|jsx)$': 'babel-jest',

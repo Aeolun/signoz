@@ -10,8 +10,8 @@ import {
 	getEnvironmentTagKeys,
 	getEnvironmentTagValues,
 } from 'hooks/useResourceAttribute/utils';
-import { ReactNode, useEffect, useMemo, useState } from 'react';
-import { SelectOption } from 'types/common/select';
+import { type ReactNode, useEffect, useMemo, useState } from 'react';
+import type { SelectOption } from 'types/common/select';
 import { popupContainer } from 'utils/selectPopupContainer';
 import { v4 as uuid } from 'uuid';
 

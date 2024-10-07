@@ -1,4 +1,4 @@
-import {
+import type {
 	AlertRuleTimelineTableResponse,
 	AlertRuleTimelineTableResponsePayload,
 } from 'types/api/alerts/def';

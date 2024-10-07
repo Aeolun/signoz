@@ -1,4 +1,4 @@
-import { SettingPeriod } from 'container/GeneralSettings';
+import type { SettingPeriod } from 'container/GeneralSettings';
 
 const getSettingsPeroid = (hr: number): PayloadProps => {
 	if (hr <= 0) {

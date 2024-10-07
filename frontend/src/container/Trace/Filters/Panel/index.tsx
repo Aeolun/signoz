@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
 
 import PanelBody from './PanelBody';
 import PanelHeading from './PanelHeading';

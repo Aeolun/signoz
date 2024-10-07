@@ -1,8 +1,8 @@
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import { convertKeysToColumnFields } from 'container/LogsExplorerList/utils';
-import { Dashboard } from 'types/api/dashboard/getAll';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Dashboard } from 'types/api/dashboard/getAll';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
 const baseLogsSelectedColumns = {
 	dataType: 'string',

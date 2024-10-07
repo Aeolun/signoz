@@ -3,18 +3,18 @@ import {
 	ExclamationCircleOutlined,
 } from '@ant-design/icons';
 import { useMachine } from '@xstate/react';
-import { Button, Input, message, Modal } from 'antd';
+import { Button, Input, Modal, message } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { map } from 'lodash-es';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { type ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Labels } from 'types/api/alerts/def';
+import type { Labels } from 'types/api/alerts/def';
 import { v4 as uuid } from 'uuid';
 
 import { ResourceAttributesFilterMachine } from './Labels.machine';
 import QueryChip from './QueryChip';
 import { QueryChipItem, SearchContainer } from './styles';
-import { ILabelRecord } from './types';
+import type { ILabelRecord } from './types';
 import { createQuery, flattenLabels, prepareLabels } from './utils';
 
 interface LabelSelectProps {

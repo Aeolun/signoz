@@ -5,7 +5,7 @@ import { CircleCheck, Siren } from 'lucide-react';
 import { useMemo } from 'react';
 import { getDurationFromNow } from 'utils/timeUtils';
 
-import { AlertStatusProps, StatusConfig } from './types';
+import type { AlertStatusProps, StatusConfig } from './types';
 
 export default function AlertStatus({
 	status,

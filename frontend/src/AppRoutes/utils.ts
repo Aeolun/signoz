@@ -4,15 +4,15 @@ import getUserApi from 'api/user/getUser';
 import { Logout } from 'api/utils';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import store from 'store';
-import AppActions from 'types/actions';
+import type AppActions from 'types/actions';
 import {
 	LOGGED_IN,
 	UPDATE_USER,
 	UPDATE_USER_ACCESS_REFRESH_ACCESS_TOKEN,
 	UPDATE_USER_IS_FETCH,
 } from 'types/actions/app';
-import { SuccessResponse } from 'types/api';
-import { PayloadProps } from 'types/api/user/getUser';
+import type { SuccessResponse } from 'types/api';
+import type { PayloadProps } from 'types/api/user/getUser';
 
 const afterLogin = async (
 	userId: string,

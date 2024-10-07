@@ -10,7 +10,7 @@ import cx from 'classnames';
 import ROUTES from 'constants/routes';
 import FullScreenHeader from 'container/FullScreenHeader/FullScreenHeader';
 import InviteUserModal from 'container/OrganizationSettings/InviteUserModal/InviteUserModal';
-import { InviteMemberFormValues } from 'container/OrganizationSettings/PendingInvitesContainer';
+import type { InviteMemberFormValues } from 'container/OrganizationSettings/PendingInvitesContainer';
 import history from 'lib/history';
 import { UserPlus } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
@@ -18,13 +18,13 @@ import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useEffectOnce } from 'react-use';
 
+import type { DataSourceType } from './Steps/DataSource/DataSource';
 import ModuleStepsContainer from './common/ModuleStepsContainer/ModuleStepsContainer';
 import { stepsMap } from './constants/stepsConfig';
 import {
 	OnboardingMethods,
 	useOnboardingContext,
 } from './context/OnboardingContext';
-import { DataSourceType } from './Steps/DataSource/DataSource';
 import {
 	defaultApplicationDataSource,
 	defaultAwsServices,
@@ -37,9 +37,9 @@ import {
 	APM_STEPS,
 	AWS_MONITORING_STEPS,
 	AZURE_MONITORING_STEPS,
-	getSteps,
 	INFRASTRUCTURE_MONITORING_STEPS,
 	LOGS_MANAGEMENT_STEPS,
+	getSteps,
 } from './utils/getSteps';
 
 export enum ModulesMap {
@@ -290,10 +290,8 @@ export default function Onboarding(): JSX.Element {
 	}, [location.pathname]);
 
 	const [form] = Form.useForm<InviteMemberFormValues>();
-	const [
-		isInviteTeamMemberModalOpen,
-		setIsInviteTeamMemberModalOpen,
-	] = useState<boolean>(false);
+	const [isInviteTeamMemberModalOpen, setIsInviteTeamMemberModalOpen] =
+		useState<boolean>(false);
 
 	const toggleModal = useCallback(
 		(value: boolean): void => {

@@ -1,9 +1,9 @@
-import { PartialOptions } from 'overlayscrollbars';
+import type { PartialOptions } from 'overlayscrollbars';
 import { useOverlayScrollbars } from 'overlayscrollbars-react';
 import {
-	Dispatch,
-	RefObject,
-	SetStateAction,
+	type Dispatch,
+	type RefObject,
+	type SetStateAction,
 	useEffect,
 	useRef,
 	useState,

@@ -1,6 +1,6 @@
 import { LockTwoTone } from '@ant-design/icons';
 import { Button, Modal, Space, Typography } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
+import type { ColumnsType } from 'antd/lib/table';
 import deleteDomain from 'api/SAML/deleteDomain';
 import listAllDomain from 'api/SAML/listAllDomain';
 import updateDomain from 'api/SAML/updateDomain';
@@ -10,21 +10,26 @@ import { SIGNOZ_UPGRADE_PLAN_URL } from 'constants/app';
 import { FeatureKeys } from 'constants/features';
 import useFeatureFlag from 'hooks/useFeatureFlag/useFeatureFlag';
 import { useNotifications } from 'hooks/useNotifications';
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import {
+	type Dispatch,
+	type SetStateAction,
+	useCallback,
+	useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { AuthDomain } from 'types/api/SAML/listDomain';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { AuthDomain } from 'types/api/SAML/listDomain';
+import type AppReducer from 'types/reducer/app';
 import { v4 } from 'uuid';
 
 import AddDomain from './AddDomain';
 import Create from './Create';
 import EditSSO from './Edit';
+import SwitchComponent from './Switch';
 import { ConfigureSsoButtonText, EditModalTitleText } from './helpers';
 import { ColumnWithTooltip } from './styles';
-import SwitchComponent from './Switch';
 
 function AuthDomains(): JSX.Element {
 	const { t } = useTranslation(['common', 'organizationsettings']);
@@ -178,7 +183,8 @@ function AuthDomains(): JSX.Element {
 					<Typography>Enforce SSO</Typography>
 					<TextToolTip
 						{...{
-							text: `When enabled, this option restricts users to SSO based authentication. For more information, click `,
+							text:
+								'When enabled, this option restricts users to SSO based authentication. For more information, click ',
 							url: 'https://signoz.io/docs/userguide/sso-authentication/',
 						}}
 					/>{' '}

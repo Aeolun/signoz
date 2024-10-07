@@ -1,10 +1,10 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import { omitBy } from 'lodash-es';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/trace/getTagFilters';
-import { TraceFilterEnum } from 'types/reducer/trace';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/trace/getTagFilters';
+import type { TraceFilterEnum } from 'types/reducer/trace';
 
 const getTagFilters = async (
 	props: Props,
@@ -25,7 +25,7 @@ const getTagFilters = async (
 			key.startsWith('duration'),
 		);
 
-		const response = await axios.post<PayloadProps>(`/getTagFilters`, {
+		const response = await axios.post<PayloadProps>('/getTagFilters', {
 			start: String(props.start),
 			end: String(props.end),
 			...nonDuration,

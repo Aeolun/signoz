@@ -1,6 +1,6 @@
 import { GatewayApiV1Instance } from 'api';
-import { AxiosResponse } from 'axios';
-import {
+import type { AxiosResponse } from 'axios';
+import type {
 	AllIngestionKeyProps,
 	GetIngestionKeyProps,
 } from 'types/api/ingestionKeys/types';

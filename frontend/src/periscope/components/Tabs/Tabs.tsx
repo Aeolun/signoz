@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Tabs as AntDTabs, TabsProps } from 'antd';
-import React from 'react';
+import { Tabs as AntDTabs, type TabsProps } from 'antd';
+import type React from 'react';
 
 export interface TabProps {
 	label: string | React.ReactElement;

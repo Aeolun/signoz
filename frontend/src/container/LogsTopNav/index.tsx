@@ -1,8 +1,8 @@
 import { PlayCircleFilled } from '@ant-design/icons';
 import { QueryParams } from 'constants/query';
 import {
-	initialQueryBuilderFormValuesMap,
 	PANEL_TYPES,
+	initialQueryBuilderFormValuesMap,
 } from 'constants/queryBuilder';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import ROUTES from 'constants/routes';
@@ -10,14 +10,14 @@ import {
 	constructCompositeQuery,
 	defaultLiveQueryDataConfig,
 } from 'container/LiveLogs/constants';
-import { QueryHistoryState } from 'container/LiveLogs/types';
+import type { QueryHistoryState } from 'container/LiveLogs/types';
 import LocalTopNav from 'container/LocalTopNav';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useCallback, useMemo } from 'react';
 import { useQueryClient } from 'react-query';
 import { useHistory } from 'react-router-dom';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
 import { LiveButtonStyled } from './styles';
 
@@ -50,14 +50,12 @@ function LogsTopNav(): JSX.Element {
 			});
 
 			queryHistoryState = {
-				graphQueryPayload:
-					graphQuery && graphQuery[1]
-						? graphQuery[1].payload?.data.result || []
-						: [],
-				listQueryPayload:
-					listQuery && listQuery[1]
-						? listQuery[1].payload?.data?.newResult?.data?.result || []
-						: [],
+				graphQueryPayload: graphQuery?.[1]
+					? graphQuery[1].payload?.data.result || []
+					: [],
+				listQueryPayload: listQuery?.[1]
+					? listQuery[1].payload?.data?.newResult?.data?.result || []
+					: [],
 			};
 		}
 

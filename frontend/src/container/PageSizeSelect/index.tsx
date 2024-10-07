@@ -1,13 +1,13 @@
 import { Col, Row, Select } from 'antd';
 import { QueryParams } from 'constants/query';
 import {
-	defaultSelectStyle,
 	ITEMS_PER_PAGE_OPTIONS,
+	defaultSelectStyle,
 } from 'container/Controls/config';
 import useUrlQueryData from 'hooks/useUrlQueryData';
 import { useCallback } from 'react';
 
-import { PageSizeSelectProps } from './PageSizeSelect.interfaces';
+import type { PageSizeSelectProps } from './PageSizeSelect.interfaces';
 
 function PageSizeSelect({
 	isLoading,

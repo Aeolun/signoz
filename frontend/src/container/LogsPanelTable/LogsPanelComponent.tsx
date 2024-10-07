@@ -10,25 +10,25 @@ import Controls from 'container/Controls';
 import { PER_PAGE_OPTIONS } from 'container/TracesExplorer/ListView/configs';
 import { tableStyles } from 'container/TracesExplorer/ListView/styles';
 import { useActiveLog } from 'hooks/logs/useActiveLog';
-import { Pagination } from 'hooks/queryPagination';
+import type { Pagination } from 'hooks/queryPagination';
 import { useLogsData } from 'hooks/useLogsData';
-import { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
+import type { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
 import { FlatLogData } from 'lib/logs/flatLogData';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import {
-	Dispatch,
-	HTMLAttributes,
-	SetStateAction,
+	type Dispatch,
+	type HTMLAttributes,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
-import { UseQueryResult } from 'react-query';
-import { SuccessResponse } from 'types/api';
-import { Widgets } from 'types/api/dashboard/getAll';
-import { ILog } from 'types/api/logs/log';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { UseQueryResult } from 'react-query';
+import type { SuccessResponse } from 'types/api';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type { ILog } from 'types/api/logs/log';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
 import { getLogPanelColumnsList, getNextOrPreviousItems } from './utils';
 
@@ -213,7 +213,7 @@ function LogsPanelComponent({
 						<Table
 							pagination={false}
 							tableLayout="fixed"
-							scroll={{ x: `calc(50vw - 10px)` }}
+							scroll={{ x: 'calc(50vw - 10px)' }}
 							sticky
 							loading={queryResponse.isFetching}
 							style={tableStyles}

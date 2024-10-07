@@ -12,8 +12,8 @@ import ErrorBoundaryFallback from 'pages/ErrorBoundaryFallback/ErrorBoundaryFall
 import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
-import { SuccessResponse } from 'types/api';
-import { Pipeline } from 'types/api/pipeline/def';
+import type { SuccessResponse } from 'types/api';
+import type { Pipeline } from 'types/api/pipeline/def';
 
 const pipelineRefetchInterval = (
 	pipelineResponse: SuccessResponse<Pipeline> | undefined,
@@ -50,7 +50,7 @@ function Pipelines(): JSX.Element {
 		() => [
 			{
 				key: 'pipelines',
-				label: `Pipelines`,
+				label: 'Pipelines',
 				children: (
 					<PipelinePage
 						refetchPipelineLists={refetchPipelineLists}
@@ -60,7 +60,7 @@ function Pipelines(): JSX.Element {
 			},
 			{
 				key: 'change-history',
-				label: `Change History`,
+				label: 'Change History',
 				children: (
 					<ChangeHistory pipelineData={pipelineData?.payload as Pipeline} />
 				),

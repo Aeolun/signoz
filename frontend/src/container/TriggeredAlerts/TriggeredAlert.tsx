@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Alerts } from 'types/api/alerts/getTriggered';
+import type { Alerts } from 'types/api/alerts/getTriggered';
 
-import Filter, { Value } from './Filter';
+import Filter, { type Value } from './Filter';
 import FilteredTable from './FilteredTable';
 import NoFilterTable from './NoFilterTable';
 import { NoTableContainer } from './styles';

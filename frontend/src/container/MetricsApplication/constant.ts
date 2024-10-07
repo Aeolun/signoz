@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { DownloadOptions } from 'container/Download/Download.types';
+import type { DownloadOptions } from 'container/Download/Download.types';
 import { MenuItemKeys } from 'container/GridCardLayout/WidgetHeader/contants';
 
 export const legend = {

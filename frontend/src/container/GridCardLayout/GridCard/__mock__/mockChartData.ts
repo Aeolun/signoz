@@ -1,4 +1,4 @@
-import { ChartData } from 'chart.js';
+import type { ChartData } from 'chart.js';
 
 export const mockTestData: ChartData = {
 	labels: ['test1', 'test2'],

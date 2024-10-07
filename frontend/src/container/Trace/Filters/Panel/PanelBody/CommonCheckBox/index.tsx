@@ -1,12 +1,12 @@
 import { Button, Input } from 'antd';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
 import { INITIAL_FILTER_VALUE } from 'store/reducers/trace';
-import AppActions from 'types/actions';
+import type AppActions from 'types/actions';
 import { UPDATE_SPAN_UPDATE_FILTER_DISPLAY_VALUE } from 'types/actions/trace';
-import { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
+import type { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
 
 import CheckBoxComponent from '../Common/Checkbox';
 

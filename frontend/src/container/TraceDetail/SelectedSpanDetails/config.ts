@@ -1,10 +1,10 @@
-import { initialAutocompleteData, OPERATORS } from 'constants/queryBuilder';
+import { OPERATORS, initialAutocompleteData } from 'constants/queryBuilder';
 import getStep from 'lib/getStep';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
 import { DataSource, LogsAggregatorOperator } from 'types/common/queryBuilder';
 import { v4 as uuid } from 'uuid';

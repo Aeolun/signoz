@@ -1,4 +1,4 @@
-import { LogViewMode } from 'container/LogsTable';
+import type { LogViewMode } from 'container/LogsTable';
 
 import { OrderPreferenceItems, viewModeOptionList } from './config';
 

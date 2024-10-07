@@ -1,11 +1,11 @@
-import { Select, SelectProps, Space } from 'antd';
+import { Select, type SelectProps, Space } from 'antd';
 import { getCategorySelectOptionByName } from 'container/NewWidget/RightContainer/alertFomatCategories';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { categoryToSupport } from './config';
 import { DefaultLabel, selectStyles } from './styles';
-import { IBuilderUnitsFilterProps } from './types';
+import type { IBuilderUnitsFilterProps } from './types';
 import { filterOption } from './utils';
 
 function BuilderUnitsFilter({

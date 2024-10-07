@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { MenuItemKeys } from './contants';
+import type { MenuItemKeys } from './contants';
 
 export interface MenuItem {
 	key: MenuItemKeys;

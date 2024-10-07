@@ -1,7 +1,12 @@
-import { render, RenderOptions, RenderResult } from '@testing-library/react';
+import {
+	type RenderOptions,
+	type RenderResult,
+	render,
+} from '@testing-library/react';
 import ROUTES from 'constants/routes';
 import { ResourceProvider } from 'hooks/useResourceAttribute';
-import React, { ReactElement } from 'react';
+import type React from 'react';
+import type { ReactElement } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';

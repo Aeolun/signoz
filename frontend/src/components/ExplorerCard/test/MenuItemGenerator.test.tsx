@@ -3,8 +3,8 @@ import ROUTES from 'constants/routes';
 import MockQueryClientProvider from 'providers/test/MockQueryClientProvider';
 import { DataSource } from 'types/common/queryBuilder';
 
-import { viewMockData } from '../__mock__/viewData';
 import MenuItemGenerator from '../MenuItemGenerator';
+import { viewMockData } from '../__mock__/viewData';
 
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),

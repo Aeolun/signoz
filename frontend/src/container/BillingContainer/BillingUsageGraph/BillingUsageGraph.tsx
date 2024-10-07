@@ -13,7 +13,7 @@ import { getUPlotChartData } from 'lib/uPlotLib/utils/getUplotChartData';
 import { getXAxisScale } from 'lib/uPlotLib/utils/getXAxisScale';
 import { getYAxisScale } from 'lib/uPlotLib/utils/getYAxisScale';
 import { useMemo, useRef } from 'react';
-import uPlot from 'uplot';
+import type uPlot from 'uplot';
 
 import {
 	convertDataToMetricRangePayload,
@@ -82,9 +82,10 @@ export function BillingUsageGraph(props: BillingUsageGraphProps): JSX.Element {
 	const isDarkMode = useIsDarkMode();
 	const containerDimensions = useResizeObserver(graphRef);
 
-	const { startTime, endTime } = useMemo(() => calculateStartEndTime(data), [
-		data,
-	]);
+	const { startTime, endTime } = useMemo(
+		() => calculateStartEndTime(data),
+		[data],
+	);
 
 	const getGraphSeries = (color: string, label: string): any => ({
 		drawStyle: 'bars',

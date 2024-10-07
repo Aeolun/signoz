@@ -1,9 +1,9 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { AlertRuleTopContributorsPayload } from 'types/api/alerts/def';
-import { TopContributorsProps } from 'types/api/alerts/topContributors';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { AlertRuleTopContributorsPayload } from 'types/api/alerts/def';
+import type { TopContributorsProps } from 'types/api/alerts/topContributors';
 
 const topContributors = async (
 	props: TopContributorsProps,

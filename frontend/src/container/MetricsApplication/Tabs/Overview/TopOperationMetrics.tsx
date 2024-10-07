@@ -1,27 +1,27 @@
 import { ENTITY_VERSION_V4 } from 'constants/app';
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { topOperationMetricsDownloadOptions } from 'container/MetricsApplication/constant';
 import { getWidgetQueryBuilder } from 'container/MetricsApplication/MetricsApplication.factory';
 import { topOperationQueries } from 'container/MetricsApplication/MetricsPageQueries/TopOperationQueries';
+import { topOperationMetricsDownloadOptions } from 'container/MetricsApplication/constant';
 import { QueryTable } from 'container/QueryTable';
 import { useGetQueryRange } from 'hooks/queryBuilder/useGetQueryRange';
 import { useStepInterval } from 'hooks/queryBuilder/useStepInterval';
 import { useNotifications } from 'hooks/useNotifications';
 import useResourceAttribute from 'hooks/useResourceAttribute';
 import { convertRawQueriesToTraceSelectedTags } from 'hooks/useResourceAttribute/utils';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
-import { ReactNode, useMemo } from 'react';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
+import { type ReactNode, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { EQueryType } from 'types/common/dashboard';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { v4 as uuid } from 'uuid';
 
-import { IServiceName } from '../types';
-import { title } from './config';
+import type { IServiceName } from '../types';
 import ColumnWithLink from './TableRenderer/ColumnWithLink';
 import { getTableColumnRenderer } from './TableRenderer/TableColumnRenderer';
+import { title } from './config';
 
 function TopOperationMetrics(): JSX.Element {
 	const { servicename: encodedServiceName } = useParams<IServiceName>();
@@ -29,10 +29,11 @@ function TopOperationMetrics(): JSX.Element {
 
 	const { notifications } = useNotifications();
 
-	const { minTime, maxTime, selectedTime: globalSelectedInterval } = useSelector<
-		AppState,
-		GlobalReducer
-	>((state) => state.globalTime);
+	const {
+		minTime,
+		maxTime,
+		selectedTime: globalSelectedInterval,
+	} = useSelector<AppState, GlobalReducer>((state) => state.globalTime);
 
 	const { queries } = useResourceAttribute();
 

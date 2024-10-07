@@ -2,8 +2,8 @@ import './ColumnUnitSelector.styles.scss';
 
 import { Typography } from 'antd';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
-import { Dispatch, SetStateAction } from 'react';
-import { ColumnUnit } from 'types/api/dashboard/getAll';
+import type { Dispatch, SetStateAction } from 'react';
+import type { ColumnUnit } from 'types/api/dashboard/getAll';
 import { EQueryType } from 'types/common/dashboard';
 
 import YAxisUnitSelector from '../YAxisUnitSelector';

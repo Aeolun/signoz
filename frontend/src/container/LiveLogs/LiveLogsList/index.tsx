@@ -18,12 +18,12 @@ import { useCopyLogLink } from 'hooks/logs/useCopyLogLink';
 import { useEventSource } from 'providers/EventSource';
 import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Virtuoso, VirtuosoHandle } from 'react-virtuoso';
+import { Virtuoso, type VirtuosoHandle } from 'react-virtuoso';
 // interfaces
-import { ILog } from 'types/api/logs/log';
+import type { ILog } from 'types/api/logs/log';
 import { DataSource, StringOperators } from 'types/common/queryBuilder';
 
-import { LiveLogsListProps } from './types';
+import type { LiveLogsListProps } from './types';
 
 function LiveLogsList({ logs }: LiveLogsListProps): JSX.Element {
 	const ref = useRef<VirtuosoHandle>(null);

@@ -6,7 +6,7 @@ import { Color } from '@signozhq/design-tokens';
 import { Button, List, Typography } from 'antd';
 import { useGetAllIntegrations } from 'hooks/Integrations/useGetAllIntegrations';
 import { MoveUpRight, RotateCw } from 'lucide-react';
-import { Dispatch, SetStateAction, useMemo } from 'react';
+import { type Dispatch, type SetStateAction, useMemo } from 'react';
 import { isCloudUser } from 'utils/app';
 
 import { handleContactSupport } from './utils';
@@ -20,14 +20,8 @@ interface IntegrationsListProps {
 function IntegrationsList(props: IntegrationsListProps): JSX.Element {
 	const { setSelectedIntegration, searchTerm, setActiveDetailTab } = props;
 
-	const {
-		data,
-		isFetching,
-		isLoading,
-		isRefetching,
-		isError,
-		refetch,
-	} = useGetAllIntegrations();
+	const { data, isFetching, isLoading, isRefetching, isError, refetch } =
+		useGetAllIntegrations();
 
 	const filteredDataList = useMemo(() => {
 		if (data?.data.data.integrations) {

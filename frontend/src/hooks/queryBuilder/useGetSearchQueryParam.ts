@@ -1,4 +1,4 @@
-import { QuerySearchParamNames } from 'components/ExplorerCard/constants';
+import type { QuerySearchParamNames } from 'components/ExplorerCard/constants';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { useMemo } from 'react';
 

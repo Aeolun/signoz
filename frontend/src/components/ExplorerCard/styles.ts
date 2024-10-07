@@ -1,5 +1,5 @@
 import { Button, Card, Col } from 'antd';
-import styled, { CSSProperties } from 'styled-components';
+import styled, { type CSSProperties } from 'styled-components';
 
 export const ExplorerCardHeadContainer = styled(Card)`
 	margin: 1rem 0;

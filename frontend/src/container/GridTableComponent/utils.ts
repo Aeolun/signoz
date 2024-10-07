@@ -1,11 +1,11 @@
 /* eslint-disable sonarjs/cognitive-complexity */
-import { ColumnsType, ColumnType } from 'antd/es/table';
-import { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
+import type { ColumnType, ColumnsType } from 'antd/es/table';
+import type { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
+import type { QueryTableProps } from 'container/QueryTable/QueryTable.intefaces';
 import { QUERY_TABLE_CONFIG } from 'container/QueryTable/config';
-import { QueryTableProps } from 'container/QueryTable/QueryTable.intefaces';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { isEmpty, isNaN } from 'lodash-es';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
 
 // Helper function to evaluate the condition based on the operator
@@ -95,8 +95,9 @@ export function getQueryLegend(
 			)?.legend;
 			break;
 		case EQueryType.PROM:
-			legend = currentQuery.promql.find((query) => query.name === queryName)
-				?.legend;
+			legend = currentQuery.promql.find(
+				(query) => query.name === queryName,
+			)?.legend;
 			break;
 		default:
 			legend = undefined;
@@ -156,7 +157,7 @@ export function createColumnsAndDataSource(
 				// if no legend present then rely on the column name value
 				title: !isEmpty(legend) ? legend : item.name,
 				width: QUERY_TABLE_CONFIG.width,
-				render: renderColumnCell && renderColumnCell[item.name],
+				render: renderColumnCell?.[item.name],
 				sorter: (a: RowData, b: RowData): number => sortFunction(a, b, item),
 			};
 

@@ -1,20 +1,20 @@
 import './TableRow.styles.scss';
 
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import LogLinesActionButtons from 'components/Logs/LogLinesActionButtons/LogLinesActionButtons';
-import { ColumnTypeRender } from 'components/Logs/TableView/types';
-import { FontSize } from 'container/OptionsMenu/types';
+import type { ColumnTypeRender } from 'components/Logs/TableView/types';
+import type { FontSize } from 'container/OptionsMenu/types';
 import { useCopyLogLink } from 'hooks/logs/useCopyLogLink';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import {
+	type MouseEventHandler,
+	type ReactElement,
+	type ReactNode,
 	cloneElement,
-	MouseEventHandler,
-	ReactElement,
-	ReactNode,
 	useCallback,
 	useMemo,
 } from 'react';
-import { ILog } from 'types/api/logs/log';
+import type { ILog } from 'types/api/logs/log';
 
 import { TableCellStyled } from './styles';
 
@@ -39,10 +39,10 @@ export default function TableRow({
 }: TableRowProps): JSX.Element {
 	const isDarkMode = useIsDarkMode();
 
-	const currentLog = useMemo(() => logs.find(({ id }) => id === log.id), [
-		logs,
-		log.id,
-	]);
+	const currentLog = useMemo(
+		() => logs.find(({ id }) => id === log.id),
+		[logs, log.id],
+	);
 
 	const { onLogCopy, isLogsExplorerPage } = useCopyLogLink(currentLog?.id);
 

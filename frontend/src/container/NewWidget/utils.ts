@@ -1,16 +1,19 @@
 import { omitIdFromQuery } from 'components/ExplorerCard/utils';
 import {
-	initialQueryBuilderFormValuesMap,
 	PANEL_TYPES,
+	initialQueryBuilderFormValuesMap,
 } from 'constants/queryBuilder';
 import {
+	PANEL_TYPES_INITIAL_QUERY,
 	listViewInitialLogQuery,
 	listViewInitialTraceQuery,
-	PANEL_TYPES_INITIAL_QUERY,
 } from 'container/NewDashboard/ComponentsSlider/constants';
 import { cloneDeep, isEqual, set, unset } from 'lodash-es';
-import { Widgets } from 'types/api/dashboard/getAll';
-import { IBuilderQuery, Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type {
+	IBuilderQuery,
+	Query,
+} from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
 
 export const getIsQueryModified = (

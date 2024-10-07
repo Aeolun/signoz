@@ -6,11 +6,11 @@ import Graph from 'components/Graph';
 import { useEffect, useState } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { GetService, getUsageData, UsageDataItem } from 'store/actions';
-import { AppState } from 'store/reducers';
-import { GlobalTime } from 'types/actions/globalTime';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import MetricReducer from 'types/reducer/metrics';
+import { GetService, type UsageDataItem, getUsageData } from 'store/actions';
+import type { AppState } from 'store/reducers';
+import type { GlobalTime } from 'types/actions/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type MetricReducer from 'types/reducer/metrics';
 import { isOnboardingSkipped } from 'utils/app';
 
 import { Card } from './styles';
@@ -69,13 +69,8 @@ function _UsageExplorer(props: UsageExplorerProps): JSX.Element {
 		AppState,
 		GlobalReducer
 	>((state) => state.globalTime);
-	const {
-		getServicesList,
-		getUsageData,
-		globalTime,
-		totalCount,
-		usageData,
-	} = props;
+	const { getServicesList, getUsageData, globalTime, totalCount, usageData } =
+		props;
 	const { services } = useSelector<AppState, MetricReducer>(
 		(state) => state.metrics,
 	);
@@ -115,7 +110,9 @@ function _UsageExplorer(props: UsageExplorerProps): JSX.Element {
 					<Select
 						onSelect={(value): void => {
 							setSelectedTime(
-								timeDaysOptions.filter((item) => item.value == parseInt(value))[0],
+								timeDaysOptions.filter(
+									(item) => item.value === Number.parseInt(value),
+								)[0],
 							);
 						}}
 						value={selectedTime.label}
@@ -131,7 +128,7 @@ function _UsageExplorer(props: UsageExplorerProps): JSX.Element {
 					<Select
 						onSelect={(value): void => {
 							setSelectedInterval(
-								interval.filter((item) => item.value === parseInt(value))[0],
+								interval.filter((item) => item.value === Number.parseInt(value))[0],
 							);
 						}}
 						value={selectedInterval.label}

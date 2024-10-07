@@ -152,7 +152,7 @@ function roundDec(val: number, dec: number): number {
 export const SPACE_BETWEEN = 1;
 export const SPACE_AROUND = 2;
 export const SPACE_EVENLY = 3;
-export const inf = Infinity;
+export const inf = Number.POSITIVE_INFINITY;
 
 const coord = (i: number, offs: number, iwid: number, gap: number): number =>
 	roundDec(offs + i * (iwid + gap), 6);
@@ -175,7 +175,7 @@ export function distr(
 		gap = space / (numItems + 1);
 	}
 
-	if (Number.isNaN(gap) || gap === Infinity) gap = 0;
+	if (Number.isNaN(gap) || gap === Number.POSITIVE_INFINITY) gap = 0;
 
 	let offs = 0;
 	if (justify === SPACE_AROUND) {
@@ -224,7 +224,7 @@ function timelinePlugin(opts: any): any {
 		);
 	}
 
-	const size = opts.size ?? [0.6, Infinity];
+	const size = opts.size ?? [0.6, Number.POSITIVE_INFINITY];
 	const align = opts.align ?? 0;
 
 	const gapFactor = 1 - size[0];
@@ -567,7 +567,7 @@ function timelinePlugin(opts: any): any {
 								scaleMin: number,
 								scaleMax: number,
 								foundIncr: number,
-						  ): any => {
+							): any => {
 								const splits = [];
 
 								const dataIncr = u.data[0][1] - u.data[0][0];
@@ -580,7 +580,7 @@ function timelinePlugin(opts: any): any {
 								}
 
 								return splits;
-						  }
+							}
 						: null,
 				grid: {
 					show: showGrid ?? mode !== 2,

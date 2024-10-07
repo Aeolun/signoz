@@ -1,5 +1,5 @@
 import GridGraphLayout from 'container/GridCardLayout';
-import { FullScreenHandle } from 'react-full-screen';
+import type { FullScreenHandle } from 'react-full-screen';
 
 import { GridComponentSliderContainer } from './styles';
 

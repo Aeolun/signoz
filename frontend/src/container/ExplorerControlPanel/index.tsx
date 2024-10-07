@@ -2,7 +2,7 @@ import { Col, Row } from 'antd';
 import OptionsMenu from 'container/OptionsMenu';
 import PageSizeSelect from 'container/PageSizeSelect';
 
-import { ExplorerControlPanelProps } from './ExplorerControlPanel.interfaces';
+import type { ExplorerControlPanelProps } from './ExplorerControlPanel.interfaces';
 import { ContainerStyled } from './styles';
 
 function ExplorerControlPanel({

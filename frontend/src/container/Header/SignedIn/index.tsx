@@ -3,8 +3,8 @@ import ROUTES from 'constants/routes';
 import history from 'lib/history';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 import { AvatarContainer, ManageAccountLink, Wrapper } from '../styles';
 

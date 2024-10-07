@@ -21,7 +21,7 @@ import {
 	UserPlus,
 } from 'lucide-react';
 
-import { SecondaryMenuItemKey, SidebarItem } from './sideNav.types';
+import { SecondaryMenuItemKey, type SidebarItem } from './sideNav.types';
 
 export const getStartedMenuItem = {
 	key: ROUTES.GET_STARTED,

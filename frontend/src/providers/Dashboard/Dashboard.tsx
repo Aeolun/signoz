@@ -6,7 +6,7 @@ import unlockDashboardApi from 'api/dashboard/unlockDashboard';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import ROUTES from 'constants/routes';
 import { getMinMax } from 'container/TopNav/AutoRefresh/config';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { useDashboardVariablesFromLocalStorage } from 'hooks/dashboard/useDashboardFromLocalStorage';
 import useAxiosError from 'hooks/useAxiosError';
 import useTabVisibility from 'hooks/useTabFocus';
@@ -18,29 +18,29 @@ import isEqual from 'lodash-es/isEqual';
 import isUndefined from 'lodash-es/isUndefined';
 import omitBy from 'lodash-es/omitBy';
 import {
+	type PropsWithChildren,
 	createContext,
-	PropsWithChildren,
 	useContext,
 	useEffect,
 	useMemo,
 	useRef,
 	useState,
 } from 'react';
-import { Layout } from 'react-grid-layout';
+import type { Layout } from 'react-grid-layout';
 import { useTranslation } from 'react-i18next';
-import { useMutation, useQuery, UseQueryResult } from 'react-query';
+import { type UseQueryResult, useMutation, useQuery } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { UPDATE_TIME_INTERVAL } from 'types/actions/globalTime';
-import { Dashboard, IDashboardVariable } from 'types/api/dashboard/getAll';
-import AppReducer from 'types/reducer/app';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { Dashboard, IDashboardVariable } from 'types/api/dashboard/getAll';
+import type AppReducer from 'types/reducer/app';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { v4 as generateUUID } from 'uuid';
 
-import { DashboardSortOrder, IDashboardContext } from './types';
+import type { DashboardSortOrder, IDashboardContext } from './types';
 import { sortLayout } from './util';
 
 const DashboardContext = createContext<IDashboardContext>({
@@ -166,10 +166,8 @@ export function DashboardProvider({
 
 	const [selectedDashboard, setSelectedDashboard] = useState<Dashboard>();
 
-	const {
-		currentDashboard,
-		updateLocalStorageDashboardVariables,
-	} = useDashboardVariablesFromLocalStorage(dashboardId);
+	const { currentDashboard, updateLocalStorageDashboardVariables } =
+		useDashboardVariablesFromLocalStorage(dashboardId);
 
 	const updatedTimeRef = useRef<Dayjs | null>(null); // Using ref to store the updated time
 	const modalRef = useRef<any>(null);
@@ -202,7 +200,7 @@ export function DashboardProvider({
 	// As we do not have order and ID's in the variables object, we have to process variables to add order and ID if they do not exist in the variables object
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	const transformDashboardVariables = (data: Dashboard): Dashboard => {
-		if (data && data.data && data.data.variables) {
+		if (data?.data?.variables) {
 			const clonedDashboardData = mergeDBWithLocalStorage(
 				JSON.parse(JSON.stringify(data)),
 				currentDashboard,

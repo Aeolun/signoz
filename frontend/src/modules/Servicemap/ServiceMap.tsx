@@ -7,14 +7,17 @@ import TextToolTip from 'components/TextToolTip';
 import ResourceAttributesFilter from 'container/ResourceAttributesFilter';
 import useResourceAttribute from 'hooks/useResourceAttribute';
 import { whilelistedKeys } from 'hooks/useResourceAttribute/config';
-import { IResourceAttribute } from 'hooks/useResourceAttribute/types';
+import type { IResourceAttribute } from 'hooks/useResourceAttribute/types';
 import { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { getDetailedServiceMapItems, ServiceMapStore } from 'store/actions';
-import { AppState } from 'store/reducers';
+import { type RouteComponentProps, withRouter } from 'react-router-dom';
+import {
+	type ServiceMapStore,
+	getDetailedServiceMapItems,
+} from 'store/actions';
+import type { AppState } from 'store/reducers';
 import styled from 'styled-components';
-import { GlobalTime } from 'types/actions/globalTime';
+import type { GlobalTime } from 'types/actions/globalTime';
 
 import Map from './Map';
 
@@ -79,7 +82,7 @@ function ServiceMap(props: ServiceMapProps): JSX.Element {
 	}, [globalTime, getDetailedServiceMapItems, queries]);
 
 	useEffect(() => {
-		fgRef.current && fgRef.current.d3Force('charge').strength(-400);
+		fgRef.current?.d3Force('charge').strength(-400);
 	});
 
 	if (serviceMap.loading) {

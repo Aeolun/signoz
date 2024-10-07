@@ -1,7 +1,7 @@
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 import { v4 as uuid } from 'uuid';
 
-import { TOperator } from '../types';
+import type { TOperator } from '../types';
 import { executeSearchQueries } from '../utils';
 
 describe('executeSearchQueries', () => {

@@ -5,11 +5,11 @@ import Spinner from 'components/Spinner';
 import { useTranslation } from 'react-i18next';
 import { useQueries } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { TTTLType } from 'types/api/settings/common';
-import { PayloadProps as GetRetentionPeriodAPIPayloadProps } from 'types/api/settings/getRetention';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { TTTLType } from 'types/api/settings/common';
+import type { PayloadProps as GetRetentionPeriodAPIPayloadProps } from 'types/api/settings/getRetention';
+import type AppReducer from 'types/reducer/app';
 
 import GeneralSettingsContainer from './GeneralSettings';
 

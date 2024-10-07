@@ -1,7 +1,7 @@
-import { IOption } from 'hooks/useResourceAttribute/types';
+import type { IOption } from 'hooks/useResourceAttribute/types';
 import { parse } from 'papaparse';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import {
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type {
 	IBuilderQuery,
 	OrderByPayload,
 } from 'types/api/queryBuilder/queryBuilderData';

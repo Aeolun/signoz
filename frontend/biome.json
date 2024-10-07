@@ -1,0 +1,89 @@
+{
+  "$schema": "node_modules/@biomejs/biome/configuration_schema.json",
+  "formatter": {
+    "indentWidth": 1,
+    "indentStyle": "tab",
+    "lineWidth": 80
+  },
+  "linter": {
+    "rules": {
+      "complexity": {
+        "noForEach": "off",
+        "useOptionalChain": "warn",
+        "noBannedTypes": "warn",
+        "noUselessSwitchCase": "warn",
+        "useArrowFunction": "warn",
+        "noUselessEmptyExport": "warn",
+        "noUselessFragments": "warn",
+        "noStaticOnlyClass": "warn",
+        "useFlatMap": "warn",
+        "useRegexLiterals": "warn",
+        "noUselessTypeConstraint": "warn"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn",
+        "noEmptyPattern": "warn"
+      },
+      "style": {
+        "useImportType": "warn",
+        "noUnusedTemplateLiteral": "warn",
+        "useNumberNamespace": "warn",
+        "noParameterAssign": "warn",
+        "noCommaOperator": "warn",
+        "noUselessElse": "warn",
+        "useDefaultParameterLast": "warn",
+        "useShorthandFunctionType": "warn",
+        "noInferrableTypes": "warn",
+        "noNonNullAssertion": "warn",
+        "useNodejsImportProtocol": "warn"
+      },
+      "performance": {
+        "noAccumulatingSpread": "warn",
+        "noDelete": "warn"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn",
+        "noImplicitAnyLet": "warn",
+        "noShadowRestrictedNames": "warn",
+        "noArrayIndexKey": "warn",
+        "noAssignInExpressions": "warn",
+        "noExportsInTest": "warn",
+        "noPrototypeBuiltins": "warn",
+        "noDoubleEquals": "warn",
+        "noConstEnum": "warn",
+        "noConfusingVoidType": "warn"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "warn"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "warn",
+        "useKeyWithClickEvents": "warn",
+        "noBlankTarget": "warn",
+        "useAnchorContent": "warn",
+        "useValidAnchor": "warn",
+        "useSemanticElements": "warn"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "trailingCommas": "all",
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "semicolons": "always"
+    }
+  },
+  "json": {
+    "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2
+    }
+  },
+  "files": {
+    "ignore": ["coverage"]
+  },
+  "organizeImports": {
+    "enabled": true
+  }
+}

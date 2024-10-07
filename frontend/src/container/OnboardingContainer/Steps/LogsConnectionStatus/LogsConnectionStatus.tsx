@@ -12,26 +12,23 @@ import Header from 'container/OnboardingContainer/common/Header/Header';
 import { useOnboardingContext } from 'container/OnboardingContainer/context/OnboardingContext';
 import { useGetExplorerQueryRange } from 'hooks/queryBuilder/useGetExplorerQueryRange';
 import { useEffect, useState } from 'react';
-import { SuccessResponse } from 'types/api';
-import { ILog } from 'types/api/logs/log';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { SuccessResponse } from 'types/api';
+import type { ILog } from 'types/api/logs/log';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
 import { DataSource } from 'types/common/queryBuilder';
 
-const enum ApplicationLogsType {
+enum ApplicationLogsType {
 	FROM_LOG_FILE = 'from-log-file',
 	USING_OTEL_COLLECTOR = 'using-otel-sdk',
 }
 
 export default function LogsConnectionStatus(): JSX.Element {
 	const [loading, setLoading] = useState(true);
-	const {
-		selectedDataSource,
-		activeStep,
-		selectedEnvironment,
-	} = useOnboardingContext();
+	const { selectedDataSource, activeStep, selectedEnvironment } =
+		useOnboardingContext();
 	const [isReceivingData, setIsReceivingData] = useState(false);
 	const [pollingInterval, setPollingInterval] = useState<number | false>(15000); // initial Polling interval of 15 secs , Set to false after 5 mins
 	const [retryCount, setRetryCount] = useState(20); // Retry for 5 mins

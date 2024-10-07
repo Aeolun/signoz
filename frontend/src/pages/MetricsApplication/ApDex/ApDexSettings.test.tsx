@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import { axiosResponseThresholdData } from './__mock__/axiosResponseMockThresholdData';
 import ApDexSettings from './ApDexSettings';
+import { axiosResponseThresholdData } from './__mock__/axiosResponseMockThresholdData';
 
 jest.mock('hooks/apDex/useSetApDexSettings', () => ({
 	__esModule: true,

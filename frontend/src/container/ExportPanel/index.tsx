@@ -1,7 +1,7 @@
 import { Modal } from 'antd';
 import { useCallback, useState } from 'react';
-import { Dashboard } from 'types/api/dashboard/getAll';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Dashboard } from 'types/api/dashboard/getAll';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
 import ExportPanelContainer from './ExportPanelContainer';
 

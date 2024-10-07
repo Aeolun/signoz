@@ -6,7 +6,7 @@ import LogsIcon from 'assets/AlertHistory/LogsIcon';
 import ROUTES from 'constants/routes';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { DraftingCompass } from 'lucide-react';
-import React from 'react';
+import type React from 'react';
 import { Link } from 'react-router-dom';
 
 type Props = {

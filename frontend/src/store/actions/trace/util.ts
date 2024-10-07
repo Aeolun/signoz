@@ -1,8 +1,8 @@
 import { AllTraceFilterEnum } from 'container/Trace/Filters';
 import createQueryParams from 'lib/createQueryParams';
 import history from 'lib/history';
-import { PayloadProps as GetFilterPayload } from 'types/api/trace/getFilters';
-import { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
+import type { PayloadProps as GetFilterPayload } from 'types/api/trace/getFilters';
+import type { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
 
 export * from './parseFilter';
 export interface ParsedUrl<T> {
@@ -52,10 +52,13 @@ export const updateURL = (
 		}
 	});
 
-	const preResultParams = preResult.reduce((acc, item) => {
-		acc[item.key] = item.value;
-		return acc;
-	}, {} as Record<string, string>);
+	const preResultParams = preResult.reduce(
+		(acc, item) => {
+			acc[item.key] = item.value;
+			return acc;
+		},
+		{} as Record<string, string>,
+	);
 
 	const queryParams = {
 		selected: JSON.stringify(Object.fromEntries(selectedFilter)),

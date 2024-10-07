@@ -7,8 +7,7 @@ export const TypographyText = styled(Typography.Text)<{
 	$isEnabled: boolean;
 }>`
 	width: ${({ $isInNin }): string => ($isInNin ? '10rem' : 'auto')};
-	cursor: ${({ $isEnabled }): string =>
-		$isEnabled ? 'not-allowed' : 'pointer'};
+	cursor: ${({ $isEnabled }): string => ($isEnabled ? 'not-allowed' : 'pointer')};
 	pointer-events: ${({ $isEnabled }): string => ($isEnabled ? 'none' : 'auto')};
 `;
 

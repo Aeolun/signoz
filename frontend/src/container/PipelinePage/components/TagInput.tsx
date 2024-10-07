@@ -2,8 +2,17 @@ import {
 	CloseCircleFilled,
 	ExclamationCircleOutlined,
 } from '@ant-design/icons';
-import { Button, Input, InputRef, message, Modal, Tag, Tooltip } from 'antd';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import {
+	Button,
+	Input,
+	type InputRef,
+	Modal,
+	Tag,
+	Tooltip,
+	message,
+} from 'antd';
+import type React from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { tagInputStyle } from '../PipelineListsView/config';

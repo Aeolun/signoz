@@ -2,7 +2,7 @@ import { Collapse } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import keys from 'lodash-es/keys';
 import map from 'lodash-es/map';
-import { ITraceTree } from 'types/api/trace/getTraceItem';
+import type { ITraceTree } from 'types/api/trace/getTraceItem';
 
 import EllipsedButton from '../EllipsedButton';
 import { CustomSubText, CustomSubTitle } from '../styles';

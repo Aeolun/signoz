@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import ExplorerOptions, { ExplorerOptionsProps } from './ExplorerOptions';
+import ExplorerOptions, { type ExplorerOptionsProps } from './ExplorerOptions';
 import { getExplorerToolBarVisibility } from './utils';
 
 type ExplorerOptionsWrapperProps = Omit<

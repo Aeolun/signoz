@@ -3,13 +3,13 @@ import {
 	Collapse,
 	Form,
 	InputNumber,
-	InputNumberProps,
+	type InputNumberProps,
 	Select,
-	SelectProps,
+	type SelectProps,
 	Space,
 	Typography,
 } from 'antd';
-import { DefaultOptionType } from 'antd/es/select';
+import type { DefaultOptionType } from 'antd/es/select';
 import {
 	getCategoryByOptionId,
 	getCategorySelectOptionByName,
@@ -17,7 +17,7 @@ import {
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useTranslation } from 'react-i18next';
 import {
-	AlertDef,
+	type AlertDef,
 	defaultCompareOp,
 	defaultEvalWindow,
 	defaultFrequency,

@@ -1,4 +1,4 @@
-import { getUserOperatingSystem, UserOperatingSystem } from 'utils/getUserOS';
+import { UserOperatingSystem, getUserOperatingSystem } from 'utils/getUserOS';
 
 const userOS = getUserOperatingSystem();
 export const LogsExplorerShortcuts = {

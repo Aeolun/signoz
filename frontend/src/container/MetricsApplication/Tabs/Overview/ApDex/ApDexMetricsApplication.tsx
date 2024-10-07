@@ -3,10 +3,10 @@ import { useGetMetricMeta } from 'hooks/apDex/useGetMetricMeta';
 import useErrorNotification from 'hooks/useErrorNotification';
 import { useParams } from 'react-router-dom';
 
-import { IServiceName } from '../../types';
+import type { IServiceName } from '../../types';
 import ApDexMetrics from './ApDexMetrics';
 import { metricMeta } from './constants';
-import { ApDexDataSwitcherProps } from './types';
+import type { ApDexDataSwitcherProps } from './types';
 
 function ApDexMetricsApplication({
 	handleGraphClick,

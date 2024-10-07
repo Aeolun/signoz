@@ -6,12 +6,12 @@ import saveAlertApi from 'api/alerts/save';
 import logEvent from 'api/common/logEvent';
 import DropDown from 'components/DropDown/DropDown';
 import { listAlertMessage } from 'components/LaunchChatSupport/util';
+import DynamicColumnTable from 'components/ResizeTable/DynamicColumnTable';
+import DateComponent from 'components/ResizeTable/TableComponent/DateComponent';
 import {
 	DynamicColumnsKey,
 	TableDataSource,
 } from 'components/ResizeTable/contants';
-import DynamicColumnTable from 'components/ResizeTable/DynamicColumnTable';
-import DateComponent from 'components/ResizeTable/TableComponent/DateComponent';
 import LabelColumn from 'components/TableRenderer/LabelColumn';
 import TextToolTip from 'components/TextToolTip';
 import { QueryParams } from 'constants/query';
@@ -26,17 +26,17 @@ import history from 'lib/history';
 import { mapQueryDataFromApi } from 'lib/newQueryBuilder/queryBuilderMappers/mapQueryDataFromApi';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UseQueryResult } from 'react-query';
+import type { UseQueryResult } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { GettableAlert } from 'types/api/alerts/get';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { GettableAlert } from 'types/api/alerts/get';
+import type AppReducer from 'types/reducer/app';
 
 import DeleteAlert from './DeleteAlert';
-import { Button, ColumnButton, SearchContainer } from './styles';
 import Status from './TableComponents/Status';
 import ToggleAlertState from './ToggleAlertState';
+import { Button, ColumnButton, SearchContainer } from './styles';
 import { alertActionLogEvent, filterAlerts } from './utils';
 
 const { Search } = Input;
@@ -140,52 +140,51 @@ function ListAlert({ allAlertRules, refetch }: ListAlertProps): JSX.Element {
 			.finally(() => setEditLoader(false));
 	};
 
-	const onCloneHandler = (
-		originalAlert: GettableAlert,
-	) => async (): Promise<void> => {
-		const copyAlert = {
-			...originalAlert,
-			alert: originalAlert.alert.concat(' - Copy'),
-		};
-		const apiReq = { data: copyAlert };
+	const onCloneHandler =
+		(originalAlert: GettableAlert) => async (): Promise<void> => {
+			const copyAlert = {
+				...originalAlert,
+				alert: originalAlert.alert.concat(' - Copy'),
+			};
+			const apiReq = { data: copyAlert };
 
-		try {
-			setCloneLoader(true);
-			const response = await saveAlertApi(apiReq);
+			try {
+				setCloneLoader(true);
+				const response = await saveAlertApi(apiReq);
 
-			if (response.statusCode === 200) {
-				notificationsApi.success({
-					message: 'Success',
-					description: 'Alert cloned successfully',
-				});
+				if (response.statusCode === 200) {
+					notificationsApi.success({
+						message: 'Success',
+						description: 'Alert cloned successfully',
+					});
 
-				const { data: refetchData, status } = await refetch();
-				if (status === 'success' && refetchData.payload) {
-					setData(refetchData.payload || []);
-					setTimeout(() => {
-						const clonedAlert = refetchData.payload[refetchData.payload.length - 1];
-						params.set(QueryParams.ruleId, String(clonedAlert.id));
-						history.push(`${ROUTES.EDIT_ALERTS}?${params.toString()}`);
-					}, 2000);
-				}
-				if (status === 'error') {
+					const { data: refetchData, status } = await refetch();
+					if (status === 'success' && refetchData.payload) {
+						setData(refetchData.payload || []);
+						setTimeout(() => {
+							const clonedAlert = refetchData.payload[refetchData.payload.length - 1];
+							params.set(QueryParams.ruleId, String(clonedAlert.id));
+							history.push(`${ROUTES.EDIT_ALERTS}?${params.toString()}`);
+						}, 2000);
+					}
+					if (status === 'error') {
+						notificationsApi.error({
+							message: t('something_went_wrong'),
+						});
+					}
+				} else {
 					notificationsApi.error({
-						message: t('something_went_wrong'),
+						message: 'Error',
+						description: response.error || t('something_went_wrong'),
 					});
 				}
-			} else {
-				notificationsApi.error({
-					message: 'Error',
-					description: response.error || t('something_went_wrong'),
-				});
+			} catch (error) {
+				handleError();
+				console.error(error);
+			} finally {
+				setCloneLoader(false);
 			}
-		} catch (error) {
-			handleError();
-			console.error(error);
-		} finally {
-			setCloneLoader(false);
-		}
-	};
+		};
 
 	const handleSearch = useDebouncedFn((e: unknown) => {
 		const value = (e as React.BaseSyntheticEvent).target.value.toLowerCase();
@@ -380,9 +379,8 @@ function ListAlert({ allAlertRules, refetch }: ListAlertProps): JSX.Element {
 					)}
 					<TextToolTip
 						{...{
-							text: `More details on how to create alerts`,
-							url:
-								'https://signoz.io/docs/alerts/?utm_source=product&utm_medium=list-alerts',
+							text: 'More details on how to create alerts',
+							url: 'https://signoz.io/docs/alerts/?utm_source=product&utm_medium=list-alerts',
 							urlText: 'Learn More',
 						}}
 					/>

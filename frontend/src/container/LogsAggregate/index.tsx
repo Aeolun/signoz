@@ -7,11 +7,11 @@ import getStep from 'lib/getStep';
 import { useMemo } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import type { ThunkDispatch } from 'redux-thunk';
 import { getLogsAggregate } from 'store/actions/logs/getLogsAggregate';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 import { Container } from './styles';
 

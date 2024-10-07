@@ -1,7 +1,7 @@
-import { ColumnsType } from 'antd/lib/table';
+import type { ColumnsType } from 'antd/lib/table';
 import { ResizeTable } from 'components/ResizeTable';
 import { useTranslation } from 'react-i18next';
-import { License } from 'types/api/licenses/def';
+import type { License } from 'types/api/licenses/def';
 
 function ListLicenses({ licenses }: ListLicensesProps): JSX.Element {
 	const { t } = useTranslation(['licenses']);

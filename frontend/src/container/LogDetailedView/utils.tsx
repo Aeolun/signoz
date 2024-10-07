@@ -1,12 +1,15 @@
-import { DataNode } from 'antd/es/tree';
+import type { DataNode } from 'antd/es/tree';
 import { MetricsType } from 'container/MetricsApplication/constant';
 import { uniqueId } from 'lodash-es';
-import { ILog, ILogAggregateAttributesResources } from 'types/api/logs/log';
+import type {
+	ILog,
+	ILogAggregateAttributesResources,
+} from 'types/api/logs/log';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
 import BodyTitleRenderer from './BodyTitleRenderer';
+import type { AnyObject, IFieldAttributes } from './LogDetailedView.types';
 import { typeToArrayTypeMapper } from './config';
-import { AnyObject, IFieldAttributes } from './LogDetailedView.types';
 
 export const recursiveParseJSON = (obj: string): Record<string, unknown> => {
 	try {
@@ -219,7 +222,7 @@ const determineType = (val: unknown): DataTypes => {
 			return DataTypes.bool;
 		}
 
-		const numberValue = parseFloat(val);
+		const numberValue = Number.parseFloat(val);
 
 		if (!Number.isNaN(numberValue)) {
 			return isFloat(numberValue) ? DataTypes.Float64 : DataTypes.Int64;
@@ -276,10 +279,10 @@ export const unescapeString = (str: string): string =>
 		.replace(/\\"/g, '"') // Replaces escaped double quotes
 		.replace(/\\\\/g, '\\') // Replaces escaped backslashes
 		.replace(/\\x([0-9A-Fa-f]{2})/g, (_, hex) =>
-			String.fromCharCode(parseInt(hex, 16)),
+			String.fromCharCode(Number.parseInt(hex, 16)),
 		) // Replaces hexadecimal escape sequences
 		.replace(/\\u([0-9A-Fa-f]{4})/g, (_, hex) =>
-			String.fromCharCode(parseInt(hex, 16)),
+			String.fromCharCode(Number.parseInt(hex, 16)),
 		); // Replaces Unicode escape sequences
 
 export function removeExtraSpaces(input: string): string {

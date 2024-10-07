@@ -1,4 +1,4 @@
-import { UseTableViewProps } from 'components/Logs/TableView/types';
+import type { UseTableViewProps } from 'components/Logs/TableView/types';
 
 export type InfinityTableProps = {
 	isLoading?: boolean;

@@ -2,7 +2,7 @@ import './AddTags.styles.scss';
 
 import { Col, Tooltip } from 'antd';
 import Input from 'components/Input';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 
 import { InputContainer, NewTagContainer, TagsContainer } from './styles';
 

@@ -1,4 +1,4 @@
-import { TabsProps } from 'antd';
+import type { TabsProps } from 'antd';
 import TabLabel from 'components/TabLabel';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import TimeSeriesView from 'container/TimeSeriesView';

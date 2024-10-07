@@ -1,5 +1,5 @@
 import { notification } from 'antd';
-import { NotificationInstance } from 'antd/es/notification/interface';
+import type { NotificationInstance } from 'antd/es/notification/interface';
 import { createContext, useContext, useMemo } from 'react';
 
 type Notification = {
@@ -17,9 +17,8 @@ const defaultNotification: Notification = {
 	},
 };
 
-export const NotificationContext = createContext<Notification>(
-	defaultNotification,
-);
+export const NotificationContext =
+	createContext<Notification>(defaultNotification);
 
 export function NotificationProvider({
 	children,
@@ -27,9 +26,10 @@ export function NotificationProvider({
 	children: JSX.Element;
 }): JSX.Element {
 	const [notificationApi, NotificationElement] = notification.useNotification();
-	const notifications = useMemo(() => ({ notifications: notificationApi }), [
-		notificationApi,
-	]);
+	const notifications = useMemo(
+		() => ({ notifications: notificationApi }),
+		[notificationApi],
+	);
 
 	return (
 		<NotificationContext.Provider value={notifications}>

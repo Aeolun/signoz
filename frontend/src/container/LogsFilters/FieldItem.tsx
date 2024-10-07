@@ -1,8 +1,8 @@
 import { LoadingOutlined } from '@ant-design/icons';
 import { Button, Popover, Spin, Typography } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
-import { ReactNode, useCallback, useMemo, useState } from 'react';
-import {
+import { type ReactNode, useCallback, useMemo, useState } from 'react';
+import type {
 	IField,
 	IInterestingFields,
 	ISelectedFields,

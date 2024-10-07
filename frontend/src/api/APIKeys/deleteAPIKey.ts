@@ -1,8 +1,8 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { AllAPIKeyProps } from 'types/api/pat/types';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { AllAPIKeyProps } from 'types/api/pat/types';
 
 const deleteAPIKey = async (
 	id: string,

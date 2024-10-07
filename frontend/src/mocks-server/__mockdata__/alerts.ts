@@ -25,11 +25,14 @@ export const editAlertChannelInitialValue = {
 
 export const slackTitleDefaultValue = `[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }} {{- if gt (len .CommonLabels) (len .GroupLabels) -}} {{" "}}( {{- with .CommonLabels.Remove .GroupLabels.Names }} {{- range $index, $label := .SortedPairs -}} {{ if $index }}, {{ end }} {{- $label.Name }}="{{ $label.Value -}}" {{- end }} {{- end -}} ) {{- end }}`;
 
-export const slackDescriptionDefaultValue = `{{ range .Alerts -}} *Alert:* {{ .Labels.alertname }}{{ if .Labels.severity }} - {{ .Labels.severity }}{{ end }} *Summary:* {{ .Annotations.summary }} *Description:* {{ .Annotations.description }} *RelatedLogs:* {{ if gt (len .Annotations.related_logs) 0 -}} View in <{{ .Annotations.related_logs }}|logs explorer> {{- end}} *RelatedTraces:* {{ if gt (len .Annotations.related_traces) 0 -}} View in <{{ .Annotations.related_traces }}|traces explorer> {{- end}} *Details:* {{ range .Labels.SortedPairs }} • *{{ .Name }}:* {{ .Value }} {{ end }} {{ end }}`;
+export const slackDescriptionDefaultValue =
+	'{{ range .Alerts -}} *Alert:* {{ .Labels.alertname }}{{ if .Labels.severity }} - {{ .Labels.severity }}{{ end }} *Summary:* {{ .Annotations.summary }} *Description:* {{ .Annotations.description }} *RelatedLogs:* {{ if gt (len .Annotations.related_logs) 0 -}} View in <{{ .Annotations.related_logs }}|logs explorer> {{- end}} *RelatedTraces:* {{ if gt (len .Annotations.related_traces) 0 -}} View in <{{ .Annotations.related_traces }}|traces explorer> {{- end}} *Details:* {{ range .Labels.SortedPairs }} • *{{ .Name }}:* {{ .Value }} {{ end }} {{ end }}';
 
-export const editSlackDescriptionDefaultValue = `{{ range .Alerts -}} *Alert:* {{ .Labels.alertname }}{{ if .Labels.severity }} - {{ .Labels.severity }}{{ end }} dummy_summary *Summary:* {{ .Annotations.summary }} *Description:* {{ .Annotations.description }} *Details:* {{ range .Labels.SortedPairs }} • *{{ .Name }}:* {{ .Value }} {{ end }} {{ end }}`;
+export const editSlackDescriptionDefaultValue =
+	'{{ range .Alerts -}} *Alert:* {{ .Labels.alertname }}{{ if .Labels.severity }} - {{ .Labels.severity }}{{ end }} dummy_summary *Summary:* {{ .Annotations.summary }} *Description:* {{ .Annotations.description }} *Details:* {{ range .Labels.SortedPairs }} • *{{ .Name }}:* {{ .Value }} {{ end }} {{ end }}';
 
-export const pagerDutyDescriptionDefaultVaule = `{{ if gt (len .Alerts.Firing) 0 -}} Alerts Firing: {{ range .Alerts.Firing }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }} {{ if gt (len .Alerts.Resolved) 0 -}} Alerts Resolved: {{ range .Alerts.Resolved }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }}`;
+export const pagerDutyDescriptionDefaultVaule =
+	'{{ if gt (len .Alerts.Firing) 0 -}} Alerts Firing: {{ range .Alerts.Firing }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }} {{ if gt (len .Alerts.Resolved) 0 -}} Alerts Resolved: {{ range .Alerts.Resolved }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }}';
 
 export const pagerDutyAdditionalDetailsDefaultValue = JSON.stringify({
 	firing: `{{ template "pagerduty.default.instances" .Alerts.Firing }}`,
@@ -38,9 +41,10 @@ export const pagerDutyAdditionalDetailsDefaultValue = JSON.stringify({
 	num_resolved: '{{ .Alerts.Resolved | len }}',
 });
 
-export const opsGenieMessageDefaultValue = `{{ .CommonLabels.alertname }}`;
+export const opsGenieMessageDefaultValue = '{{ .CommonLabels.alertname }}';
 
-export const opsGenieDescriptionDefaultValue = `{{ if gt (len .Alerts.Firing) 0 -}} Alerts Firing: {{ range .Alerts.Firing }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }} {{ if gt (len .Alerts.Resolved) 0 -}} Alerts Resolved: {{ range .Alerts.Resolved }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }}`;
+export const opsGenieDescriptionDefaultValue =
+	'{{ if gt (len .Alerts.Firing) 0 -}} Alerts Firing: {{ range .Alerts.Firing }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }} {{ if gt (len .Alerts.Resolved) 0 -}} Alerts Resolved: {{ range .Alerts.Resolved }} - Message: {{ .Annotations.description }} Labels: {{ range .Labels.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Annotations: {{ range .Annotations.SortedPairs }} - {{ .Name }} = {{ .Value }} {{ end }} Source: {{ .GeneratorURL }} {{ end }} {{- end }}';
 
 export const opsGeniePriorityDefaultValue =
 	'{{ if eq (index .Alerts 0).Labels.severity "critical" }}P1{{ else if eq (index .Alerts 0).Labels.severity "warning" }}P2{{ else if eq (index .Alerts 0).Labels.severity "info" }}P3{{ else }}P4{{ end }}';

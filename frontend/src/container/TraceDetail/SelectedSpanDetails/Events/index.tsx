@@ -1,5 +1,5 @@
 import { Typography } from 'antd';
-import { ITraceEvents } from 'types/api/trace/getTraceItem';
+import type { ITraceEvents } from 'types/api/trace/getTraceItem';
 
 import ErrorTag from './Event';
 

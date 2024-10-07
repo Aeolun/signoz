@@ -10,13 +10,13 @@ import history from 'lib/history';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { DataSource } from 'types/common/queryBuilder';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { DataSource } from 'types/common/queryBuilder';
+import type AppReducer from 'types/reducer/app';
 
 import AlertInfoCard from './AlertInfoCard';
-import { ALERT_CARDS, ALERT_INFO_LINKS } from './alertLinks';
 import InfoLinkText from './InfoLinkText';
+import { ALERT_CARDS, ALERT_INFO_LINKS } from './alertLinks';
 
 const alertLogEvents = (
 	title: string,

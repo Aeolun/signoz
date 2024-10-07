@@ -3,9 +3,9 @@
 import './ThresholdSelector.styles.scss';
 
 import { Typography } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import { Events } from 'constants/events';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { Antenna, Plus } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
 import { DndProvider } from 'react-dnd';
@@ -14,7 +14,7 @@ import { eventEmitter } from 'utils/getEventEmitter';
 import { v4 as uuid } from 'uuid';
 
 import Threshold from './Threshold';
-import { ThresholdSelectorProps } from './types';
+import type { ThresholdSelectorProps } from './types';
 
 function ThresholdSelector({
 	thresholds,

@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { FontSize } from 'container/OptionsMenu/types';
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
 export const infinityDefaultStyles: CSSProperties = {
 	width: '100%',
@@ -16,7 +16,7 @@ export function getInfinityDefaultStyles(fontSize: FontSize): CSSProperties {
 			fontSize === FontSize.SMALL
 				? '10px'
 				: fontSize === FontSize.MEDIUM
-				? '12px'
-				: '15px',
+					? '12px'
+					: '15px',
 	};
 }

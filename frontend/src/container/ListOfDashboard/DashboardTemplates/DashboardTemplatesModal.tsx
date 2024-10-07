@@ -17,8 +17,8 @@ import PostgreSQLIcon from 'assets/CustomIcons/PostgreSQLIcon';
 import RedisIcon from 'assets/CustomIcons/RedisIcon';
 import cx from 'classnames';
 import { ConciergeBell, DraftingCompass, Drill, Plus, X } from 'lucide-react';
-import { ChangeEvent, useState } from 'react';
-import { DashboardTemplate } from 'types/api/dashboard/getAll';
+import { type ChangeEvent, useState } from 'react';
+import type { DashboardTemplate } from 'types/api/dashboard/getAll';
 
 import { filterTemplates } from '../utils';
 

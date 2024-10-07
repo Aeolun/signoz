@@ -3,16 +3,16 @@
 import { ENTITY_VERSION_V4 } from 'constants/app';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import Graph from 'container/GridCardLayout/GridCard';
-import { GraphTitle } from 'container/MetricsApplication/constant';
 import { getWidgetQueryBuilder } from 'container/MetricsApplication/MetricsApplication.factory';
 import { apDexTracesQueryBuilderQueries } from 'container/MetricsApplication/MetricsPageQueries/OverviewQueries';
+import { GraphTitle } from 'container/MetricsApplication/constant';
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { EQueryType } from 'types/common/dashboard';
 import { v4 as uuid } from 'uuid';
 
-import { IServiceName } from '../../types';
-import { ApDexDataSwitcherProps } from './types';
+import type { IServiceName } from '../../types';
+import type { ApDexDataSwitcherProps } from './types';
 
 function ApDexTraces({
 	handleGraphClick,

@@ -1,7 +1,7 @@
 import { Form } from 'antd';
 import FormAlertRules from 'container/FormAlertRules';
 import { AlertTypes } from 'types/api/alerts/alertTypes';
-import { AlertDef } from 'types/api/alerts/def';
+import type { AlertDef } from 'types/api/alerts/def';
 
 function EditRules({ initialValue, ruleId }: EditRulesProps): JSX.Element {
 	const [formInstance] = Form.useForm();

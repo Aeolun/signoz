@@ -1,25 +1,25 @@
 import './LogsExplorerQuerySection.styles.scss';
 
 import {
-	initialQueriesMap,
 	OPERATORS,
 	PANEL_TYPES,
+	initialQueriesMap,
 } from 'constants/queryBuilder';
 import ExplorerOrderBy from 'container/ExplorerOrderBy';
 import { QueryBuilder } from 'container/QueryBuilder';
-import { OrderByFilterProps } from 'container/QueryBuilder/filters/OrderByFilter/OrderByFilter.interfaces';
+import type { QueryBuilderProps } from 'container/QueryBuilder/QueryBuilder.interfaces';
+import type { OrderByFilterProps } from 'container/QueryBuilder/filters/OrderByFilter/OrderByFilter.interfaces';
 import QueryBuilderSearchV2 from 'container/QueryBuilder/filters/QueryBuilderSearchV2/QueryBuilderSearchV2';
-import { QueryBuilderProps } from 'container/QueryBuilder/QueryBuilder.interfaces';
 import { useGetPanelTypesQueryParam } from 'hooks/queryBuilder/useGetPanelTypesQueryParam';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useQueryOperations } from 'hooks/queryBuilder/useQueryBuilderOperations';
 import { useShareBuilderUrl } from 'hooks/queryBuilder/useShareBuilderUrl';
 import {
-	prepareQueryWithDefaultTimestamp,
 	SELECTED_VIEWS,
+	prepareQueryWithDefaultTimestamp,
 } from 'pages/LogsExplorer/utils';
 import { memo, useCallback, useMemo } from 'react';
-import { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
 
 function LogExplorerQuerySection({

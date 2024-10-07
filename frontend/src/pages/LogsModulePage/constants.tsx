@@ -1,4 +1,4 @@
-import { TabRoutes } from 'components/RouteTab/types';
+import type { TabRoutes } from 'components/RouteTab/types';
 import ROUTES from 'constants/routes';
 import { Compass, TowerControl, Workflow } from 'lucide-react';
 import LogsExplorer from 'pages/LogsExplorer';

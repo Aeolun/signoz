@@ -7,8 +7,8 @@ import { Button, Card, Form, Input, Select, Space, Typography } from 'antd';
 import logEvent from 'api/common/logEvent';
 import cx from 'classnames';
 import ROUTES from 'constants/routes';
-import { useOnboardingContext } from 'container/OnboardingContainer/context/OnboardingContext';
 import { useCases } from 'container/OnboardingContainer/OnboardingContainer';
+import { useOnboardingContext } from 'container/OnboardingContainer/context/OnboardingContext';
 import {
 	getDataSources,
 	getSupportedFrameworks,
@@ -53,10 +53,8 @@ export default function DataSource(): JSX.Element {
 
 	const requestedDataSourceName = Form.useWatch('requestedDataSourceName', form);
 
-	const [
-		isSubmittingRequestForDataSource,
-		setIsSubmittingRequestForDataSource,
-	] = useState(false);
+	const [isSubmittingRequestForDataSource, setIsSubmittingRequestForDataSource] =
+		useState(false);
 
 	const { notifications } = useNotifications();
 

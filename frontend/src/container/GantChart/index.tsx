@@ -1,10 +1,10 @@
 import { MinusSquareOutlined, PlusSquareOutlined } from '@ant-design/icons';
-import { IIntervalUnit } from 'container/TraceDetail/utils';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { ITraceTree } from 'types/api/trace/getTraceItem';
+import type { IIntervalUnit } from 'container/TraceDetail/utils';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
+import type { ITraceTree } from 'types/api/trace/getTraceItem';
 
-import { CardContainer, CardWrapper, CollapseButton } from './styles';
 import Trace from './Trace';
+import { CardContainer, CardWrapper, CollapseButton } from './styles';
 import { getSpanPath } from './utils';
 
 function GanttChart(props: GanttChartProps): JSX.Element {

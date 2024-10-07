@@ -5,9 +5,9 @@ import useErrorNotification from 'hooks/useErrorNotification';
 import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { IServiceName } from '../../types';
+import type { IServiceName } from '../../types';
 import ApDexMetricsApplication from './ApDexMetricsApplication';
-import { ApDexApplicationProps } from './types';
+import type { ApDexApplicationProps } from './types';
 
 function ApDexApplication({
 	handleGraphClick,
@@ -18,9 +18,8 @@ function ApDexApplication({
 	const { servicename: encodedServiceName } = useParams<IServiceName>();
 	const servicename = decodeURIComponent(encodedServiceName);
 
-	const { data, isLoading, error, isRefetching } = useGetApDexSettings(
-		servicename,
-	);
+	const { data, isLoading, error, isRefetching } =
+		useGetApDexSettings(servicename);
 	useErrorNotification(error);
 
 	if (isLoading || isRefetching) {

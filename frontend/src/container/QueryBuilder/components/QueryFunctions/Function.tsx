@@ -9,7 +9,7 @@ import {
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { debounce, isNil } from 'lodash-es';
 import { X } from 'lucide-react';
-import {
+import type {
 	IBuilderQuery,
 	QueryFunctionProps,
 } from 'types/api/queryBuilder/queryBuilderData';
@@ -72,7 +72,7 @@ export default function Function({
 					border: isDarkMode
 						? '1px solid var(--bg-slate-400)'
 						: '1px solid var(--bg-vanilla-300)',
-					boxShadow: `4px 10px 16px 2px rgba(0, 0, 0, 0.20)`,
+					boxShadow: '4px 10px 16px 2px rgba(0, 0, 0, 0.20)',
 				}}
 				placement="bottomRight"
 				options={functionOptions}

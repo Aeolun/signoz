@@ -104,6 +104,8 @@ services:
       - "9000:9000"
       - "8123:8123"
       - "9181:9181"
+      - "9001:9000"
+    user: root
     volumes:
       - ./clickhouse-config.xml:/etc/clickhouse-server/config.xml
       - ./clickhouse-users.xml:/etc/clickhouse-server/users.xml
@@ -153,18 +155,17 @@ services:
     container_name: signoz-alertmanager
     volumes:
       - ./data/alertmanager:/data
-    depends_on:
-      query-service:
-        condition: service_healthy
+#    depends_on:
+#      query-service:
+#        condition: service_healthy
     restart: on-failure
     command:
-      - --queryService.url=http://query-service:8085
+      - --queryService.url=http://host.docker.internal:8085
       - --storage.path=/data
 
   # Notes for Maintainers/Contributors who will change Line Numbers of Frontend & Query-Section. Please Update Line Numbers in `./scripts/commentLinesForSetup.sh` & `./CONTRIBUTING.md`
-
   query-service:
-    image: signoz/query-service:${DOCKER_TAG:-0.55.0}
+    image: aeolun/signoz-query-service:${DOCKER_TAG:-0.55.0}
     container_name: signoz-query-service
     command:
       [
@@ -203,7 +204,7 @@ services:
     <<: *db-depend
 
   frontend:
-    image: signoz/frontend:${DOCKER_TAG:-0.55.0}
+    image: aeolun/signoz-frontend:${DOCKER_TAG:-0.55.0}
     container_name: signoz-frontend
     restart: on-failure
     depends_on:
@@ -219,6 +220,7 @@ services:
     container_name: otel-migrator
     command:
       - "--dsn=tcp://clickhouse:9000"
+    user: "503:20"
     depends_on:
       clickhouse:
         condition: service_healthy
@@ -257,7 +259,7 @@ services:
       # - "9411:9411"     # Zipkin port
       # - "13133:13133"   # health check extension
       # - "14250:14250"   # Jaeger gRPC
-      # - "14268:14268"   # Jaeger thrift HTTP
+      - "14268:14268"   # Jaeger thrift HTTP
       # - "55678:55678"   # OpenCensus receiver
       # - "55679:55679"   # zPages extension
     restart: on-failure
@@ -266,8 +268,8 @@ services:
         condition: service_healthy
       otel-collector-migrator:
         condition: service_completed_successfully
-      query-service:
-        condition: service_healthy
+#      query-service:
+#        condition: service_healthy
 
   logspout:
     image: "gliderlabs/logspout:v3.2.14"
@@ -288,20 +290,22 @@ services:
         max-size: 50m
         max-file: "3"
     command: [ "all" ]
+    ports:
+      - "3812:8080"
     environment:
       - JAEGER_ENDPOINT=http://otel-collector:14268/api/traces
 
-  load-hotrod:
-    image: "signoz/locust:1.2.3"
-    container_name: load-hotrod
-    hostname: load-hotrod
-    environment:
-      ATTACKED_HOST: http://hotrod:8080
-      LOCUST_MODE: standalone
-      NO_PROXY: standalone
-      TASK_DELAY_FROM: 5
-      TASK_DELAY_TO: 30
-      QUIET_MODE: "${QUIET_MODE:-false}"
-      LOCUST_OPTS: "--headless -u 10 -r 1"
-    volumes:
-      - ../common/locust-scripts:/locust
+#  load-hotrod:
+#    image: "signoz/locust:1.2.3"
+#    container_name: load-hotrod
+#    hostname: load-hotrod
+#    environment:
+#      ATTACKED_HOST: http://hotrod:8080
+#      LOCUST_MODE: standalone
+#      NO_PROXY: standalone
+#      TASK_DELAY_FROM: 5
+#      TASK_DELAY_TO: 30
+#      QUIET_MODE: "${QUIET_MODE:-false}"
+#      LOCUST_OPTS: "--headless -u 10 -r 1"
+#    volumes:
+#      - ../common/locust-scripts:/locust

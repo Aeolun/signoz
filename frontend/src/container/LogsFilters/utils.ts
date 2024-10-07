@@ -6,10 +6,13 @@ import {
 	UPDATE_INTERESTING_FIELDS,
 	UPDATE_SELECTED_FIELDS,
 } from 'types/actions/logs';
-import { ErrorResponse } from 'types/api';
+import type { ErrorResponse } from 'types/api';
 
 import { RESTRICTED_SELECTED_FIELDS } from './config';
-import { OnHandleAddInterestProps, OnHandleRemoveInterestProps } from './types';
+import type {
+	OnHandleAddInterestProps,
+	OnHandleRemoveInterestProps,
+} from './types';
 
 export const onHandleAddInterest = async ({
 	setInterestingFieldLoading,

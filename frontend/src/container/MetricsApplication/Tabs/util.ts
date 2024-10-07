@@ -1,5 +1,5 @@
 import { QueryParams } from 'constants/query';
-import { initialQueriesMap, PANEL_TYPES } from 'constants/queryBuilder';
+import { PANEL_TYPES, initialQueriesMap } from 'constants/queryBuilder';
 import ROUTES from 'constants/routes';
 import { routeConfig } from 'container/SideNav/config';
 import { getQueryString } from 'container/SideNav/helper';
@@ -9,14 +9,17 @@ import { resourceAttributesToTracesFilterItems } from 'hooks/useResourceAttribut
 import history from 'lib/history';
 import { prepareQueryWithDefaultTimestamp } from 'pages/LogsExplorer/utils';
 import { traceFilterKeys } from 'pages/TracesExplorer/Filter/filterUtils';
-import { Dispatch, SetStateAction, useMemo } from 'react';
+import { type Dispatch, type SetStateAction, useMemo } from 'react';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query, TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type {
+	Query,
+	TagFilterItem,
+} from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
-import { Tags } from 'types/reducer/trace';
+import type { Tags } from 'types/reducer/trace';
 import { v4 as uuid } from 'uuid';
 
 export const dbSystemTags: Tags[] = [
@@ -93,7 +96,7 @@ export function onViewTracePopupClick({
 }
 
 export function onGraphClickHandler(
-	setSelectedTimeStamp: (n: number) => void | Dispatch<SetStateAction<number>>,
+	setSelectedTimeStamp: Dispatch<SetStateAction<number>>,
 ) {
 	return async (
 		xValue: number,

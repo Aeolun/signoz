@@ -1,14 +1,14 @@
-import { ServiceDataProps } from 'api/metrics/getTopLevelOperations';
-import { Time } from 'container/TopNav/DateTimeSelection/config';
-import {
+import type { ServiceDataProps } from 'api/metrics/getTopLevelOperations';
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
+import type {
 	CustomTimeType,
 	Time as TimeV2,
 } from 'container/TopNav/DateTimeSelectionV2/config';
-import { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
-import { UseQueryResult } from 'react-query';
-import { SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { ServicesList } from 'types/api/metrics/getService';
+import type { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
+import type { UseQueryResult } from 'react-query';
+import type { SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { ServicesList } from 'types/api/metrics/getService';
 
 export default interface ServiceTableProps {
 	services: ServicesList[];

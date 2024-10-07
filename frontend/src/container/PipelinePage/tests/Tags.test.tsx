@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
+import i18n from 'ReactI18';
 import Tags from 'container/PipelinePage/PipelineListsView/TableComponents/Tags';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import i18n from 'ReactI18';
 import store from 'store';
 
 const tags = ['server', 'app'];

@@ -1,7 +1,7 @@
 import './UplotPanelWrapper.styles.scss';
 
 import { Alert } from 'antd';
-import { ToggleGraphProps } from 'components/Graph/types';
+import type { ToggleGraphProps } from 'components/Graph/types';
 import Uplot from 'components/Uplot';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import GraphManager from 'container/GridCardLayout/GridCard/FullView/GraphManager';
@@ -18,7 +18,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { getSortedSeriesData } from 'utils/getSortedSeriesData';
 import { getTimeRange } from 'utils/getTimeRange';
 
-import { PanelWrapperProps } from './panelWrapper.types';
+import type { PanelWrapperProps } from './panelWrapper.types';
 
 function UplotPanelWrapper({
 	queryResponse,
@@ -63,12 +63,11 @@ function UplotPanelWrapper({
 	const containerDimensions = useResizeObserver(graphRef);
 
 	useEffect(() => {
-		const {
-			graphVisibilityStates: localStoredVisibilityState,
-		} = getLocalStorageGraphVisibilityState({
-			apiResponse: queryResponse.data?.payload.data.result || [],
-			name: widget.id,
-		});
+		const { graphVisibilityStates: localStoredVisibilityState } =
+			getLocalStorageGraphVisibilityState({
+				apiResponse: queryResponse.data?.payload.data.result || [],
+				name: widget.id,
+			});
 		if (setGraphVisibility) {
 			setGraphVisibility(localStoredVisibilityState);
 		}

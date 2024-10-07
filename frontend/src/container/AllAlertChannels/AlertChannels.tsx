@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import { Button } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
+import type { ColumnsType } from 'antd/lib/table';
 import { ResizeTable } from 'components/ResizeTable';
 import ROUTES from 'constants/routes';
 import useComponentPermission from 'hooks/useComponentPermission';
@@ -10,9 +10,9 @@ import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { generatePath } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { Channels, PayloadProps } from 'types/api/channels/getAll';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { Channels, PayloadProps } from 'types/api/channels/getAll';
+import type AppReducer from 'types/reducer/app';
 
 import Delete from './Delete';
 

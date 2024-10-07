@@ -3,7 +3,7 @@ import { initialQueriesMap } from 'constants/queryBuilder';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useEventSource } from 'providers/EventSource';
 import { useCallback, useMemo } from 'react';
-import {
+import type {
 	IBuilderQuery,
 	Query,
 	TagFilter,

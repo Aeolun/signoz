@@ -1,7 +1,7 @@
 import { getIntegration } from 'api/Integrations/getIntegration';
-import { AxiosError, AxiosResponse } from 'axios';
-import { useQuery, UseQueryResult } from 'react-query';
-import {
+import type { AxiosError, AxiosResponse } from 'axios';
+import { type UseQueryResult, useQuery } from 'react-query';
+import type {
 	GetIntegrationPayloadProps,
 	GetIntegrationProps,
 } from 'types/api/integrations/types';

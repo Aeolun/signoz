@@ -1,6 +1,6 @@
 import axios from 'api';
-import { ApiResponse } from 'types/api';
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type { ApiResponse } from 'types/api';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 
 export const getAllDashboardList = (): Promise<Dashboard[]> =>
 	axios

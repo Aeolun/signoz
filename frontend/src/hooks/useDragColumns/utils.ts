@@ -1,4 +1,4 @@
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 
 const filterColumns = <T>(
 	initialColumns: ColumnsType<T>,
@@ -23,14 +23,17 @@ export const getDraggedColumns = <T>(
 			false,
 		);
 
-		return [...actualDruggedColumns, ...newColumns].reduce((acc, { title }) => {
-			const column = currentColumns.find(
-				({ title: columnTitle }) => title === columnTitle,
-			);
+		return [...actualDruggedColumns, ...newColumns].reduce(
+			(acc, { title }) => {
+				const column = currentColumns.find(
+					({ title: columnTitle }) => title === columnTitle,
+				);
 
-			if (column) return [...acc, column];
-			return acc;
-		}, [] as ColumnsType<T>);
+				if (column) return [...acc, column];
+				return acc;
+			},
+			[] as ColumnsType<T>,
+		);
 	}
 
 	return currentColumns;

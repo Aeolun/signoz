@@ -1,6 +1,6 @@
-import { CSSProperties } from 'react';
+import type { CSSProperties } from 'react';
 
-import { ViewModeOption } from './types';
+import type { ViewModeOption } from './types';
 
 export const viewModeOptionList: ViewModeOption[] = [
 	{

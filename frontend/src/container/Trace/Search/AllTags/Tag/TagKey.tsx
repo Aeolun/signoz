@@ -1,17 +1,17 @@
 import { AutoComplete, Input } from 'antd';
 import getTagFilters from 'api/trace/getTagFilter';
 import {
-	Dispatch,
-	SetStateAction,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useMemo,
 	useState,
 } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { TraceReducer } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { TraceReducer } from 'types/reducer/trace';
 
 import { getTagKeyOptions, onTagKeySelect } from './utils';
 

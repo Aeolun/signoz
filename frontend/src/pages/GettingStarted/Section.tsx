@@ -2,7 +2,7 @@ import { Col, Row, Typography } from 'antd';
 import { map } from 'lodash-es';
 
 import DocCard from './DocCard';
-import { TGetStartedContentSection } from './types';
+import type { TGetStartedContentSection } from './types';
 
 interface IDocSectionProps {
 	sectionData: TGetStartedContentSection;

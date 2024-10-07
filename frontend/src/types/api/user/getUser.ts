@@ -1,6 +1,6 @@
-import { UserFlags } from 'types/api/user/setFlags';
-import { User } from 'types/reducer/app';
-import { ROLES } from 'types/roles';
+import type { UserFlags } from 'types/api/user/setFlags';
+import type { User } from 'types/reducer/app';
+import type { ROLES } from 'types/roles';
 
 export interface Props {
 	userId: User['userId'];

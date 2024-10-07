@@ -3,12 +3,12 @@ import apply from 'api/licenses/apply';
 import { useNotifications } from 'hooks/useNotifications';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { QueryObserverResult, RefetchOptions } from 'react-query';
+import type { QueryObserverResult, RefetchOptions } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps } from 'types/api/licenses/getAll';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps } from 'types/api/licenses/getAll';
+import type AppReducer from 'types/reducer/app';
 import { requireErrorMessage } from 'utils/form/requireErrorMessage';
 
 import {

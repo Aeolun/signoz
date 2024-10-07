@@ -3,13 +3,13 @@ import {
 	compose,
 	legacy_createStore as createStore,
 } from 'redux';
-import thunk, { ThunkMiddleware } from 'redux-thunk';
-import AppActions from 'types/actions';
+import thunk, { type ThunkMiddleware } from 'redux-thunk';
+import type AppActions from 'types/actions';
 
-import reducers, { AppState } from './reducers';
+import reducers, { type AppState } from './reducers';
 
 const composeEnhancers =
-	(window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+	window?.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
 	reducers,

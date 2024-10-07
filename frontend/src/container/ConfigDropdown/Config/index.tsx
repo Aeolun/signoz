@@ -1,8 +1,8 @@
 import { Menu, Space } from 'antd';
 import Spinner from 'components/Spinner';
 import { useIsDarkMode } from 'hooks/useDarkMode';
-import { lazy, Suspense, useMemo } from 'react';
-import { ConfigProps } from 'types/api/dynamicConfigs/getDynamicConfigs';
+import { Suspense, lazy, useMemo } from 'react';
+import type { ConfigProps } from 'types/api/dynamicConfigs/getDynamicConfigs';
 import { lazyRetry } from 'utils/lazyWithRetries';
 
 import ErrorLink from './ErrorLink';

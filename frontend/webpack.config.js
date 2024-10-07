@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 // shared config (dev and prod)
-const { resolve } = require('path');
+const { resolve } = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { sentryWebpackPlugin } = require('@sentry/webpack-plugin');
 const portFinderSync = require('portfinder-sync');

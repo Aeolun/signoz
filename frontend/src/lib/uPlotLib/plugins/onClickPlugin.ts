@@ -1,4 +1,4 @@
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
 export interface OnClickPluginOpts {
 	onClick: (
@@ -19,7 +19,7 @@ function onClickPlugin(opts: OnClickPluginOpts): uPlot.Plugin {
 	const hooks: uPlot.Plugin['hooks'] = {
 		init: (u: uPlot) => {
 			// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-			handleClick = function (event: MouseEvent) {
+			handleClick = (event: MouseEvent) => {
 				const mouseX = event.offsetX + 40;
 				const mouseY = event.offsetY + 40;
 

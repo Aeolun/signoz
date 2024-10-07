@@ -1,6 +1,6 @@
 import { updateView } from 'api/saveView/updateView';
-import { useMutation, UseMutationResult } from 'react-query';
-import {
+import { type UseMutationResult, useMutation } from 'react-query';
+import type {
 	UpdateViewPayloadProps,
 	UpdateViewProps,
 } from 'types/api/saveViews/types';

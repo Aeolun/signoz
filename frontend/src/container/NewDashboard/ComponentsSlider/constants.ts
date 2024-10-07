@@ -1,6 +1,6 @@
-import { initialQueriesMap, PANEL_TYPES } from 'constants/queryBuilder';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import { PANEL_TYPES, initialQueriesMap } from 'constants/queryBuilder';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { LogsAggregatorOperator } from 'types/common/queryBuilder';
 
 export const PANEL_TYPES_INITIAL_QUERY = {

@@ -5,7 +5,7 @@ import useUrlQuery from 'hooks/useUrlQuery';
 import useUrlQueryData from 'hooks/useUrlQueryData';
 import history from 'lib/history';
 import {
-	MouseEventHandler,
+	type MouseEventHandler,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -14,11 +14,11 @@ import {
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useCopyToClipboard } from 'react-use';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 import { HIGHLIGHTED_DELAY } from './configs';
-import { LogTimeRange, UseCopyLogLink } from './types';
+import type { LogTimeRange, UseCopyLogLink } from './types';
 
 export const useCopyLogLink = (logId?: string): UseCopyLogLink => {
 	const urlQuery = useUrlQuery();
@@ -57,9 +57,10 @@ export const useCopyLogLink = (logId?: string): UseCopyLogLink => {
 	const isActiveLog = useMemo(() => activeLogId === logId, [activeLogId, logId]);
 	const [isHighlighted, setIsHighlighted] = useState<boolean>(isActiveLog);
 
-	const isLogsExplorerPage = useMemo(() => pathname === ROUTES.LOGS_EXPLORER, [
-		pathname,
-	]);
+	const isLogsExplorerPage = useMemo(
+		() => pathname === ROUTES.LOGS_EXPLORER,
+		[pathname],
+	);
 
 	const onLogCopy: MouseEventHandler<HTMLElement> = useCallback(
 		(event) => {

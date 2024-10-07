@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { getColumns } from './Columns/ServiceColumn';
 import { Container } from './styles';
-import ServiceTableProp from './types';
+import type ServiceTableProp from './types';
 
 function Services({ services, isLoading }: ServiceTableProp): JSX.Element {
 	const { search } = useLocation();

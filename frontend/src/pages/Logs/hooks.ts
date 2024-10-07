@@ -2,16 +2,16 @@
 import get from 'api/browser/localstorage/get';
 import { LOCALSTORAGE } from 'constants/localStorage';
 // interfaces
-import { LogViewMode } from 'container/LogsTable';
+import type { LogViewMode } from 'container/LogsTable';
 import { useCallback, useLayoutEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLinesPerRow } from 'store/actions/logs/setLInesPerRow';
 // actions
 import { setViewMode } from 'store/actions/logs/setViewMode';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 
 import { viewModeOptionList } from './config';
-import { SelectedLogViewData } from './types';
+import type { SelectedLogViewData } from './types';
 import { isLogViewMode } from './utils';
 
 export const useSelectedLogView = (): SelectedLogViewData => {

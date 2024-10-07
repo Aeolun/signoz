@@ -1,9 +1,9 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { AlertRuleStatsPayload } from 'types/api/alerts/def';
-import { RuleStatsProps } from 'types/api/alerts/ruleStats';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { AlertRuleStatsPayload } from 'types/api/alerts/def';
+import type { RuleStatsProps } from 'types/api/alerts/ruleStats';
 
 const ruleStats = async (
 	props: RuleStatsProps,

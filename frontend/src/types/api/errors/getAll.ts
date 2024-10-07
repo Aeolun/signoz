@@ -1,5 +1,5 @@
-import { GlobalTime } from 'types/actions/globalTime';
-import { Tags } from 'types/reducer/trace';
+import type { GlobalTime } from 'types/actions/globalTime';
+import type { Tags } from 'types/reducer/trace';
 
 export type Order = 'ascending' | 'descending';
 export type OrderBy =

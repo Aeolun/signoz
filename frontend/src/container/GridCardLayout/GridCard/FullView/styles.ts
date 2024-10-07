@@ -1,8 +1,11 @@
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import { themeColors } from 'constants/theme';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import styled, {
+	css,
+	type FlattenSimpleInterpolation,
+} from 'styled-components';
 
-import { GraphContainerProps } from './types';
+import type { GraphContainerProps } from './types';
 
 interface Props {
 	$panelType: PANEL_TYPES;

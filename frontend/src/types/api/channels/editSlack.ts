@@ -1,4 +1,4 @@
-import { SlackChannel } from 'container/CreateAlertChannels/config';
+import type { SlackChannel } from 'container/CreateAlertChannels/config';
 
 export interface Props extends SlackChannel {
 	id: string;

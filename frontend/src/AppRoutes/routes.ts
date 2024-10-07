@@ -1,12 +1,12 @@
 import ROUTES from 'constants/routes';
-import { RouteProps } from 'react-router-dom';
+import type { RouteProps } from 'react-router-dom';
 
 import {
+	APIKeys,
 	AlertHistory,
 	AlertOverview,
 	AllAlertChannels,
 	AllErrors,
-	APIKeys,
 	BillingPage,
 	CreateAlertChannelAlerts,
 	CreateNewAlerts,
@@ -25,8 +25,8 @@ import {
 	LogsExplorer,
 	LogsIndexToFields,
 	LogsSaveViews,
-	MessagingQueues,
 	MQDetailPage,
+	MessagingQueues,
 	MySettings,
 	NewDashboardPage,
 	OldLogsExplorer,
@@ -36,8 +36,8 @@ import {
 	PipelinePage,
 	ServiceMapPage,
 	ServiceMetricsPage,
-	ServicesTablePage,
 	ServiceTopLevelOperationsPage,
+	ServicesTablePage,
 	SettingsPage,
 	ShortcutsPage,
 	SignupPage,

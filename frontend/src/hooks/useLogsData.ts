@@ -1,25 +1,25 @@
 import { DEFAULT_ENTITY_VERSION } from 'constants/app';
 import { QueryParams } from 'constants/query';
 import {
-	initialQueryBuilderFormValues,
 	PANEL_TYPES,
+	initialQueryBuilderFormValues,
 } from 'constants/queryBuilder';
 import { DEFAULT_PER_PAGE_VALUE } from 'container/Controls/config';
 import { getPaginationQueryData } from 'lib/newQueryBuilder/getPaginationQueryData';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ILog } from 'types/api/logs/log';
-import {
+import type { AppState } from 'store/reducers';
+import type { ILog } from 'types/api/logs/log';
+import type {
 	IBuilderQuery,
 	OrderByPayload,
 	Query,
 	TagFilter,
 } from 'types/api/queryBuilder/queryBuilderData';
-import { QueryDataV3 } from 'types/api/widgets/getQuery';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { QueryDataV3 } from 'types/api/widgets/getQuery';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
-import { LogTimeRange } from './logs/types';
+import type { LogTimeRange } from './logs/types';
 import { useCopyLogLink } from './logs/useCopyLogLink';
 import { useGetExplorerQueryRange } from './queryBuilder/useGetExplorerQueryRange';
 import useUrlQueryData from './useUrlQueryData';
@@ -116,7 +116,7 @@ export const useLogsData = ({
 							...(listQuery || initialQueryBuilderFormValues),
 							...paginateData,
 						},
-				  ];
+					];
 
 		const data: Query = {
 			...query,

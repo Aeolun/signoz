@@ -1,4 +1,4 @@
-import { OpsgenieChannel } from 'container/CreateAlertChannels/config';
+import type { OpsgenieChannel } from 'container/CreateAlertChannels/config';
 
 export type Props = OpsgenieChannel;
 

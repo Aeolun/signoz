@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { convertTimeRange, TIME_UNITS } from '../xAxisConfig';
+import { TIME_UNITS, convertTimeRange } from '../xAxisConfig';
 
 describe('xAxisConfig for Chart', () => {
 	describe('convertTimeRange', () => {

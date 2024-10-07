@@ -2,7 +2,7 @@ import { InputNumber } from 'antd';
 
 import { selectStyle } from '../../QueryBuilderSearch/config';
 import { handleKeyDownLimitFilter } from '../../utils';
-import { LimitFilterProps } from './types';
+import type { LimitFilterProps } from './types';
 
 function LimitFilter({ onChange, formula }: LimitFilterProps): JSX.Element {
 	return (

@@ -4,10 +4,10 @@ import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useDeleteView } from 'hooks/saveViews/useDeleteView';
 import { useHandleExplorerTabChange } from 'hooks/useHandleExplorerTabChange';
 import { useNotifications } from 'hooks/useNotifications';
-import { MouseEvent, useCallback } from 'react';
+import { type MouseEvent, useCallback } from 'react';
 
 import { MenuItemContainer } from './styles';
-import { MenuItemLabelGeneratorProps } from './types';
+import type { MenuItemLabelGeneratorProps } from './types';
 import {
 	deleteViewHandler,
 	getViewDetailsUsingViewKey,
@@ -23,11 +23,8 @@ function MenuItemGenerator({
 	refetchAllView,
 	sourcePage,
 }: MenuItemLabelGeneratorProps): JSX.Element {
-	const {
-		panelType,
-		redirectWithQueryBuilderData,
-		updateAllQueriesOperators,
-	} = useQueryBuilder();
+	const { panelType, redirectWithQueryBuilderData, updateAllQueriesOperators } =
+		useQueryBuilder();
 	const { handleExplorerTabChange } = useHandleExplorerTabChange();
 
 	const { notifications } = useNotifications();

@@ -11,8 +11,8 @@ import { ORDERBY_FILTERS } from 'container/QueryBuilder/filters/OrderByFilter/co
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
-import { ILog } from 'types/api/logs/log';
-import { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { ILog } from 'types/api/logs/log';
+import type { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource, StringOperators } from 'types/common/queryBuilder';
 
 import { useContextLogData } from './useContextLogData';

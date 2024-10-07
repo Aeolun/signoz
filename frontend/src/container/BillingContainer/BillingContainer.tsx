@@ -15,9 +15,9 @@ import {
 	Tag,
 	Typography,
 } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import updateCreditCardApi from 'api/billing/checkout';
-import getUsage, { UsageResponsePayloadProps } from 'api/billing/getUsage';
+import getUsage, { type UsageResponsePayloadProps } from 'api/billing/getUsage';
 import manageCreditCardApi from 'api/billing/manage';
 import logEvent from 'api/common/logEvent';
 import Spinner from 'components/Spinner';
@@ -31,11 +31,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMutation, useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
-import { License } from 'types/api/licenses/def';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
+import type { License } from 'types/api/licenses/def';
+import type AppReducer from 'types/reducer/app';
 import { isCloudUser } from 'utils/app';
 import { getFormattedDate, getRemainingDays } from 'utils/timeUtils';
 
@@ -302,15 +302,13 @@ export default function BillingContainer(): JSX.Element {
 		},
 	);
 
-	const {
-		mutate: manageCreditCard,
-		isLoading: isLoadingManageBilling,
-	} = useMutation(manageCreditCardApi, {
-		onSuccess: (data) => {
-			handleBillingOnSuccess(data);
-		},
-		onError: handleBillingOnError,
-	});
+	const { mutate: manageCreditCard, isLoading: isLoadingManageBilling } =
+		useMutation(manageCreditCardApi, {
+			onSuccess: (data) => {
+				handleBillingOnSuccess(data);
+			},
+			onError: handleBillingOnError,
+		});
 
 	const handleBilling = useCallback(async () => {
 		if (isFreeTrial && !licensesData?.payload?.trialConvertedToSubscription) {
@@ -365,13 +363,17 @@ export default function BillingContainer(): JSX.Element {
 	const { Text } = Typography;
 	const subscriptionPastDueMessage = (): JSX.Element => (
 		<Typography>
-			{`We were not able to process payments for your account. Please update your card details `}
+			{
+				'We were not able to process payments for your account. Please update your card details '
+			}
 			<Text type="danger" onClick={handleBilling} style={{ cursor: 'pointer' }}>
 				{t('here')}
 			</Text>
-			{` if your payment information has changed. Email us at `}
+			{' if your payment information has changed. Email us at '}
 			<Text type="secondary">cloud-support@signoz.io</Text>
-			{` otherwise. Be sure to provide this information immediately to avoid interruption to your service.`}
+			{
+				' otherwise. Be sure to provide this information immediately to avoid interruption to your service.'
+			}
 		</Typography>
 	);
 

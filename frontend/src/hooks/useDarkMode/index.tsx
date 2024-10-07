@@ -1,11 +1,11 @@
 import { theme as antdTheme } from 'antd';
-import { ThemeConfig } from 'antd/es/config-provider/context';
+import type { ThemeConfig } from 'antd/es/config-provider/context';
 import get from 'api/browser/localstorage/get';
 import set from 'api/browser/localstorage/set';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import {
+	type ReactNode,
 	createContext,
-	ReactNode,
 	useCallback,
 	useContext,
 	useMemo,

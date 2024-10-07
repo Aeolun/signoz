@@ -1,4 +1,4 @@
-import { Tags } from 'types/reducer/trace';
+import type { Tags } from 'types/reducer/trace';
 
 export interface Props {
 	service: string;

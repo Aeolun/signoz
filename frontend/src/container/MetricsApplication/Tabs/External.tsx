@@ -27,11 +27,11 @@ import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 import { EQueryType } from 'types/common/dashboard';
 import { v4 as uuid } from 'uuid';
 
-import { GraphTitle, legend, MENU_ITEMS } from '../constant';
 import { getWidgetQueryBuilder } from '../MetricsApplication.factory';
+import { GraphTitle, MENU_ITEMS, legend } from '../constant';
 import { Card, GraphContainer, Row } from '../styles';
 import { Button } from './styles';
-import { IServiceName } from './types';
+import type { IServiceName } from './types';
 import {
 	handleNonInQueryRange,
 	onGraphClickHandler,

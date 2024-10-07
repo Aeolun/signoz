@@ -1,10 +1,10 @@
-import { Time } from 'container/TopNav/DateTimeSelection/config';
-import {
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
+import type {
 	CustomTimeType,
 	Time as TimeV2,
 } from 'container/TopNav/DateTimeSelectionV2/config';
 
-import { ResetIdStartAndEnd, SetSearchQueryString } from './logs';
+import type { ResetIdStartAndEnd, SetSearchQueryString } from './logs';
 
 export const UPDATE_TIME_INTERVAL = 'UPDATE_TIME_INTERVAL';
 export const GLOBAL_TIME_LOADING_START = 'GLOBAL_TIME_LOADING_START';

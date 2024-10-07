@@ -1,7 +1,7 @@
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
-import { Time } from 'container/TopNav/DateTimeSelection/config';
-import {
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
+import type {
 	CustomTimeType,
 	Time as TimeV2,
 } from 'container/TopNav/DateTimeSelectionV2/config';

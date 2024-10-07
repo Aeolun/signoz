@@ -1,20 +1,20 @@
-import { ServiceDataProps } from 'api/metrics/getTopLevelOperations';
+import type { ServiceDataProps } from 'api/metrics/getTopLevelOperations';
 import { OPERATORS } from 'constants/queryBuilder';
+import { getQueryBuilderQuerieswithFormula } from 'container/MetricsApplication/MetricsPageQueries/MetricsPageQueriesFactory';
 import {
 	KeyOperationTableHeader,
 	MetricsType,
 	WidgetKeys,
 } from 'container/MetricsApplication/constant';
-import { getQueryBuilderQuerieswithFormula } from 'container/MetricsApplication/MetricsPageQueries/MetricsPageQueriesFactory';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
 import {
 	DataSource,
 	MetricAggregateOperator,
-	QueryBuilderData,
+	type QueryBuilderData,
 } from 'types/common/queryBuilder';
 
 export const serviceMetricsQuery = (

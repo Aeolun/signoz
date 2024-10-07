@@ -1,4 +1,4 @@
-import { IDashboardVariable } from '../getAll';
+import type { IDashboardVariable } from '../getAll';
 
 export type PayloadVariables = Record<
 	string,

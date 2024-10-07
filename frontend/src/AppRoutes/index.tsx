@@ -26,16 +26,17 @@ import { QueryBuilderProvider } from 'providers/QueryBuilder';
 import { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Router, Switch } from 'react-router-dom';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { UPDATE_FEATURE_FLAG_RESPONSE } from 'types/actions/app';
-import AppReducer, { User } from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
+import type { User } from 'types/reducer/app';
 import { extractDomain, isCloudUser, isEECloudUser } from 'utils/app';
 
 import PrivateRoute from './Private';
 import defaultRoutes, {
-	AppRoutes,
+	type AppRoutes,
 	LIST_LICENSES,
 	SUPPORT_ROUTE,
 } from './routes';
@@ -44,10 +45,12 @@ function App(): JSX.Element {
 	const themeConfig = useThemeConfig();
 	const { data: licenseData } = useLicense();
 	const [routes, setRoutes] = useState<AppRoutes[]>(defaultRoutes);
-	const { role, isLoggedIn: isLoggedInState, user, org } = useSelector<
-		AppState,
-		AppReducer
-	>((state) => state.app);
+	const {
+		role,
+		isLoggedIn: isLoggedInState,
+		user,
+		org,
+	} = useSelector<AppState, AppReducer>((state) => state.app);
 
 	const dispatch = useDispatch<Dispatch<AppActions>>();
 
@@ -207,7 +210,7 @@ function App(): JSX.Element {
 	]);
 
 	useEffect(() => {
-		if (user && user?.email && user?.userId && user?.name) {
+		if (user?.email && user?.userId && user?.name) {
 			try {
 				const isThemeAnalyticsSent = getLocalStorageApi(
 					LOCALSTORAGE.THEME_ANALYTICS_V1,

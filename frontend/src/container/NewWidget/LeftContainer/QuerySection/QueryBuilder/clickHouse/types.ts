@@ -1,4 +1,4 @@
-import { IClickHouseQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { IClickHouseQuery } from 'types/api/queryBuilder/queryBuilderData';
 
 export interface IClickHouseQueryHandleChange {
 	queryIndex: number | string;

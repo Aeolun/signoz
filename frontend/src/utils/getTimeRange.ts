@@ -1,8 +1,8 @@
 import getStartEndRangeTime from 'lib/getStartEndRangeTime';
-import { UseQueryResult } from 'react-query';
+import type { UseQueryResult } from 'react-query';
 import store from 'store';
-import { SuccessResponse } from 'types/api';
-import {
+import type { SuccessResponse } from 'types/api';
+import type {
 	MetricRangePayloadProps,
 	QueryRangePayload,
 } from 'types/api/metrics/getQueryRange';
@@ -16,7 +16,7 @@ export const getTimeRange = (
 	const widgetParams =
 		(widgetQueryRange?.data?.params as QueryRangePayload) || null;
 
-	if (widgetParams && widgetParams?.start && widgetParams?.end) {
+	if (widgetParams?.start && widgetParams?.end) {
 		return {
 			startTime: widgetParams.start / 1000,
 			endTime: widgetParams.end / 1000,
@@ -30,7 +30,7 @@ export const getTimeRange = (
 	});
 
 	return {
-		startTime: (parseInt(globalStartTime, 10) * 1e3) / 1000,
-		endTime: (parseInt(globalEndTime, 10) * 1e3) / 1000,
+		startTime: (Number.parseInt(globalStartTime, 10) * 1e3) / 1000,
+		endTime: (Number.parseInt(globalEndTime, 10) * 1e3) / 1000,
 	};
 };

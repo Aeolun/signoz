@@ -1,5 +1,5 @@
 import { getYAxisFormattedValue } from 'components/Graph/yAxisConfig';
-import { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
+import type { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
 
 function compareThreshold(
 	rawValue: number,

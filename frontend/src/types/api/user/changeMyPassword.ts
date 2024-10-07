@@ -1,4 +1,4 @@
-import { User } from 'types/reducer/app';
+import type { User } from 'types/reducer/app';
 
 export interface Props {
 	oldPassword: string;

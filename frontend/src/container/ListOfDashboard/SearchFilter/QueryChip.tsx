@@ -1,5 +1,5 @@
 import { QueryChipContainer, QueryChipItem } from './styles';
-import { IQueryStructure } from './types';
+import type { IQueryStructure } from './types';
 
 export default function QueryChip({
 	queryData,

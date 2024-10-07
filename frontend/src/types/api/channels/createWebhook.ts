@@ -1,4 +1,4 @@
-import { WebhookChannel } from 'container/CreateAlertChannels/config';
+import type { WebhookChannel } from 'container/CreateAlertChannels/config';
 
 export type Props = WebhookChannel;
 

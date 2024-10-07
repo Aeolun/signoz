@@ -1,7 +1,7 @@
-import dayjs from 'dayjs';
-import { Layout } from 'react-grid-layout';
-import { UseQueryResult } from 'react-query';
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type dayjs from 'dayjs';
+import type { Layout } from 'react-grid-layout';
+import type { UseQueryResult } from 'react-query';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 
 export interface DashboardSortOrder {
 	columnKey: string;

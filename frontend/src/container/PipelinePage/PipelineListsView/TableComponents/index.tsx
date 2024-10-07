@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import React from 'react';
-import { PipelineData, ProcessorData } from 'types/api/pipeline/def';
+import type React from 'react';
+import type { PipelineData, ProcessorData } from 'types/api/pipeline/def';
 
 import { PipelineIndexIcon } from '../AddNewProcessor/styles';
 import { ColumnDataStyle, ListDataStyle, ProcessorIndexIcon } from '../styles';

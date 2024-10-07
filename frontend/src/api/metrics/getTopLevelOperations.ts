@@ -10,7 +10,7 @@ interface GetTopLevelOperationsProps {
 const getTopLevelOperations = async (
 	props: GetTopLevelOperationsProps,
 ): Promise<ServiceDataProps> => {
-	const response = await axios.post(`/service/top_level_operations`, {
+	const response = await axios.post('/service/top_level_operations', {
 		start: !isNil(props.start) ? `${props.start}` : undefined,
 		end: !isNil(props.end) ? `${props.end}` : undefined,
 		service: props.service,

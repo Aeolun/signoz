@@ -1,5 +1,10 @@
 import Input from 'components/Input';
-import { ChangeEvent, Dispatch, SetStateAction, useCallback } from 'react';
+import {
+	type ChangeEvent,
+	type Dispatch,
+	type SetStateAction,
+	useCallback,
+} from 'react';
 
 function DashboardName({ setName, name }: DashboardNameProps): JSX.Element {
 	const onChangeHandler = useCallback(

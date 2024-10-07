@@ -3,7 +3,7 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import { Link } from 'react-router-dom';
 
 import { DocCardContainer } from './styles';
-import { TGetStartedContentDoc } from './types';
+import type { TGetStartedContentDoc } from './types';
 import UTMParams from './utmParams';
 
 interface IDocCardProps {

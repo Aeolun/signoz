@@ -1,11 +1,11 @@
-import { AutoCompleteProps } from 'antd';
-import { DefaultOptionType } from 'antd/es/select';
-import { Dispatch, SetStateAction } from 'react';
-import { PayloadProps as TagKeyPayload } from 'types/api/trace/getTagFilters';
-import { PayloadProps as TagValuePayload } from 'types/api/trace/getTagValue';
-import { OperatorValues, Tags } from 'types/reducer/trace';
+import type { AutoCompleteProps } from 'antd';
+import type { DefaultOptionType } from 'antd/es/select';
+import type { Dispatch, SetStateAction } from 'react';
+import type { PayloadProps as TagKeyPayload } from 'types/api/trace/getTagFilters';
+import type { PayloadProps as TagValuePayload } from 'types/api/trace/getTagValue';
+import type { OperatorValues, Tags } from 'types/reducer/trace';
 
-import { AllMenu, AllMenuProps } from '.';
+import { AllMenu, type AllMenuProps } from '.';
 
 export type TagValueTypes = string | number | boolean;
 /**

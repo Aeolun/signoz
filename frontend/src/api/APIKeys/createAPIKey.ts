@@ -1,8 +1,8 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { APIKeyProps, CreateAPIKeyProps } from 'types/api/pat/types';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { APIKeyProps, CreateAPIKeyProps } from 'types/api/pat/types';
 
 const createAPIKey = async (
 	props: CreateAPIKeyProps,

@@ -10,8 +10,9 @@ import timelinePlugin from 'lib/uPlotLib/plugins/timelinePlugin';
 import { useMemo, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { UpdateTimeInterval } from 'store/actions';
-import { AlertRuleTimelineGraphResponse } from 'types/api/alerts/def';
-import uPlot, { AlignedData } from 'uplot';
+import type { AlertRuleTimelineGraphResponse } from 'types/api/alerts/def';
+import type uPlot from 'uplot';
+import type { AlignedData } from 'uplot';
 
 import { ALERT_STATUS, TIMELINE_OPTIONS } from './constants';
 
@@ -114,7 +115,7 @@ function HorizontalTimelineGraph({
 								count: transformedData.length - 1,
 								...TIMELINE_OPTIONS,
 							}),
-					  ]
+						]
 					: [],
 		}),
 		[width, isDarkMode, transformedData.length, urlQuery, dispatch],

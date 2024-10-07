@@ -19,14 +19,14 @@ import { useActiveLog } from 'hooks/logs/useActiveLog';
 import { useCopyLogLink } from 'hooks/logs/useCopyLogLink';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { memo, useCallback, useMemo, useRef } from 'react';
-import { Virtuoso, VirtuosoHandle } from 'react-virtuoso';
+import { Virtuoso, type VirtuosoHandle } from 'react-virtuoso';
 // interfaces
-import { ILog } from 'types/api/logs/log';
+import type { ILog } from 'types/api/logs/log';
 import { DataSource, StringOperators } from 'types/common/queryBuilder';
 
 import NoLogs from '../NoLogs/NoLogs';
 import InfinityTableView from './InfinityTableView';
-import { LogsExplorerListProps } from './LogsExplorerList.interfaces';
+import type { LogsExplorerListProps } from './LogsExplorerList.interfaces';
 import { InfinityWrapperStyled } from './styles';
 import { convertKeysToColumnFields } from './utils';
 
@@ -114,7 +114,7 @@ function LogsExplorerList({
 		const components = isLoading
 			? {
 					Footer,
-			  }
+				}
 			: {};
 
 		if (options.format === 'table') {

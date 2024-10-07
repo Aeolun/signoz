@@ -1,9 +1,9 @@
 import patchAlert from 'api/alerts/patch';
-import { State } from 'hooks/useFetch';
+import type { State } from 'hooks/useFetch';
 import { useNotifications } from 'hooks/useNotifications';
-import { Dispatch, SetStateAction, useState } from 'react';
-import { GettableAlert } from 'types/api/alerts/get';
-import { PayloadProps as PatchPayloadProps } from 'types/api/alerts/patch';
+import { type Dispatch, type SetStateAction, useState } from 'react';
+import type { GettableAlert } from 'types/api/alerts/get';
+import type { PayloadProps as PatchPayloadProps } from 'types/api/alerts/patch';
 
 import { ColumnButton } from './styles';
 

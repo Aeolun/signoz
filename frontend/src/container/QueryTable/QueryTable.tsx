@@ -2,15 +2,15 @@ import './QueryTable.styles.scss';
 
 import { ResizeTable } from 'components/ResizeTable';
 import Download from 'container/Download/Download';
-import { IServiceName } from 'container/MetricsApplication/Tabs/types';
+import type { IServiceName } from 'container/MetricsApplication/Tabs/types';
 import {
+	type RowData,
 	createTableColumnsFromQuery,
-	RowData,
 } from 'lib/query/createTableColumnsFromQuery';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { QueryTableProps } from './QueryTable.intefaces';
+import type { QueryTableProps } from './QueryTable.intefaces';
 import { createDownloadableData } from './utils';
 
 export function QueryTable({

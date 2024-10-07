@@ -1,10 +1,10 @@
-import { TableProps } from 'antd';
-import { ColumnsType } from 'antd/es/table';
-import { DownloadOptions } from 'container/Download/Download.types';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
-import { ReactNode } from 'react';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { QueryDataV3 } from 'types/api/widgets/getQuery';
+import type { TableProps } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import type { DownloadOptions } from 'container/Download/Download.types';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { ReactNode } from 'react';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { QueryDataV3 } from 'types/api/widgets/getQuery';
 
 export type QueryTableProps = Omit<
 	TableProps<RowData>,

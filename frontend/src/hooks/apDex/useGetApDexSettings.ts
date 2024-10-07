@@ -1,7 +1,7 @@
 import { getApDexSettings } from 'api/metrics/ApDex/getApDexSettings';
-import { AxiosError, AxiosResponse } from 'axios';
-import { useQuery, UseQueryResult } from 'react-query';
-import { ApDexPayloadAndSettingsProps } from 'types/api/metrics/getApDex';
+import type { AxiosError, AxiosResponse } from 'axios';
+import { type UseQueryResult, useQuery } from 'react-query';
+import type { ApDexPayloadAndSettingsProps } from 'types/api/metrics/getApDex';
 
 export const useGetApDexSettings = (
 	servicename: string,

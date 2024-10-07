@@ -11,23 +11,23 @@ import {
 	getTraceLink,
 	transformDataWithDate,
 } from 'container/TracesExplorer/ListView/utils';
-import { Pagination } from 'hooks/queryPagination';
-import { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
+import type { Pagination } from 'hooks/queryPagination';
+import type { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
 import history from 'lib/history';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import {
-	Dispatch,
-	HTMLAttributes,
-	SetStateAction,
+	type Dispatch,
+	type HTMLAttributes,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
-import { UseQueryResult } from 'react-query';
-import { SuccessResponse } from 'types/api';
-import { Widgets } from 'types/api/dashboard/getAll';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { UseQueryResult } from 'react-query';
+import type { SuccessResponse } from 'types/api';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
 function TracesTableComponent({
 	widget,
@@ -57,12 +57,13 @@ function TracesTableComponent({
 
 	const queryTableDataResult =
 		queryResponse.data?.payload?.data?.newResult?.data?.result;
-	const queryTableData = useMemo(() => queryTableDataResult || [], [
-		queryTableDataResult,
-	]);
+	const queryTableData = useMemo(
+		() => queryTableDataResult || [],
+		[queryTableDataResult],
+	);
 
 	const transformedQueryTableData = useMemo(
-		() => ((transformDataWithDate(queryTableData) || []) as unknown) as RowData[],
+		() => (transformDataWithDate(queryTableData) || []) as unknown as RowData[],
 		[queryTableData],
 	);
 

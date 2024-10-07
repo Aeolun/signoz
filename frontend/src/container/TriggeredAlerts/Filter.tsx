@@ -1,9 +1,15 @@
 /* eslint-disable react/no-unstable-nested-components */
 import type { SelectProps } from 'antd';
 import { Tag, Tooltip } from 'antd';
-import { BaseOptionType } from 'antd/es/select';
-import { Dispatch, SetStateAction, useCallback, useMemo, useRef } from 'react';
-import { Alerts } from 'types/api/alerts/getTriggered';
+import type { BaseOptionType } from 'antd/es/select';
+import {
+	type Dispatch,
+	type SetStateAction,
+	useCallback,
+	useMemo,
+	useRef,
+} from 'react';
+import type { Alerts } from 'types/api/alerts/getTriggered';
 
 import { Container, Select } from './styles';
 

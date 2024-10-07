@@ -3,9 +3,14 @@
 /* eslint-disable sonarjs/cognitive-complexity */
 import { decode, encode } from 'js-base64';
 import { flattenDeep, map, uniqWith } from 'lodash-es';
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 
-import { IOptionsData, IQueryStructure, TCategory, TOperator } from './types';
+import type {
+	IOptionsData,
+	IQueryStructure,
+	TCategory,
+	TOperator,
+} from './types';
 
 export const convertQueriesToURLQuery = (
 	queries: IQueryStructure[],
@@ -125,7 +130,7 @@ export function OptionsValueResolution(
 						? {
 								name: searchItem.data.description,
 								value: searchItem.data.description,
-						  }
+							}
 						: null,
 				).filter(Boolean),
 				(prev, next) => prev?.name === next?.name,

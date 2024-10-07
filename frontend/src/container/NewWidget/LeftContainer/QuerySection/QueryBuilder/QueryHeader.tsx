@@ -8,7 +8,7 @@ import {
 	RightOutlined,
 } from '@ant-design/icons';
 import { Button, Row } from 'antd';
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { QueryWrapper } from '../styles';
 

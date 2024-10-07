@@ -1,11 +1,11 @@
 import {
-	AuthDomain,
+	type AuthDomain,
 	GOOGLE_AUTH,
-	GoogleAuthConfig,
+	type GoogleAuthConfig,
+	SAML,
+	type SAMLConfig,
 	isGoogleAuthConfig,
 	isSAMLConfig,
-	SAML,
-	SAMLConfig,
 } from 'types/api/SAML/listDomain';
 
 export function parseSamlForm(

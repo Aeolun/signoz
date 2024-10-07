@@ -7,20 +7,22 @@ import {
 	transformHavingToStringValue,
 } from 'lib/query/transformQueryBuilderData';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Having, HavingForm } from 'types/api/queryBuilder/queryBuilderData';
-import { SelectOption } from 'types/common/select';
+import type {
+	Having,
+	HavingForm,
+} from 'types/api/queryBuilder/queryBuilderData';
+import type { SelectOption } from 'types/common/select';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { getHavingObject, isValidHavingValue } from '../../utils';
-import { HavingFilterProps, HavingTagRenderProps } from './types';
+import type { HavingFilterProps, HavingTagRenderProps } from './types';
 
 function HavingFilter({ formula, onChange }: HavingFilterProps): JSX.Element {
 	const { having } = formula;
 	const [searchText, setSearchText] = useState<string>('');
 	const [localValues, setLocalValues] = useState<string[]>([]);
-	const [currentFormValue, setCurrentFormValue] = useState<HavingForm>(
-		initialHavingValues,
-	);
+	const [currentFormValue, setCurrentFormValue] =
+		useState<HavingForm>(initialHavingValues);
 	const [options, setOptions] = useState<SelectOption<string, string>[]>([]);
 
 	const { isMulti } = useTagValidation(
@@ -69,8 +71,8 @@ function HavingFilter({ formula, onChange }: HavingFilterProps): JSX.Element {
 				);
 
 				newOptions = filteredOperators.map((opt) => ({
-					label: `${columnName} ${opt} ${restValue && restValue.join(' ')}`,
-					value: `${columnName} ${opt} ${restValue && restValue.join(' ')}`,
+					label: `${columnName} ${opt} ${restValue?.join(' ')}`,
+					value: `${columnName} ${opt} ${restValue?.join(' ')}`,
 				}));
 			}
 

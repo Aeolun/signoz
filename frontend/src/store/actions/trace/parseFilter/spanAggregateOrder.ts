@@ -1,6 +1,6 @@
-import { TraceReducer } from 'types/reducer/trace';
+import type { TraceReducer } from 'types/reducer/trace';
 
-import { ParsedUrl } from '../util';
+import type { ParsedUrl } from '../util';
 
 export const parseQueryIntoOrder = (
 	query: string,

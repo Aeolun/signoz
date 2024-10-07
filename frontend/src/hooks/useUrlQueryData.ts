@@ -12,10 +12,10 @@ const useUrlQueryData = <T>(
 
 	const query = useMemo(() => urlQuery.get(queryKey), [queryKey, urlQuery]);
 
-	const queryData: T = useMemo(() => (query ? JSON.parse(query) : defaultData), [
-		query,
-		defaultData,
-	]);
+	const queryData: T = useMemo(
+		() => (query ? JSON.parse(query) : defaultData),
+		[query, defaultData],
+	);
 
 	const redirectWithQuery = useCallback(
 		(newQueryData: T): void => {

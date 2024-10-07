@@ -5,7 +5,7 @@ import {
 	TypographHeading,
 	Typography,
 } from './styles';
-import { DisplayThresholdProps } from './types';
+import type { DisplayThresholdProps } from './types';
 
 function DisplayThreshold({ threshold }: DisplayThresholdProps): JSX.Element {
 	return (

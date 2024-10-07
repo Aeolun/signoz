@@ -7,7 +7,7 @@ import { AlertTypes } from 'types/api/alerts/alertTypes';
 
 import { getOptionList } from './config';
 import { AlertTypeCard, SelectTypeContainer } from './styles';
-import { OptionType } from './types';
+import type { OptionType } from './types';
 
 function SelectAlertType({ onSelect }: SelectAlertTypeProps): JSX.Element {
 	const { t } = useTranslation(['alerts']);

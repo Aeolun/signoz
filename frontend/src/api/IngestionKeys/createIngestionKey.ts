@@ -1,8 +1,8 @@
 import { GatewayApiV1Instance } from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import {
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type {
 	CreateIngestionKeyProps,
 	IngestionKeyProps,
 } from 'types/api/ingestionKeys/types';

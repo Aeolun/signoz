@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import getLabelName from 'lib/getLabelName';
 import { get } from 'lodash-es';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
 import { placement } from '../placement';
 import { generateColor } from '../utils/generateColor';
@@ -162,10 +162,8 @@ const generateTooltipContent = (
 		return container;
 	}
 
-	const sortedData: Record<
-		string,
-		UplotTooltipDataProps
-	> = sortTooltipContentBasedOnValue(formattedData);
+	const sortedData: Record<string, UplotTooltipDataProps> =
+		sortTooltipContentBasedOnValue(formattedData);
 
 	const div = document.createElement('div');
 	div.classList.add('tooltip-content-row');

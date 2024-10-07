@@ -1,10 +1,10 @@
-import ReleaseNoteProps from 'components/ReleaseNote/ReleaseNoteProps';
+import type ReleaseNoteProps from 'components/ReleaseNote/ReleaseNoteProps';
 import ReleaseNote0120 from 'components/ReleaseNote/Releases/ReleaseNote0120';
 import ROUTES from 'constants/routes';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { UserFlags } from 'types/api/user/setFlags';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { UserFlags } from 'types/api/user/setFlags';
+import type AppReducer from 'types/reducer/app';
 
 interface ComponentMapType {
 	match: (

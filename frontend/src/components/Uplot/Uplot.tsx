@@ -3,7 +3,7 @@ import './Uplot.styles.scss';
 
 import * as Sentry from '@sentry/react';
 import { Typography } from 'antd';
-import { ToggleGraphProps } from 'components/Graph/types';
+import type { ToggleGraphProps } from 'components/Graph/types';
 import { LineChart } from 'lucide-react';
 import ErrorBoundaryFallback from 'pages/ErrorBoundaryFallback/ErrorBoundaryFallback';
 import {
@@ -71,7 +71,7 @@ const Uplot = forwardRef<ToggleGraphProps | undefined, UplotProps>(
 			if (targetRef.current === null) return;
 
 			// If data is empty, hide cursor
-			if (data && data[0] && data[0]?.length === 0) {
+			if (data?.[0] && data[0]?.length === 0) {
 				propOptionsRef.current = {
 					...propOptionsRef.current,
 					cursor: { show: false },
@@ -128,7 +128,7 @@ const Uplot = forwardRef<ToggleGraphProps | undefined, UplotProps>(
 			}
 		}, [data, resetScales, create]);
 
-		if (data && data[0] && data[0]?.length === 0) {
+		if (data?.[0] && data[0]?.length === 0) {
 			return (
 				<div className="uplot-no-data not-found">
 					<LineChart size={48} strokeWidth={0.5} />
@@ -141,7 +141,7 @@ const Uplot = forwardRef<ToggleGraphProps | undefined, UplotProps>(
 		return (
 			<Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}>
 				<div className="uplot-graph-container" ref={targetRef}>
-					{data && data[0] && data[0]?.length === 0 ? (
+					{data?.[0] && data[0]?.length === 0 ? (
 						<div className="not-found">
 							<Typography>No Data</Typography>
 						</div>

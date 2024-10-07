@@ -5,11 +5,11 @@ import { initialQueryBuilderFormValuesMap } from 'constants/queryBuilder';
 import QueryBuilderSearch from 'container/QueryBuilder/filters/QueryBuilderSearch';
 import isEqual from 'lodash-es/isEqual';
 import { useTranslation } from 'react-i18next';
-import { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 
-import { ProcessorFormField } from '../../../AddNewProcessor/config';
-import { formValidationRules } from '../../../config';
+import type { ProcessorFormField } from '../../../AddNewProcessor/config';
 import LogsFilterPreview from '../../../Preview/LogsFilterPreview';
+import { formValidationRules } from '../../../config';
 import { FormLabelStyle } from '../../styles';
 
 function TagFilterInput({

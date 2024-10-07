@@ -7,7 +7,7 @@ import { QueryTable } from 'container/QueryTable';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { memo } from 'react';
 
-import { LogsExplorerTableProps } from './LogsExplorerTable.interfaces';
+import type { LogsExplorerTableProps } from './LogsExplorerTable.interfaces';
 
 function LogsExplorerTable({
 	data,

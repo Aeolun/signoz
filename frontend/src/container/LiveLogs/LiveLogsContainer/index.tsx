@@ -16,15 +16,15 @@ import { useEventSource } from 'providers/EventSource';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { ILog } from 'types/api/logs/log';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { ILog } from 'types/api/logs/log';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
-import { idObject } from '../constants';
 import ListViewPanel from '../ListViewPanel';
 import LiveLogsList from '../LiveLogsList';
-import { QueryHistoryState } from '../types';
+import { idObject } from '../constants';
+import type { QueryHistoryState } from '../types';
 import { prepareQueryByFilter } from '../utils';
 import { ContentWrapper, LiveLogsChart, Wrapper } from './styles';
 

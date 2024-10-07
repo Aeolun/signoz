@@ -29,23 +29,23 @@ import {
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { sortLayout } from 'providers/Dashboard/util';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { FullScreen, FullScreenHandle } from 'react-full-screen';
-import { ItemCallback, Layout } from 'react-grid-layout';
+import { FullScreen, type FullScreenHandle } from 'react-full-screen';
+import type { ItemCallback, Layout } from 'react-grid-layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { UpdateTimeInterval } from 'store/actions';
-import { AppState } from 'store/reducers';
-import { Dashboard, Widgets } from 'types/api/dashboard/getAll';
-import AppReducer from 'types/reducer/app';
-import { ROLES, USER_ROLES } from 'types/roles';
-import { ComponentTypes } from 'utils/permission';
+import type { AppState } from 'store/reducers';
+import type { Dashboard, Widgets } from 'types/api/dashboard/getAll';
+import type AppReducer from 'types/reducer/app';
+import { type ROLES, USER_ROLES } from 'types/roles';
+import type { ComponentTypes } from 'utils/permission';
 
-import { EditMenuAction, ViewMenuAction } from './config';
 import DashboardEmptyState from './DashboardEmptyState/DashboardEmptyState';
 import GridCard from './GridCard';
+import { WidgetRowHeader } from './WidgetRow';
+import { EditMenuAction, ViewMenuAction } from './config';
 import { Card, CardContainer, ReactGridLayout } from './styles';
 import { removeUndefinedValuesFromLayout } from './utils';
-import { WidgetRowHeader } from './WidgetRow';
 
 interface GraphLayoutProps {
 	handle: FullScreenHandle;
@@ -177,9 +177,8 @@ function GraphLayout(props: GraphLayoutProps): JSX.Element {
 
 	const handleLayoutChange = (layout: Layout[]): void => {
 		const filterLayout = removeUndefinedValuesFromLayout(layout);
-		const filterDashboardLayout = removeUndefinedValuesFromLayout(
-			dashboardLayout,
-		);
+		const filterDashboardLayout =
+			removeUndefinedValuesFromLayout(dashboardLayout);
 		if (!isEqual(filterLayout, filterDashboardLayout)) {
 			const updatedLayout = sortLayout(layout);
 			setDashboardLayout(updatedLayout);
@@ -324,9 +323,8 @@ function GraphLayout(props: GraphLayoutProps): JSX.Element {
 					widgetsInsideTheRow = [];
 					isPanelMapUpdated = true;
 					break;
-				} else {
-					widgetsInsideTheRow.push(dashboardLayout[j]);
 				}
+				widgetsInsideTheRow.push(dashboardLayout[j]);
 			}
 			if (!isPanelMapUpdated) {
 				rowProperties.widgets = widgetsInsideTheRow;

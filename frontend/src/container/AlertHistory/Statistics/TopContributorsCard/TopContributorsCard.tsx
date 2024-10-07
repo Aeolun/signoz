@@ -9,8 +9,8 @@ import { useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import TopContributorsContent from './TopContributorsContent';
-import { TopContributorsCardProps } from './types';
 import ViewAllDrawer from './ViewAllDrawer';
+import type { TopContributorsCardProps } from './types';
 
 function TopContributorsCard({
 	topContributorsData,

@@ -1,9 +1,9 @@
 import './RawLogView.styles.scss';
 
 import Convert from 'ansi-to-html';
-import { DrawerProps } from 'antd';
+import type { DrawerProps } from 'antd';
 import LogDetail from 'components/LogDetail';
-import { VIEW_TYPES, VIEWS } from 'components/LogDetail/constants';
+import { type VIEWS, VIEW_TYPES } from 'components/LogDetail/constants';
 import { unescapeString } from 'container/LogDetailedView/utils';
 import LogsExplorerContext from 'container/LogsExplorerContext';
 import dayjs from 'dayjs';
@@ -15,9 +15,9 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import { FlatLogData } from 'lib/logs/flatLogData';
 import { isEmpty, isNumber, isUndefined } from 'lodash-es';
 import {
-	KeyboardEvent,
-	MouseEvent,
-	MouseEventHandler,
+	type KeyboardEvent,
+	type MouseEvent,
+	type MouseEventHandler,
 	useCallback,
 	useMemo,
 	useState,
@@ -29,7 +29,7 @@ import LogStateIndicator from '../LogStateIndicator/LogStateIndicator';
 import { getLogIndicatorType } from '../LogStateIndicator/utils';
 // styles
 import { RawLogContent, RawLogViewContainer } from './styles';
-import { RawLogViewProps } from './types';
+import type { RawLogViewProps } from './types';
 
 const convert = new Convert();
 

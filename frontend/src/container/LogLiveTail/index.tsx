@@ -13,11 +13,11 @@ import getStep from 'lib/getStep';
 import { throttle } from 'lodash-es';
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { type Dispatch, bindActionCreators } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { getLogsAggregate } from 'store/actions/logs/getLogsAggregate';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { UPDATE_AUTO_REFRESH_DISABLED } from 'types/actions/globalTime';
 import {
 	FLUSH_LOGS,
@@ -26,10 +26,10 @@ import {
 	SET_LOADING,
 	TOGGLE_LIVE_TAIL,
 } from 'types/actions/logs';
-import { TLogsLiveTailState } from 'types/api/logs/liveTail';
-import { ILog } from 'types/api/logs/log';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { TLogsLiveTailState } from 'types/api/logs/liveTail';
+import type { ILog } from 'types/api/logs/log';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { ILogsReducer } from 'types/reducer/logs';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { TIME_PICKER_OPTIONS } from './config';
@@ -74,9 +74,10 @@ function LogLiveTail({ getLogsAggregate }: Props): JSX.Element {
 		batchedEventsRef.current = [];
 	}, [dispatch]);
 
-	const pushLiveLogThrottled = useMemo(() => throttle(pushLiveLog, 1000), [
-		pushLiveLog,
-	]);
+	const pushLiveLogThrottled = useMemo(
+		() => throttle(pushLiveLog, 1000),
+		[pushLiveLog],
+	);
 
 	const batchLiveLog = useCallback(
 		(e: { data: string }): void => {
@@ -100,7 +101,7 @@ function LogLiveTail({ getLogsAggregate }: Props): JSX.Element {
 				...(liveTailSourceRef.current && firstLogsId
 					? {
 							idGt: firstLogsId,
-					  }
+						}
 					: {}),
 			});
 
@@ -188,9 +189,10 @@ function LogLiveTail({ getLogsAggregate }: Props): JSX.Element {
 		[dispatch, liveTail, liveTailStartRange],
 	);
 
-	const isDisabled = useMemo(() => selectedAutoRefreshInterval?.length > 0, [
-		selectedAutoRefreshInterval,
-	]);
+	const isDisabled = useMemo(
+		() => selectedAutoRefreshInterval?.length > 0,
+		[selectedAutoRefreshInterval],
+	);
 
 	const onLiveTailStop = (): void => {
 		handleLiveTail('STOPPED');

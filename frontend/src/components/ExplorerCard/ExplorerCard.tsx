@@ -8,7 +8,7 @@ import {
 	Button,
 	Col,
 	Dropdown,
-	MenuProps,
+	type MenuProps,
 	Popover,
 	Row,
 	Select,
@@ -31,15 +31,15 @@ import { useState } from 'react';
 import { useCopyToClipboard } from 'react-use';
 import { popupContainer } from 'utils/selectPopupContainer';
 
-import { ExploreHeaderToolTip, SaveButtonText } from './constants';
 import MenuItemGenerator from './MenuItemGenerator';
 import SaveViewWithName from './SaveViewWithName';
+import { ExploreHeaderToolTip, SaveButtonText } from './constants';
 import {
 	DropDownOverlay,
 	ExplorerCardHeadContainer,
 	OffSetCol,
 } from './styles';
-import { ExplorerCardProps } from './types';
+import type { ExplorerCardProps } from './types';
 import { deleteViewHandler } from './utils';
 
 function ExplorerCard({
@@ -170,7 +170,7 @@ function ExplorerCard({
 						</Col>
 						<OffSetCol span={18}>
 							<Space size="large">
-								{viewsData?.data.data && viewsData?.data.data.length && (
+								{viewsData?.data.data?.length && (
 									<Space>
 										<Select
 											getPopupContainer={popupContainer}

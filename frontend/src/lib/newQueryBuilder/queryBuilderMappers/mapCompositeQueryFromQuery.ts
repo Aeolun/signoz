@@ -1,6 +1,6 @@
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
-import {
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type {
 	BuilderClickHouseResource,
 	BuilderPromQLResource,
 	IClickHouseQuery,

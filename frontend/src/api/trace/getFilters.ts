@@ -1,9 +1,9 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import omitBy from 'lodash-es/omitBy';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/trace/getFilters';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/trace/getFilters';
 
 const getFilters = async (
 	props: Props,
@@ -24,7 +24,7 @@ const getFilters = async (
 			}
 		});
 
-		const response = await axios.post<PayloadProps>(`/getSpanFilters`, {
+		const response = await axios.post<PayloadProps>('/getSpanFilters', {
 			start: props.start,
 			end: props.end,
 			getFilters: props.getFilters,

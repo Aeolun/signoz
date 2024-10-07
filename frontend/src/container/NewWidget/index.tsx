@@ -7,7 +7,7 @@ import logEvent from 'api/common/logEvent';
 import OverlayScrollbar from 'components/OverlayScrollbar/OverlayScrollbar';
 import { FeatureKeys } from 'constants/features';
 import { QueryParams } from 'constants/query';
-import { initialQueriesMap, PANEL_TYPES } from 'constants/queryBuilder';
+import { PANEL_TYPES, initialQueriesMap } from 'constants/queryBuilder';
 import ROUTES from 'constants/routes';
 import { DashboardShortcuts } from 'constants/shortcuts/DashboardShortcuts';
 import { DEFAULT_BUCKET_COUNT } from 'container/PanelWrapper/constants';
@@ -19,11 +19,11 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import { MESSAGE, useIsFeatureDisabled } from 'hooks/useFeatureFlag';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { getDashboardVariables } from 'lib/dashbaordVariables/getDashboardVariables';
-import { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
+import type { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
 import history from 'lib/history';
 import { defaultTo, isUndefined } from 'lodash-es';
 import { Check, X } from 'lucide-react';
-import { DashboardWidgetPageParams } from 'pages/DashboardWidget';
+import type { DashboardWidgetPageParams } from 'pages/DashboardWidget';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import {
 	getNextWidgets,
@@ -34,27 +34,31 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { generatePath, useParams } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { ColumnUnit, Dashboard, Widgets } from 'types/api/dashboard/getAll';
-import { IField } from 'types/api/logs/fields';
+import type { AppState } from 'store/reducers';
+import type {
+	ColumnUnit,
+	Dashboard,
+	Widgets,
+} from 'types/api/dashboard/getAll';
+import type { IField } from 'types/api/logs/fields';
 import { EQueryType } from 'types/common/dashboard';
 import { DataSource } from 'types/common/queryBuilder';
-import AppReducer from 'types/reducer/app';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type AppReducer from 'types/reducer/app';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { getGraphType, getGraphTypeForFormat } from 'utils/getGraphType';
 
 import LeftContainer from './LeftContainer';
 import QueryTypeTag from './LeftContainer/QueryTypeTag';
 import RightContainer from './RightContainer';
-import { ThresholdProps } from './RightContainer/Threshold/types';
-import TimeItems, { timePreferance } from './RightContainer/timeItems';
+import type { ThresholdProps } from './RightContainer/Threshold/types';
+import TimeItems, { type timePreferance } from './RightContainer/timeItems';
 import {
 	Container,
 	LeftContainerWrapper,
 	PanelContainer,
 	RightContainerWrapper,
 } from './styles';
-import { NewWidgetProps } from './types';
+import type { NewWidgetProps } from './types';
 import {
 	getDefaultWidgetData,
 	getIsQueryModified,
@@ -62,11 +66,8 @@ import {
 } from './utils';
 
 function NewWidget({ selectedGraph }: NewWidgetProps): JSX.Element {
-	const {
-		selectedDashboard,
-		setSelectedDashboard,
-		setToScrollWidgetId,
-	} = useDashboard();
+	const { selectedDashboard, setSelectedDashboard, setToScrollWidgetId } =
+		useDashboard();
 
 	const { t } = useTranslation(['dashboard']);
 
@@ -410,7 +411,7 @@ function NewWidget({ selectedGraph }: NewWidgetProps): JSX.Element {
 								selectedLogFields: selectedWidget?.selectedLogFields || [],
 								selectedTracesFields: selectedWidget?.selectedTracesFields || [],
 							},
-					  ]
+						]
 					: [
 							...preWidgets,
 							{
@@ -437,7 +438,7 @@ function NewWidget({ selectedGraph }: NewWidgetProps): JSX.Element {
 								selectedTracesFields: selectedWidget?.selectedTracesFields || [],
 							},
 							...afterWidgets,
-					  ],
+						],
 				layout: [...updatedLayout],
 			},
 		};

@@ -1,5 +1,5 @@
-import { AxiosError } from 'axios';
-import { Tags } from 'types/reducer/trace';
+import type { AxiosError } from 'axios';
+import type { Tags } from 'types/reducer/trace';
 
 export interface Props {
 	start: number;

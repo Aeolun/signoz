@@ -1,11 +1,11 @@
 import groupBy from 'lodash-es/groupBy';
 import { useMemo } from 'react';
-import { Alerts } from 'types/api/alerts/getTriggered';
+import type { Alerts } from 'types/api/alerts/getTriggered';
 
-import { Value } from '../Filter';
+import type { Value } from '../Filter';
 import { FilterAlerts } from '../utils';
-import { Container, TableHeader, TableHeaderContainer } from './styles';
 import TableRowComponent from './TableRow';
+import { Container, TableHeader, TableHeaderContainer } from './styles';
 
 function FilteredTable({
 	selectedGroup,

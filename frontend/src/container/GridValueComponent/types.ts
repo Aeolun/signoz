@@ -1,5 +1,5 @@
-import { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
-import uPlot from 'uplot';
+import type { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
+import type uPlot from 'uplot';
 
 export type GridValueComponentProps = {
 	data: uPlot.AlignedData;

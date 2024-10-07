@@ -1,5 +1,5 @@
-import { IDashboardVariable } from 'types/api/dashboard/getAll';
-import { PayloadVariables } from 'types/api/dashboard/variables/query';
+import type { IDashboardVariable } from 'types/api/dashboard/getAll';
+import type { PayloadVariables } from 'types/api/dashboard/variables/query';
 
 export function variablePropsToPayloadVariables(
 	variables: Record<string, IDashboardVariable>,

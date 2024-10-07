@@ -1,6 +1,6 @@
 import { cloneDeep, isUndefined } from 'lodash-es';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { QueryData } from 'types/api/widgets/getQuery';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { QueryData } from 'types/api/widgets/getQuery';
 
 function getXAxisTimestamps(seriesList: QueryData[]): number[] {
 	const timestamps = new Set();
@@ -45,7 +45,7 @@ function fillMissingXAxisTimestamps(timestampArr: number[], data: any[]): any {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				// eslint-disable-next-line no-param-reassign
-				v[1] = parseFloat(v[1]);
+				v[1] = Number.parseFloat(v[1]);
 			}
 		});
 

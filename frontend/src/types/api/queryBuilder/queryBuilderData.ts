@@ -1,12 +1,12 @@
-import { Format } from 'container/NewWidget/RightContainer/types';
-import { EQueryType } from 'types/common/dashboard';
-import {
+import type { Format } from 'container/NewWidget/RightContainer/types';
+import type { EQueryType } from 'types/common/dashboard';
+import type {
 	DataSource,
 	QueryBuilderData,
 	ReduceOperators,
 } from 'types/common/queryBuilder';
 
-import { BaseAutocompleteData } from './queryAutocompleteResponse';
+import type { BaseAutocompleteData } from './queryAutocompleteResponse';
 
 // Type for Formula
 export interface IBuilderFormula {

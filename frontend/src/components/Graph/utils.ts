@@ -1,9 +1,8 @@
-import { Chart, ChartConfiguration, ChartData, Color } from 'chart.js';
+import type { Chart, ChartConfiguration, ChartData, Color } from 'chart.js';
 import * as chartjsAdapter from 'chartjs-adapter-date-fns';
 import dayjs from 'dayjs';
-import { MutableRefObject } from 'react';
+import type { MutableRefObject } from 'react';
 
-import { getAxisLabelColor } from './helpers';
 import {
 	createDragSelectPluginOptions,
 	dragSelectPluginId,
@@ -12,7 +11,8 @@ import {
 	createIntersectionCursorPluginOptions,
 	intersectionCursorPluginId,
 } from './Plugin/IntersectionCursor';
-import {
+import { getAxisLabelColor } from './helpers';
+import type {
 	CustomChartOptions,
 	GraphOnClickHandler,
 	IAxisTimeConfig,
@@ -25,7 +25,7 @@ export const toggleGraph = (
 	isVisible: boolean,
 	lineChartRef: MutableRefObject<Chart | undefined>,
 ): void => {
-	if (lineChartRef && lineChartRef.current) {
+	if (lineChartRef?.current) {
 		const { type } = lineChartRef.current?.config as ChartConfiguration;
 		if (type === 'pie' || type === 'doughnut') {
 			lineChartRef.current?.toggleDataVisibility(graphIndex);
@@ -84,7 +84,7 @@ export const getGraphOptions = (
 							},
 						},
 					],
-			  }
+				}
 			: undefined,
 		title: {
 			display: title !== undefined,

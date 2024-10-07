@@ -1,29 +1,34 @@
 import { CloseCircleFilled } from '@ant-design/icons';
 import { useMachine } from '@xstate/react';
 import { Button, Select } from 'antd';
-import { RefSelectProps } from 'antd/lib/select';
+import type { RefSelectProps } from 'antd/lib/select';
 import history from 'lib/history';
 import { filter, map } from 'lodash-es';
 import {
-	MutableRefObject,
+	type MutableRefObject,
 	useCallback,
 	useEffect,
 	useRef,
 	useState,
 } from 'react';
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 import { v4 as uuidv4 } from 'uuid';
 
 import { DashboardSearchAndFilter } from './Dashboard.machine';
 import QueryChip from './QueryChip';
 import { QueryChipItem, SearchContainer } from './styles';
-import { IOptionsData, IQueryStructure, TCategory, TOperator } from './types';
+import type {
+	IOptionsData,
+	IQueryStructure,
+	TCategory,
+	TOperator,
+} from './types';
 import {
+	OptionsSchemas,
+	OptionsValueResolution,
 	convertQueriesToURLQuery,
 	convertURLQueryStringToQuery,
 	executeSearchQueries,
-	OptionsSchemas,
-	OptionsValueResolution,
 } from './utils';
 
 function SearchFilter({
@@ -151,7 +156,7 @@ function SearchFilter({
 		setQueries([]);
 		history.push({
 			pathname: history.location.pathname,
-			search: ``,
+			search: '',
 		});
 	};
 

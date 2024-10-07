@@ -23,8 +23,12 @@ function GeneralDashboardSettings(): JSX.Element {
 
 	const selectedData = selectedDashboard?.data;
 
-	const { title = '', tags = [], description = '', image = Base64Icons[0] } =
-		selectedData || {};
+	const {
+		title = '',
+		tags = [],
+		description = '',
+		image = Base64Icons[0],
+	} = selectedData || {};
 
 	const [updatedTitle, setUpdatedTitle] = useState<string>(title);
 	const [updatedTags, setUpdatedTags] = useState<string[]>(tags || []);
@@ -32,9 +36,8 @@ function GeneralDashboardSettings(): JSX.Element {
 		description || '',
 	);
 	const [updatedImage, setUpdatedImage] = useState<string>(image);
-	const [numberOfUnsavedChanges, setNumberOfUnsavedChanges] = useState<number>(
-		0,
-	);
+	const [numberOfUnsavedChanges, setNumberOfUnsavedChanges] =
+		useState<number>(0);
 
 	const { t } = useTranslation('common');
 

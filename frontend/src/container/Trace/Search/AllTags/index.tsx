@@ -3,21 +3,21 @@ import { Button, Space, Typography } from 'antd';
 import { useState } from 'react';
 import { connect, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import type { ThunkDispatch } from 'redux-thunk';
 import { UpdateTagIsError } from 'store/actions/trace/updateIsTagsError';
 import { UpdateTagVisibility } from 'store/actions/trace/updateTagPanelVisiblity';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
-import { TraceReducer } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
+import type { TraceReducer } from 'types/reducer/trace';
 
 import { parseTagsToQuery } from '../util';
+import Tags from './Tag';
 import {
 	ButtonContainer,
 	Container,
 	CurrentTagsContainer,
 	ErrorContainer,
 } from './styles';
-import Tags from './Tag';
 
 const { Text } = Typography;
 

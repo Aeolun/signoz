@@ -1,6 +1,9 @@
 import { isQueryUpdatedInView } from 'components/ExplorerCard/utils';
 import { QueryParams } from 'constants/query';
 import {
+	MAX_FORMULAS,
+	MAX_QUERIES,
+	PANEL_TYPES,
 	alphabet,
 	baseAutoCompleteIdKeysOrder,
 	formulasNames,
@@ -11,14 +14,11 @@ import {
 	initialQueryPromQLData,
 	initialQueryState,
 	initialSingleQueryMap,
-	MAX_FORMULAS,
-	MAX_QUERIES,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
-import ROUTES from 'constants/routes';
+import type ROUTES from 'constants/routes';
 import {
+	type PartialPanelTypes,
 	panelTypeDataSourceFormValuesMap,
-	PartialPanelTypes,
 } from 'container/NewWidget/utils';
 import { useGetCompositeQueryParam } from 'hooks/queryBuilder/useGetCompositeQueryParam';
 import { updateStepInterval } from 'hooks/queryBuilder/useStepInterval';
@@ -29,8 +29,8 @@ import { getOperatorsBySourceAndPanelType } from 'lib/newQueryBuilder/getOperato
 import { replaceIncorrectObjectFields } from 'lib/replaceIncorrectObjectFields';
 import { cloneDeep, get, merge, set } from 'lodash-es';
 import {
+	type PropsWithChildren,
 	createContext,
-	PropsWithChildren,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -39,9 +39,9 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 // ** Types
-import {
+import type {
 	IBuilderFormula,
 	IBuilderQuery,
 	IClickHouseQuery,
@@ -49,14 +49,14 @@ import {
 	Query,
 	QueryState,
 } from 'types/api/queryBuilder/queryBuilderData';
-import { ViewProps } from 'types/api/saveViews/types';
+import type { ViewProps } from 'types/api/saveViews/types';
 import { EQueryType } from 'types/common/dashboard';
 import {
 	DataSource,
-	QueryBuilderContextType,
-	QueryBuilderData,
+	type QueryBuilderContextType,
+	type QueryBuilderData,
 } from 'types/common/queryBuilder';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { v4 as uuid } from 'uuid';
 
 export const QueryBuilderContext = createContext<QueryBuilderContextType>({
@@ -215,9 +215,8 @@ export function QueryBuilderProvider({
 
 	const initQueryBuilderData = useCallback(
 		(query: Query, timeUpdated?: boolean): void => {
-			const { queryType: newQueryType, ...queryState } = prepareQueryBuilderData(
-				query,
-			);
+			const { queryType: newQueryType, ...queryState } =
+				prepareQueryBuilderData(query);
 
 			const type = newQueryType || EQueryType.QUERY_BUILDER;
 
@@ -676,7 +675,7 @@ export function QueryBuilderProvider({
 		(
 			query: Partial<Query>,
 			searchParams?: Record<string, unknown>,
-			redirectingUrl?: typeof ROUTES[keyof typeof ROUTES],
+			redirectingUrl?: (typeof ROUTES)[keyof typeof ROUTES],
 			shouldNotStringify?: boolean,
 		) => {
 			const queryType =
@@ -853,10 +852,10 @@ export function QueryBuilderProvider({
 		[supersetQuery, queryType],
 	);
 
-	const isEnabledQuery = useMemo(() => !!stagedQuery && !!panelType, [
-		stagedQuery,
-		panelType,
-	]);
+	const isEnabledQuery = useMemo(
+		() => !!stagedQuery && !!panelType,
+		[stagedQuery, panelType],
+	);
 
 	const contextValues: QueryBuilderContextType = useMemo(
 		() => ({

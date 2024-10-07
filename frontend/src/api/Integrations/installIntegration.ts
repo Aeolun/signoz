@@ -1,10 +1,10 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import {
-	InstalledIntegrationsSuccessResponse,
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type {
 	InstallIntegrationKeyProps,
+	InstalledIntegrationsSuccessResponse,
 } from 'types/api/integrations/types';
 
 const installIntegration = async (

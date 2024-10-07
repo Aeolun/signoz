@@ -1,5 +1,5 @@
-import { TableProps, Tag, Typography } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
+import { type TableProps, Tag, Typography } from 'antd';
+import type { ColumnsType } from 'antd/lib/table';
 import { ResizeTable } from 'components/ResizeTable';
 import ROUTES from 'constants/routes';
 import {
@@ -11,19 +11,19 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import history from 'lib/history';
 import omit from 'lodash-es/omit';
-import { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
+import type { Dispatch } from 'redux';
 import { updateURL } from 'store/actions/trace/util';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import {
-	UPDATE_SPAN_ORDER,
-	UPDATE_SPAN_ORDER_PARAMS,
 	UPDATE_SPANS_AGGREGATE_PAGE_NUMBER,
 	UPDATE_SPANS_AGGREGATE_PAGE_SIZE,
+	UPDATE_SPAN_ORDER,
+	UPDATE_SPAN_ORDER_PARAMS,
 } from 'types/actions/trace';
-import { TraceReducer } from 'types/reducer/trace';
+import type { TraceReducer } from 'types/reducer/trace';
 import { v4 } from 'uuid';
 
 dayjs.extend(duration);
@@ -182,7 +182,7 @@ function TraceTable(): JSX.Element {
 
 	const totalObject = omit(statusFilter, [...(selectedStatusFilter || [])]);
 	const totalCount = Object.values(totalObject).reduce(
-		(a, b) => parseInt(String(a), 10) + parseInt(String(b), 10),
+		(a, b) => Number.parseInt(String(a), 10) + Number.parseInt(String(b), 10),
 		0,
 	) as number;
 

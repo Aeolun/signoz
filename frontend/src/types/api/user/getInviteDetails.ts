@@ -1,8 +1,8 @@
-import { User } from 'types/reducer/app';
-import { ROLES } from 'types/roles';
+import type { User } from 'types/reducer/app';
+import type { ROLES } from 'types/roles';
 
-import { Organization } from './getOrganization';
-import { PayloadProps as LoginPrecheckPayloadProps } from './loginPrecheck';
+import type { Organization } from './getOrganization';
+import type { PayloadProps as LoginPrecheckPayloadProps } from './loginPrecheck';
 
 export interface Props {
 	inviteId: string;

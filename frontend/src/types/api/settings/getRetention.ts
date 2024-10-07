@@ -1,4 +1,4 @@
-import { TTTLType } from './common';
+import type { TTTLType } from './common';
 
 export type TStatus = '' | 'pending' | 'failed' | 'success';
 export interface PayloadPropsMetrics {
@@ -29,7 +29,7 @@ export type Props = TTTLType;
 export type PayloadProps<T> = T extends 'metrics'
 	? PayloadPropsMetrics
 	: T extends 'traces'
-	? PayloadPropsTraces
-	: T extends 'logs'
-	? PayloadPropsLogs
-	: never;
+		? PayloadPropsTraces
+		: T extends 'logs'
+			? PayloadPropsLogs
+			: never;

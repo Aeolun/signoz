@@ -11,17 +11,17 @@ import { useGetExplorerQueryRange } from 'hooks/queryBuilder/useGetExplorerQuery
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
-import { SuccessResponse } from 'types/api';
-import { ILog } from 'types/api/logs/log';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { SuccessResponse } from 'types/api';
+import type { ILog } from 'types/api/logs/log';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 
+import ShowButton from './ShowButton';
 import {
-	getOrderByTimestamp,
 	INITIAL_PAGE_SIZE,
 	LOGS_MORE_PAGE_SIZE,
+	getOrderByTimestamp,
 } from './configs';
-import ShowButton from './ShowButton';
 import { EmptyText, ListContainer } from './styles';
 import { getRequestData } from './utils';
 
@@ -50,17 +50,18 @@ function LogsContextList({
 	const lastLog = useMemo(() => logs[logs.length - 1], [logs]);
 	const orderByTimestamp = useMemo(() => getOrderByTimestamp(order), [order]);
 
-	const logsMorePageSize = useMemo(() => (page - 1) * LOGS_MORE_PAGE_SIZE, [
-		page,
-	]);
+	const logsMorePageSize = useMemo(
+		() => (page - 1) * LOGS_MORE_PAGE_SIZE,
+		[page],
+	);
 	const pageSize = useMemo(
 		() => (page <= 1 ? INITIAL_PAGE_SIZE : logsMorePageSize + INITIAL_PAGE_SIZE),
 		[page, logsMorePageSize],
 	);
-	const isDisabledFetch = useMemo(() => logs.length < pageSize, [
-		logs.length,
-		pageSize,
-	]);
+	const isDisabledFetch = useMemo(
+		() => logs.length < pageSize,
+		[logs.length, pageSize],
+	);
 
 	const currentStagedQueryData = useMemo(() => {
 		if (!query || query.builder.queryData.length !== 1) return null;

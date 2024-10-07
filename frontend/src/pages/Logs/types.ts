@@ -1,5 +1,5 @@
-import { ItemType } from 'antd/es/menu/hooks/useItems';
-import { LogViewMode } from 'container/LogsTable';
+import type { ItemType } from 'antd/es/menu/hooks/useItems';
+import type { LogViewMode } from 'container/LogsTable';
 
 export type ViewModeOption = ItemType & {
 	label: string;

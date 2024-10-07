@@ -66,7 +66,7 @@ export const Logout = (): void => {
 
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	if (window && window.Intercom) {
+	if (window?.Intercom) {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		window.Intercom('shutdown');

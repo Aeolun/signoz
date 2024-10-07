@@ -4,28 +4,28 @@ import { Skeleton, Table, Typography } from 'antd';
 import logEvent from 'api/common/logEvent';
 import axios from 'axios';
 import { isNumber } from 'chart.js/helpers';
-import { ColumnTypeRender } from 'components/Logs/TableView/types';
+import type { ColumnTypeRender } from 'components/Logs/TableView/types';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
 import { QueryParams } from 'constants/query';
-import { History } from 'history';
+import type { History } from 'history';
 import { useNotifications } from 'hooks/useNotifications';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { isEmpty } from 'lodash-es';
 import {
 	ConsumerLagDetailTitle,
-	ConsumerLagDetailType,
+	type ConsumerLagDetailType,
+	type RowData,
+	type SelectedTimelineQuery,
 	convertToTitleCase,
-	RowData,
-	SelectedTimelineQuery,
 } from 'pages/MessagingQueues/MessagingQueuesUtils';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useHistory } from 'react-router-dom';
 
 import {
-	ConsumerLagPayload,
+	type ConsumerLagPayload,
+	type MessagingQueuesPayloadProps,
 	getConsumerLagDetails,
-	MessagingQueuesPayloadProps,
 } from './getConsumerLagDetails';
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
@@ -55,8 +55,10 @@ export function getColumns(
 		].includes(column.name)
 			? (value: number | string): string => {
 					if (!isNumber(value)) return value.toString();
-					return (typeof value === 'string' ? parseFloat(value) : value).toFixed(3);
-			  }
+					return (
+						typeof value === 'string' ? Number.parseFloat(value) : value
+					).toFixed(3);
+				}
 			: (text: string): ColumnTypeRender<Record<string, unknown>> => ({
 					children:
 						column.name === 'service_name' ? (
@@ -72,7 +74,7 @@ export function getColumns(
 						) : (
 							<Typography.Text>{text}</Typography.Text>
 						),
-			  }),
+				}),
 	}));
 
 	return columns;

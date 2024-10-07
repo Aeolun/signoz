@@ -6,7 +6,7 @@ import { useLocation } from 'react-use';
 
 import DateTimeSelector from '../TopNav/DateTimeSelection';
 import { Container } from './styles';
-import { LocalTopNavProps } from './types';
+import type { LocalTopNavProps } from './types';
 
 function LocalTopNav({
 	actions,

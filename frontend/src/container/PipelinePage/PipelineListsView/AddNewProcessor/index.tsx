@@ -3,17 +3,17 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
 	ActionMode,
-	ActionType,
-	PipelineData,
-	ProcessorData,
+	type ActionType,
+	type PipelineData,
+	type ProcessorData,
 } from 'types/api/pipeline/def';
 import { v4 } from 'uuid';
 
 import { ModalButtonWrapper, ModalTitle } from '../styles';
 import { getEditedDataSource, getRecordIndex } from '../utils';
-import { DEFAULT_PROCESSOR_TYPE, processorFields } from './config';
 import TypeSelect from './FormFields/TypeSelect';
 import ProcessorForm from './ProcessorForm';
+import { DEFAULT_PROCESSOR_TYPE, processorFields } from './config';
 
 function AddNewProcessor({
 	isActionType,

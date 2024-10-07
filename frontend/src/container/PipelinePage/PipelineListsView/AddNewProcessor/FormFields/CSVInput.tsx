@@ -1,12 +1,12 @@
-import { Input, InputProps } from 'antd';
-import { ChangeEventHandler, useState } from 'react';
+import { Input, type InputProps } from 'antd';
+import { type ChangeEventHandler, useState } from 'react';
 
 function CSVInput({ value, onChange, ...otherProps }: InputProps): JSX.Element {
 	const [inputValue, setInputValue] = useState(
 		((value as string[]) || []).join(', '),
 	);
 
-	const onChangeHandler = (onChange as unknown) as (v: string[]) => void;
+	const onChangeHandler = onChange as unknown as (v: string[]) => void;
 
 	const onInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
 		const newValue = e.target.value;

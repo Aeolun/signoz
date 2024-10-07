@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { type ReactNode, createContext, useContext, useState } from 'react';
 
-import { ModuleProps, useCases } from '../OnboardingContainer';
-import { DataSourceType } from '../Steps/DataSource/DataSource';
+import { type ModuleProps, useCases } from '../OnboardingContainer';
+import type { DataSourceType } from '../Steps/DataSource/DataSource';
 import { defaultApplicationDataSource } from '../utils/dataSourceUtils';
 
 export const OnboardingMethods = {
@@ -59,10 +59,8 @@ function OnboardingContextProvider({
 		OnboardingMethods.QUICK_START,
 	);
 
-	const [
-		selectedDataSource,
-		setSelectedDataSource,
-	] = useState<DataSourceType | null>(defaultApplicationDataSource);
+	const [selectedDataSource, setSelectedDataSource] =
+		useState<DataSourceType | null>(defaultApplicationDataSource);
 
 	const updateServiceName = (newValue: string): void => {
 		setServiceName(newValue);

@@ -1,6 +1,6 @@
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
-import { FontSize, OptionsQuery } from './types';
+import { FontSize, type OptionsQuery } from './types';
 
 export const URL_OPTIONS = 'options';
 

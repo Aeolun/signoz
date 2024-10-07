@@ -1,4 +1,4 @@
-import { AuthDomain, SAML } from 'types/api/SAML/listDomain';
+import { type AuthDomain, SAML } from 'types/api/SAML/listDomain';
 
 import { isSSOConfigValid } from './helpers';
 

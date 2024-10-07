@@ -1,8 +1,8 @@
-import { Chart, ChartTypeRegistry, Plugin } from 'chart.js';
+import type { Chart, ChartTypeRegistry, Plugin } from 'chart.js';
 import { getRelativePosition } from 'chart.js/helpers';
 
 // utils
-import { ChartEventHandler, mergeDefaultOptions } from './utils';
+import { type ChartEventHandler, mergeDefaultOptions } from './utils';
 
 export const dragSelectPluginId = 'drag-select-plugin';
 
@@ -55,9 +55,8 @@ function createMousedownHandler(
 			startDragPositionX = right;
 		}
 
-		const startValuePositionX = chart.scales.x.getValueForPixel(
-			startDragPositionX,
-		);
+		const startValuePositionX =
+			chart.scales.x.getValueForPixel(startDragPositionX);
 
 		dragData.onDragStart(startDragPositionX, startValuePositionX);
 	};
@@ -109,9 +108,8 @@ function createMouseupHandler(
 			endRelativePostionX = right;
 		}
 
-		const endValuePositionX = chart.scales.x.getValueForPixel(
-			endRelativePostionX,
-		);
+		const endValuePositionX =
+			chart.scales.x.getValueForPixel(endRelativePostionX);
 
 		dragData.onDragEnd(endRelativePostionX, endValuePositionX);
 

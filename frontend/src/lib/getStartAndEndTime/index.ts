@@ -1,4 +1,4 @@
-import { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
+import type { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
 
 import getMicroSeconds from './getMicroSeconds';
 import getMinAgo from './getMinAgo';

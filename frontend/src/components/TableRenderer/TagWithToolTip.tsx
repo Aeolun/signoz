@@ -7,13 +7,12 @@ function TagWithToolTip({
 	value,
 	color,
 }: TagWithToolTipProps): JSX.Element {
-	const tooltipTitle =
-		value && value[label] ? `${label}: ${value[label]}` : label;
+	const tooltipTitle = value?.[label] ? `${label}: ${value[label]}` : label;
 	return (
 		<div key={label}>
 			<Tooltip title={tooltipTitle}>
 				<Tag className="label-column--tag" color={color}>
-					{getLabelRenderingValue(label, value && value[label])}
+					{getLabelRenderingValue(label, value?.[label])}
 				</Tag>
 			</Tooltip>
 		</div>

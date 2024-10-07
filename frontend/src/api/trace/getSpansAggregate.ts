@@ -1,10 +1,10 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import omitBy from 'lodash-es/omitBy';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/trace/getSpanAggregate';
-import { TraceFilterEnum } from 'types/reducer/trace';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/trace/getSpanAggregate';
+import type { TraceFilterEnum } from 'types/reducer/trace';
 
 const getSpanAggregate = async (
 	props: Props,
@@ -41,7 +41,7 @@ const getSpanAggregate = async (
 
 		const nonDuration = omitBy(other, (_, key) => key.startsWith('duration'));
 
-		const response = await axios.post<PayloadProps>(`/getFilteredSpans`, {
+		const response = await axios.post<PayloadProps>('/getFilteredSpans', {
 			...preProps,
 			tags: updatedSelectedTags,
 			...nonDuration,

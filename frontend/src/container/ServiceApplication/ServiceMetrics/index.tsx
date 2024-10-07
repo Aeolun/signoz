@@ -6,20 +6,21 @@ import useGetTopLevelOperations from 'hooks/useGetTopLevelOperations';
 import useResourceAttribute from 'hooks/useResourceAttribute';
 import { convertRawQueriesToTraceSelectedTags } from 'hooks/useResourceAttribute/utils';
 import { useMemo, useState } from 'react';
-import { QueryKey } from 'react-query';
+import type { QueryKey } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { Tags } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { Tags } from 'types/reducer/trace';
 
 import SkipOnBoardingModal from '../SkipOnBoardModal';
 import ServiceMetricsApplication from './ServiceMetricsApplication';
 
 function ServicesUsingMetrics(): JSX.Element {
-	const { maxTime, minTime, selectedTime: globalSelectedInterval } = useSelector<
-		AppState,
-		GlobalReducer
-	>((state) => state.globalTime);
+	const {
+		maxTime,
+		minTime,
+		selectedTime: globalSelectedInterval,
+	} = useSelector<AppState, GlobalReducer>((state) => state.globalTime);
 	const { queries } = useResourceAttribute();
 	const selectedTags = useMemo(
 		() => (convertRawQueriesToTraceSelectedTags(queries) as Tags[]) || [],

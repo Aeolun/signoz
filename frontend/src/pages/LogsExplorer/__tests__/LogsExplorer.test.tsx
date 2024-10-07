@@ -1,9 +1,10 @@
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import i18n from 'ReactI18';
 import {
+	PANEL_TYPES,
 	initialQueriesMap,
 	initialQueryBuilderFormValues,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
 import { noop } from 'lodash-es';
 import { logsQueryRangeSuccessResponse } from 'mocks-server/__mockdata__/logs_query_range';
@@ -19,9 +20,8 @@ import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 // https://virtuoso.dev/mocking-in-tests/
 import { VirtuosoMockContext } from 'react-virtuoso';
-import i18n from 'ReactI18';
 import store from 'store';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
 import LogsExplorer from '../index';
 
@@ -46,9 +46,7 @@ jest.mock(
 	'container/TimeSeriesView/TimeSeriesView',
 	() =>
 		// eslint-disable-next-line func-names, @typescript-eslint/explicit-function-return-type, react/display-name
-		function () {
-			return <div>Time Series Chart</div>;
-		},
+		() => <div>Time Series Chart</div>,
 );
 
 const frequencyChartContent = 'Frequency chart content';
@@ -56,9 +54,7 @@ jest.mock(
 	'container/LogsExplorerChart',
 	() =>
 		// eslint-disable-next-line func-names, @typescript-eslint/explicit-function-return-type, react/display-name
-		function () {
-			return <div>{frequencyChartContent}</div>;
-		},
+		() => <div>{frequencyChartContent}</div>,
 );
 
 jest.mock('constants/panelTypes', () => ({
@@ -80,25 +76,20 @@ const lodsQueryServerRequest = (): void =>
 
 describe('Logs Explorer Tests', () => {
 	test('Logs Explorer default view test without data', async () => {
-		const {
-			getByText,
-			getByRole,
-			queryByText,
-			getByTestId,
-			queryByTestId,
-		} = render(
-			<MemoryRouter initialEntries={[logExplorerRoute]}>
-				<Provider store={store}>
-					<I18nextProvider i18n={i18n}>
-						<MockQueryClientProvider>
-							<QueryBuilderProvider>
-								<LogsExplorer />
-							</QueryBuilderProvider>
-						</MockQueryClientProvider>
-					</I18nextProvider>
-				</Provider>
-			</MemoryRouter>,
-		);
+		const { getByText, getByRole, queryByText, getByTestId, queryByTestId } =
+			render(
+				<MemoryRouter initialEntries={[logExplorerRoute]}>
+					<Provider store={store}>
+						<I18nextProvider i18n={i18n}>
+							<MockQueryClientProvider>
+								<QueryBuilderProvider>
+									<LogsExplorer />
+								</QueryBuilderProvider>
+							</MockQueryClientProvider>
+						</I18nextProvider>
+					</Provider>
+				</MemoryRouter>,
+			);
 
 		// check the presence of frequency chart content
 		expect(getByText(frequencyChartContent)).toBeInTheDocument();
@@ -154,7 +145,7 @@ describe('Logs Explorer Tests', () => {
 		await waitFor(() =>
 			expect(
 				queryByText(
-					`Just a bit of patience, just a little bit’s enough ⎯ we’re getting your logs!`,
+					'Just a bit of patience, just a little bit’s enough ⎯ we’re getting your logs!',
 				),
 			).not.toBeInTheDocument(),
 		);

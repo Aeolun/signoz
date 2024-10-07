@@ -4,24 +4,24 @@ import ROUTES from 'constants/routes';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { encode } from 'js-base64';
 import history from 'lib/history';
-import { ReactNode, useCallback, useMemo, useState } from 'react';
+import { type ReactNode, useCallback, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { whilelistedKeys } from './config';
 import { ResourceContext } from './context';
 import { ResourceAttributesFilterMachine } from './machine';
-import {
+import type {
 	IResourceAttribute,
 	IResourceAttributeProps,
 	OptionsData,
 } from './types';
 import {
-	createQuery,
-	getResourceAttributeQueriesFromURL,
 	GetTagKeys,
 	GetTagValues,
-	mappingWithRoutesAndKeys,
 	OperatorSchema,
+	createQuery,
+	getResourceAttributeQueriesFromURL,
+	mappingWithRoutesAndKeys,
 } from './utils';
 
 function ResourceProvider({ children }: Props): JSX.Element {

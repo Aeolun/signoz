@@ -1,5 +1,5 @@
 import { DynamicColumnsKey } from './contants';
-import {
+import type {
 	GetNewColumnDataFunction,
 	GetVisibleColumnsFunction,
 	SetVisibleColumnsProps,
@@ -68,7 +68,7 @@ export const getNewColumnData: GetNewColumnDataFunction = ({
 					...prevColumns.slice(0, prevColumns.length - 1),
 					dynamicColumns[index],
 					prevColumns[prevColumns.length - 1],
-			  ]
+				]
 			: undefined;
 	}
 	return prevColumns && dynamicColumns

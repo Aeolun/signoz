@@ -1,5 +1,5 @@
 import { sortBy } from 'lodash-es';
-import { TSortVariableValuesType } from 'types/api/dashboard/getAll';
+import type { TSortVariableValuesType } from 'types/api/dashboard/getAll';
 
 type TValuesDataType = (string | number | boolean)[];
 const sortValues = (

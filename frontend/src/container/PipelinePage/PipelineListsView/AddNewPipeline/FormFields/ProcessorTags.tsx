@@ -2,7 +2,7 @@ import { Form } from 'antd';
 import TagInput from 'container/PipelinePage/components/TagInput';
 import { useTranslation } from 'react-i18next';
 
-import { ProcessorFormField } from '../../AddNewProcessor/config';
+import type { ProcessorFormField } from '../../AddNewProcessor/config';
 import { FormLabelStyle } from '../styles';
 
 function ProcessorTags({

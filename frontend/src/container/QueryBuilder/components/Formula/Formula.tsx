@@ -10,14 +10,14 @@ import OrderByFilter from 'container/QueryBuilder/filters/Formula/OrderBy/OrderB
 // ** Hooks
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useQueryOperations } from 'hooks/queryBuilder/useQueryBuilderOperations';
-import { ChangeEvent, useCallback, useMemo, useState } from 'react';
-import { IBuilderFormula } from 'types/api/queryBuilder/queryBuilderData';
+import { type ChangeEvent, useCallback, useMemo, useState } from 'react';
+import type { IBuilderFormula } from 'types/api/queryBuilder/queryBuilderData';
 import { getFormatedLegend } from 'utils/getFormatedLegend';
 
 import { AdditionalFiltersToggler } from '../AdditionalFiltersToggler';
 import QBEntityOptions from '../QBEntityOptions/QBEntityOptions';
 // ** Types
-import { FormulaProps } from './Formula.interfaces';
+import type { FormulaProps } from './Formula.interfaces';
 
 export function Formula({
 	index,
@@ -26,21 +26,17 @@ export function Formula({
 	query,
 	isAdditionalFilterEnable,
 }: FormulaProps): JSX.Element {
-	const {
-		removeQueryBuilderEntityByIndex,
-		handleSetFormulaData,
-	} = useQueryBuilder();
+	const { removeQueryBuilderEntityByIndex, handleSetFormulaData } =
+		useQueryBuilder();
 
-	const {
-		listOfAdditionalFormulaFilters,
-		handleChangeFormulaData,
-	} = useQueryOperations({
-		index,
-		query,
-		filterConfigs,
-		formula,
-		entityVersion: '',
-	});
+	const { listOfAdditionalFormulaFilters, handleChangeFormulaData } =
+		useQueryOperations({
+			index,
+			query,
+			filterConfigs,
+			formula,
+			entityVersion: '',
+		});
 
 	const [isCollapse, setIsCollapsed] = useState(false);
 

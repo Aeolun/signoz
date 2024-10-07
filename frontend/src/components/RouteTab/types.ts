@@ -1,5 +1,5 @@
-import { TabsProps } from 'antd';
-import { History } from 'history';
+import type { TabsProps } from 'antd';
+import type { History } from 'history';
 
 export type TabRoutes = {
 	name: React.ReactNode;

@@ -1,10 +1,13 @@
 import { Color } from '@signozhq/design-tokens';
 import { Progress, Table } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import { ConditionalAlertPopover } from 'container/AlertHistory/AlertPopover/AlertPopover';
 import AlertLabels from 'pages/AlertDetails/AlertHeader/AlertLabels/AlertLabels';
 import PaginationInfoText from 'periscope/components/PaginationInfoText/PaginationInfoText';
-import { AlertRuleStats, AlertRuleTopContributors } from 'types/api/alerts/def';
+import type {
+	AlertRuleStats,
+	AlertRuleTopContributors,
+} from 'types/api/alerts/def';
 
 function TopContributorsRows({
 	topContributors,

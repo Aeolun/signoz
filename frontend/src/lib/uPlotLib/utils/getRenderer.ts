@@ -4,8 +4,8 @@ import { drawStyles, lineInterpolations } from './constants';
 
 const { spline: splinePath, bars: barsPath } = uPlot.paths;
 
-const spline = splinePath && splinePath();
-const bars = barsPath && barsPath();
+const spline = splinePath?.();
+const bars = barsPath?.();
 
 const getRenderer = (style: any, interp: any): any => {
 	if (style === drawStyles.line && interp === lineInterpolations.spline) {

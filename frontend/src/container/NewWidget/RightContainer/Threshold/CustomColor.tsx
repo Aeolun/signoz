@@ -3,7 +3,7 @@ import './CustomColor.styles.scss';
 import { Typography } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 
-import { CustomColorProps } from './types';
+import type { CustomColorProps } from './types';
 
 function CustomColor({ color }: CustomColorProps): JSX.Element {
 	const isDarkMode = useIsDarkMode();
@@ -13,8 +13,8 @@ function CustomColor({ color }: CustomColorProps): JSX.Element {
 			<Typography.Text
 				className={
 					isDarkMode
-						? `custom-color-typography-dark`
-						: `custom-color-typograph-light`
+						? 'custom-color-typography-dark'
+						: 'custom-color-typograph-light'
 				}
 			>
 				{color}

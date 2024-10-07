@@ -1,4 +1,4 @@
-import { User } from 'types/reducer/app';
+import type { User } from 'types/reducer/app';
 
 export interface UserFlags {
 	ReleaseNote0120Hide?: string;

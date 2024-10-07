@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 
 export const generateGridTitle = (title: ReactNode): string => {
 	if (React.isValidElement(title)) {

@@ -1,6 +1,6 @@
-import { FontSize } from 'container/OptionsMenu/types';
-import { IField } from 'types/api/logs/fields';
-import { ILog } from 'types/api/logs/log';
+import type { FontSize } from 'container/OptionsMenu/types';
+import type { IField } from 'types/api/logs/fields';
+import type { ILog } from 'types/api/logs/log';
 
 export interface RawLogViewProps {
 	isActiveLog?: boolean;

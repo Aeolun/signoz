@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { QueryFunctionsTypes } from 'types/common/queryBuilder';
-import { SelectOption } from 'types/common/select';
+import type { SelectOption } from 'types/common/select';
 
 export const metricQueryFunctionOptions: SelectOption<string, string>[] = [
 	{

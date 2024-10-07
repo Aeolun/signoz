@@ -1,5 +1,5 @@
 import { QueryChipContainer, QueryChipItem } from './styles';
-import { ILabelRecord } from './types';
+import type { ILabelRecord } from './types';
 
 interface QueryChipProps {
 	queryData: ILabelRecord;

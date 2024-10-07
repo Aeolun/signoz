@@ -1,9 +1,9 @@
 import { Col, Row, Select } from 'antd';
 import { find } from 'lodash-es';
 import {
-	ChangeEvent,
-	Dispatch,
-	SetStateAction,
+	type ChangeEvent,
+	type Dispatch,
+	type SetStateAction,
 	useEffect,
 	useRef,
 	useState,
@@ -17,9 +17,9 @@ import {
 	RetentionFieldLabel,
 } from './styles';
 import {
-	convertHoursValueToRelevantUnit,
-	SettingPeriod,
+	type SettingPeriod,
 	TimeUnits,
+	convertHoursValueToRelevantUnit,
 } from './utils';
 
 const { Option } = Select;
@@ -30,10 +30,8 @@ function Retention({
 	text,
 	hide,
 }: RetentionProps): JSX.Element | null {
-	const {
-		value: initialValue,
-		timeUnitValue: initialTimeUnitValue,
-	} = convertHoursValueToRelevantUnit(Number(retentionValue));
+	const { value: initialValue, timeUnitValue: initialTimeUnitValue } =
+		convertHoursValueToRelevantUnit(Number(retentionValue));
 	const [selectedTimeUnit, setSelectTimeUnit] = useState(initialTimeUnitValue);
 	const [selectedValue, setSelectedValue] = useState<number | null>(
 		initialValue,
@@ -75,7 +73,7 @@ function Retention({
 	): void => {
 		interacted.current = true;
 		const { value } = e.target;
-		const integerValue = parseInt(value, 10);
+		const integerValue = Number.parseInt(value, 10);
 
 		if (value.length > 0 && integerValue.toString() === value) {
 			const parsedValue = Math.abs(integerValue);

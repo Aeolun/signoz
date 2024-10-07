@@ -1,9 +1,9 @@
 import { Button } from 'antd';
-import { NotificationInstance } from 'antd/es/notification/interface';
+import type { NotificationInstance } from 'antd/es/notification/interface';
 import deleteChannel from 'api/channels/delete';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Channels } from 'types/api/channels/getAll';
+import type { Channels } from 'types/api/channels/getAll';
 
 function Delete({ notifications, setChannels, id }: DeleteProps): JSX.Element {
 	const { t } = useTranslation(['channels']);

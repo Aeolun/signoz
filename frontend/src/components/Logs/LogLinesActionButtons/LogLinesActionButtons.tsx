@@ -3,7 +3,7 @@ import './LogLinesActionButtons.styles.scss';
 import { LinkOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
 import { TextSelect } from 'lucide-react';
-import { MouseEventHandler } from 'react';
+import type { MouseEventHandler } from 'react';
 
 export interface LogLinesActionButtonsProps {
 	handleShowContext: MouseEventHandler<HTMLElement>;

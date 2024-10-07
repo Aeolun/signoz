@@ -4,20 +4,20 @@
 /* eslint-disable sonarjs/cognitive-complexity */
 import './uPlotLib.styles.scss';
 
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { FullViewProps } from 'container/GridCardLayout/GridCard/FullView/types';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { FullViewProps } from 'container/GridCardLayout/GridCard/FullView/types';
 import { saveLegendEntriesToLocalStorage } from 'container/GridCardLayout/GridCard/FullView/utils';
-import { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
-import { Dimensions } from 'hooks/useDimensions';
+import type { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
+import type { Dimensions } from 'hooks/useDimensions';
 import { convertValue } from 'lib/getConvertedValue';
 import { cloneDeep, isUndefined } from 'lodash-es';
 import _noop from 'lodash-es/noop';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { QueryData, QueryDataV3 } from 'types/api/widgets/getQuery';
-import uPlot from 'uplot';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { QueryData, QueryDataV3 } from 'types/api/widgets/getQuery';
+import type uPlot from 'uplot';
 
-import onClickPlugin, { OnClickPluginOpts } from './plugins/onClickPlugin';
+import onClickPlugin, { type OnClickPluginOpts } from './plugins/onClickPlugin';
 import tooltipPlugin from './plugins/tooltipPlugin';
 import getAxes from './utils/getAxes';
 import getSeries from './utils/getSeriesData';
@@ -74,8 +74,8 @@ function getStackedSeries(apiResponse: QueryData[]): QueryData[] {
 		const { values } = series[i];
 		for (let j = 0; j < values.length; j++) {
 			values[j][1] = String(
-				parseFloat(values[j]?.[1] || '0') +
-					parseFloat(series[i + 1].values[j]?.[1] || '0'),
+				Number.parseFloat(values[j]?.[1] || '0') +
+					Number.parseFloat(series[i + 1].values[j]?.[1] || '0'),
 			);
 		}
 
@@ -98,8 +98,8 @@ function getStackedSeriesQueryFormat(apiResponse: QueryData[]): QueryData[] {
 		const { values } = series[i];
 		for (let j = 0; j < values.length; j++) {
 			values[j].value = String(
-				parseFloat(values[j]?.value || '0') +
-					parseFloat(series[i + 1].values[j]?.value || '0'),
+				Number.parseFloat(values[j]?.value || '0') +
+					Number.parseFloat(series[i + 1].values[j]?.value || '0'),
 			);
 		}
 

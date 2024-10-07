@@ -3,9 +3,9 @@ import getTagFilters from 'api/trace/getTagFilter';
 import { useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { TraceReducer } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { TraceReducer } from 'types/reducer/trace';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { functions } from './config';
@@ -26,9 +26,8 @@ function TraceGraphFilter(): JSX.Element {
 		AppState,
 		TraceReducer
 	>((state) => state.traces);
-	const [selectedGroupByLocal, setSelectedGroupByLocal] = useState<string>(
-		selectedGroupBy,
-	);
+	const [selectedGroupByLocal, setSelectedGroupByLocal] =
+		useState<string>(selectedGroupBy);
 	const globalTime = useSelector<AppState, GlobalReducer>(
 		(state) => state.globalTime,
 	);

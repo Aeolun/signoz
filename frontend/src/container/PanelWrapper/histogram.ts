@@ -2,8 +2,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable no-param-reassign */
 import { histogramBucketSizes } from '@grafana/data';
-import { QueryData } from 'types/api/widgets/getQuery';
-import uPlot, { AlignedData } from 'uplot';
+import type { QueryData } from 'types/api/widgets/getQuery';
+import type uPlot from 'uplot';
+import type { AlignedData } from 'uplot';
 
 import {
 	DEFAULT_BUCKET_COUNT,
@@ -115,7 +116,7 @@ export function join(
 		}
 	}
 
-	return (data as unknown) as AlignedData[];
+	return data as unknown as AlignedData[];
 }
 
 export function histogram(
@@ -165,7 +166,7 @@ function replaceUndefinedWithNull(arrays: (number | null)[][]): AlignedData[] {
 			}
 		}
 	}
-	return (arrays as unknown) as AlignedData[];
+	return arrays as unknown as AlignedData[];
 }
 
 function addNullToFirstHistogram(
@@ -197,13 +198,13 @@ export const buildHistogramData = (
 	const seriesValues: number[] = [];
 	data?.forEach((item) => {
 		item.values.forEach((value) => {
-			seriesValues.push(parseFloat(value[1]) || 0);
+			seriesValues.push(Number.parseFloat(value[1]) || 0);
 		});
 	});
 
 	seriesValues.sort((a, b) => a - b);
 
-	let smallestDelta = Infinity;
+	let smallestDelta = Number.POSITIVE_INFINITY;
 	if (seriesValues.length === 1) {
 		smallestDelta = 0;
 	} else {
@@ -242,7 +243,7 @@ export const buildHistogramData = (
 	data?.forEach((item) => {
 		const newFrame: number[] = [];
 		item.values.forEach((value) => {
-			newFrame.push(parseFloat(value[1]) || 0);
+			newFrame.push(Number.parseFloat(value[1]) || 0);
 		});
 		frames.push(newFrame);
 	});
@@ -264,13 +265,13 @@ export const buildHistogramData = (
 	});
 
 	const joinHistogram = replaceUndefinedWithNull(
-		(join(histograms) as unknown) as (number | null)[][],
+		join(histograms) as unknown as (number | null)[][],
 	);
 
 	addNullToFirstHistogram(
-		(joinHistogram as unknown) as (number | null)[][],
+		joinHistogram as unknown as (number | null)[][],
 		bucketSize,
 	);
 
-	return (joinHistogram as unknown) as AlignedData;
+	return joinHistogram as unknown as AlignedData;
 };

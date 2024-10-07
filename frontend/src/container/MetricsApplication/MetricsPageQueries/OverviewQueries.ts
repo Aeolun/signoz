@@ -1,15 +1,21 @@
 import { OPERATORS } from 'constants/queryBuilder';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
 import {
 	DataSource,
 	MetricAggregateOperator,
-	QueryBuilderData,
+	type QueryBuilderData,
 } from 'types/common/queryBuilder';
 
+import type {
+	ApDexMetricsQueryBuilderQueriesProps,
+	ApDexProps,
+	LatencyProps,
+	OperationPerSecProps,
+} from '../Tabs/types';
 import {
 	FORMULA,
 	GraphTitle,
@@ -20,12 +26,6 @@ import {
 	QUERYNAME_AND_EXPRESSION,
 	WidgetKeys,
 } from '../constant';
-import {
-	ApDexMetricsQueryBuilderQueriesProps,
-	ApDexProps,
-	LatencyProps,
-	OperationPerSecProps,
-} from '../Tabs/types';
 import { convertMilSecToNanoSec, getNearestHighestBucketValue } from '../utils';
 import {
 	getQueryBuilderQueries,

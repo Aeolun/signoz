@@ -10,10 +10,10 @@ import { cloneDeep, isEqual, uniqWith, unset } from 'lodash-es';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDebounce } from 'react-use';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import {
+import type {
 	IBuilderQuery,
 	TagFilter,
 } from 'types/api/queryBuilder/queryBuilderData';
@@ -160,8 +160,8 @@ export const useFetchKeysAndValues = (
 				filterAttributeKeyDataType: filterAttributeKey?.dataType ?? DataTypes.EMPTY,
 				tagType: filterAttributeKey?.type ?? '',
 				searchText: isInNInOperator(tagOperator)
-					? tagValue[tagValue.length - 1]?.toString() ?? '' // last element of tagvalue will be always user search value
-					: tagValue?.toString() ?? '',
+					? (tagValue[tagValue.length - 1]?.toString() ?? '') // last element of tagvalue will be always user search value
+					: (tagValue?.toString() ?? ''),
 			});
 
 			if (payload) {

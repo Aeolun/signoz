@@ -1,5 +1,5 @@
-import { SyntheticEvent, useMemo } from 'react';
-import { Resizable, ResizeCallbackData } from 'react-resizable';
+import { type SyntheticEvent, useMemo } from 'react';
+import { Resizable, type ResizeCallbackData } from 'react-resizable';
 
 import { enableUserSelectHack } from './config';
 import { SpanStyle } from './styles';

@@ -1,6 +1,6 @@
-import { Labels } from 'types/api/alerts/def';
+import type { Labels } from 'types/api/alerts/def';
 
-import { ILabelRecord } from './types';
+import type { ILabelRecord } from './types';
 
 const hiddenLabels = ['severity', 'description'];
 

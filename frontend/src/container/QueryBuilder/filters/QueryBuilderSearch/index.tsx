@@ -9,8 +9,8 @@ import { LogsExplorerShortcuts } from 'constants/shortcuts/logsExplorerShortcuts
 import { getDataTypes } from 'container/LogDetailedView/utils';
 import { useKeyboardHotkeys } from 'hooks/hotkeys/useKeyboardHotkeys';
 import {
+	type WhereClauseConfig,
 	useAutoComplete,
-	WhereClauseConfig,
 } from 'hooks/queryBuilder/useAutoComplete';
 import { useFetchKeysAndValues } from 'hooks/queryBuilder/useFetchKeysAndValues';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
@@ -27,9 +27,9 @@ import {
 } from 'lucide-react';
 import type { BaseSelectRef } from 'rc-select';
 import {
-	KeyboardEvent,
-	ReactElement,
-	ReactNode,
+	type KeyboardEvent,
+	type ReactElement,
+	type ReactNode,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -38,23 +38,23 @@ import {
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import {
+import type {
 	IBuilderQuery,
 	TagFilter,
 } from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
-import { getUserOperatingSystem, UserOperatingSystem } from 'utils/getUserOS';
+import { UserOperatingSystem, getUserOperatingSystem } from 'utils/getUserOS';
 import { popupContainer } from 'utils/selectPopupContainer';
 import { v4 as uuid } from 'uuid';
 
-import { selectStyle } from './config';
-import { PLACEHOLDER } from './constant';
 import ExampleQueriesRendererForLogs from './ExampleQueriesRendererForLogs';
 import OptionRenderer from './OptionRenderer';
 import OptionRendererForLogs from './OptionRendererForLogs';
+import { selectStyle } from './config';
+import { PLACEHOLDER } from './constant';
 import { StyledCheckOutlined, TypographyText } from './style';
 import {
 	convertExampleQueriesToOptions,
@@ -74,9 +74,10 @@ function QueryBuilderSearch({
 	suffixIcon,
 }: QueryBuilderSearchProps): JSX.Element {
 	const { pathname } = useLocation();
-	const isLogsExplorerPage = useMemo(() => pathname === ROUTES.LOGS_EXPLORER, [
-		pathname,
-	]);
+	const isLogsExplorerPage = useMemo(
+		() => pathname === ROUTES.LOGS_EXPLORER,
+		[pathname],
+	);
 	const {
 		updateTag,
 		handleClearTag,
@@ -220,7 +221,7 @@ function QueryBuilderSearch({
 			const computedTagValue =
 				tagValue && Array.isArray(tagValue) && tagValue[tagValue.length - 1] === ''
 					? tagValue?.slice(0, -1)
-					: tagValue ?? '';
+					: (tagValue ?? '');
 
 			return {
 				id: uuid().slice(0, 8),
@@ -413,7 +414,7 @@ function QueryBuilderSearch({
 								/>
 								{option.selected && <StyledCheckOutlined />}
 							</Select.Option>
-					  ))}
+						))}
 			</Select>
 		</div>
 	);

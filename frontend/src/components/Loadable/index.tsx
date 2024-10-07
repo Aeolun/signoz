@@ -1,9 +1,9 @@
-import { ComponentType, lazy, LazyExoticComponent } from 'react';
+import { type ComponentType, type LazyExoticComponent, lazy } from 'react';
 import { lazyRetry } from 'utils/lazyWithRetries';
 
-function Loadable(importPath: {
-	(): LoadableProps;
-}): LazyExoticComponent<LazyComponent> {
+function Loadable(
+	importPath: () => LoadableProps,
+): LazyExoticComponent<LazyComponent> {
 	return lazy(() => lazyRetry(() => importPath()));
 }
 

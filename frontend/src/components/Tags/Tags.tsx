@@ -5,7 +5,8 @@ import { Button } from 'antd';
 import { Tag } from 'antd/lib';
 import Input from 'components/Input';
 import { Check, X } from 'lucide-react';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import type React from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 
 function Tags({ tags, setTags }: AddTagsProps): JSX.Element {
 	const [inputValue, setInputValue] = useState<string>('');

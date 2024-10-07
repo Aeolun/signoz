@@ -13,11 +13,11 @@ import useResourceAttribute from 'hooks/useResourceAttribute';
 import { convertRawQueriesToTraceSelectedTags } from 'hooks/useResourceAttribute/utils';
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { UPDATE_TIME_INTERVAL } from 'types/actions/globalTime';
-import { PayloadProps as QueryServicePayloadProps } from 'types/api/metrics/getService';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { Tags } from 'types/reducer/trace';
+import type { PayloadProps as QueryServicePayloadProps } from 'types/api/metrics/getService';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { Tags } from 'types/reducer/trace';
 
 const pollingInterval = 10000;
 

@@ -1,4 +1,4 @@
-import { QueryDataV3 } from 'types/api/widgets/getQuery';
+import type { QueryDataV3 } from 'types/api/widgets/getQuery';
 
 export type LogsExplorerTableProps = {
 	data: QueryDataV3[];

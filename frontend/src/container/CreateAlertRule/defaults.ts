@@ -1,12 +1,12 @@
 import { ENTITY_VERSION_V4 } from 'constants/app';
 import {
+	PANEL_TYPES,
 	initialQueryBuilderFormValuesMap,
 	initialQueryPromQLData,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
 import { AlertTypes } from 'types/api/alerts/alertTypes';
 import {
-	AlertDef,
+	type AlertDef,
 	defaultCompareOp,
 	defaultEvalWindow,
 	defaultMatchType,
@@ -35,7 +35,7 @@ export const alertDefaults: AlertDef = {
 			chQueries: {
 				A: {
 					name: 'A',
-					query: ``,
+					query: '',
 					legend: '',
 					disabled: false,
 				},
@@ -65,7 +65,8 @@ export const logAlertDefaults: AlertDef = {
 			chQueries: {
 				A: {
 					name: 'A',
-					query: `select \ntoStartOfInterval(fromUnixTimestamp64Nano(timestamp), INTERVAL 30 MINUTE) AS interval, \ntoFloat64(count()) as value \nFROM signoz_logs.distributed_logs_v2  \nWHERE timestamp BETWEEN {{.start_timestamp_nano}} AND {{.end_timestamp_nano}}  \nGROUP BY interval;\n\n-- available variables:\n-- \t{{.start_timestamp_nano}}\n-- \t{{.end_timestamp_nano}}\n\n-- required columns (or alias):\n-- \tvalue\n-- \tinterval`,
+					query:
+						'select \ntoStartOfInterval(fromUnixTimestamp64Nano(timestamp), INTERVAL 30 MINUTE) AS interval, \ntoFloat64(count()) as value \nFROM signoz_logs.distributed_logs_v2  \nWHERE timestamp BETWEEN {{.start_timestamp_nano}} AND {{.end_timestamp_nano}}  \nGROUP BY interval;\n\n-- available variables:\n-- \t{{.start_timestamp_nano}}\n-- \t{{.end_timestamp_nano}}\n\n-- required columns (or alias):\n-- \tvalue\n-- \tinterval',
 					legend: '',
 					disabled: false,
 				},

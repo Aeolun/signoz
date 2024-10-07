@@ -7,7 +7,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 
-import { ExportPanelProps } from '.';
+import type { ExportPanelProps } from '.';
 import {
 	DashboardSelect,
 	NewDashboardButton,
@@ -35,18 +35,16 @@ function ExportPanelContainer({
 
 	const handleError = useAxiosError();
 
-	const {
-		mutate: createNewDashboard,
-		isLoading: createDashboardLoading,
-	} = useMutation(createDashboard, {
-		onSuccess: (data) => {
-			if (data.payload) {
-				onExport(data?.payload, true);
-			}
-			refetch();
-		},
-		onError: handleError,
-	});
+	const { mutate: createNewDashboard, isLoading: createDashboardLoading } =
+		useMutation(createDashboard, {
+			onSuccess: (data) => {
+				if (data.payload) {
+					onExport(data?.payload, true);
+				}
+				refetch();
+			},
+			onError: handleError,
+		});
 
 	const options = useMemo(() => getSelectOptions(data || []), [data]);
 

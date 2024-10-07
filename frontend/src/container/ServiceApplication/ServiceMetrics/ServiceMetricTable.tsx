@@ -11,24 +11,25 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { ServicesList } from 'types/api/metrics/getService';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { ServicesList } from 'types/api/metrics/getService';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { isCloudUser } from 'utils/app';
 import { getTotalRPS } from 'utils/services';
 
 import { getColumns } from '../Columns/ServiceColumn';
-import { ServiceMetricsTableProps } from '../types';
+import type { ServiceMetricsTableProps } from '../types';
 import { getServiceListFromQuery } from '../utils';
 
 function ServiceMetricTable({
 	topLevelOperations,
 	queryRangeRequestData,
 }: ServiceMetricsTableProps): JSX.Element {
-	const { minTime, maxTime, selectedTime: globalSelectedInterval } = useSelector<
-		AppState,
-		GlobalReducer
-	>((state) => state.globalTime);
+	const {
+		minTime,
+		maxTime,
+		selectedTime: globalSelectedInterval,
+	} = useSelector<AppState, GlobalReducer>((state) => state.globalTime);
 
 	const { notifications } = useNotifications();
 	const { t: getText } = useTranslation(['services']);

@@ -18,9 +18,8 @@ const { Title } = Typography;
 type FormValues = { password: string; confirmPassword: string };
 
 function ResetPassword({ version }: ResetPasswordProps): JSX.Element {
-	const [confirmPasswordError, setConfirmPasswordError] = useState<boolean>(
-		false,
-	);
+	const [confirmPasswordError, setConfirmPasswordError] =
+		useState<boolean>(false);
 
 	const [isValidPassword, setIsValidPassword] = useState(false);
 	const [loading, setLoading] = useState(false);

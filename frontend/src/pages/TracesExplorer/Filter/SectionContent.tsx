@@ -1,25 +1,25 @@
 import './Filter.styles.scss';
 
 import { Button, Card, Checkbox, Input, Tooltip } from 'antd';
-import { CheckboxChangeEvent } from 'antd/es/checkbox';
+import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { ParaGraph } from 'container/Trace/Filters/Panel/PanelBody/Common/styles';
 import useDebouncedFn from 'hooks/useDebouncedFunction';
 import { isArray, isEmpty } from 'lodash-es';
 import {
-	ChangeEvent,
-	Dispatch,
-	SetStateAction,
+	type ChangeEvent,
+	type Dispatch,
+	type SetStateAction,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
 
 import {
+	type AllTraceFilterKeys,
+	type FilterType,
+	type HandleRunProps,
 	addFilter,
-	AllTraceFilterKeys,
 	convertToStringArr,
-	FilterType,
-	HandleRunProps,
 	removeFilter,
 	statusFilterOption,
 	useGetAggregateValues,
@@ -53,7 +53,11 @@ export function SectionBody(props: SectionBodyProps): JSX.Element {
 		setSearchText(searchText as string);
 	}, 500);
 
-	const { isFetching: fetching, keys, results: res } = useGetAggregateValues({
+	const {
+		isFetching: fetching,
+		keys,
+		results: res,
+	} = useGetAggregateValues({
 		value: type,
 		searchText,
 	});

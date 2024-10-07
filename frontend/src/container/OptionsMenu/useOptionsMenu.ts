@@ -1,31 +1,31 @@
 import getFromLocalstorage from 'api/browser/localstorage/get';
 import setToLocalstorage from 'api/browser/localstorage/set';
 import { getAggregateKeys } from 'api/queryBuilder/getAttributeKeys';
-import { LOCALSTORAGE } from 'constants/localStorage';
-import { LogViewMode } from 'container/LogsTable';
+import type { LOCALSTORAGE } from 'constants/localStorage';
+import type { LogViewMode } from 'container/LogsTable';
 import { useGetAggregateKeys } from 'hooks/queryBuilder/useGetAggregateKeys';
 import useDebounce from 'hooks/useDebounce';
 import { useNotifications } from 'hooks/useNotifications';
 import useUrlQueryData from 'hooks/useUrlQueryData';
 import {
-	AllTraceFilterKeys,
 	AllTraceFilterKeyValue,
+	type AllTraceFilterKeys,
 } from 'pages/TracesExplorer/Filter/filterUtils';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQueries } from 'react-query';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import {
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type {
 	BaseAutocompleteData,
 	IQueryAutocompleteResponse,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
 import { DataSource } from 'types/common/queryBuilder';
 
 import {
+	URL_OPTIONS,
 	defaultOptionsQuery,
 	defaultTraceSelectedColumns,
-	URL_OPTIONS,
 } from './constants';
-import {
+import type {
 	FontSize,
 	InitialOptions,
 	OptionsMenuConfig,
@@ -186,8 +186,8 @@ const useOptionsMenu = ({
 			selectColumns: initialOptions?.selectColumns
 				? initialSelectedColumns
 				: dataSource === DataSource.TRACES
-				? defaultTraceSelectedColumns
-				: defaultOptionsQuery.selectColumns,
+					? defaultTraceSelectedColumns
+					: defaultOptionsQuery.selectColumns,
 		}),
 		[dataSource, initialOptions, initialSelectedColumns],
 	);

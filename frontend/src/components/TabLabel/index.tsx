@@ -1,7 +1,7 @@
 import { Tooltip } from 'antd';
 import { memo } from 'react';
 
-import { TabLabelProps } from './TabLabel.interfaces';
+import type { TabLabelProps } from './TabLabel.interfaces';
 
 function TabLabel({
 	label,

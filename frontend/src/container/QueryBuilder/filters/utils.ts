@@ -1,8 +1,8 @@
 import { HAVING_FILTER_REGEXP } from 'constants/regExp';
-import { IOption } from 'hooks/useResourceAttribute/types';
+import type { IOption } from 'hooks/useResourceAttribute/types';
 import uniqWith from 'lodash-es/unionWith';
 import { parse } from 'papaparse';
-import { HavingForm } from 'types/api/queryBuilder/queryBuilderData';
+import type { HavingForm } from 'types/api/queryBuilder/queryBuilderData';
 
 import { ORDERBY_FILTERS } from './OrderByFilter/config';
 import {
@@ -11,9 +11,9 @@ import {
 } from './OrderByFilter/utils';
 import { getRemoveOrderFromValue } from './QueryBuilderSearch/utils';
 
-export const handleKeyDownLimitFilter: React.KeyboardEventHandler<HTMLInputElement> = (
-	event,
-): void => {
+export const handleKeyDownLimitFilter: React.KeyboardEventHandler<
+	HTMLInputElement
+> = (event): void => {
 	const keyCode = event.keyCode || event.which;
 	const isBackspace = keyCode === 8;
 	const isNumeric =

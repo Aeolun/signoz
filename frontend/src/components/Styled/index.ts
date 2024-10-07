@@ -1,23 +1,23 @@
 import {
 	Button,
-	ButtonProps,
+	type ButtonProps,
 	Col,
-	ColProps,
+	type ColProps,
 	Divider,
-	DividerProps,
+	type DividerProps,
 	Row,
-	RowProps,
+	type RowProps,
 	Space,
-	SpaceProps,
-	TabsProps,
+	type SpaceProps,
+	type TabsProps,
 	Typography,
 } from 'antd';
-import { TextProps } from 'antd/lib/typography/Text';
-import { TitleProps } from 'antd/lib/typography/Title';
-import { HTMLAttributes } from 'react';
-import styled, { FlattenSimpleInterpolation } from 'styled-components';
+import type { TextProps } from 'antd/lib/typography/Text';
+import type { TitleProps } from 'antd/lib/typography/Title';
+import type { HTMLAttributes } from 'react';
+import styled, { type FlattenSimpleInterpolation } from 'styled-components';
 
-import { IStyledClass } from './types';
+import type { IStyledClass } from './types';
 
 const styledClass = (props: IStyledClass): FlattenSimpleInterpolation | null =>
 	props.styledclass || null;

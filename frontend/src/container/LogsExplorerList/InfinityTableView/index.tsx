@@ -9,17 +9,17 @@ import useDragColumns from 'hooks/useDragColumns';
 import { getDraggedColumns } from 'hooks/useDragColumns/utils';
 import { forwardRef, memo, useCallback, useMemo } from 'react';
 import {
-	TableComponents,
+	type TableComponents,
 	TableVirtuoso,
-	TableVirtuosoHandle,
+	type TableVirtuosoHandle,
 } from 'react-virtuoso';
-import { ILog } from 'types/api/logs/log';
+import type { ILog } from 'types/api/logs/log';
 
-import { getInfinityDefaultStyles } from './config';
 import { LogsCustomTable } from './LogsCustomTable';
-import { TableHeaderCellStyled, TableRowStyled } from './styles';
 import TableRow from './TableRow';
-import { InfinityTableProps } from './types';
+import { getInfinityDefaultStyles } from './config';
+import { TableHeaderCellStyled, TableRowStyled } from './styles';
+import type { InfinityTableProps } from './types';
 
 // eslint-disable-next-line react/function-component-definition
 const CustomTableRow: TableComponents<ILog>['TableRow'] = ({

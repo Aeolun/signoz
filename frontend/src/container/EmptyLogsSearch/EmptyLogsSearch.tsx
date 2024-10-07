@@ -3,7 +3,7 @@ import './EmptyLogsSearch.styles.scss';
 import { Typography } from 'antd';
 import logEvent from 'api/common/logEvent';
 import { useEffect, useRef } from 'react';
-import { DataSource, PanelTypeKeys } from 'types/common/queryBuilder';
+import { DataSource, type PanelTypeKeys } from 'types/common/queryBuilder';
 
 export default function EmptyLogsSearch({
 	dataSource,

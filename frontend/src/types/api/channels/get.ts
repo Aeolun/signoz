@@ -1,4 +1,4 @@
-import { Channels } from './getAll';
+import type { Channels } from './getAll';
 
 export interface Props {
 	id: Channels['id'];

@@ -52,6 +52,7 @@ ee/query-service/tests/test-deploy/data/
 /deploy/docker/clickhouse-setup/data/
 /deploy/docker-swarm/clickhouse-setup/data/
 bin/
+docker-compose.local.yaml
 
 */query-service/queries.active
 

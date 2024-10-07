@@ -1,7 +1,7 @@
 import './Tabs.styles.scss';
 
 import { Radio } from 'antd';
-import { RadioChangeEvent } from 'antd/lib';
+import type { RadioChangeEvent } from 'antd/lib';
 import { History, Table } from 'lucide-react';
 import { useState } from 'react';
 

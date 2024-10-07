@@ -2,7 +2,7 @@ import './ValueGraph.styles.scss';
 
 import { ExclamationCircleFilled } from '@ant-design/icons';
 import { Tooltip, Typography } from 'antd';
-import { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
+import type { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
 import { useTranslation } from 'react-i18next';
 
 import { getBackgroundColorAndThresholdCheck } from './utils';
@@ -14,10 +14,8 @@ function ValueGraph({
 }: ValueGraphProps): JSX.Element {
 	const { t } = useTranslation(['valueGraph']);
 
-	const {
-		threshold,
-		isConflictingThresholds,
-	} = getBackgroundColorAndThresholdCheck(thresholds, rawValue);
+	const { threshold, isConflictingThresholds } =
+		getBackgroundColorAndThresholdCheck(thresholds, rawValue);
 
 	return (
 		<div

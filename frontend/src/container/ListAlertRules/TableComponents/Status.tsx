@@ -1,5 +1,5 @@
 import { Tag } from 'antd';
-import { GettableAlert } from 'types/api/alerts/get';
+import type { GettableAlert } from 'types/api/alerts/get';
 
 function Status({ status }: StatusProps): JSX.Element {
 	switch (status) {

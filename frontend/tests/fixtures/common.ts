@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import type { Page } from '@playwright/test';
 import { getVersion } from 'constants/api';
 
 import loginApiResponse from './api/login/200.json';
@@ -18,7 +18,7 @@ export const waitForVersionApiSuccess = async (page: Page): Promise<void> => {
 
 export const loginApi = async (page: Page): Promise<void> => {
 	await Promise.all([
-		page.route(`**/register`, (route) =>
+		page.route('**/register', (route) =>
 			route.fulfill({
 				status: 200,
 				body: JSON.stringify(successLoginResponse),

@@ -1,4 +1,4 @@
-import { ILog } from './log';
+import type { ILog } from './log';
 
 export type PayloadProps = ILog[];
 export type Props = {

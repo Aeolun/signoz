@@ -1,11 +1,11 @@
-import { DefaultOptionType } from 'antd/es/select';
-import { ReactNode } from 'react';
+import type { DefaultOptionType } from 'antd/es/select';
+import type { ReactNode } from 'react';
 import store from 'store';
 import {
 	UPDATE_SELECTED_FUNCTION,
 	UPDATE_SELECTED_GROUP_BY,
 } from 'types/actions/trace';
-import { PayloadProps } from 'types/api/trace/getTagFilters';
+import type { PayloadProps } from 'types/api/trace/getTagFilters';
 
 import { extractTagFilters } from '../Search/AllTags/Tag/utils';
 import { functions, groupBy } from './config';

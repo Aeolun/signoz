@@ -2,12 +2,16 @@ import { PANEL_TYPES } from 'constants/queryBuilder';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import {
 	GetMetricQueryRange,
-	GetQueryResultsProps,
+	type GetQueryResultsProps,
 } from 'lib/dashboard/getQueryResults';
 import { useMemo } from 'react';
-import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query';
-import { SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import {
+	type UseQueryOptions,
+	type UseQueryResult,
+	useQuery,
+} from 'react-query';
+import type { SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
 type UseGetQueryRange = (
 	requestData: GetQueryResultsProps,

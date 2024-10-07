@@ -18,7 +18,7 @@ export const getActiveLogBackground = (
 	isActiveLog = true,
 	isDarkMode = true,
 ): string => {
-	if (!isActiveLog) return ``;
+	if (!isActiveLog) return '';
 	if (isDarkMode) return `background-color: ${Color.BG_SLATE_200};`;
 	return `background-color: ${Color.BG_VANILLA_300}; color: ${Color.TEXT_SLATE_400}`;
 };

@@ -5,9 +5,9 @@ import type { ColumnsType } from 'antd/es/table';
 import getIngestionData from 'api/settings/getIngestionData';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { IngestionDataType } from 'types/api/settings/ingestion';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { IngestionDataType } from 'types/api/settings/ingestion';
+import type AppReducer from 'types/reducer/app';
 
 export default function IngestionSettings(): JSX.Element {
 	const { user } = useSelector<AppState, AppReducer>((state) => state.app);
@@ -43,8 +43,7 @@ export default function IngestionSettings(): JSX.Element {
 	];
 
 	const injectionDataPayload =
-		ingestionData &&
-		ingestionData.payload &&
+		ingestionData?.payload &&
 		Array.isArray(ingestionData.payload) &&
 		ingestionData?.payload[0];
 

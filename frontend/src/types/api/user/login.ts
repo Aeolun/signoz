@@ -9,5 +9,6 @@ export interface PayloadProps {
 export interface Props {
 	email?: string;
 	password?: string;
+	method?: 'ldap' | 'password';
 	refreshToken?: PayloadProps['refreshJwt'];
 }

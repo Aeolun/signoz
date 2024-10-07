@@ -1,9 +1,9 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { Pipeline } from 'types/api/pipeline/def';
-import { Props } from 'types/api/pipeline/post';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { Pipeline } from 'types/api/pipeline/def';
+import type { Props } from 'types/api/pipeline/post';
 
 const post = async (
 	props: Props,

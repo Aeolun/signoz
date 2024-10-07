@@ -8,8 +8,9 @@ import ServiceTraces from './ServiceTraces';
 import { Container } from './styles';
 
 function Services(): JSX.Element {
-	const isSpanMetricEnabled = useFeatureFlag(FeatureKeys.USE_SPAN_METRICS)
-		?.active;
+	const isSpanMetricEnabled = useFeatureFlag(
+		FeatureKeys.USE_SPAN_METRICS,
+	)?.active;
 
 	return (
 		<Sentry.ErrorBoundary fallback={<ErrorBoundaryFallback />}>

@@ -1,5 +1,8 @@
-import { Button, ButtonProps } from 'antd';
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
+import { Button, type ButtonProps } from 'antd';
+import styled, {
+	css,
+	type FlattenSimpleInterpolation,
+} from 'styled-components';
 
 export const LiveButtonStyled = styled(Button)<ButtonProps>`
 	background-color: #1eb475;

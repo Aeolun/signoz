@@ -7,17 +7,17 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import createQueryParams from 'lib/createQueryParams';
 import history from 'lib/history';
 import { PanelRight } from 'lucide-react';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { ITraceTree } from 'types/api/trace/getTraceItem';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { ITraceTree } from 'types/api/trace/getTraceItem';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
-import { getTraceToLogsQuery } from './config';
 import Events from './Events';
-import { CardContainer, CustomSubText, styles } from './styles';
 import Tags from './Tags';
+import { getTraceToLogsQuery } from './config';
+import { CardContainer, CustomSubText, styles } from './styles';
 
 function SelectedSpanDetails(props: SelectedSpanDetailsProps): JSX.Element {
 	const { maxTime, minTime } = useSelector<AppState, GlobalReducer>(

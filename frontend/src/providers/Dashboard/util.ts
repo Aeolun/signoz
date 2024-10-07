@@ -1,5 +1,5 @@
-import { Layout } from 'react-grid-layout';
-import { Dashboard, Widgets } from 'types/api/dashboard/getAll';
+import type { Layout } from 'react-grid-layout';
+import type { Dashboard, Widgets } from 'types/api/dashboard/getAll';
 
 export const getPreviousWidgets = (
 	selectedDashboard: Dashboard,

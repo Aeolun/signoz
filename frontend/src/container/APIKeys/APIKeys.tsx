@@ -14,16 +14,16 @@ import {
 	Row,
 	Select,
 	Table,
-	TableProps,
+	type TableProps,
 	Tooltip,
 	Typography,
 } from 'antd';
-import { NotificationInstance } from 'antd/es/notification/interface';
-import { CollapseProps } from 'antd/lib';
+import type { NotificationInstance } from 'antd/es/notification/interface';
+import type { CollapseProps } from 'antd/lib';
 import createAPIKeyApi from 'api/APIKeys/createAPIKey';
 import deleteAPIKeyApi from 'api/APIKeys/deleteAPIKey';
 import updateAPIKeyApi from 'api/APIKeys/updateAPIKey';
-import axios, { AxiosError } from 'axios';
+import axios, { type AxiosError } from 'axios';
 import cx from 'classnames';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
 import dayjs from 'dayjs';
@@ -44,14 +44,14 @@ import {
 	View,
 	X,
 } from 'lucide-react';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useCopyToClipboard } from 'react-use';
-import { AppState } from 'store/reducers';
-import { APIKeyProps } from 'types/api/pat/types';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { APIKeyProps } from 'types/api/pat/types';
+import type AppReducer from 'types/reducer/app';
 import { USER_ROLES } from 'types/roles';
 
 export const showErrorNotification = (
@@ -191,11 +191,8 @@ function APIKeys(): JSX.Element {
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>): void => {
 		setSearchValue(e.target.value);
-		const filteredData = APIKeys?.data?.data?.filter(
-			(key: APIKeyProps) =>
-				key &&
-				key.name &&
-				key.name.toLowerCase().includes(e.target.value.toLowerCase()),
+		const filteredData = APIKeys?.data?.data?.filter((key: APIKeyProps) =>
+			key?.name?.toLowerCase().includes(e.target.value.toLowerCase()),
 		);
 		setDataSource(filteredData || []);
 	};
@@ -279,7 +276,7 @@ function APIKeys(): JSX.Element {
 				if (user) {
 					createAPIKey({
 						name: values.name,
-						expiresInDays: parseInt(values.expiration, 10),
+						expiresInDays: Number.parseInt(values.expiration, 10),
 						role: values.role,
 					});
 				}
@@ -337,7 +334,7 @@ function APIKeys(): JSX.Element {
 			// eslint-disable-next-line sonarjs/cognitive-complexity
 			render: (APIKey: APIKeyProps): JSX.Element => {
 				const formattedDateAndTime =
-					APIKey && APIKey?.lastUsed && APIKey?.lastUsed !== 0
+					APIKey?.lastUsed && APIKey?.lastUsed !== 0
 						? getFormattedTime(APIKey?.lastUsed)
 						: 'Never';
 
@@ -687,7 +684,7 @@ function APIKeys(): JSX.Element {
 								>
 									Copy token and close
 								</Button>,
-						  ]
+							]
 						: [
 								<Button
 									key="cancel"
@@ -708,7 +705,7 @@ function APIKeys(): JSX.Element {
 								>
 									Create new token
 								</Button>,
-						  ]
+							]
 				}
 			>
 				{!showNewAPIKeyDetails && (

@@ -1,5 +1,5 @@
-import { QueryBuilderProps } from 'container/QueryBuilder/QueryBuilder.interfaces';
-import { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { QueryBuilderProps } from 'container/QueryBuilder/QueryBuilder.interfaces';
+import type { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
 
 export type QueryProps = {
 	index: number;

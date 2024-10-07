@@ -1,13 +1,13 @@
 import './MQDetails.style.scss';
 
 import { Radio } from 'antd';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 
+import { ComingSoon } from '../MQCommon/MQCommon';
 import {
 	ConsumerLagDetailTitle,
 	ConsumerLagDetailType,
 } from '../MessagingQueuesUtils';
-import { ComingSoon } from '../MQCommon/MQCommon';
 import MessagingQueuesTable from './MQTables/MQTables';
 
 function MessagingQueuesOptions({

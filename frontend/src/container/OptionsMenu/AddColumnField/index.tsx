@@ -4,7 +4,7 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import { useTranslation } from 'react-i18next';
 
 import { FieldTitle } from '../styles';
-import { OptionsMenuConfig } from '../types';
+import type { OptionsMenuConfig } from '../types';
 import {
 	AddColumnItem,
 	AddColumnSelect,

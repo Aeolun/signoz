@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { QueryRangePayload } from 'types/api/metrics/getQueryRange';
+import type { QueryRangePayload } from 'types/api/metrics/getQueryRange';
 import { EQueryType } from 'types/common/dashboard';
 
 export const queryRangeSuccessResponse: QueryRangePayload = {

@@ -1,7 +1,7 @@
 import axios from 'api';
-import { AxiosResponse } from 'axios';
-import { AllViewsProps } from 'types/api/saveViews/types';
-import { DataSource } from 'types/common/queryBuilder';
+import type { AxiosResponse } from 'axios';
+import type { AllViewsProps } from 'types/api/saveViews/types';
+import type { DataSource } from 'types/common/queryBuilder';
 
 export const getAllViews = (
 	sourcepage: DataSource,

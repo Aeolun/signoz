@@ -2,15 +2,15 @@ import { CloseOutlined, PlusCircleFilled } from '@ant-design/icons';
 import { Col, Input } from 'antd';
 import CategoryHeading from 'components/Logs/CategoryHeading';
 import { fieldSearchFilter } from 'lib/logs/fieldSearch';
-import { ChangeEvent, useCallback, useState } from 'react';
+import { type ChangeEvent, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { AppState } from 'store/reducers';
+import type { ILogsReducer } from 'types/reducer/logs';
 
-import { ICON_STYLE, RESTRICTED_SELECTED_FIELDS } from './config';
 import FieldItem from './FieldItem';
+import { ICON_STYLE, RESTRICTED_SELECTED_FIELDS } from './config';
 import { CategoryContainer, FieldContainer } from './styles';
-import { IHandleInterestProps, IHandleRemoveInterestProps } from './types';
+import type { IHandleInterestProps, IHandleRemoveInterestProps } from './types';
 import { onHandleAddInterest, onHandleRemoveInterest } from './utils';
 
 function LogsFilters(): JSX.Element {
@@ -29,31 +29,30 @@ function LogsFilters(): JSX.Element {
 	};
 
 	const onHandleAddSelectedToInteresting = useCallback(
-		({ fieldData, fieldIndex }: IHandleInterestProps) => (): Promise<void> =>
-			onHandleAddInterest({
-				fieldData,
-				fieldIndex,
-				interesting,
-				interestingFieldLoading,
-				setInterestingFieldLoading,
-				selected,
-			}),
+		({ fieldData, fieldIndex }: IHandleInterestProps) =>
+			(): Promise<void> =>
+				onHandleAddInterest({
+					fieldData,
+					fieldIndex,
+					interesting,
+					interestingFieldLoading,
+					setInterestingFieldLoading,
+					selected,
+				}),
 		[interesting, interestingFieldLoading, selected],
 	);
 
 	const onHandleRemoveSelected = useCallback(
-		({
-			fieldData,
-			fieldIndex,
-		}: IHandleRemoveInterestProps) => (): Promise<void> =>
-			onHandleRemoveInterest({
-				fieldData,
-				fieldIndex,
-				interesting,
-				interestingFieldLoading,
-				selected,
-				setSelectedFieldLoading,
-			}),
+		({ fieldData, fieldIndex }: IHandleRemoveInterestProps) =>
+			(): Promise<void> =>
+				onHandleRemoveInterest({
+					fieldData,
+					fieldIndex,
+					interesting,
+					interestingFieldLoading,
+					selected,
+					setSelectedFieldLoading,
+				}),
 		[interesting, interestingFieldLoading, selected, setSelectedFieldLoading],
 	);
 

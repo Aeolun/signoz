@@ -1,4 +1,4 @@
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
 
 // default match type for threshold
 export const defaultMatchType = '1';

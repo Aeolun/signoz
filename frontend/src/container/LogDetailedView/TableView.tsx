@@ -5,15 +5,15 @@ import './TableView.styles.scss';
 import { LinkOutlined } from '@ant-design/icons';
 import { Color } from '@signozhq/design-tokens';
 import { Button, Space, Tooltip, Typography } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import cx from 'classnames';
 import AddToQueryHOC, {
-	AddToQueryHOCProps,
+	type AddToQueryHOCProps,
 } from 'components/Logs/AddToQueryHOC';
 import { ResizeTable } from 'components/ResizeTable';
 import { OPERATORS } from 'constants/queryBuilder';
 import ROUTES from 'constants/routes';
-import { FontSize, OptionsQuery } from 'container/OptionsMenu/types';
+import { FontSize, type OptionsQuery } from 'container/OptionsMenu/types';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import history from 'lib/history';
 import { fieldSearchFilter } from 'lib/logs/fieldSearch';
@@ -22,14 +22,14 @@ import { Pin } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { generatePath } from 'react-router-dom';
-import { Dispatch } from 'redux';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type AppActions from 'types/actions';
 import { SET_DETAILED_LOG_DATA } from 'types/actions/logs';
-import { IField } from 'types/api/logs/fields';
-import { ILog } from 'types/api/logs/log';
-import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { IField } from 'types/api/logs/fields';
+import type { ILog } from 'types/api/logs/log';
+import type { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
-import { ActionItemProps } from './ActionItem';
+import type { ActionItemProps } from './ActionItem';
 import FieldRenderer from './FieldRenderer';
 import { TableViewActions } from './TableView/TableViewActions';
 import { filterKeyForField, findKeyPath, flattenObject } from './utils';
@@ -116,19 +116,16 @@ function TableView({
 		}
 	};
 
-	const onClickHandler = (
-		operator: string,
-		fieldKey: string,
-		fieldValue: string,
-	) => (): void => {
-		handleClick(operator, fieldKey, fieldValue);
-		if (operator === OPERATORS['=']) {
-			setIsFilterInLoading(true);
-		}
-		if (operator === OPERATORS['!=']) {
-			setIsFilterOutLoading(true);
-		}
-	};
+	const onClickHandler =
+		(operator: string, fieldKey: string, fieldValue: string) => (): void => {
+			handleClick(operator, fieldKey, fieldValue);
+			if (operator === OPERATORS['=']) {
+				setIsFilterInLoading(true);
+			}
+			if (operator === OPERATORS['!=']) {
+				setIsFilterOutLoading(true);
+			}
+		};
 
 	if (logData === null) {
 		return null;

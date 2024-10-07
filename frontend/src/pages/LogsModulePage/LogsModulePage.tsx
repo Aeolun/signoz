@@ -1,7 +1,7 @@
 import './LogsModulePage.styles.scss';
 
 import RouteTab from 'components/RouteTab';
-import { TabRoutes } from 'components/RouteTab/types';
+import type { TabRoutes } from 'components/RouteTab/types';
 import history from 'lib/history';
 import { useLocation } from 'react-use';
 

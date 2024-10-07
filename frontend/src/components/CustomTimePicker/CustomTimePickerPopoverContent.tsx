@@ -3,13 +3,13 @@ import './CustomTimePicker.styles.scss';
 import { Button } from 'antd';
 import cx from 'classnames';
 import ROUTES from 'constants/routes';
-import { DateTimeRangeType } from 'container/TopNav/CustomDateTimeModal';
+import type { DateTimeRangeType } from 'container/TopNav/CustomDateTimeModal';
 import {
-	LexicalContext,
-	Option,
+	type LexicalContext,
+	type Option,
 	RelativeDurationSuggestionOptions,
 } from 'container/TopNav/DateTimeSelectionV2/config';
-import { Dispatch, SetStateAction, useMemo } from 'react';
+import { type Dispatch, type SetStateAction, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import RangePickerModal from './RangePickerModal';
@@ -40,9 +40,10 @@ function CustomTimePickerPopoverContent({
 }: CustomTimePickerPopoverContentProps): JSX.Element {
 	const { pathname } = useLocation();
 
-	const isLogsExplorerPage = useMemo(() => pathname === ROUTES.LOGS_EXPLORER, [
-		pathname,
-	]);
+	const isLogsExplorerPage = useMemo(
+		() => pathname === ROUTES.LOGS_EXPLORER,
+		[pathname],
+	);
 
 	function getTimeChips(options: Option[]): JSX.Element {
 		return (

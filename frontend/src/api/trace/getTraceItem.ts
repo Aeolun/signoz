@@ -1,9 +1,12 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import { formUrlParams } from 'container/TraceDetail/utils';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { GetTraceItemProps, PayloadProps } from 'types/api/trace/getTraceItem';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type {
+	GetTraceItemProps,
+	PayloadProps,
+} from 'types/api/trace/getTraceItem';
 
 const getTraceItem = async (
 	props: GetTraceItemProps,

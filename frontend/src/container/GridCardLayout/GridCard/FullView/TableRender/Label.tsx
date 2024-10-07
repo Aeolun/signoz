@@ -2,7 +2,7 @@ import { Tooltip } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 
 import { LabelContainer } from '../styles';
-import { LabelProps } from '../types';
+import type { LabelProps } from '../types';
 import { getAbbreviatedLabel } from '../utils';
 
 function Label({

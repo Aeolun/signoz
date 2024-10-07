@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react';
+import i18n from 'ReactI18';
 import { I18nextProvider } from 'react-i18next';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import i18n from 'ReactI18';
 import store from 'store';
-import { Pipeline } from 'types/api/pipeline/def';
+import type { Pipeline } from 'types/api/pipeline/def';
 import { v4 } from 'uuid';
 
 import PipelinePageLayout from '../Layouts/Pipeline';

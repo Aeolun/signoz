@@ -3,7 +3,7 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 
 import RouteTab from './index';
-import { RouteTabProps } from './types';
+import type { RouteTabProps } from './types';
 
 function DummyComponent1(): JSX.Element {
 	return <div>Dummy Component 1</div>;

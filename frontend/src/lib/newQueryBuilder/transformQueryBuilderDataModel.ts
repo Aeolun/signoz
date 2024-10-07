@@ -4,12 +4,12 @@ import {
 } from 'constants/queryBuilder';
 import { FORMULA_REGEXP } from 'constants/regExp';
 import { isUndefined } from 'lodash-es';
-import {
+import type {
 	BuilderQueryDataResourse,
 	IBuilderFormula,
 	IBuilderQuery,
 } from 'types/api/queryBuilder/queryBuilderData';
-import { QueryBuilderData } from 'types/common/queryBuilder';
+import type { QueryBuilderData } from 'types/common/queryBuilder';
 
 export const transformQueryBuilderDataModel = (
 	data: BuilderQueryDataResourse,

@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import { PanelTypeVsPanelWrapper } from './constants';
-import { PanelWrapperProps } from './panelWrapper.types';
+import type { PanelWrapperProps } from './panelWrapper.types';
 
 function PanelWrapper({
 	widget,

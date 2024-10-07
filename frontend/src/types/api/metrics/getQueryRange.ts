@@ -1,13 +1,13 @@
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { EQueryType } from 'types/common/dashboard';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { EQueryType } from 'types/common/dashboard';
 
-import {
+import type {
 	IBuilderFormula,
 	IBuilderQuery,
 	IClickHouseQuery,
 	IPromQLQuery,
 } from '../queryBuilder/queryBuilderData';
-import { QueryData, QueryDataV3 } from '../widgets/getQuery';
+import type { QueryData, QueryDataV3 } from '../widgets/getQuery';
 
 export type QueryRangePayload = {
 	compositeQuery: {

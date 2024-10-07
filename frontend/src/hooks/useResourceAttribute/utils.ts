@@ -5,7 +5,7 @@ import {
 import { OperatorConversions } from 'constants/resourceAttributes';
 import ROUTES from 'constants/routes';
 import { MetricsType } from 'container/MetricsApplication/constant';
-import {
+import type {
 	IOption,
 	IResourceAttribute,
 	IResourceAttributeProps,
@@ -13,8 +13,8 @@ import {
 import { decode } from 'js-base64';
 import history from 'lib/history';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
-import { OperatorValues, Tags } from 'types/reducer/trace';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { OperatorValues, Tags } from 'types/reducer/trace';
 import { v4 as uuid } from 'uuid';
 
 import { whilelistedKeys } from './config';

@@ -6,8 +6,8 @@ import { isPasswordNotValidMessage, isPasswordValid } from 'pages/SignUp/utils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 import { Password } from '../styles';
 
@@ -17,9 +17,8 @@ function PasswordContainer(): JSX.Element {
 	const { t } = useTranslation(['routes', 'settings', 'common']);
 	const { user } = useSelector<AppState, AppReducer>((state) => state.app);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [isPasswordPolicyError, setIsPasswordPolicyError] = useState<boolean>(
-		false,
-	);
+	const [isPasswordPolicyError, setIsPasswordPolicyError] =
+		useState<boolean>(false);
 
 	const defaultPlaceHolder = '*************';
 

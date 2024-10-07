@@ -1,7 +1,7 @@
 import '../ServiceApplication.styles.scss';
 
 import { SearchOutlined } from '@ant-design/icons';
-import { Popconfirm, PopconfirmProps } from 'antd';
+import { Popconfirm, type PopconfirmProps } from 'antd';
 import type { ColumnType } from 'antd/es/table';
 import ROUTES from 'constants/routes';
 import { routeConfig } from 'container/SideNav/config';
@@ -9,7 +9,7 @@ import { getQueryString } from 'container/SideNav/helper';
 import history from 'lib/history';
 import { Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { ServicesList } from 'types/api/metrics/getService';
+import type { ServicesList } from 'types/api/metrics/getService';
 
 import { filterDropdown } from '../Filter/FilterDropdown';
 

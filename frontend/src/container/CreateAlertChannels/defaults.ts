@@ -1,4 +1,4 @@
-import { EmailChannel, OpsgenieChannel, PagerChannel } from './config';
+import type { EmailChannel, OpsgenieChannel, PagerChannel } from './config';
 
 export const PagerInitialConfig: Partial<PagerChannel> = {
 	description: `[{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ .CommonLabels.alertname }} for {{ .CommonLabels.job }}

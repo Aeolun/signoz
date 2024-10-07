@@ -3,20 +3,20 @@ import './PlannedDowntime.styles.scss';
 
 import { Color } from '@signozhq/design-tokens';
 import { Collapse, Flex, Space, Table, Tag, Tooltip, Typography } from 'antd';
-import { DefaultOptionType } from 'antd/es/select';
-import { TableProps } from 'antd/lib';
-import {
+import type { DefaultOptionType } from 'antd/es/select';
+import type { TableProps } from 'antd/lib';
+import type {
 	DowntimeSchedules,
 	PayloadProps,
 	Recurrence,
 } from 'api/plannedDowntime/getAllDowntimeSchedules';
-import { AxiosError, AxiosResponse } from 'axios';
+import type { AxiosError, AxiosResponse } from 'axios';
 import cx from 'classnames';
 import { useNotifications } from 'hooks/useNotifications';
 import { defaultTo } from 'lodash-es';
 import { CalendarClock, PenLine, Trash2 } from 'lucide-react';
-import { ReactNode, useEffect } from 'react';
-import { UseQueryResult } from 'react-query';
+import { type ReactNode, useEffect } from 'react';
+import type { UseQueryResult } from 'react-query';
 
 import {
 	formatDateTime,

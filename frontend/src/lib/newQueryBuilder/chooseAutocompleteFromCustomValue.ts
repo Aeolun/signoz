@@ -1,6 +1,6 @@
 import { initialAutocompleteData } from 'constants/queryBuilder';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
 

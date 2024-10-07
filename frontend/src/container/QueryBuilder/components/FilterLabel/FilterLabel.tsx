@@ -3,7 +3,7 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import { memo } from 'react';
 
 // ** Types
-import { FilterLabelProps } from './FilterLabel.interfaces';
+import type { FilterLabelProps } from './FilterLabel.interfaces';
 // ** Styles
 import { StyledLabel } from './FilterLabel.styled';
 

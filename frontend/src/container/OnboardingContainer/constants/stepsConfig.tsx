@@ -1,4 +1,4 @@
-import { SelectedModuleStepProps } from '../OnboardingContainer';
+import type { SelectedModuleStepProps } from '../OnboardingContainer';
 import ConnectionStatus from '../Steps/ConnectionStatus/ConnectionStatus';
 import DataSource from '../Steps/DataSource/DataSource';
 import EnvironmentDetails from '../Steps/EnvironmentDetails/EnvironmentDetails';
@@ -23,24 +23,24 @@ export const stepsMap = {
 	configureHostmetricsJson: 'configureHostmetricsJson',
 	configureMetricsReceiver: 'configureMetricsReceiver',
 	addHttpDrain: 'addHttpDrain',
-	setupLogDrains: `setupLogDrains`,
-	createHttpPayload: `createHttpPayload`,
-	configureAws: `configureAws`,
-	sendLogsCloudwatch: `sendLogsCloudwatch`,
-	setupDaemonService: `setupDaemonService`,
-	createOtelConfig: `createOtelConfig`,
-	createDaemonService: `createDaemonService`,
-	ecsSendData: `ecsSendData`,
-	createSidecarCollectorContainer: `createSidecarCollectorContainer`,
-	deployTaskDefinition: `deployTaskDefinition`,
-	ecsSendLogsData: `ecsSendLogsData`,
-	monitorDashboard: `monitorDashboard`,
-	setupCentralCollector: `setupCentralCollector`,
-	setupAzureEventsHub: `setupAzureEventsHub`,
-	sendTraces: `sendTraces`,
-	sendLogs: `sendLogs`,
-	sendMetrics: `sendMetrics`,
-	sendHostmetricsLogs: `sendHostmetricsLogs`,
+	setupLogDrains: 'setupLogDrains',
+	createHttpPayload: 'createHttpPayload',
+	configureAws: 'configureAws',
+	sendLogsCloudwatch: 'sendLogsCloudwatch',
+	setupDaemonService: 'setupDaemonService',
+	createOtelConfig: 'createOtelConfig',
+	createDaemonService: 'createDaemonService',
+	ecsSendData: 'ecsSendData',
+	createSidecarCollectorContainer: 'createSidecarCollectorContainer',
+	deployTaskDefinition: 'deployTaskDefinition',
+	ecsSendLogsData: 'ecsSendLogsData',
+	monitorDashboard: 'monitorDashboard',
+	setupCentralCollector: 'setupCentralCollector',
+	setupAzureEventsHub: 'setupAzureEventsHub',
+	sendTraces: 'sendTraces',
+	sendLogs: 'sendLogs',
+	sendMetrics: 'sendMetrics',
+	sendHostmetricsLogs: 'sendHostmetricsLogs',
 };
 
 export const DataSourceStep: SelectedModuleStepProps = {

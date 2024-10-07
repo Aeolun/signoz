@@ -1,6 +1,6 @@
-import { ColumnType } from 'antd/es/table';
+import type { ColumnType } from 'antd/es/table';
 
-import { DataSetProps } from '../types';
+import type { DataSetProps } from '../types';
 import Label from './Label';
 
 export const getLabel = (

@@ -7,12 +7,12 @@ import {
 import { unparse } from 'papaparse';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import {
+import type {
 	IBuilderQuery,
 	TagFilter,
 } from 'types/api/queryBuilder/queryBuilderData';
 
-import { WhereClauseConfig } from './useAutoComplete';
+import type { WhereClauseConfig } from './useAutoComplete';
 
 /**
  * Helper for formatting a TagFilter object into filter item strings
@@ -55,9 +55,10 @@ export const useTag = (
 	setSearchKey: (value: string) => void,
 	whereClauseConfig?: WhereClauseConfig,
 ): IUseTag => {
-	const initTagsData = useMemo(() => queryFilterTags(query?.filters), [
-		query?.filters,
-	]);
+	const initTagsData = useMemo(
+		() => queryFilterTags(query?.filters),
+		[query?.filters],
+	);
 
 	const [tags, setTags] = useState<string[]>(initTagsData);
 

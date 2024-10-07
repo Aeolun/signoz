@@ -1,4 +1,4 @@
-import { ToggleGraphProps } from 'components/Graph/types';
+import type { ToggleGraphProps } from 'components/Graph/types';
 import Uplot from 'components/Uplot';
 import GraphManager from 'container/GridCardLayout/GridCard/FullView/GraphManager';
 import { getLocalStorageGraphVisibilityState } from 'container/GridCardLayout/GridCard/utils';
@@ -9,7 +9,7 @@ import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { useEffect, useMemo, useRef } from 'react';
 
 import { buildHistogramData } from './histogram';
-import { PanelWrapperProps } from './panelWrapper.types';
+import type { PanelWrapperProps } from './panelWrapper.types';
 
 function HistogramPanelWrapper({
 	queryResponse,
@@ -44,12 +44,11 @@ function HistogramPanelWrapper({
 	const lineChartRef = useRef<ToggleGraphProps>();
 
 	useEffect(() => {
-		const {
-			graphVisibilityStates: localStoredVisibilityState,
-		} = getLocalStorageGraphVisibilityState({
-			apiResponse: queryResponse.data?.payload.data.result || [],
-			name: widget.id,
-		});
+		const { graphVisibilityStates: localStoredVisibilityState } =
+			getLocalStorageGraphVisibilityState({
+				apiResponse: queryResponse.data?.payload.data.result || [],
+				name: widget.id,
+			});
 		if (setGraphVisibility) {
 			setGraphVisibility(localStoredVisibilityState);
 		}

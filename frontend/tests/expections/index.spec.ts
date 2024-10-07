@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import ROUTES from 'constants/routes';
 
 import successAllErrors from '../fixtures/api/allErrors/200.json';
@@ -84,7 +84,7 @@ test.describe('Expections page', async () => {
 	});
 
 	test('Should render the page with 500 status in antd notification with no data antd table', async () => {
-		await page.route(`**/listErrors**`, (route) =>
+		await page.route('**/listErrors**', (route) =>
 			route.fulfill({
 				status: 500,
 				contentType: JsonApplicationType,
@@ -110,7 +110,7 @@ test.describe('Expections page', async () => {
 
 	test('Should render data in antd table', async () => {
 		await Promise.all([
-			page.route(`**/listErrors**`, (route) =>
+			page.route('**/listErrors**', (route) =>
 				route.fulfill({
 					status: 200,
 					contentType: JsonApplicationType,

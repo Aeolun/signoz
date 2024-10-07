@@ -2,7 +2,7 @@ import '../GridCardLayout.styles.scss';
 
 import { Skeleton, Typography } from 'antd';
 import cx from 'classnames';
-import { ToggleGraphProps } from 'components/Graph/types';
+import type { ToggleGraphProps } from 'components/Graph/types';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
 import { QueryParams } from 'constants/query';
 import { PANEL_TYPES } from 'constants/queryBuilder';
@@ -12,11 +12,11 @@ import { useNotifications } from 'hooks/useNotifications';
 import useUrlQuery from 'hooks/useUrlQuery';
 import createQueryParams from 'lib/createQueryParams';
 import history from 'lib/history';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import {
-	Dispatch,
-	SetStateAction,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useRef,
@@ -24,15 +24,15 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { Dashboard } from 'types/api/dashboard/getAll';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { Dashboard } from 'types/api/dashboard/getAll';
+import type AppReducer from 'types/reducer/app';
 import { v4 } from 'uuid';
 
 import WidgetHeader from '../WidgetHeader';
 import FullView from './FullView';
 import { Modal } from './styles';
-import { WidgetGraphComponentProps } from './types';
+import type { WidgetGraphComponentProps } from './types';
 import { getLocalStorageGraphVisibilityState } from './utils';
 
 function WidgetGraphComponent({
@@ -220,12 +220,11 @@ function WidgetGraphComponent({
 		existingSearchParams.delete(QueryParams.expandedWidgetId);
 		const updatedQueryParams = Object.fromEntries(existingSearchParams.entries());
 		if (queryResponse.data?.payload) {
-			const {
-				graphVisibilityStates: localStoredVisibilityState,
-			} = getLocalStorageGraphVisibilityState({
-				apiResponse: queryResponse.data?.payload?.data?.result,
-				name: widget.id,
-			});
+			const { graphVisibilityStates: localStoredVisibilityState } =
+				getLocalStorageGraphVisibilityState({
+					apiResponse: queryResponse.data?.payload?.data?.result,
+					name: widget.id,
+				});
 			setGraphVisibility(localStoredVisibilityState);
 		}
 		history.push({

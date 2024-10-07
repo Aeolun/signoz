@@ -1,7 +1,7 @@
 import { initialFilters } from 'constants/queryBuilder';
 import { getPaginationQueryData } from 'lib/newQueryBuilder/getPaginationQueryData';
-import { ILog } from 'types/api/logs/log';
-import {
+import type { ILog } from 'types/api/logs/log';
+import type {
 	IBuilderQuery,
 	OrderByPayload,
 	Query,

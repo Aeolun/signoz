@@ -2,7 +2,7 @@ import './importJSON.styles.scss';
 
 import { red } from '@ant-design/colors';
 import { ExclamationCircleTwoTone } from '@ant-design/icons';
-import MEditor, { Monaco } from '@monaco-editor/react';
+import MEditor, { type Monaco } from '@monaco-editor/react';
 import { Color } from '@signozhq/design-tokens';
 import {
 	Button,
@@ -11,7 +11,7 @@ import {
 	Space,
 	Typography,
 	Upload,
-	UploadProps,
+	type UploadProps,
 } from 'antd';
 import logEvent from 'api/common/logEvent';
 import createDashboard from 'api/dashboard/create';
@@ -27,7 +27,7 @@ import { ExternalLink, Github, MonitorDot, MoveRight, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { generatePath } from 'react-router-dom';
-import { DashboardData } from 'types/api/dashboard/getAll';
+import type { DashboardData } from 'types/api/dashboard/getAll';
 
 function ImportJSON({
 	isImportJSONModalVisible,
@@ -37,9 +37,8 @@ function ImportJSON({
 	const [jsonData, setJsonData] = useState<Record<string, unknown>>();
 	const { t } = useTranslation(['dashboard', 'common']);
 	const [isUploadJSONError, setIsUploadJSONError] = useState<boolean>(false);
-	const [isCreateDashboardError, setIsCreateDashboardError] = useState<boolean>(
-		false,
-	);
+	const [isCreateDashboardError, setIsCreateDashboardError] =
+		useState<boolean>(false);
 	const [isFeatureAlert, setIsFeatureAlert] = useState<boolean>(false);
 
 	const [dashboardCreating, setDashboardCreating] = useState<boolean>(false);

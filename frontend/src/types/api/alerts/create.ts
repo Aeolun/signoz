@@ -1,4 +1,4 @@
-import { AlertDef } from 'types/api/alerts/def';
+import type { AlertDef } from 'types/api/alerts/def';
 
 export interface Props {
 	data: AlertDef;

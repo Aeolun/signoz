@@ -1,15 +1,15 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { findByText, render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import i18n from 'ReactI18';
 import { I18nextProvider } from 'react-i18next';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import i18n from 'ReactI18';
 import store from 'store';
 
-import { pipelineApiResponseMockData } from '../mocks/pipeline';
 import PipelineListsView from '../PipelineListsView';
+import { pipelineApiResponseMockData } from '../mocks/pipeline';
 
 jest.mock('uplot', () => {
 	const paths = {
@@ -84,13 +84,9 @@ describe('PipelinePage container test', () => {
 		);
 
 		// table headers assertions
-		[
-			'Pipeline Name',
-			'Filters',
-			'Last Edited',
-			'Edited By',
-			'Actions',
-		].forEach((text) => expect(getByText(text)).toBeInTheDocument());
+		['Pipeline Name', 'Filters', 'Last Edited', 'Edited By', 'Actions'].forEach(
+			(text) => expect(getByText(text)).toBeInTheDocument(),
+		);
 
 		// content assertion
 		expect(container.querySelectorAll('.ant-table-row').length).toBe(2);
@@ -192,7 +188,7 @@ describe('PipelinePage container test', () => {
 		});
 
 		await userEvent.click(
-			((deleteConfirmationModal as unknown) as HTMLElement)?.querySelector(
+			(deleteConfirmationModal as unknown as HTMLElement)?.querySelector(
 				'.ant-modal-confirm-btns .ant-btn-primary',
 			) as HTMLElement,
 		);
@@ -242,7 +238,7 @@ describe('PipelinePage container test', () => {
 
 		expect(
 			await findByText(
-				(viewPipelineModal as unknown) as HTMLElement,
+				viewPipelineModal as unknown as HTMLElement,
 				'Simulate Processing',
 			),
 		).toBeInTheDocument();
@@ -265,7 +261,7 @@ describe('PipelinePage container test', () => {
 		});
 
 		await userEvent.click(
-			((deleteConfirmationModal as unknown) as HTMLElement)?.querySelector(
+			(deleteConfirmationModal as unknown as HTMLElement)?.querySelector(
 				'.ant-modal-confirm-btns .ant-btn-primary',
 			) as HTMLElement,
 		);

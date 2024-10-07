@@ -2,13 +2,13 @@ import {
 	checkCommaInValue,
 	getTagToken,
 } from 'container/QueryBuilder/filters/QueryBuilderSearch/utils';
-import { Option } from 'container/QueryBuilder/type';
+import type { Option } from 'container/QueryBuilder/type';
 import { transformStringWithPrefix } from 'lib/query/transformStringWithPrefix';
 import { isEmpty } from 'lodash-es';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
-import { WhereClauseConfig } from './useAutoComplete';
+import type { WhereClauseConfig } from './useAutoComplete';
 import { useOperators } from './useOperators';
 
 export const WHERE_CLAUSE_CUSTOM_SUFFIX = '-custom';
@@ -70,14 +70,14 @@ export const useOptions = (
 							label: searchValue,
 							value: searchValue,
 						},
-				  ]
+					]
 				: [
 						{
 							label: searchValue,
 							value: searchValue,
 						},
 						...values,
-				  ];
+					];
 		},
 		[getKeyOpValue, result],
 	);
@@ -90,7 +90,7 @@ export const useOptions = (
 			const filteredOperators = !isEmpty(partialOperator)
 				? operators?.filter((operator) =>
 						operator.startsWith(partialOperator?.toUpperCase()),
-				  )
+					)
 				: operators;
 			const operatorsOptions = filteredOperators?.map((operator) => ({
 				value: `${partialKey} ${operator} `,
@@ -121,7 +121,7 @@ export const useOptions = (
 							value: `${searchValue} `,
 						},
 						...getOptionsFromKeys(keys),
-				  ]
+					]
 				: getOptionsFromKeys(keys);
 		} else if (key && !operator) {
 			newOptions = getKeyOperatorOptions(key);

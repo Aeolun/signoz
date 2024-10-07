@@ -21,13 +21,13 @@ import { useTranslation } from 'react-i18next';
 
 import {
 	ChannelType,
-	EmailChannel,
-	MsTeamsChannel,
-	OpsgenieChannel,
-	PagerChannel,
-	SlackChannel,
+	type EmailChannel,
+	type MsTeamsChannel,
+	type OpsgenieChannel,
+	type PagerChannel,
+	type SlackChannel,
 	ValidatePagerChannel,
-	WebhookChannel,
+	type WebhookChannel,
 } from './config';
 import {
 	EmailInitialConfig,

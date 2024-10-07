@@ -8,7 +8,7 @@ import {
 	CaretUpFilled,
 	LogoutOutlined,
 } from '@ant-design/icons';
-import { Button, Divider, MenuProps, Space, Typography } from 'antd';
+import { Button, Divider, type MenuProps, Space, Typography } from 'antd';
 import { Logout } from 'api/utils';
 import ROUTES from 'constants/routes';
 import Config from 'container/ConfigDropdown';
@@ -16,9 +16,9 @@ import { useIsDarkMode, useThemeMode } from 'hooks/useDarkMode';
 import useLicense, { LICENSE_PLAN_STATUS } from 'hooks/useLicense';
 import history from 'lib/history';
 import {
-	Dispatch,
-	KeyboardEvent,
-	SetStateAction,
+	type Dispatch,
+	type KeyboardEvent,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -26,9 +26,9 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { License } from 'types/api/licenses/def';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { License } from 'types/api/licenses/def';
+import type AppReducer from 'types/reducer/app';
 import { getFormattedDate, getRemainingDays } from 'utils/timeUtils';
 
 import CurrentOrganization from './CurrentOrganization';
