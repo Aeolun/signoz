@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import { LogsExplorerShortcuts } from 'constants/shortcuts/logsExplorerShortcuts';
 import { useKeyboardHotkeys } from 'hooks/hotkeys/useKeyboardHotkeys';
 import { Play, X } from 'lucide-react';
-import { MutableRefObject, useEffect } from 'react';
+import { type MutableRefObject, useEffect } from 'react';
 import { useQueryClient } from 'react-query';
 
 interface RightToolbarActionsProps {

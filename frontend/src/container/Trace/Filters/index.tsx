@@ -1,4 +1,4 @@
-import { TraceFilterEnum } from 'types/reducer/trace';
+import type { TraceFilterEnum } from 'types/reducer/trace';
 
 import Panel from './Panel';
 

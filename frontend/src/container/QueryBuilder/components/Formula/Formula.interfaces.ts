@@ -1,5 +1,5 @@
-import { QueryBuilderProps } from 'container/QueryBuilder/QueryBuilder.interfaces';
-import {
+import type { QueryBuilderProps } from 'container/QueryBuilder/QueryBuilder.interfaces';
+import type {
 	IBuilderFormula,
 	IBuilderQuery,
 } from 'types/api/queryBuilder/queryBuilderData';

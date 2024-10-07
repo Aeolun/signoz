@@ -5,16 +5,16 @@ import {
 	replaceStringWithMaxLength,
 	tagRegexp,
 } from 'container/QueryBuilder/filters/QueryBuilderSearch/utils';
-import { Option } from 'container/QueryBuilder/type';
+import type { Option } from 'container/QueryBuilder/type';
 import { parse } from 'papaparse';
-import { KeyboardEvent, useCallback, useState } from 'react';
-import {
+import { type KeyboardEvent, useCallback, useState } from 'react';
+import type {
 	IBuilderQuery,
 	TagFilter,
 } from 'types/api/queryBuilder/queryBuilderData';
 
 import { useFetchKeysAndValues } from './useFetchKeysAndValues';
-import { useOptions, WHERE_CLAUSE_CUSTOM_SUFFIX } from './useOptions';
+import { WHERE_CLAUSE_CUSTOM_SUFFIX, useOptions } from './useOptions';
 import { useSetCurrentKeyAndOperator } from './useSetCurrentKeyAndOperator';
 import { useTag } from './useTag';
 import { useTagValidation } from './useTagValidation';

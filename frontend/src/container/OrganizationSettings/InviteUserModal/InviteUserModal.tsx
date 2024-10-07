@@ -1,12 +1,12 @@
 import { Button, Form, Modal } from 'antd';
-import { FormInstance } from 'antd/lib';
+import type { FormInstance } from 'antd/lib';
 import getPendingInvites from 'api/user/getPendingInvites';
 import sendInvite from 'api/user/sendInvite';
 import ROUTES from 'constants/routes';
 import { useNotifications } from 'hooks/useNotifications';
 import {
-	Dispatch,
-	SetStateAction,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useState,
@@ -14,13 +14,13 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { PayloadProps } from 'types/api/user/getPendingInvites';
-import AppReducer from 'types/reducer/app';
-import { ROLES } from 'types/roles';
+import type { AppState } from 'store/reducers';
+import type { PayloadProps } from 'types/api/user/getPendingInvites';
+import type AppReducer from 'types/reducer/app';
+import type { ROLES } from 'types/roles';
 
 import InviteTeamMembers from '../InviteTeamMembers';
-import { InviteMemberFormValues } from '../PendingInvitesContainer';
+import type { InviteMemberFormValues } from '../PendingInvitesContainer';
 
 export interface InviteUserModalProps {
 	isInviteTeamMemberModalOpen: boolean;
@@ -91,30 +91,28 @@ function InviteUserModal(props: InviteUserModalProps): JSX.Element {
 		async (values: InviteMemberFormValues): Promise<void> => {
 			try {
 				setIsInvitingMembers?.(true);
-				values?.members?.forEach(
-					async (member): Promise<void> => {
-						const { error, statusCode } = await sendInvite({
-							email: member.email,
-							name: member?.name,
-							role: member.role,
-							frontendBaseUrl: window.location.origin,
-						});
+				values?.members?.forEach(async (member): Promise<void> => {
+					const { error, statusCode } = await sendInvite({
+						email: member.email,
+						name: member?.name,
+						role: member.role,
+						frontendBaseUrl: window.location.origin,
+					});
 
-						if (statusCode !== 200) {
-							notifications.error({
-								message:
-									error ||
-									t('something_went_wrong', {
-										ns: 'common',
-									}),
-							});
-						} else if (statusCode === 200) {
-							notifications.success({
-								message: 'Invite sent successfully',
-							});
-						}
-					},
-				);
+					if (statusCode !== 200) {
+						notifications.error({
+							message:
+								error ||
+								t('something_went_wrong', {
+									ns: 'common',
+								}),
+						});
+					} else if (statusCode === 200) {
+						notifications.success({
+							message: 'Invite sent successfully',
+						});
+					}
+				});
 
 				setTimeout(async () => {
 					const { data, status } = await getPendingInvitesResponse.refetch();

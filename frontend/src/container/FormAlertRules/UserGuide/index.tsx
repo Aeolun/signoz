@@ -103,6 +103,7 @@ function UserGuide({ queryType }: UserGuideProps): JSX.Element {
 								key={1}
 								target="_blank"
 								href=" https://signoz.io/docs/tutorial/writing-clickhouse-queries-in-dashboard/?utm_source=frontend&utm_medium=product&utm_id=alerts</>"
+								rel="noreferrer"
 							/>,
 						]}
 					/>

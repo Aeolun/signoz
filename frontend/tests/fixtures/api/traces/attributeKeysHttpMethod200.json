@@ -1,21 +1,21 @@
 {
-	"status": "success",
-	"data": {
-		"attributeKeys": [
-			{
-				"key": "externalHttpMethod",
-				"dataType": "string",
-				"type": "tag",
-				"isColumn": true,
-				"isJSON": false
-			},
-			{
-				"key": "httpMethod",
-				"dataType": "string",
-				"type": "tag",
-				"isColumn": true,
-				"isJSON": false
-			}
-		]
-	}
+  "status": "success",
+  "data": {
+    "attributeKeys": [
+      {
+        "key": "externalHttpMethod",
+        "dataType": "string",
+        "type": "tag",
+        "isColumn": true,
+        "isJSON": false
+      },
+      {
+        "key": "httpMethod",
+        "dataType": "string",
+        "type": "tag",
+        "isColumn": true,
+        "isJSON": false
+      }
+    ]
+  }
 }

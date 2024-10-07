@@ -1,8 +1,8 @@
 import './typicalOverlayScrollbar.scss';
 
-import { PartialOptions } from 'overlayscrollbars';
+import type { PartialOptions } from 'overlayscrollbars';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
-import { CSSProperties, ReactElement } from 'react';
+import type { CSSProperties, ReactElement } from 'react';
 
 interface Props {
 	children: ReactElement;

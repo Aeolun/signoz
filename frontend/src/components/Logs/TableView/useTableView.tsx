@@ -2,7 +2,7 @@ import './useTableView.styles.scss';
 
 import Convert from 'ansi-to-html';
 import { Typography } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import cx from 'classnames';
 import { unescapeString } from 'container/LogDetailedView/utils';
 import dayjs from 'dayjs';
@@ -20,7 +20,7 @@ import {
 	getDefaultCellStyle,
 } from './config';
 import { TableBodyContent } from './styles';
-import {
+import type {
 	ColumnTypeRender,
 	UseTableViewProps,
 	UseTableViewResult,
@@ -42,9 +42,10 @@ export const useTableView = (props: UseTableViewProps): UseTableViewResult => {
 
 	const isDarkMode = useIsDarkMode();
 
-	const flattenLogData = useMemo(() => logs.map((log) => FlatLogData(log)), [
-		logs,
-	]);
+	const flattenLogData = useMemo(
+		() => logs.map((log) => FlatLogData(log)),
+		[logs],
+	);
 
 	const columns: ColumnsType<Record<string, unknown>> = useMemo(() => {
 		const fieldColumns: ColumnsType<Record<string, unknown>> = fields

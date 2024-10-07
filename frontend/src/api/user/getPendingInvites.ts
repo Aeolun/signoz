@@ -1,14 +1,14 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps } from 'types/api/user/getPendingInvites';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps } from 'types/api/user/getPendingInvites';
 
 const getPendingInvites = async (): Promise<
 	SuccessResponse<PayloadProps> | ErrorResponse
 > => {
 	try {
-		const response = await axios.get(`/invite`);
+		const response = await axios.get('/invite');
 
 		return {
 			statusCode: 200,

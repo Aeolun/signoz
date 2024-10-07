@@ -1,14 +1,14 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/logs/getLogsAggregate';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/logs/getLogsAggregate';
 
 const GetLogsAggregate = async (
 	props: Props,
 ): Promise<SuccessResponse<PayloadProps> | ErrorResponse> => {
 	try {
-		const data = await axios.get(`/logs/aggregate`, {
+		const data = await axios.get('/logs/aggregate', {
 			params: props,
 		});
 

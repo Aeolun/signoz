@@ -1,9 +1,9 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { AlertRuleTimelineGraphResponsePayload } from 'types/api/alerts/def';
-import { GetTimelineGraphRequestProps } from 'types/api/alerts/timelineGraph';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { AlertRuleTimelineGraphResponsePayload } from 'types/api/alerts/def';
+import type { GetTimelineGraphRequestProps } from 'types/api/alerts/timelineGraph';
 
 const timelineGraph = async (
 	props: GetTimelineGraphRequestProps,

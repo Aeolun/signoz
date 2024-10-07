@@ -10,7 +10,7 @@ import {
 	Dropdown,
 	Flex,
 	Input,
-	MenuProps,
+	type MenuProps,
 	Modal,
 	Popover,
 	Skeleton,
@@ -20,10 +20,10 @@ import {
 	Tooltip,
 	Typography,
 } from 'antd';
-import { TableProps } from 'antd/lib';
+import type { TableProps } from 'antd/lib';
 import logEvent from 'api/common/logEvent';
 import createDashboard from 'api/dashboard/create';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import cx from 'classnames';
 import LaunchChatSupport from 'components/LaunchChatSupport/LaunchChatSupport';
 import { dashboardListMessage } from 'components/LaunchChatSupport/util';
@@ -60,8 +60,8 @@ import {
 import { handleContactSupport } from 'pages/Integrations/utils';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import {
-	ChangeEvent,
-	Key,
+	type ChangeEvent,
+	type Key,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -70,18 +70,18 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { generatePath, Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import { useCopyToClipboard } from 'react-use';
-import { AppState } from 'store/reducers';
-import { Dashboard } from 'types/api/dashboard/getAll';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { Dashboard } from 'types/api/dashboard/getAll';
+import type AppReducer from 'types/reducer/app';
 import { isCloudUser } from 'utils/app';
 
 import DashboardTemplatesModal from './DashboardTemplates/DashboardTemplatesModal';
 import ImportJSON from './ImportJSON';
 import { DeleteButton } from './TableComponents/DeleteButton';
 import {
-	DashboardDynamicColumns,
+	type DashboardDynamicColumns,
 	DynamicColumns,
 	filterDashboard,
 } from './utils';
@@ -98,10 +98,8 @@ function DashboardsList(): JSX.Element {
 
 	const { role } = useSelector<AppState, AppReducer>((state) => state.app);
 
-	const {
-		listSortOrder: sortOrder,
-		setListSortOrder: setSortOrder,
-	} = useDashboard();
+	const { listSortOrder: sortOrder, setListSortOrder: setSortOrder } =
+		useDashboard();
 
 	const [searchString, setSearchString] = useState<string>(
 		sortOrder.search || '',
@@ -111,23 +109,18 @@ function DashboardsList(): JSX.Element {
 		role,
 	);
 
-	const [
-		showNewDashboardTemplatesModal,
-		setShowNewDashboardTemplatesModal,
-	] = useState(false);
+	const [showNewDashboardTemplatesModal, setShowNewDashboardTemplatesModal] =
+		useState(false);
 
 	const { t } = useTranslation('dashboard');
 
-	const [
-		isImportJSONModalVisible,
-		setIsImportJSONModalVisible,
-	] = useState<boolean>(false);
+	const [isImportJSONModalVisible, setIsImportJSONModalVisible] =
+		useState<boolean>(false);
 
 	const [uploadedGrafana, setUploadedGrafana] = useState<boolean>(false);
 	const [isFilteringDashboards, setIsFilteringDashboards] = useState(false);
-	const [isConfigureMetadataOpen, setIsConfigureMetadata] = useState<boolean>(
-		false,
-	);
+	const [isConfigureMetadataOpen, setIsConfigureMetadata] =
+		useState<boolean>(false);
 
 	const getLocalStorageDynamicColumns = (): DashboardDynamicColumns => {
 		const dashboardDynamicColumnsString = localStorage.getItem('dashboard');
@@ -384,7 +377,7 @@ function DashboardsList(): JSX.Element {
 		const monthsDiff = currentTime.diff(lastRefresh, 'months');
 
 		if (isEmpty(time)) {
-			return `No updates yet!`;
+			return 'No updates yet!';
 		}
 
 		if (monthsDiff > 0) {

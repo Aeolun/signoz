@@ -1,14 +1,14 @@
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import { Typography } from 'antd/lib';
 import { OPERATORS } from 'constants/queryBuilder';
 // import Typography from 'antd/es/typography/Typography';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
-import { ReactNode } from 'react';
-import { Widgets } from 'types/api/dashboard/getAll';
-import { IField } from 'types/api/logs/fields';
-import { ILog } from 'types/api/logs/log';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { ReactNode } from 'react';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type { IField } from 'types/api/logs/fields';
+import type { ILog } from 'types/api/logs/log';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
 import { v4 as uuid } from 'uuid';
 
 export const getLogPanelColumnsList = (

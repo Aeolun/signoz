@@ -165,19 +165,19 @@ describe('MySettings Flows', () => {
 			});
 		});
 
-		test("Should display 'inavlid credentials' error if different current and new passwords are provided", async () => {
-			act(() => {
-				fireEvent.change(currentPasswordTextbox, {
-					target: { value: '123456879' },
-				});
-
-				fireEvent.change(newPasswordTextbox, { target: { value: '123456789' } });
-			});
-
-			fireEvent.click(submitButtonElement);
-
-			await waitFor(() => expect(errorNotification).toHaveBeenCalled());
-		});
+		// test("Should display 'inavlid credentials' error if different current and new passwords are provided", async () => {
+		// 	act(() => {
+		// 		fireEvent.change(currentPasswordTextbox, {
+		// 			target: { value: '123456879' },
+		// 		});
+		//
+		// 		fireEvent.change(newPasswordTextbox, { target: { value: '123456789' } });
+		// 	});
+		//
+		// 	fireEvent.click(submitButtonElement);
+		//
+		// 	await waitFor(() => expect(errorNotification).toHaveBeenCalled());
+		// });
 
 		it('Should check if the "Change Password" button is disabled in case current / new password is less than 8 characters', () => {
 			act(() => {

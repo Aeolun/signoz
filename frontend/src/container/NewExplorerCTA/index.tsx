@@ -5,7 +5,7 @@ import history from 'lib/history';
 import { useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { buttonText, RIBBON_STYLES } from './config';
+import { RIBBON_STYLES, buttonText } from './config';
 
 function NewExplorerCTA(): JSX.Element | null {
 	const location = useLocation();

@@ -1,3 +1,3 @@
-import { IFields } from './fields';
+import type { IFields } from './fields';
 
 export type PayloadProps = IFields;

@@ -1,4 +1,4 @@
-import { TopOperationList } from '../TopOperationsTable';
+import type { TopOperationList } from '../TopOperationsTable';
 
 interface TopOperation {
 	numCalls: number;
@@ -16,4 +16,4 @@ export const getTopOperationList = ({
 		numCalls,
 		p95: 0,
 		p99: 0,
-	} as TopOperationList);
+	}) as TopOperationList;

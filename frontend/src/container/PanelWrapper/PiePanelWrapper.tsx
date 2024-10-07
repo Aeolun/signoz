@@ -9,9 +9,9 @@ import { themeColors } from 'constants/theme';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { generateColor } from 'lib/uPlotLib/utils/generateColor';
 import { useRef, useState } from 'react';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
-import { PanelWrapperProps, TooltipData } from './panelWrapper.types';
+import type { PanelWrapperProps, TooltipData } from './panelWrapper.types';
 import { getLabel, lightenColor, tooltipStyles } from './utils';
 
 // refernce: https://www.youtube.com/watch?v=bL3P9CqQkKw
@@ -103,7 +103,7 @@ function PiePanelWrapper({
 										label: string;
 										value: string;
 										color: string;
-									}): number => parseFloat(data.value)}
+									}): number => Number.parseFloat(data.value)}
 									outerRadius={({ data }): number => {
 										if (!active) return half - 3;
 										return data.label === active.label ? half : half - 3;

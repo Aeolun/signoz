@@ -1,10 +1,10 @@
-import { QueryObserverBaseResult } from 'react-query';
-import { PayloadProps as ConfigPayload } from 'types/api/dynamicConfigs/getDynamicConfigs';
-import { FeatureFlagProps as FeatureFlagPayload } from 'types/api/features/getFeaturesFlags';
-import { PayloadProps as OrgPayload } from 'types/api/user/getOrganization';
-import { PayloadProps as UserPayload } from 'types/api/user/getUser';
-import { UserFlags } from 'types/api/user/setFlags';
-import { ROLES } from 'types/roles';
+import type { QueryObserverBaseResult } from 'react-query';
+import type { PayloadProps as ConfigPayload } from 'types/api/dynamicConfigs/getDynamicConfigs';
+import type { FeatureFlagProps as FeatureFlagPayload } from 'types/api/features/getFeaturesFlags';
+import type { PayloadProps as OrgPayload } from 'types/api/user/getOrganization';
+import type { PayloadProps as UserPayload } from 'types/api/user/getUser';
+import type { UserFlags } from 'types/api/user/setFlags';
+import type { ROLES } from 'types/roles';
 
 export interface User {
 	accessJwt: string;

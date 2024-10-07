@@ -1,5 +1,5 @@
-import { Form, Input, InputProps, InputRef } from 'antd';
-import {
+import { Form, Input, type InputProps, type InputRef } from 'antd';
+import type {
 	ChangeEventHandler,
 	FocusEventHandler,
 	KeyboardEventHandler,

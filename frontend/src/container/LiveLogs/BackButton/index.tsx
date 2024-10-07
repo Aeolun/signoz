@@ -2,8 +2,8 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { QueryParams } from 'constants/query';
 import {
-	initialQueryBuilderFormValuesMap,
 	PANEL_TYPES,
+	initialQueryBuilderFormValuesMap,
 } from 'constants/queryBuilder';
 import ROUTES from 'constants/routes';
 import { useGetCompositeQueryParam } from 'hooks/queryBuilder/useGetCompositeQueryParam';

@@ -1,4 +1,4 @@
-import { Action, ActionTypes, ServiceMapStore } from 'store/actions';
+import { type Action, ActionTypes, type ServiceMapStore } from 'store/actions';
 
 const initialState: ServiceMapStore = {
 	items: [],
@@ -7,9 +7,9 @@ const initialState: ServiceMapStore = {
 
 export const ServiceMapReducer = (
 	state = initialState,
-	action: Action,
+	action?: Action,
 ): ServiceMapStore => {
-	switch (action.type) {
+	switch (action?.type) {
 		case ActionTypes.getServiceMapItems:
 			return {
 				...state,

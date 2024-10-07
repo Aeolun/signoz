@@ -1,5 +1,5 @@
-import { TableProps } from 'antd';
-import { CSSProperties } from 'react';
+import type { TableProps } from 'antd';
+import type { CSSProperties } from 'react';
 
 export function getDefaultCellStyle(isDarkMode?: boolean): CSSProperties {
 	return {

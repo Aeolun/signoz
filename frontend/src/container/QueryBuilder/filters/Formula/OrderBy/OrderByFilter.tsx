@@ -5,7 +5,7 @@ import { MetricAggregateOperator } from 'types/common/queryBuilder';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { selectStyle } from '../../QueryBuilderSearch/config';
-import { OrderByProps } from './types';
+import type { OrderByProps } from './types';
 import { useOrderByFormulaFilter } from './useOrderByFormulaFilter';
 
 function OrderByFilter({

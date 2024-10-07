@@ -8,17 +8,16 @@ import { CreditCard, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
-import { License } from 'types/api/licenses/def';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
+import type { License } from 'types/api/licenses/def';
 
 export default function ChatSupportGateway(): JSX.Element {
 	const { notifications } = useNotifications();
 	const [activeLicense, setActiveLicense] = useState<License | null>(null);
 
-	const [isAddCreditCardModalOpen, setIsAddCreditCardModalOpen] = useState(
-		false,
-	);
+	const [isAddCreditCardModalOpen, setIsAddCreditCardModalOpen] =
+		useState(false);
 
 	const { data: licenseData, isFetching } = useLicense();
 
@@ -61,7 +60,7 @@ export default function ChatSupportGateway(): JSX.Element {
 	const { pathname } = useLocation();
 	const handleAddCreditCard = (): void => {
 		logEvent('Add Credit card modal: Clicked', {
-			source: `intercom icon`,
+			source: 'intercom icon',
 			page: pathname,
 		});
 
@@ -79,7 +78,7 @@ export default function ChatSupportGateway(): JSX.Element {
 					className="chat-support-gateway-btn"
 					onClick={(): void => {
 						logEvent('Disabled Chat Support: Clicked', {
-							source: `intercom icon`,
+							source: 'intercom icon',
 							page: pathname,
 						});
 

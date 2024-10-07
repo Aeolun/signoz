@@ -6,7 +6,7 @@ import { memo, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { TitleContainer, ValueContainer } from './styles';
-import { GridValueComponentProps } from './types';
+import type { GridValueComponentProps } from './types';
 
 function GridValueComponent({
 	data,

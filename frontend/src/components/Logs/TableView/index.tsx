@@ -2,7 +2,7 @@ import { Table } from 'antd';
 
 // config
 import { tableScroll } from './config';
-import { LogsTableViewProps } from './types';
+import type { LogsTableViewProps } from './types';
 import { useTableView } from './useTableView';
 
 function LogsTableView(props: LogsTableViewProps): JSX.Element {

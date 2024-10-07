@@ -1,22 +1,22 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import { Table } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
+import type { ColumnsType } from 'antd/lib/table';
 import { dragColumnParams } from 'hooks/useDragColumns/configs';
 import { set } from 'lodash-es';
 import {
-	SyntheticEvent,
+	type SyntheticEvent,
 	useCallback,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
 import ReactDragListView from 'react-drag-listview';
-import { ResizeCallbackData } from 'react-resizable';
+import type { ResizeCallbackData } from 'react-resizable';
 
 import ResizableHeader from './ResizableHeader';
 import { DragSpanStyle } from './styles';
-import { ResizeTableProps } from './types';
+import type { ResizeTableProps } from './types';
 
 function ResizeTable({
 	columns,
@@ -27,17 +27,15 @@ function ResizeTable({
 	const [columnsData, setColumns] = useState<ColumnsType>([]);
 
 	const handleResize = useCallback(
-		(index: number) => (
-			_e: SyntheticEvent<Element>,
-			{ size }: ResizeCallbackData,
-		): void => {
-			const newColumns = [...columnsData];
-			newColumns[index] = {
-				...newColumns[index],
-				width: size.width,
-			};
-			setColumns(newColumns);
-		},
+		(index: number) =>
+			(_e: SyntheticEvent<Element>, { size }: ResizeCallbackData): void => {
+				const newColumns = [...columnsData];
+				newColumns[index] = {
+					...newColumns[index],
+					width: size.width,
+				};
+				setColumns(newColumns);
+			},
 		[columnsData],
 	);
 

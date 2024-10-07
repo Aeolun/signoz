@@ -1,5 +1,5 @@
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
-import { ViewProps } from 'types/api/saveViews/types';
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type { ViewProps } from 'types/api/saveViews/types';
 import { DataSource } from 'types/common/queryBuilder';
 
 export const viewMockData: ViewProps[] = [

@@ -1,14 +1,14 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/trace/getTagValue';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/trace/getTagValue';
 
 const getTagValue = async (
 	props: Props,
 ): Promise<SuccessResponse<PayloadProps> | ErrorResponse> => {
 	try {
-		const response = await axios.post<PayloadProps>(`/getTagValues`, {
+		const response = await axios.post<PayloadProps>('/getTagValues', {
 			start: props.start.toString(),
 			end: props.end.toString(),
 			tagKey: {

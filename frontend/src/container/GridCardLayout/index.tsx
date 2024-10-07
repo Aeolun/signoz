@@ -1,4 +1,4 @@
-import { FullScreenHandle } from 'react-full-screen';
+import type { FullScreenHandle } from 'react-full-screen';
 
 import GraphLayoutContainer from './GridCardLayout';
 

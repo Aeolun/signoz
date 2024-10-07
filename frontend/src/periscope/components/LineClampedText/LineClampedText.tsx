@@ -1,6 +1,6 @@
 import './LineClampedText.styles.scss';
 
-import { Tooltip, TooltipProps } from 'antd';
+import { Tooltip, type TooltipProps } from 'antd';
 import { useEffect, useRef, useState } from 'react';
 
 function LineClampedText({

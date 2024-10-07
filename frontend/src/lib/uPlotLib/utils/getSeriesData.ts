@@ -3,8 +3,8 @@ import { PANEL_TYPES } from 'constants/queryBuilder';
 import { themeColors } from 'constants/theme';
 import getLabelName from 'lib/getLabelName';
 import { isUndefined } from 'lodash-es';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { QueryData } from 'types/api/widgets/getQuery';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { QueryData } from 'types/api/widgets/getQuery';
 
 import { drawStyles, lineInterpolations } from './constants';
 import { generateColor } from './generateColor';
@@ -74,8 +74,8 @@ const getSeries = ({
 			show: newGraphVisibilityStates
 				? newGraphVisibilityStates[i]
 				: !isUndefined(hiddenGraph)
-				? hiddenGraph[i]
-				: true,
+					? hiddenGraph[i]
+					: true,
 			label,
 			fill: panelType && panelType === PANEL_TYPES.BAR ? `${color}40` : undefined,
 			stroke: color,

@@ -1,5 +1,5 @@
-import { TagFilter } from '../queryBuilder/queryBuilderData';
-import { AlertDef } from './def';
+import type { TagFilter } from '../queryBuilder/queryBuilderData';
+import type { AlertDef } from './def';
 
 export interface GetTimelineTableRequestProps {
 	id: AlertDef['id'];

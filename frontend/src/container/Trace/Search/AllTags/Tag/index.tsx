@@ -1,11 +1,11 @@
 import { CloseOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
-import { Dispatch, SetStateAction } from 'react';
-import { TraceReducer } from 'types/reducer/trace';
+import type { Dispatch, SetStateAction } from 'react';
+import type { TraceReducer } from 'types/reducer/trace';
 
-import { Container, IconContainer, SelectComponent } from './styles';
 import TagsKey from './TagKey';
 import TagValue from './TagValue';
+import { Container, IconContainer, SelectComponent } from './styles';
 import { mapOperators } from './utils';
 
 const { Option } = Select;
@@ -94,13 +94,8 @@ export const AllMenu: AllMenuProps[] = [
 ];
 
 function SingleTags(props: AllTagsProps): JSX.Element {
-	const {
-		tag,
-		onCloseHandler,
-		setLocalSelectedTags,
-		index,
-		localSelectedTags,
-	} = props;
+	const { tag, onCloseHandler, setLocalSelectedTags, index, localSelectedTags } =
+		props;
 	const {
 		Key: selectedKey,
 		Operator: selectedOperator,

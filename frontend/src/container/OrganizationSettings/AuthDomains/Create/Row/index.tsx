@@ -1,5 +1,5 @@
 import { Button, Space, Typography } from 'antd';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { IconContainer, TitleContainer, TitleText } from './styles';
 

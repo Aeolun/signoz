@@ -1,7 +1,7 @@
 import { AllMenu } from 'container/Trace/Search/AllTags/Tag';
-import { TraceReducer } from 'types/reducer/trace';
+import type { TraceReducer } from 'types/reducer/trace';
 
-import { extractTagType, TagValueTypes } from './AllTags/Tag/utils';
+import { type TagValueTypes, extractTagType } from './AllTags/Tag/utils';
 
 type Tags = TraceReducer['selectedTags'];
 

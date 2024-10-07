@@ -9,8 +9,8 @@ import CustomTimePicker from 'components/CustomTimePicker/CustomTimePicker';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import { QueryParams } from 'constants/query';
 import {
-	initialQueryBuilderFormValuesMap,
 	PANEL_TYPES,
+	initialQueryBuilderFormValuesMap,
 } from 'constants/queryBuilder';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import ROUTES from 'constants/routes';
@@ -18,9 +18,9 @@ import {
 	constructCompositeQuery,
 	defaultLiveQueryDataConfig,
 } from 'container/LiveLogs/constants';
-import { QueryHistoryState } from 'container/LiveLogs/types';
+import type { QueryHistoryState } from 'container/LiveLogs/types';
 import NewExplorerCTA from 'container/NewExplorerCTA';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import useUrlQuery from 'hooks/useUrlQuery';
 import GetMinMax, { isValidTimeFormat } from 'lib/getMinMax';
@@ -31,31 +31,31 @@ import { Check, Copy, Info, Send, Undo } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useQueryClient } from 'react-query';
 import { connect, useSelector } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { type RouteComponentProps, withRouter } from 'react-router-dom';
 import { useCopyToClipboard } from 'react-use';
-import { bindActionCreators, Dispatch } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { type Dispatch, bindActionCreators } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { GlobalTimeLoading, UpdateTimeInterval } from 'store/actions';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 import AutoRefresh from '../AutoRefreshV2';
-import { DateTimeRangeType } from '../CustomDateTimeModal';
+import type { DateTimeRangeType } from '../CustomDateTimeModal';
 import { RelativeTimeMap } from '../DateTimeSelection/config';
+import RefreshText from './Refresh';
 import {
+	type CustomTimeType,
+	type LocalStorageTimeRange,
+	OLD_RELATIVE_TIME_VALUES,
+	type Time,
+	type TimeRange,
 	convertOldTimeToNewValidCustomTimeFormat,
-	CustomTimeType,
 	getDefaultOption,
 	getOptions,
-	LocalStorageTimeRange,
-	OLD_RELATIVE_TIME_VALUES,
-	Time,
-	TimeRange,
 } from './config';
-import RefreshText from './Refresh';
 import { Form, FormContainer, FormItem } from './styles';
 
 function DateTimeSelection({
@@ -84,42 +84,42 @@ function DateTimeSelection({
 	const [, handleCopyToClipboard] = useCopyToClipboard();
 	const [isURLCopied, setIsURLCopied] = useState(false);
 
-	const {
-		localstorageStartTime,
-		localstorageEndTime,
-	} = ((): LocalStorageTimeRange => {
-		const routes = getLocalStorageKey(LOCALSTORAGE.METRICS_TIME_IN_DURATION);
+	const { localstorageStartTime, localstorageEndTime } =
+		((): LocalStorageTimeRange => {
+			const routes = getLocalStorageKey(LOCALSTORAGE.METRICS_TIME_IN_DURATION);
 
-		if (routes !== null) {
-			const routesObject = JSON.parse(routes || '{}');
-			const selectedTime = routesObject[location.pathname];
+			if (routes !== null) {
+				const routesObject = JSON.parse(routes || '{}');
+				const selectedTime = routesObject[location.pathname];
 
-			if (selectedTime) {
-				let parsedSelectedTime: TimeRange;
-				try {
-					parsedSelectedTime = JSON.parse(selectedTime);
-				} catch {
-					parsedSelectedTime = selectedTime;
+				if (selectedTime) {
+					let parsedSelectedTime: TimeRange;
+					try {
+						parsedSelectedTime = JSON.parse(selectedTime);
+					} catch {
+						parsedSelectedTime = selectedTime;
+					}
+
+					if (isObject(parsedSelectedTime)) {
+						return {
+							localstorageStartTime: parsedSelectedTime.startTime,
+							localstorageEndTime: parsedSelectedTime.endTime,
+						};
+					}
+					return { localstorageStartTime: null, localstorageEndTime: null };
 				}
-
-				if (isObject(parsedSelectedTime)) {
-					return {
-						localstorageStartTime: parsedSelectedTime.startTime,
-						localstorageEndTime: parsedSelectedTime.endTime,
-					};
-				}
-				return { localstorageStartTime: null, localstorageEndTime: null };
 			}
-		}
-		return { localstorageStartTime: null, localstorageEndTime: null };
-	})();
+			return { localstorageStartTime: null, localstorageEndTime: null };
+		})();
 
 	const getTime = useCallback((): [number, number] | undefined => {
 		if (searchEndTime && searchStartTime) {
 			const startDate = dayjs(
-				new Date(parseInt(getTimeString(searchStartTime), 10)),
+				new Date(Number.parseInt(getTimeString(searchStartTime), 10)),
 			);
-			const endDate = dayjs(new Date(parseInt(getTimeString(searchEndTime), 10)));
+			const endDate = dayjs(
+				new Date(Number.parseInt(getTimeString(searchEndTime), 10)),
+			);
 
 			return [startDate.toDate().getTime() || 0, endDate.toDate().getTime() || 0];
 		}
@@ -139,9 +139,8 @@ function DateTimeSelection({
 
 	const [options, setOptions] = useState(getOptions(location.pathname));
 	const [refreshButtonHidden, setRefreshButtonHidden] = useState<boolean>(false);
-	const [customDateTimeVisible, setCustomDTPickerVisible] = useState<boolean>(
-		false,
-	);
+	const [customDateTimeVisible, setCustomDTPickerVisible] =
+		useState<boolean>(false);
 
 	const { stagedQuery, initQueryBuilderData, panelType } = useQueryBuilder();
 
@@ -169,14 +168,12 @@ function DateTimeSelection({
 			});
 
 			queryHistoryState = {
-				graphQueryPayload:
-					graphQuery && graphQuery[1]
-						? graphQuery[1].payload?.data.result || []
-						: [],
-				listQueryPayload:
-					listQuery && listQuery[1]
-						? listQuery[1].payload?.data?.newResult?.data?.result || []
-						: [],
+				graphQueryPayload: graphQuery?.[1]
+					? graphQuery[1].payload?.data.result || []
+					: [],
+				listQueryPayload: listQuery?.[1]
+					? listQuery[1].payload?.data?.newResult?.data?.result || []
+					: [],
 			};
 		}
 

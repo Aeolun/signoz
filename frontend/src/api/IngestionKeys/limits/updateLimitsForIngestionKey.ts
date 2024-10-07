@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-throw-literal */
 import { GatewayApiV1Instance } from 'api';
 import axios from 'axios';
-import {
+import type {
 	LimitSuccessProps,
 	UpdateLimitProps,
 } from 'types/api/ingestionKeys/limits/types';
@@ -48,17 +48,16 @@ const updateLimitForIngestionKey = async (
 			};
 
 			throw errResponse;
-		} else {
-			// Non-Axios error
-			const errResponse: ErrorResponse = {
-				statusCode: 500,
-				error: 'Unknown error',
-				message: 'An unknown error occurred',
-				payload: null,
-			};
-
-			throw errResponse;
 		}
+		// Non-Axios error
+		const errResponse: ErrorResponse = {
+			statusCode: 500,
+			error: 'Unknown error',
+			message: 'An unknown error occurred',
+			payload: null,
+		};
+
+		throw errResponse;
 	}
 };
 

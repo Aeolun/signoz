@@ -2,15 +2,15 @@ import './styles.scss';
 
 import { DEFAULT_ENTITY_VERSION } from 'constants/app';
 import {
+	PANEL_TYPES,
 	initialFilters,
 	initialQueriesMap,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
-import { Time } from 'container/TopNav/DateTimeSelection/config';
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
 import { useGetQueryRange } from 'hooks/queryBuilder/useGetQueryRange';
 import cloneDeep from 'lodash-es/cloneDeep';
 import { useMemo } from 'react';
-import { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 import { LogsAggregatorOperator } from 'types/common/queryBuilder';
 
 function LogsCountInInterval({

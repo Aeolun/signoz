@@ -1,12 +1,12 @@
-import { ITraceMetaData } from 'container/GantChart';
+import type { ITraceMetaData } from 'container/GantChart';
 import {
-	IIntervalUnit,
+	type IIntervalUnit,
 	resolveTimeFromInterval,
 } from 'container/TraceDetail/utils';
 import { isEqual } from 'lodash-es';
 import { toFixed } from 'utils/toFixed';
 
-import { Interval } from './types';
+import type { Interval } from './types';
 
 export const getIntervalSpread = ({
 	localTraceMetaData,
@@ -37,7 +37,7 @@ export const getIntervalSpread = ({
 		intervalSpread < 1.0
 			? intervalSpread
 			: Math.floor(Number(integerPartString) / 10 ** (integerPartLength - 1)) *
-			  10 ** (integerPartLength - 1);
+				10 ** (integerPartLength - 1);
 	return {
 		baseInterval,
 		baseSpread,

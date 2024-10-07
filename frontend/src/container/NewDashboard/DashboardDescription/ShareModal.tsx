@@ -5,7 +5,7 @@ import { useNotifications } from 'hooks/useNotifications';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCopyToClipboard } from 'react-use';
-import { DashboardData } from 'types/api/dashboard/getAll';
+import type { DashboardData } from 'types/api/dashboard/getAll';
 
 import { downloadObjectAsJson } from './utils';
 

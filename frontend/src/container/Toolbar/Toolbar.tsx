@@ -21,9 +21,10 @@ export default function Toolbar({
 }: ToolbarProps): JSX.Element {
 	const { pathname } = useLocation();
 
-	const isLogsExplorerPage = useMemo(() => pathname === ROUTES.LOGS_EXPLORER, [
-		pathname,
-	]);
+	const isLogsExplorerPage = useMemo(
+		() => pathname === ROUTES.LOGS_EXPLORER,
+		[pathname],
+	);
 	return (
 		<div className="toolbar">
 			<div className="leftActions">{leftActions}</div>

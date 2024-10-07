@@ -41,16 +41,16 @@ import {
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { sortLayout } from 'providers/Dashboard/util';
 import { useCallback, useEffect, useState } from 'react';
-import { FullScreenHandle } from 'react-full-screen';
-import { Layout } from 'react-grid-layout';
+import type { FullScreenHandle } from 'react-full-screen';
+import type { Layout } from 'react-grid-layout';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useCopyToClipboard } from 'react-use';
-import { AppState } from 'store/reducers';
-import { Dashboard, DashboardData } from 'types/api/dashboard/getAll';
-import AppReducer from 'types/reducer/app';
-import { ROLES, USER_ROLES } from 'types/roles';
-import { ComponentTypes } from 'utils/permission';
+import type { AppState } from 'store/reducers';
+import type { Dashboard, DashboardData } from 'types/api/dashboard/getAll';
+import type AppReducer from 'types/reducer/app';
+import { type ROLES, USER_ROLES } from 'types/roles';
+import type { ComponentTypes } from 'utils/permission';
 import { v4 as uuid } from 'uuid';
 
 import DashboardGraphSlider from '../ComponentsSlider';
@@ -83,11 +83,15 @@ function DashboardDescription(props: DashboardDescriptionProps): JSX.Element {
 		? {
 				...selectedDashboard.data,
 				uuid: selectedDashboard.uuid,
-		  }
+			}
 		: ({} as DashboardData);
 
-	const { title = '', description, tags, image = Base64Icons[0] } =
-		selectedData || {};
+	const {
+		title = '',
+		description,
+		tags,
+		image = Base64Icons[0],
+	} = selectedData || {};
 
 	const [updatedTitle, setUpdatedTitle] = useState<string>(title);
 
@@ -101,17 +105,14 @@ function DashboardDescription(props: DashboardDescriptionProps): JSX.Element {
 		(state) => state.app,
 	);
 	const [editDashboard] = useComponentPermission(['edit_dashboard'], role);
-	const [isDashboardSettingsOpen, setIsDashbordSettingsOpen] = useState<boolean>(
-		false,
-	);
+	const [isDashboardSettingsOpen, setIsDashbordSettingsOpen] =
+		useState<boolean>(false);
 
-	const [isRenameDashboardOpen, setIsRenameDashboardOpen] = useState<boolean>(
-		false,
-	);
+	const [isRenameDashboardOpen, setIsRenameDashboardOpen] =
+		useState<boolean>(false);
 
-	const [isPanelNameModalOpen, setIsPanelNameModalOpen] = useState<boolean>(
-		false,
-	);
+	const [isPanelNameModalOpen, setIsPanelNameModalOpen] =
+		useState<boolean>(false);
 
 	let isAuthor = false;
 

@@ -12,7 +12,7 @@ import { DEBOUNCE_DELAY } from 'constants/queryBuilderFilterConfig';
 import ROUTES from 'constants/routes';
 import { LogsExplorerShortcuts } from 'constants/shortcuts/logsExplorerShortcuts';
 import { useKeyboardHotkeys } from 'hooks/hotkeys/useKeyboardHotkeys';
-import { WhereClauseConfig } from 'hooks/queryBuilder/useAutoComplete';
+import type { WhereClauseConfig } from 'hooks/queryBuilder/useAutoComplete';
 import { useGetAggregateKeys } from 'hooks/queryBuilder/useGetAggregateKeys';
 import { useGetAggregateValues } from 'hooks/queryBuilder/useGetAggregateValues';
 import { useGetAttributeSuggestions } from 'hooks/queryBuilder/useGetAttributeSuggestions';
@@ -32,8 +32,8 @@ import {
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { BaseSelectRef } from 'rc-select';
 import {
-	KeyboardEvent,
-	ReactElement,
+	type KeyboardEvent,
+	type ReactElement,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -42,10 +42,10 @@ import {
 } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import {
+import type {
 	IBuilderQuery,
 	TagFilter,
 } from 'types/api/queryBuilder/queryBuilderData';
@@ -148,9 +148,10 @@ function QueryBuilderSearchV2(
 	const [showAllFilters, setShowAllFilters] = useState<boolean>(false);
 
 	const { pathname } = useLocation();
-	const isLogsExplorerPage = useMemo(() => pathname === ROUTES.LOGS_EXPLORER, [
-		pathname,
-	]);
+	const isLogsExplorerPage = useMemo(
+		() => pathname === ROUTES.LOGS_EXPLORER,
+		[pathname],
+	);
 
 	const memoizedSearchParams = useMemo(
 		() => [
@@ -239,42 +240,38 @@ function QueryBuilderSearchV2(
 		},
 	);
 
-	const {
-		data: suggestionsData,
-		isFetching: isFetchingSuggestions,
-	} = useGetAttributeSuggestions(
-		{
-			searchText: searchValue.split(' ')[0],
-			dataSource: query.dataSource,
-			filters: query.filters,
-		},
-		{
-			queryKey: [suggestionsParams],
-			enabled: isQueryEnabled && isLogsExplorerPage,
-		},
-	);
+	const { data: suggestionsData, isFetching: isFetchingSuggestions } =
+		useGetAttributeSuggestions(
+			{
+				searchText: searchValue.split(' ')[0],
+				dataSource: query.dataSource,
+				filters: query.filters,
+			},
+			{
+				queryKey: [suggestionsParams],
+				enabled: isQueryEnabled && isLogsExplorerPage,
+			},
+		);
 
-	const {
-		data: attributeValues,
-		isFetching: isFetchingAttributeValues,
-	} = useGetAggregateValues(
-		{
-			aggregateOperator: query.aggregateOperator,
-			dataSource: query.dataSource,
-			aggregateAttribute: query.aggregateAttribute.key,
-			attributeKey: currentFilterItem?.key?.key || '',
-			filterAttributeKeyDataType:
-				currentFilterItem?.key?.dataType ?? DataTypes.EMPTY,
-			tagType: currentFilterItem?.key?.type ?? '',
-			searchText: isArray(currentFilterItem?.value)
-				? currentFilterItem?.value?.[currentFilterItem.value.length - 1] || ''
-				: currentFilterItem?.value?.toString() || '',
-		},
-		{
-			enabled: currentState === DropdownState.ATTRIBUTE_VALUE,
-			queryKey: [valueParams],
-		},
-	);
+	const { data: attributeValues, isFetching: isFetchingAttributeValues } =
+		useGetAggregateValues(
+			{
+				aggregateOperator: query.aggregateOperator,
+				dataSource: query.dataSource,
+				aggregateAttribute: query.aggregateAttribute.key,
+				attributeKey: currentFilterItem?.key?.key || '',
+				filterAttributeKeyDataType:
+					currentFilterItem?.key?.dataType ?? DataTypes.EMPTY,
+				tagType: currentFilterItem?.key?.type ?? '',
+				searchText: isArray(currentFilterItem?.value)
+					? currentFilterItem?.value?.[currentFilterItem.value.length - 1] || ''
+					: currentFilterItem?.value?.toString() || '',
+			},
+			{
+				enabled: currentState === DropdownState.ATTRIBUTE_VALUE,
+				queryKey: [valueParams],
+			},
+		);
 
 	const handleDropdownSelect = useCallback(
 		(value: string) => {
@@ -529,9 +526,10 @@ function QueryBuilderSearchV2(
 		// Case 1 -> when typing an attribute key (not selecting from dropdown)
 		if (tagKey && isUndefined(currentFilterItem?.key)) {
 			let currentRunningAttributeKey;
-			const isSuggestedKeyInAutocomplete = suggestionsData?.payload?.attributes?.some(
-				(value) => value.key === tagKey.split(' ')[0],
-			);
+			const isSuggestedKeyInAutocomplete =
+				suggestionsData?.payload?.attributes?.some(
+					(value) => value.key === tagKey.split(' ')[0],
+				);
 
 			if (isSuggestedKeyInAutocomplete) {
 				const allAttributesMatchingTheKey =
@@ -674,7 +672,7 @@ function QueryBuilderSearchV2(
 										isJSON: false,
 									},
 								},
-						  ]
+							]
 						: []),
 					...(suggestionsData?.payload?.attributes?.map((key) => ({
 						label: key.key,
@@ -777,7 +775,7 @@ function QueryBuilderSearchV2(
 				Array.isArray(tag.value) &&
 				tag.value[tag.value.length - 1] === ''
 					? tag.value?.slice(0, -1)
-					: tag.value ?? '';
+					: (tag.value ?? '');
 			filterTags.items.push({
 				id: tag.id || uuid().slice(0, 8),
 				key: tag.key,
@@ -968,7 +966,7 @@ function QueryBuilderSearchV2(
 						val = option.value;
 					}
 					return (
-						<Select.Option key={isObject(val) ? `select-option` : val} value={val}>
+						<Select.Option key={isObject(val) ? 'select-option' : val} value={val}>
 							<Suggestions
 								label={option.label}
 								value={option.value}

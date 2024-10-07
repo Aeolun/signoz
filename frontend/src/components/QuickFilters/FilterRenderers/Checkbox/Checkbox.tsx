@@ -6,7 +6,7 @@ import './Checkbox.styles.scss';
 
 import { Button, Checkbox, Input, Skeleton, Typography } from 'antd';
 import cx from 'classnames';
-import { IQuickFiltersConfig } from 'components/QuickFilters/QuickFilters';
+import type { IQuickFiltersConfig } from 'components/QuickFilters/QuickFilters';
 import { OPERATORS } from 'constants/queryBuilder';
 import { getOperatorValue } from 'container/QueryBuilder/filters/QueryBuilderSearch/utils';
 import { useGetAggregateValues } from 'hooks/queryBuilder/useGetAggregateValues';
@@ -15,7 +15,10 @@ import { cloneDeep, isArray, isEmpty, isEqual } from 'lodash-es';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query, TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type {
+	Query,
+	TagFilterItem,
+} from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
 import { v4 as uuid } from 'uuid';
 
@@ -42,11 +45,8 @@ export default function CheckboxFilter(props: ICheckboxProps): JSX.Element {
 	const [isOpen, setIsOpen] = useState<boolean>(filter.defaultOpen);
 	const [visibleItemsCount, setVisibleItemsCount] = useState<number>(10);
 
-	const {
-		lastUsedQuery,
-		currentQuery,
-		redirectWithQueryBuilderData,
-	} = useQueryBuilder();
+	const { lastUsedQuery, currentQuery, redirectWithQueryBuilderData } =
+		useQueryBuilder();
 
 	const { data, isLoading } = useGetAggregateValues(
 		{
@@ -66,8 +66,9 @@ export default function CheckboxFilter(props: ICheckboxProps): JSX.Element {
 
 	const attributeValues: string[] = useMemo(
 		() =>
-			((Object.values(data?.payload || {}).find((el) => !!el) ||
-				[]) as string[]).filter((val) => !isEmpty(val)),
+			(
+				(Object.values(data?.payload || {}).find((el) => !!el) || []) as string[]
+			).filter((val) => !isEmpty(val)),
 		[data?.payload],
 	);
 	const currentAttributeKeys = attributeValues.slice(0, visibleItemsCount);
@@ -153,7 +154,7 @@ export default function CheckboxFilter(props: ICheckboxProps): JSX.Element {
 							idx === lastUsedQuery
 								? item.filters.items.filter(
 										(fil) => !isEqual(fil.key?.key, filter.attributeKey.key),
-								  )
+									)
 								: [...item.filters.items],
 					},
 				})),
@@ -162,11 +163,10 @@ export default function CheckboxFilter(props: ICheckboxProps): JSX.Element {
 		redirectWithQueryBuilderData(preparedQuery);
 	};
 
-	const isSomeFilterPresentForCurrentAttribute = currentQuery.builder.queryData?.[
-		lastUsedQuery || 0
-	]?.filters?.items?.some((item) =>
-		isEqual(item.key?.key, filter.attributeKey.key),
-	);
+	const isSomeFilterPresentForCurrentAttribute =
+		currentQuery.builder.queryData?.[lastUsedQuery || 0]?.filters?.items?.some(
+			(item) => isEqual(item.key?.key, filter.attributeKey.key),
+		);
 
 	const onChange = (
 		value: string,

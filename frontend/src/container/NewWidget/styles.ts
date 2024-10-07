@@ -1,4 +1,4 @@
-import { Col, Tag as AntDTag } from 'antd';
+import { Tag as AntDTag, Col } from 'antd';
 import styled from 'styled-components';
 
 export const Container = styled.div`

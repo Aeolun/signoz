@@ -1,5 +1,5 @@
-import { IAttributeValuesResponse } from '../queryBuilder/getAttributesValues';
-import { IQueryAutocompleteResponse } from '../queryBuilder/queryAutocompleteResponse';
+import type { IAttributeValuesResponse } from '../queryBuilder/getAttributesValues';
+import type { IQueryAutocompleteResponse } from '../queryBuilder/queryAutocompleteResponse';
 
 export type TagKeyProps = {
 	match?: string;

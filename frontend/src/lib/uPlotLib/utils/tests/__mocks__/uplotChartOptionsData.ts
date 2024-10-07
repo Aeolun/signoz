@@ -1,5 +1,5 @@
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { GetUPlotChartOptions } from 'lib/uPlotLib/getUplotChartOptions';
+import type { GetUPlotChartOptions } from 'lib/uPlotLib/getUplotChartOptions';
 
 export const inputPropsTimeSeries = {
 	id: '',

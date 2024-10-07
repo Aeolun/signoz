@@ -1,9 +1,9 @@
 import {
 	FiltersType,
-	IQuickFiltersConfig,
+	type IQuickFiltersConfig,
 } from 'components/QuickFilters/QuickFilters';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
 export const prepareQueryWithDefaultTimestamp = (query: Query): Query => ({
 	...query,

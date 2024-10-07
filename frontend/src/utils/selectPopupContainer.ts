@@ -1,4 +1,4 @@
-import { SelectProps } from 'antd';
+import type { SelectProps } from 'antd';
 
 export const popupContainer: SelectProps['getPopupContainer'] = (
 	trigger,

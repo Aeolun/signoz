@@ -1,9 +1,9 @@
 import getFeaturesFlags from 'api/features/getFeatureFlags';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
-import { useQuery, UseQueryResult } from 'react-query';
+import { type UseQueryResult, useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { FeatureFlagProps } from 'types/api/features/getFeaturesFlags';
+import type { AppState } from 'store/reducers';
+import type { FeatureFlagProps } from 'types/api/features/getFeaturesFlags';
 
 const useGetFeatureFlag = (
 	onSuccessHandler: (routes: FeatureFlagProps[]) => void,

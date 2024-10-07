@@ -1,7 +1,7 @@
 import GridValueComponent from 'container/GridValueComponent';
 import { getUPlotChartData } from 'lib/uPlotLib/utils/getUplotChartData';
 
-import { PanelWrapperProps } from './panelWrapper.types';
+import type { PanelWrapperProps } from './panelWrapper.types';
 
 function ValuePanelWrapper({
 	widget,

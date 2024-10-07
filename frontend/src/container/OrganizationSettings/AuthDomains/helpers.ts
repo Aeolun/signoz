@@ -1,4 +1,4 @@
-import { AuthDomain, GOOGLE_AUTH, SAML } from 'types/api/SAML/listDomain';
+import { type AuthDomain, GOOGLE_AUTH, SAML } from 'types/api/SAML/listDomain';
 
 export const ConfigureSsoButtonText = (
 	ssoType: AuthDomain['ssoType'],

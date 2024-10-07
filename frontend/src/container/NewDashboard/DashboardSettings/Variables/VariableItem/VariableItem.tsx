@@ -21,15 +21,15 @@ import {
 import { useCallback, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import {
-	IDashboardVariable,
-	TSortVariableValuesType,
-	TVariableQueryType,
+	type IDashboardVariable,
+	type TSortVariableValuesType,
+	type TVariableQueryType,
 	VariableSortTypeArr,
 } from 'types/api/dashboard/getAll';
 import { v4 as generateUUID } from 'uuid';
 
 import { variablePropsToPayloadVariables } from '../../../utils';
-import { TVariableMode } from '../types';
+import type { TVariableMode } from '../types';
 import { LabelContainer, VariableItemRow } from './styles';
 
 const { Option } = Select;
@@ -68,12 +68,10 @@ function VariableItem({
 	const [variableTextboxValue, setVariableTextboxValue] = useState<string>(
 		variableData.textboxValue || '',
 	);
-	const [
-		variableSortType,
-		setVariableSortType,
-	] = useState<TSortVariableValuesType>(
-		variableData.sort || VariableSortTypeArr[0],
-	);
+	const [variableSortType, setVariableSortType] =
+		useState<TSortVariableValuesType>(
+			variableData.sort || VariableSortTypeArr[0],
+		);
 	const [variableMultiSelect, setVariableMultiSelect] = useState<boolean>(
 		variableData.multiSelect || false,
 	);

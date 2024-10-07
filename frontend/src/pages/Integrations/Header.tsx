@@ -5,7 +5,7 @@ import { Flex, Input, Typography } from 'antd';
 import LaunchChatSupport from 'components/LaunchChatSupport/LaunchChatSupport';
 import { integrationsListMessage } from 'components/LaunchChatSupport/util';
 import { Search } from 'lucide-react';
-import { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 
 interface HeaderProps {
 	searchTerm: string;

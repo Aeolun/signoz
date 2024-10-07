@@ -1,7 +1,7 @@
 import { Tag, Typography } from 'antd';
 import convertDateToAmAndPm from 'lib/convertDateToAmAndPm';
 import getFormattedDate from 'lib/getFormatedDate';
-import { Alerts } from 'types/api/alerts/getTriggered';
+import type { Alerts } from 'types/api/alerts/getTriggered';
 
 import Status from '../TableComponents/AlertStatus';
 import { TableCell, TableRow } from './styles';

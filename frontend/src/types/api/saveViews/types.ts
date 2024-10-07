@@ -1,6 +1,6 @@
-import { DataSource } from 'types/common/queryBuilder';
+import type { DataSource } from 'types/common/queryBuilder';
 
-import { ICompositeMetricQuery } from '../alerts/compositeQuery';
+import type { ICompositeMetricQuery } from '../alerts/compositeQuery';
 
 export interface ViewProps {
 	uuid: string;

@@ -3,7 +3,7 @@ import setLocalStorageKey from 'api/browser/localstorage/set';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import { defaultTo } from 'lodash-es';
 import { useEffect, useState } from 'react';
-import { IDashboardVariable } from 'types/api/dashboard/getAll';
+import type { IDashboardVariable } from 'types/api/dashboard/getAll';
 
 interface LocalStoreDashboardVariables {
 	[id: string]: {
@@ -27,15 +27,11 @@ interface UseDashboardVariablesFromLocalStorageReturn {
 export const useDashboardVariablesFromLocalStorage = (
 	dashboardId: string,
 ): UseDashboardVariablesFromLocalStorageReturn => {
-	const [
-		allDashboards,
-		setAllDashboards,
-	] = useState<DashboardLocalStorageVariables>({});
+	const [allDashboards, setAllDashboards] =
+		useState<DashboardLocalStorageVariables>({});
 
-	const [
-		currentDashboard,
-		setCurrentDashboard,
-	] = useState<LocalStoreDashboardVariables>({});
+	const [currentDashboard, setCurrentDashboard] =
+		useState<LocalStoreDashboardVariables>({});
 
 	useEffect(() => {
 		const localStoreDashboardVariablesString = getLocalStorageKey(

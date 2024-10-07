@@ -1,5 +1,5 @@
-import { IOption } from 'hooks/useResourceAttribute/types';
-import { IBuilderFormula } from 'types/api/queryBuilder/queryBuilderData';
+import type { IOption } from 'hooks/useResourceAttribute/types';
+import type { IBuilderFormula } from 'types/api/queryBuilder/queryBuilderData';
 
 import { SIGNOZ_VALUE } from '../../OrderByFilter/constants';
 import { orderByValueDelimiter } from '../../OrderByFilter/utils';

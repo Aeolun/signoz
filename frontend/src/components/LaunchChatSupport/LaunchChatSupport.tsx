@@ -14,9 +14,9 @@ import { CreditCard, HelpCircle, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
-import { License } from 'types/api/licenses/def';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
+import type { License } from 'types/api/licenses/def';
 import { isCloudUser } from 'utils/app';
 
 export interface LaunchChatSupportProps {
@@ -44,9 +44,8 @@ function LaunchChatSupport({
 	const { notifications } = useNotifications();
 	const { data: licenseData, isFetching } = useLicense();
 	const [activeLicense, setActiveLicense] = useState<License | null>(null);
-	const [isAddCreditCardModalOpen, setIsAddCreditCardModalOpen] = useState(
-		false,
-	);
+	const [isAddCreditCardModalOpen, setIsAddCreditCardModalOpen] =
+		useState(false);
 
 	const { pathname } = useLocation();
 	const isPremiumChatSupportEnabled =
@@ -68,7 +67,7 @@ function LaunchChatSupport({
 	const handleFacingIssuesClick = (): void => {
 		if (showAddCreditCardModal) {
 			logEvent('Disabled Chat Support: Clicked', {
-				source: `facing issues button`,
+				source: 'facing issues button',
 				page: pathname,
 				...attributes,
 			});
@@ -111,7 +110,7 @@ function LaunchChatSupport({
 
 	const handleAddCreditCard = (): void => {
 		logEvent('Add Credit card modal: Clicked', {
-			source: `facing issues button`,
+			source: 'facing issues button',
 			page: pathname,
 			...attributes,
 		});

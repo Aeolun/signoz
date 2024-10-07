@@ -5,22 +5,22 @@ import Download from 'container/Download/Download';
 import { getGlobalTime } from 'container/LogsSearchFilter/utils';
 import { getMinMax } from 'container/TopNav/AutoRefresh/config';
 import dayjs from 'dayjs';
-import { Pagination } from 'hooks/queryPagination';
+import type { Pagination } from 'hooks/queryPagination';
 import { FlatLogData } from 'lib/logs/flatLogData';
 import { OrderPreferenceItems } from 'pages/Logs/config';
 import { memo, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import {
 	GET_NEXT_LOG_LINES,
 	GET_PREVIOUS_LOG_LINES,
 	RESET_ID_START_AND_END,
 	SET_LOG_LINES_PER_PAGE,
 } from 'types/actions/logs';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 import { Container } from './styles';
 

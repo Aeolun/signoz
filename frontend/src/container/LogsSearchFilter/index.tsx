@@ -1,25 +1,25 @@
-import { Input, InputRef, Popover } from 'antd';
+import { Input, type InputRef, Popover } from 'antd';
 import useUrlQuery from 'hooks/useUrlQuery';
 import getStep from 'lib/getStep';
 import debounce from 'lodash-es/debounce';
 import { getIdConditions } from 'pages/Logs/utils';
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { type Dispatch, bindActionCreators } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { GetLogsFields } from 'store/actions/logs/getFields';
 import { getLogs } from 'store/actions/logs/getLogs';
 import { getLogsAggregate } from 'store/actions/logs/getLogsAggregate';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import {
 	FLUSH_LOGS,
 	SET_LOADING,
 	SET_LOADING_AGGREGATE,
 	TOGGLE_LIVE_TAIL,
 } from 'types/actions/logs';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { ILogsReducer } from 'types/reducer/logs';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import SearchFields from './SearchFields';

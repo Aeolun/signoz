@@ -12,7 +12,7 @@ import {
 	StyledTypography,
 } from 'components/Styled';
 import { Flex, Spacing } from 'components/Styled/styles';
-import GanttChart, { ITraceMetaData } from 'container/GantChart';
+import GanttChart, { type ITraceMetaData } from 'container/GantChart';
 import { getNodeById } from 'container/GantChart/utils';
 import Timeline from 'container/Timeline';
 import TraceFlameGraph from 'container/TraceFlameGraph';
@@ -25,21 +25,21 @@ import { map } from 'lodash-es';
 import { PanelRight } from 'lucide-react';
 import { SPAN_DETAILS_LEFT_COL_WIDTH } from 'pages/TraceDetail/constants';
 import { useEffect, useMemo, useState } from 'react';
-import { ITraceForest, PayloadProps } from 'types/api/trace/getTraceItem';
+import type { ITraceForest, PayloadProps } from 'types/api/trace/getTraceItem';
 import { getSpanTreeMetadata } from 'utils/getSpanTreeMetadata';
 import { spanToTreeUtil } from 'utils/spanToTree';
 
 import MissingSpansMessage from './Missingtrace';
 import SelectedSpanDetails from './SelectedSpanDetails';
+import SubTreeMessage from './SubTree';
 import * as styles from './styles';
 import { FlameGraphMissingSpansContainer, GanttChartWrapper } from './styles';
-import SubTreeMessage from './SubTree';
 import {
+	type IIntervalUnit,
+	INTERVAL_UNITS,
 	formUrlParams,
 	getSortedData,
 	getTreeLevelsCount,
-	IIntervalUnit,
-	INTERVAL_UNITS,
 } from './utils';
 
 const { Sider } = Layout;
@@ -50,9 +50,10 @@ function TraceDetail({ response }: TraceDetailProps): JSX.Element {
 		[response],
 	);
 
-	const traceStartTime = useMemo(() => response[0].startTimestampMillis, [
-		response,
-	]);
+	const traceStartTime = useMemo(
+		() => response[0].startTimestampMillis,
+		[response],
+	);
 
 	const traceEndTime = useMemo(() => response[0].endTimestampMillis, [response]);
 

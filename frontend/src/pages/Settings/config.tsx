@@ -1,13 +1,13 @@
-import { RouteTabProps } from 'components/RouteTab/types';
+import type { RouteTabProps } from 'components/RouteTab/types';
 import ROUTES from 'constants/routes';
-import AlertChannels from 'container/AllAlertChannels';
 import APIKeys from 'container/APIKeys/APIKeys';
+import AlertChannels from 'container/AllAlertChannels';
 import GeneralSettings from 'container/GeneralSettings';
 import GeneralSettingsCloud from 'container/GeneralSettingsCloud';
 import IngestionSettings from 'container/IngestionSettings/IngestionSettings';
 import MultiIngestionSettings from 'container/IngestionSettings/MultiIngestionSettings';
 import OrganizationSettings from 'container/OrganizationSettings';
-import { TFunction } from 'i18next';
+import type { TFunction } from 'i18next';
 import { Backpack, BellDot, Building, Cpu, KeySquare } from 'lucide-react';
 
 export const organizationSettings = (t: TFunction): RouteTabProps['routes'] => [

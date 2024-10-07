@@ -1,8 +1,8 @@
 import './IntegrationDetailPage.styles.scss';
 
 import { Button, Modal, Typography } from 'antd';
-import logEvent from 'api/common/logEvent';
 import unInstallIntegration from 'api/Integrations/uninstallIntegration';
+import logEvent from 'api/common/logEvent';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
 import { useNotifications } from 'hooks/useNotifications';
 import { X } from 'lucide-react';
@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { useMutation } from 'react-query';
 
 import { INTEGRATION_TELEMETRY_EVENTS } from '../utils';
-import { ConnectionStates } from './TestConnection';
+import type { ConnectionStates } from './TestConnection';
 
 interface IntergrationsUninstallBarProps {
 	integrationTitle: string;
@@ -30,20 +30,18 @@ function IntergrationsUninstallBar(
 	const { notifications } = useNotifications();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	const {
-		mutate: uninstallIntegration,
-		isLoading: isUninstallLoading,
-	} = useMutation(unInstallIntegration, {
-		onSuccess: () => {
-			refetchIntegrationDetails();
-			setIsModalOpen(false);
-		},
-		onError: () => {
-			notifications.error({
-				message: SOMETHING_WENT_WRONG,
-			});
-		},
-	});
+	const { mutate: uninstallIntegration, isLoading: isUninstallLoading } =
+		useMutation(unInstallIntegration, {
+			onSuccess: () => {
+				refetchIntegrationDetails();
+				setIsModalOpen(false);
+			},
+			onError: () => {
+				notifications.error({
+					message: SOMETHING_WENT_WRONG,
+				});
+			},
+		});
 
 	const showModal = (): void => {
 		setIsModalOpen(true);

@@ -1,25 +1,26 @@
 import { PlusCircleOutlined } from '@ant-design/icons';
-import { TableLocale } from 'antd/es/table/interface';
+import type { TableLocale } from 'antd/es/table/interface';
 import logEvent from 'api/common/logEvent';
 import { useIsDarkMode } from 'hooks/useDarkMode';
-import React, { useCallback, useMemo } from 'react';
+import type React from 'react';
+import { useCallback, useMemo } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useTranslation } from 'react-i18next';
 import {
 	ActionMode,
 	ActionType,
-	PipelineData,
-	ProcessorData,
+	type PipelineData,
+	type ProcessorData,
 } from 'types/api/pipeline/def';
 
 import { tableComponents } from '../config';
 import { ModalFooterTitle } from '../styles';
-import { processorColumns } from './config';
-import { AlertMessage } from './PipelineListsView';
-import { FooterButton, StyledTable } from './styles';
+import type { AlertMessage } from './PipelineListsView';
 import DragAction from './TableComponents/DragAction';
 import ProcessorActions from './TableComponents/ProcessorActions';
+import { processorColumns } from './config';
+import { FooterButton, StyledTable } from './styles';
 import {
 	getEditedDataSource,
 	getProcessorUpdatedRow,
@@ -44,7 +45,7 @@ function PipelineExpandView({
 	const deleteProcessorHandler = useCallback(
 		(record: ProcessorData) => (): void => {
 			setShowSaveButton(ActionMode.Editing);
-			if (expandedPipelineData && expandedPipelineData?.config) {
+			if (expandedPipelineData?.config) {
 				const filteredData = expandedPipelineData?.config.filter(
 					(item: ProcessorData) => item.id !== record.id,
 				);
@@ -78,7 +79,7 @@ function PipelineExpandView({
 
 	const onSwitchProcessorChange = useCallback(
 		(checked: boolean, record: ProcessorData): void => {
-			if (expandedPipelineData && expandedPipelineData?.config) {
+			if (expandedPipelineData?.config) {
 				setShowSaveButton(ActionMode.Editing);
 				const findRecordIndex = getRecordIndex(
 					expandedPipelineData?.config,
@@ -217,12 +218,11 @@ function PipelineExpandView({
 		({
 			index,
 			moveRow: moveProcessorRow,
-		} as React.HTMLAttributes<unknown>);
+		}) as React.HTMLAttributes<unknown>;
 
 	const processorData = useMemo(
 		() =>
-			expandedPipelineData?.config &&
-			expandedPipelineData?.config.map(
+			expandedPipelineData?.config?.map(
 				(item: ProcessorData): ProcessorData => ({
 					id: item.id,
 					orderId: item.orderId,

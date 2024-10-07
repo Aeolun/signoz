@@ -8,9 +8,9 @@ import { Space } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ConfigProps } from 'types/api/dynamicConfigs/getDynamicConfigs';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { ConfigProps } from 'types/api/dynamicConfigs/getDynamicConfigs';
+import type AppReducer from 'types/reducer/app';
 
 import HelpToolTip from './Config';
 import { ConfigDropdown } from './styles';

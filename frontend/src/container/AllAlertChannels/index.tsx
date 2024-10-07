@@ -12,8 +12,8 @@ import { isUndefined } from 'lodash-es';
 import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 import AlertChannelsComponent from './AlertChannels';
 import { Button, ButtonContainer, RightActionContainer } from './styles';

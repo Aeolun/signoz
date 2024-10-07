@@ -8,19 +8,19 @@ import { getIdConditions } from 'pages/Logs/utils';
 import { memo, useCallback } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { type Dispatch, bindActionCreators } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { getLogs } from 'store/actions/logs/getLogs';
 import { getLogsAggregate } from 'store/actions/logs/getLogsAggregate';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import {
 	SET_DETAILED_LOG_DATA,
 	SET_SEARCH_QUERY_STRING,
 	TOGGLE_LIVE_TAIL,
 } from 'types/actions/logs';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 type LogDetailedViewProps = {
 	getLogs: (props: Parameters<typeof getLogs>[0]) => ReturnType<typeof getLogs>;

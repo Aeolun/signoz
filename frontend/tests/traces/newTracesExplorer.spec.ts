@@ -1,9 +1,9 @@
-import { Page, test, expect } from '@playwright/test';
-import { loginApi } from '../fixtures/common';
+import { type Page, expect, test } from '@playwright/test';
 import ROUTES from 'constants/routes';
 import queryRangeSuccessResponse from '../fixtures/api/traces/queryRange200.json';
 import tracesSuccessResponse from '../fixtures/api/traces/tracesRange200.json';
 import tracesTableSuccessResponse from '../fixtures/api/traces/tracesTableView200.json';
+import { loginApi } from '../fixtures/common';
 import {
 	defaultAttributeKeysData,
 	httpMethodAttributeID,

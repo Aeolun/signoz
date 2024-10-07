@@ -2,14 +2,14 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-await-in-loop */
 import {
+	PANEL_TYPES,
 	initialQueriesMap,
 	initialQueryBuilderFormValues,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
 import { noop } from 'lodash-es';
 import { screen, waitFor } from 'tests/test-utils';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
 import { AllTraceFilterKeyValue } from '../Filter/filterUtils';
 

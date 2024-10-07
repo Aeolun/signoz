@@ -1,5 +1,5 @@
-import { ColumnType } from 'antd/es/table';
-import { ColumnsType } from 'antd/lib/table';
+import type { ColumnType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/lib/table';
 
 export const generatorResizeTableColumns = <T>({
 	baseColumnOptions,

@@ -1,8 +1,8 @@
+import afterLogin from 'AppRoutes/utils';
 import { Button, Form, Input, Space, Tooltip, Typography } from 'antd';
 import getUserVersion from 'api/user/getVersion';
 import loginApi from 'api/user/login';
 import loginPrecheckApi from 'api/user/loginPrecheck';
-import afterLogin from 'AppRoutes/utils';
 import ROUTES from 'constants/routes';
 import { useNotifications } from 'hooks/useNotifications';
 import history from 'lib/history';
@@ -10,9 +10,9 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { PayloadProps as PrecheckResultType } from 'types/api/user/loginPrecheck';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { PayloadProps as PrecheckResultType } from 'types/api/user/loginPrecheck';
+import type AppReducer from 'types/reducer/app';
 
 import { FormContainer, FormWrapper, Label, ParentContainer } from './styles';
 

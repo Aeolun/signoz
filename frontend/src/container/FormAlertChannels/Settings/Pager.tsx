@@ -1,8 +1,8 @@
 import { Form, Input } from 'antd';
-import { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { PagerChannel } from '../../CreateAlertChannels/config';
+import type { PagerChannel } from '../../CreateAlertChannels/config';
 
 const { TextArea } = Input;
 

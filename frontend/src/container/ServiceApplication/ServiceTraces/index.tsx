@@ -9,9 +9,9 @@ import { convertRawQueriesToTraceSelectedTags } from 'hooks/useResourceAttribute
 import { isUndefined } from 'lodash-es';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { Tags } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { Tags } from 'types/reducer/trace';
 
 import SkipOnBoardingModal from '../SkipOnBoardModal';
 import ServiceTraceTable from './ServiceTracesTable';

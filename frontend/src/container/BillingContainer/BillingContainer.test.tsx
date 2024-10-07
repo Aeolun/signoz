@@ -131,9 +131,8 @@ describe('BillingContainer', () => {
 		});
 		expect(manageBillingButton).toBeInTheDocument();
 
-		const dayRemainingInBillingPeriod = await screen.findByText(
-			/1 days_remaining/i,
-		);
+		const dayRemainingInBillingPeriod =
+			await screen.findByText(/1 days_remaining/i);
 		expect(dayRemainingInBillingPeriod).toBeInTheDocument();
 	});
 
@@ -176,9 +175,8 @@ describe('BillingContainer', () => {
 			),
 		);
 		render(<BillingContainer />);
-		const dayRemainingInBillingPeriod = await screen.findByText(
-			/11 days_remaining/i,
-		);
+		const dayRemainingInBillingPeriod =
+			await screen.findByText(/11 days_remaining/i);
 		expect(dayRemainingInBillingPeriod).toBeInTheDocument();
 	});
 });

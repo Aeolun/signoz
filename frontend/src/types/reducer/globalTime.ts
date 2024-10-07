@@ -1,9 +1,9 @@
-import { Time } from 'container/TopNav/DateTimeSelection/config';
-import {
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
+import type {
 	CustomTimeType,
 	Time as TimeV2,
 } from 'container/TopNav/DateTimeSelectionV2/config';
-import { GlobalTime } from 'types/actions/globalTime';
+import type { GlobalTime } from 'types/actions/globalTime';
 
 export interface GlobalReducer {
 	maxTime: GlobalTime['maxTime'];

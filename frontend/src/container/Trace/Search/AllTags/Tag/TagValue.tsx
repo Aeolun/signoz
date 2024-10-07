@@ -1,22 +1,23 @@
 import { Select } from 'antd';
-import { BaseOptionType } from 'antd/es/select';
+import type { BaseOptionType } from 'antd/es/select';
 import getTagValue from 'api/trace/getTagValue';
 import {
-	Dispatch,
+	type Dispatch,
+	type SetStateAction,
 	memo,
-	SetStateAction,
 	useCallback,
 	useMemo,
 	useState,
 } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { TraceReducer } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { TraceReducer } from 'types/reducer/trace';
 
 import { SelectComponent } from './styles';
 import {
+	type TagValueTypes,
 	disableTagValue,
 	extractTagKey,
 	extractTagType,
@@ -25,7 +26,6 @@ import {
 	onTagValueChange,
 	selectOptions,
 	separateTagValues,
-	TagValueTypes,
 } from './utils';
 
 function TagValue(props: TagValueProps): JSX.Element {

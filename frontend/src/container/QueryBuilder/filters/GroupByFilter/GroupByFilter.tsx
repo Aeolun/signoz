@@ -1,7 +1,7 @@
 import { Select, Spin } from 'antd';
 import { getAggregateKeys } from 'api/queryBuilder/getAttributeKeys';
 // ** Constants
-import { idDivider, QueryBuilderKeys } from 'constants/queryBuilder';
+import { QueryBuilderKeys, idDivider } from 'constants/queryBuilder';
 import { DEBOUNCE_DELAY } from 'constants/queryBuilderFilterConfig';
 import { useGetAggregateKeys } from 'hooks/queryBuilder/useGetAggregateKeys';
 import useDebounce from 'hooks/useDebounce';
@@ -10,15 +10,15 @@ import { chooseAutocompleteFromCustomValue } from 'lib/newQueryBuilder/chooseAut
 // ** Helpers
 import { transformStringWithPrefix } from 'lib/query/transformStringWithPrefix';
 import { isEqual, uniqWith } from 'lodash-es';
-import { memo, ReactNode, useCallback, useEffect, useState } from 'react';
+import { type ReactNode, memo, useCallback, useEffect, useState } from 'react';
 import { useQueryClient } from 'react-query';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { SelectOption } from 'types/common/select';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { SelectOption } from 'types/common/select';
 import { popupContainer } from 'utils/selectPopupContainer';
 
-import { selectStyle } from '../QueryBuilderSearch/config';
 import OptionRenderer from '../QueryBuilderSearch/OptionRenderer';
-import { GroupByFilterProps } from './GroupByFilter.interfaces';
+import { selectStyle } from '../QueryBuilderSearch/config';
+import type { GroupByFilterProps } from './GroupByFilter.interfaces';
 import { removePrefix } from './utils';
 
 export const GroupByFilter = memo(function GroupByFilter({
@@ -130,7 +130,7 @@ export const GroupByFilter = memo(function GroupByFilter({
 				const id = item.value;
 				const currentValue = item.value.split(idDivider)[0];
 
-				if (id && id.includes(idDivider)) {
+				if (id?.includes(idDivider)) {
 					const attribute = keys.find((item) => item.id === id);
 					const existAttribute = query.groupBy.find((item) => item.id === id);
 

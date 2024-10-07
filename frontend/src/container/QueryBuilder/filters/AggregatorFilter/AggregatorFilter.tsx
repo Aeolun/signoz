@@ -3,8 +3,8 @@ import { AutoComplete, Spin } from 'antd';
 // ** Api
 import { getAggregateAttribute } from 'api/queryBuilder/getAggregateAttribute';
 import {
-	baseAutoCompleteIdKeysOrder,
 	QueryBuilderKeys,
+	baseAutoCompleteIdKeysOrder,
 	selectValueDivider,
 } from 'constants/queryBuilder';
 import { DEBOUNCE_DELAY } from 'constants/queryBuilderFilterConfig';
@@ -15,21 +15,21 @@ import { getAutocompleteValueAndType } from 'lib/newQueryBuilder/getAutocomplete
 import { transformStringWithPrefix } from 'lib/query/transformStringWithPrefix';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
-import { SuccessResponse } from 'types/api';
-import {
+import type { SuccessResponse } from 'types/api';
+import type {
 	BaseAutocompleteData,
 	IQueryAutocompleteResponse,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
 import { DataSource } from 'types/common/queryBuilder';
-import { ExtendedSelectOption } from 'types/common/select';
+import type { ExtendedSelectOption } from 'types/common/select';
 import { popupContainer } from 'utils/selectPopupContainer';
 import { transformToUpperCase } from 'utils/transformToUpperCase';
 
 import { removePrefix } from '../GroupByFilter/utils';
-import { selectStyle } from '../QueryBuilderSearch/config';
 import OptionRenderer from '../QueryBuilderSearch/OptionRenderer';
+import { selectStyle } from '../QueryBuilderSearch/config';
 // ** Types
-import { AgregatorFilterProps } from './AggregatorFilter.intefaces';
+import type { AgregatorFilterProps } from './AggregatorFilter.intefaces';
 
 export const AggregatorFilter = memo(function AggregatorFilter({
 	query,
@@ -138,10 +138,8 @@ export const AggregatorFilter = memo(function AggregatorFilter({
 
 	const handleChangeCustomValue = useCallback(
 		async (value: string, attributes: BaseAutocompleteData[]) => {
-			const customAttribute: BaseAutocompleteData = chooseAutocompleteFromCustomValue(
-				attributes,
-				value,
-			);
+			const customAttribute: BaseAutocompleteData =
+				chooseAutocompleteFromCustomValue(attributes, value);
 
 			onChange(customAttribute);
 		},

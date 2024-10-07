@@ -9,19 +9,19 @@ import { ENTITY_VERSION_V4 } from 'constants/app';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import Graph from 'container/GridCardLayout/GridCard';
 import DisplayThreshold from 'container/GridCardLayout/WidgetHeader/DisplayThreshold';
+import { getWidgetQueryBuilder } from 'container/MetricsApplication/MetricsApplication.factory';
+import { apDexMetricsQueryBuilderQueries } from 'container/MetricsApplication/MetricsPageQueries/OverviewQueries';
 import {
 	GraphTitle,
 	SERVICE_CHART_ID,
 } from 'container/MetricsApplication/constant';
-import { getWidgetQueryBuilder } from 'container/MetricsApplication/MetricsApplication.factory';
-import { apDexMetricsQueryBuilderQueries } from 'container/MetricsApplication/MetricsPageQueries/OverviewQueries';
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { EQueryType } from 'types/common/dashboard';
 import { v4 as uuid } from 'uuid';
 
-import { IServiceName } from '../../types';
-import { ApDexMetricsProps } from './types';
+import type { IServiceName } from '../../types';
+import type { ApDexMetricsProps } from './types';
 
 function ApDexMetrics({
 	delta,

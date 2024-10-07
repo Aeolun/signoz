@@ -1,17 +1,20 @@
-import { FormInstance } from 'antd';
-import { NotificationInstance } from 'antd/es/notification/interface';
-import { AxiosResponse } from 'axios';
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { UseMutateAsyncFunction } from 'react-query';
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import {
+import type { FormInstance } from 'antd';
+import type { NotificationInstance } from 'antd/es/notification/interface';
+import type { AxiosResponse } from 'axios';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { UseMutateAsyncFunction } from 'react-query';
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type {
 	DeleteViewPayloadProps,
 	SaveViewPayloadProps,
 	SaveViewProps,
 	ViewProps,
 } from 'types/api/saveViews/types';
-import { DataSource, QueryBuilderContextType } from 'types/common/queryBuilder';
+import type {
+	DataSource,
+	QueryBuilderContextType,
+} from 'types/common/queryBuilder';
 
 export interface ExplorerCardProps {
 	sourcepage: DataSource;

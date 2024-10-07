@@ -1,14 +1,14 @@
-import { NotificationInstance } from 'antd/es/notification/interface';
+import type { NotificationInstance } from 'antd/es/notification/interface';
 import getSpans from 'api/trace/getSpans';
-import { Dispatch, Store } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch, Store } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import {
 	UPDATE_TRACE_GRAPH_ERROR,
 	UPDATE_TRACE_GRAPH_LOADING,
 	UPDATE_TRACE_GRAPH_SUCCESS,
 } from 'types/actions/trace';
-import { Props } from 'types/api/trace/getSpans';
+import type { Props } from 'types/api/trace/getSpans';
 
 export const GetSpans = (
 	props: GetSpansProps,

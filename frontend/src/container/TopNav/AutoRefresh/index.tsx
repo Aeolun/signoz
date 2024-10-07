@@ -4,11 +4,11 @@ import {
 	Divider,
 	Popover,
 	Radio,
-	RadioChangeEvent,
+	type RadioChangeEvent,
 	Space,
 	Typography,
 } from 'antd';
-import { CheckboxChangeEvent } from 'antd/lib/checkbox';
+import type { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import get from 'api/browser/localstorage/get';
 import set from 'api/browser/localstorage/set';
 import { DASHBOARD_TIME_IN_DURATION } from 'constants/app';
@@ -18,14 +18,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useInterval } from 'react-use';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import {
 	UPDATE_AUTO_REFRESH_INTERVAL,
 	UPDATE_TIME_INTERVAL,
 } from 'types/actions/globalTime';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { getMinMax, options } from './config';
@@ -50,10 +50,10 @@ function AutoRefresh({
 
 	const localStorageData = JSON.parse(get(DASHBOARD_TIME_IN_DURATION) || '{}');
 
-	const localStorageValue = useMemo(() => localStorageData[pathname], [
-		pathname,
-		localStorageData,
-	]);
+	const localStorageValue = useMemo(
+		() => localStorageData[pathname],
+		[pathname, localStorageData],
+	);
 
 	const [isAutoRefreshEnabled, setIsAutoRefreshfreshEnabled] = useState<boolean>(
 		Boolean(localStorageValue),

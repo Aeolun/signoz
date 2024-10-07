@@ -1,4 +1,4 @@
-import { HavingFilterTagProps } from './HavingFilterTag.interfaces';
+import type { HavingFilterTagProps } from './HavingFilterTag.interfaces';
 import { StyledTag, StyledText } from './HavingFilterTag.styled';
 
 export function HavingFilterTag({

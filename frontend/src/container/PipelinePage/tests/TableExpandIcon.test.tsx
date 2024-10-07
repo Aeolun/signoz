@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
-import { pipelineMockData } from 'container/PipelinePage/mocks/pipeline';
+import i18n from 'ReactI18';
 import TableExpandIcon from 'container/PipelinePage/PipelineListsView/TableComponents/TableExpandIcon';
+import { pipelineMockData } from 'container/PipelinePage/mocks/pipeline';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import i18n from 'ReactI18';
 import store from 'store';
 
 describe('PipelinePage container test', () => {

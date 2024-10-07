@@ -2,12 +2,12 @@ import { InfoCircleOutlined } from '@ant-design/icons';
 import Spinner from 'components/Spinner';
 import { DEFAULT_ENTITY_VERSION } from 'constants/app';
 import { QueryParams } from 'constants/query';
-import { initialQueriesMap, PANEL_TYPES } from 'constants/queryBuilder';
+import { PANEL_TYPES, initialQueriesMap } from 'constants/queryBuilder';
 import GridPanelSwitch from 'container/GridPanelSwitch';
 import { getFormatNameByOptionId } from 'container/NewWidget/RightContainer/alertFomatCategories';
-import { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
-import { Time } from 'container/TopNav/DateTimeSelection/config';
-import {
+import type { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
+import type {
 	CustomTimeType,
 	Time as TimeV2,
 } from 'container/TopNav/DateTimeSelectionV2/config';
@@ -25,11 +25,11 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { UpdateTimeInterval } from 'store/actions';
-import { AppState } from 'store/reducers';
-import { AlertDef } from 'types/api/alerts/def';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { AppState } from 'store/reducers';
+import type { AlertDef } from 'types/api/alerts/def';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { getGraphType } from 'utils/getGraphType';
 import { getSortedSeriesData } from 'utils/getSortedSeriesData';
 import { getTimeRange } from 'utils/getTimeRange';
@@ -71,10 +71,11 @@ function ChartPreview({
 	const [minTimeScale, setMinTimeScale] = useState<number>();
 	const [maxTimeScale, setMaxTimeScale] = useState<number>();
 
-	const { minTime, maxTime, selectedTime: globalSelectedInterval } = useSelector<
-		AppState,
-		GlobalReducer
-	>((state) => state.globalTime);
+	const {
+		minTime,
+		maxTime,
+		selectedTime: globalSelectedInterval,
+	} = useSelector<AppState, GlobalReducer>((state) => state.globalTime);
 
 	const handleBackNavigation = (): void => {
 		const searchParams = new URLSearchParams(window.location.search);
@@ -84,8 +85,8 @@ function ChartPreview({
 		if (startTime && endTime && startTime !== endTime) {
 			dispatch(
 				UpdateTimeInterval('custom', [
-					parseInt(getTimeString(startTime), 10),
-					parseInt(getTimeString(endTime), 10),
+					Number.parseInt(getTimeString(startTime), 10),
+					Number.parseInt(getTimeString(endTime), 10),
 				]),
 			);
 		}

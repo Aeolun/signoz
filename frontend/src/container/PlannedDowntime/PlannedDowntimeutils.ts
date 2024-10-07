@@ -1,20 +1,20 @@
-import { NotificationInstance } from 'antd/es/notification/interface';
-import { DefaultOptionType } from 'antd/es/select';
+import type { NotificationInstance } from 'antd/es/notification/interface';
+import type { DefaultOptionType } from 'antd/es/select';
 import createDowntimeSchedule from 'api/plannedDowntime/createDowntimeSchedule';
-import { DeleteSchedulePayloadProps } from 'api/plannedDowntime/deleteDowntimeSchedule';
-import {
+import type { DeleteSchedulePayloadProps } from 'api/plannedDowntime/deleteDowntimeSchedule';
+import type {
 	DowntimeSchedules,
 	Recurrence,
 } from 'api/plannedDowntime/getAllDowntimeSchedules';
 import updateDowntimeSchedule, {
-	DowntimeScheduleUpdatePayload,
-	PayloadProps,
+	type DowntimeScheduleUpdatePayload,
+	type PayloadProps,
 } from 'api/plannedDowntime/updateDowntimeSchedule';
 import { showErrorNotification } from 'components/ExplorerCard/utils';
 import dayjs from 'dayjs';
 import { isEmpty, isEqual } from 'lodash-es';
-import { UseMutateAsyncFunction } from 'react-query';
-import { ErrorResponse, SuccessResponse } from 'types/api';
+import type { UseMutateAsyncFunction } from 'react-query';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
 
 type DateTimeString = string | null | undefined;
 
@@ -52,10 +52,7 @@ export const getAlertOptionsFromIds = (
 	alertOptions: DefaultOptionType[],
 ): DefaultOptionType[] =>
 	alertOptions.filter(
-		(alert) =>
-			alert !== undefined &&
-			alert.value &&
-			alertIds?.includes(alert.value as string),
+		(alert) => alert?.value && alertIds?.includes(alert.value as string),
 	);
 
 export const recurrenceInfo = (recurrence?: Recurrence | null): string => {
@@ -181,8 +178,8 @@ export function getDurationInfo(
 	const minutesMatch = durationString.match(minutesRegex);
 
 	// Convert extracted values to integers, defaulting to 0 if not found
-	const hours = hoursMatch ? parseInt(hoursMatch[1], 10) : 0;
-	const minutes = minutesMatch ? parseInt(minutesMatch[1], 10) : 0;
+	const hours = hoursMatch ? Number.parseInt(hoursMatch[1], 10) : 0;
+	const minutes = minutesMatch ? Number.parseInt(minutesMatch[1], 10) : 0;
 
 	// If there are no minutes and only hours, return the hours
 	if (hours > 0 && minutes === 0) {

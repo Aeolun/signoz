@@ -1,9 +1,14 @@
-import { TableProps } from 'antd';
+import type { TableProps } from 'antd';
 import {
 	DashboardShortcuts,
 	DashboardShortcutsDescription,
 	DashboardShortcutsName,
 } from 'constants/shortcuts/DashboardShortcuts';
+import {
+	QBShortcuts,
+	QBShortcutsDescription,
+	QBShortcutsName,
+} from 'constants/shortcuts/QBShortcuts';
 import {
 	GlobalShortcuts,
 	GlobalShortcutsDescription,
@@ -14,11 +19,6 @@ import {
 	LogsExplorerShortcutsDescription,
 	LogsExplorerShortcutsName,
 } from 'constants/shortcuts/logsExplorerShortcuts';
-import {
-	QBShortcuts,
-	QBShortcutsDescription,
-	QBShortcutsName,
-} from 'constants/shortcuts/QBShortcuts';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ALL_SHORTCUTS: Record<string, Record<string, string>> = {

@@ -2,7 +2,7 @@
 import './LogsExplorerViews.styles.scss';
 
 import { Button, Typography } from 'antd';
-import { getQueryStats, WsDataEvent } from 'api/common/getQueryStats';
+import { type WsDataEvent, getQueryStats } from 'api/common/getQueryStats';
 import logEvent from 'api/common/logEvent';
 import { getYAxisFormattedValue } from 'components/Graph/yAxisConfig';
 import LogsFormatOptionsMenu from 'components/LogsFormatOptionsMenu/LogsFormatOptionsMenu';
@@ -11,10 +11,10 @@ import { LOCALSTORAGE } from 'constants/localStorage';
 import { AVAILABLE_EXPORT_PANEL_TYPES } from 'constants/panelTypes';
 import { QueryParams } from 'constants/query';
 import {
+	PANEL_TYPES,
 	initialFilters,
 	initialQueriesMap,
 	initialQueryBuilderFormValues,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
 import { DEFAULT_PER_PAGE_VALUE } from 'container/Controls/config';
 import Download from 'container/DownloadV2/DownloadV2';
@@ -28,7 +28,7 @@ import TimeSeriesView from 'container/TimeSeriesView/TimeSeriesView';
 import dayjs from 'dayjs';
 import { useUpdateDashboard } from 'hooks/dashboard/useUpdateDashboard';
 import { addEmptyWidgetInDashboardJSONWithQuery } from 'hooks/dashboard/utils';
-import { LogTimeRange } from 'hooks/logs/types';
+import type { LogTimeRange } from 'hooks/logs/types';
 import { useCopyLogLink } from 'hooks/logs/useCopyLogLink';
 import { useGetExplorerQueryRange } from 'hooks/queryBuilder/useGetExplorerQueryRange';
 import { useGetPanelTypesQueryParam } from 'hooks/queryBuilder/useGetPanelTypesQueryParam';
@@ -51,8 +51,8 @@ import {
 import { Sliders } from 'lucide-react';
 import { SELECTED_VIEWS } from 'pages/LogsExplorer/utils';
 import {
+	type MutableRefObject,
 	memo,
-	MutableRefObject,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -61,11 +61,11 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { Dashboard } from 'types/api/dashboard/getAll';
-import { ILog } from 'types/api/logs/log';
+import type { AppState } from 'store/reducers';
+import type { Dashboard } from 'types/api/dashboard/getAll';
+import type { ILog } from 'types/api/logs/log';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import {
+import type {
 	IBuilderQuery,
 	OrderByPayload,
 	Query,
@@ -76,7 +76,7 @@ import {
 	LogsAggregatorOperator,
 	StringOperators,
 } from 'types/common/queryBuilder';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { generateExportToDashboardLink } from 'utils/dashboard/generateExportToDashboardLink';
 import { v4 } from 'uuid';
 
@@ -253,42 +253,39 @@ function LogsExplorerViews({
 		chartQueryKeyRef,
 	);
 
-	const {
-		data,
-		isLoading,
-		isFetching,
-		isError,
-		isSuccess,
-	} = useGetExplorerQueryRange(
-		requestData,
-		panelType,
-		DEFAULT_ENTITY_VERSION,
-		{
-			keepPreviousData: true,
-			enabled: !isLimit && !!requestData,
-		},
-		{
-			...(activeLogId &&
-				!logs.length && {
-					start: minTime,
-					end: maxTime,
-				}),
-			// send the lastLogTimeStamp only when the panel type is list and the orderBy is timestamp and the order is desc
-			lastLogLineTimestamp:
-				panelType === PANEL_TYPES.LIST &&
-				requestData?.builder?.queryData?.[0]?.orderBy?.[0]?.columnName ===
-					'timestamp' &&
-				requestData?.builder?.queryData?.[0]?.orderBy?.[0]?.order === 'desc'
-					? lastLogLineTimestamp
-					: undefined,
-		},
-		undefined,
-		listQueryKeyRef,
-		{
-			...(!isEmpty(queryId) &&
-				selectedPanelType !== PANEL_TYPES.LIST && { 'X-SIGNOZ-QUERY-ID': queryId }),
-		},
-	);
+	const { data, isLoading, isFetching, isError, isSuccess } =
+		useGetExplorerQueryRange(
+			requestData,
+			panelType,
+			DEFAULT_ENTITY_VERSION,
+			{
+				keepPreviousData: true,
+				enabled: !isLimit && !!requestData,
+			},
+			{
+				...(activeLogId &&
+					!logs.length && {
+						start: minTime,
+						end: maxTime,
+					}),
+				// send the lastLogTimeStamp only when the panel type is list and the orderBy is timestamp and the order is desc
+				lastLogLineTimestamp:
+					panelType === PANEL_TYPES.LIST &&
+					requestData?.builder?.queryData?.[0]?.orderBy?.[0]?.columnName ===
+						'timestamp' &&
+					requestData?.builder?.queryData?.[0]?.orderBy?.[0]?.order === 'desc'
+						? lastLogLineTimestamp
+						: undefined,
+			},
+			undefined,
+			listQueryKeyRef,
+			{
+				...(!isEmpty(queryId) &&
+					selectedPanelType !== PANEL_TYPES.LIST && {
+						'X-SIGNOZ-QUERY-ID': queryId,
+					}),
+			},
+		);
 
 	const getRequestData = useCallback(
 		(
@@ -318,7 +315,7 @@ function LogsExplorerViews({
 								...(listQuery || initialQueryBuilderFormValues),
 								...paginateData,
 							},
-					  ];
+						];
 
 			const data: Query = {
 				...query,
@@ -408,10 +405,8 @@ function LogsExplorerViews({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [data?.payload]);
 
-	const {
-		mutate: updateDashboard,
-		isLoading: isUpdateDashboardLoading,
-	} = useUpdateDashboard();
+	const { mutate: updateDashboard, isLoading: isUpdateDashboardLoading } =
+		useUpdateDashboard();
 
 	const getUpdatedQueryForExport = useCallback((): Query => {
 		const updatedQuery = cloneDeep(currentQuery);

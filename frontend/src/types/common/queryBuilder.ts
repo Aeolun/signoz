@@ -1,8 +1,8 @@
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import ROUTES from 'constants/routes';
-import { Format } from 'container/NewWidget/RightContainer/types';
-import { Dispatch, SetStateAction } from 'react';
-import {
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type ROUTES from 'constants/routes';
+import type { Format } from 'container/NewWidget/RightContainer/types';
+import type { Dispatch, SetStateAction } from 'react';
+import type {
 	IBuilderFormula,
 	IBuilderQuery,
 	IClickHouseQuery,
@@ -10,9 +10,9 @@ import {
 	Query,
 	QueryState,
 } from 'types/api/queryBuilder/queryBuilderData';
-import { ViewProps } from 'types/api/saveViews/types';
+import type { ViewProps } from 'types/api/saveViews/types';
 
-import { EQueryType } from './dashboard';
+import type { EQueryType } from './dashboard';
 
 export enum DataSource {
 	METRICS = 'metrics',
@@ -222,7 +222,7 @@ export type QueryBuilderContextType = {
 	redirectWithQueryBuilderData: (
 		query: Query,
 		searchParams?: Record<string, unknown>,
-		redirectToUrl?: typeof ROUTES[keyof typeof ROUTES],
+		redirectToUrl?: (typeof ROUTES)[keyof typeof ROUTES],
 		shallStringify?: boolean,
 	) => void;
 	handleRunQuery: (shallUpdateStepInterval?: boolean) => void;

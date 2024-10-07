@@ -6,7 +6,7 @@ import logEvent from 'api/common/logEvent';
 import PromQLIcon from 'assets/Dashboard/PromQl';
 import { ALERTS_DATA_SOURCE_MAP } from 'constants/alerts';
 import { ENTITY_VERSION_V4 } from 'constants/app';
-import { PANEL_TYPES } from 'constants/queryBuilder';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
 import { QBShortcuts } from 'constants/shortcuts/QBShortcuts';
 import { QueryBuilder } from 'container/QueryBuilder';
 import { useKeyboardHotkeys } from 'hooks/hotkeys/useKeyboardHotkeys';
@@ -15,11 +15,11 @@ import { Atom, Play, Terminal } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { AlertTypes } from 'types/api/alerts/alertTypes';
-import { AlertDef } from 'types/api/alerts/def';
+import type { AlertDef } from 'types/api/alerts/def';
 import { EQueryType } from 'types/common/dashboard';
-import AppReducer from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
 
 import ChQuerySection from './ChQuerySection';
 import PromqlSection from './PromqlSection';
@@ -180,7 +180,6 @@ function QuerySection({
 						/>
 					</div>
 				);
-			case AlertTypes.METRICS_BASED_ALERT:
 			default:
 				return (
 					<div className="alert-tabs">

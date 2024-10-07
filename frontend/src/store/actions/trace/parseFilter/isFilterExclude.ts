@@ -1,6 +1,6 @@
-import { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
+import type { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
 
-import { isTraceFilterEnum, ParsedUrl } from '../util';
+import { type ParsedUrl, isTraceFilterEnum } from '../util';
 
 export const parseFilterExclude = (
 	query: string,

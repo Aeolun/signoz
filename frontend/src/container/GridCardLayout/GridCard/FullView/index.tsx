@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Input, Spin } from 'antd';
 import cx from 'classnames';
-import { ToggleGraphProps } from 'components/Graph/types';
+import type { ToggleGraphProps } from 'components/Graph/types';
 import Spinner from 'components/Spinner';
 import TimePreference from 'components/TimePreferenceDropDown';
 import { DEFAULT_ENTITY_VERSION } from 'constants/app';
@@ -15,14 +15,14 @@ import { QueryParams } from 'constants/query';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import {
 	timeItems,
-	timePreferance,
+	type timePreferance,
 } from 'container/NewWidget/RightContainer/timeItems';
 import PanelWrapper from 'container/PanelWrapper/PanelWrapper';
 import { useGetQueryRange } from 'hooks/queryBuilder/useGetQueryRange';
 import { useChartMutable } from 'hooks/useChartMutable';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { getDashboardVariables } from 'lib/dashbaordVariables/getDashboardVariables';
-import { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
+import type { GetQueryResultsProps } from 'lib/dashboard/getQueryResults';
 import GetMinMax from 'lib/getMinMax';
 import history from 'lib/history';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
@@ -30,15 +30,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { UpdateTimeInterval } from 'store/actions';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { getGraphType } from 'utils/getGraphType';
 import { getSortedSeriesData } from 'utils/getSortedSeriesData';
 
 import { getLocalStorageGraphVisibilityState } from '../utils';
 import { PANEL_TYPES_VS_FULL_VIEW_TABLE } from './contants';
 import { GraphContainer, TimeContainer } from './styles';
-import { FullViewProps } from './types';
+import type { FullViewProps } from './types';
 
 function FullView({
 	widget,
@@ -147,12 +147,11 @@ function FullView({
 	>(Array(response.data?.payload?.data?.result?.length).fill(true));
 
 	useEffect(() => {
-		const {
-			graphVisibilityStates: localStoredVisibilityState,
-		} = getLocalStorageGraphVisibilityState({
-			apiResponse: response.data?.payload.data.result || [],
-			name: originalName,
-		});
+		const { graphVisibilityStates: localStoredVisibilityState } =
+			getLocalStorageGraphVisibilityState({
+				apiResponse: response.data?.payload.data.result || [],
+				name: originalName,
+			});
 		setGraphsVisibilityStates(localStoredVisibilityState);
 	}, [originalName, response.data?.payload.data.result]);
 

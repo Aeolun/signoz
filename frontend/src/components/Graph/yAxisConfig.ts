@@ -6,7 +6,7 @@ export const getYAxisFormattedValue = (
 ): string => {
 	let decimalPrecision: number | undefined;
 	const parsedValue = getValueFormat(format)(
-		parseFloat(value),
+		Number.parseFloat(value),
 		undefined,
 		undefined,
 		undefined,
@@ -34,7 +34,7 @@ export const getYAxisFormattedValue = (
 
 		return formattedValueToString(
 			getValueFormat(format)(
-				parseFloat(value),
+				Number.parseFloat(value),
 				decimalPrecision,
 				undefined,
 				undefined,
@@ -43,13 +43,18 @@ export const getYAxisFormattedValue = (
 	} catch (error) {
 		console.error(error);
 	}
-	return `${parseFloat(value)}`;
+	return `${Number.parseFloat(value)}`;
 };
 
 export const getToolTipValue = (value: string, format?: string): string => {
 	try {
 		return formattedValueToString(
-			getValueFormat(format)(parseFloat(value), undefined, undefined, undefined),
+			getValueFormat(format)(
+				Number.parseFloat(value),
+				undefined,
+				undefined,
+				undefined,
+			),
 		);
 	} catch (error) {
 		console.error(error);

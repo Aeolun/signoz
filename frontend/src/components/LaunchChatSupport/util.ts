@@ -1,6 +1,6 @@
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { AlertDef } from 'types/api/alerts/def';
-import { Dashboard, DashboardData } from 'types/api/dashboard/getAll';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { AlertDef } from 'types/api/alerts/def';
+import type { Dashboard, DashboardData } from 'types/api/dashboard/getAll';
 
 export const chartHelpMessage = (
 	selectedDashboard: Dashboard | undefined,

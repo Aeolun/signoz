@@ -19,9 +19,9 @@ import {
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { useHistory, useLocation } from 'react-router-dom';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
-import { License } from 'types/api/licenses/def';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { CheckoutSuccessPayloadProps } from 'types/api/billing/checkout';
+import type { License } from 'types/api/licenses/def';
 
 const { Title, Text } = Typography;
 
@@ -83,9 +83,8 @@ export default function Support(): JSX.Element {
 	const { notifications } = useNotifications();
 	const { data: licenseData, isFetching } = useLicense();
 	const [activeLicense, setActiveLicense] = useState<License | null>(null);
-	const [isAddCreditCardModalOpen, setIsAddCreditCardModalOpen] = useState(
-		false,
-	);
+	const [isAddCreditCardModalOpen, setIsAddCreditCardModalOpen] =
+		useState(false);
 
 	const { pathname } = useLocation();
 	const handleChannelWithRedirects = (url: string): void => {
@@ -96,7 +95,7 @@ export default function Support(): JSX.Element {
 		if (history?.location?.state) {
 			const histroyState = history?.location?.state as any;
 
-			if (histroyState && histroyState?.from) {
+			if (histroyState?.from) {
 				logEvent(`Support : From URL : ${histroyState.from}`, {});
 			}
 		}
@@ -150,7 +149,7 @@ export default function Support(): JSX.Element {
 
 	const handleAddCreditCard = (): void => {
 		logEvent('Add Credit card modal: Clicked', {
-			source: `help & support`,
+			source: 'help & support',
 			page: pathname,
 		});
 
@@ -164,7 +163,7 @@ export default function Support(): JSX.Element {
 	const handleChat = (): void => {
 		if (showAddCreditCardModal) {
 			logEvent('Disabled Chat Support: Clicked', {
-				source: `help & support`,
+				source: 'help & support',
 				page: pathname,
 			});
 			setIsAddCreditCardModalOpen(true);

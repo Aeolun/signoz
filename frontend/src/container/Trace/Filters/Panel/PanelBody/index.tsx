@@ -2,8 +2,8 @@
 import { Card } from 'antd';
 import Spinner from 'components/Spinner';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
 
 import CommonCheckBox from './CommonCheckBox';
 import Duration from './Duration';

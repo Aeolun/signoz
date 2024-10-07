@@ -2,6 +2,7 @@ import './IngestionSettings.styles.scss';
 
 import { Color } from '@signozhq/design-tokens';
 import {
+	type TableProps as AntDTableProps,
 	Button,
 	Col,
 	Collapse,
@@ -13,24 +14,23 @@ import {
 	Row,
 	Select,
 	Table,
-	TablePaginationConfig,
-	TableProps as AntDTableProps,
+	type TablePaginationConfig,
 	Tag,
 	Typography,
 } from 'antd';
-import { NotificationInstance } from 'antd/es/notification/interface';
-import { CollapseProps } from 'antd/lib';
+import type { NotificationInstance } from 'antd/es/notification/interface';
+import type { CollapseProps } from 'antd/lib';
 import createIngestionKeyApi from 'api/IngestionKeys/createIngestionKey';
 import deleteIngestionKey from 'api/IngestionKeys/deleteIngestionKey';
 import createLimitForIngestionKeyApi from 'api/IngestionKeys/limits/createLimitsForKey';
 import deleteLimitsForIngestionKey from 'api/IngestionKeys/limits/deleteLimitsForIngestionKey';
 import updateLimitForIngestionKeyApi from 'api/IngestionKeys/limits/updateLimitsForIngestionKey';
 import updateIngestionKey from 'api/IngestionKeys/updateIngestionKey';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import { getYAxisFormattedValue } from 'components/Graph/yAxisConfig';
 import Tags from 'components/Tags/Tags';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { useGetAllIngestionsKeys } from 'hooks/IngestionKeys/useGetAllIngestionKeys';
 import useDebouncedFn from 'hooks/useDebouncedFunction';
 import { useNotifications } from 'hooks/useNotifications';
@@ -50,19 +50,19 @@ import {
 	Trash2,
 	X,
 } from 'lucide-react';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useCopyToClipboard } from 'react-use';
-import { AppState } from 'store/reducers';
-import { ErrorResponse } from 'types/api';
-import { LimitProps } from 'types/api/ingestionKeys/limits/types';
-import {
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse } from 'types/api';
+import type { LimitProps } from 'types/api/ingestionKeys/limits/types';
+import type {
 	IngestionKeyProps,
 	PaginationProps,
 } from 'types/api/ingestionKeys/types';
-import AppReducer from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
 import { USER_ROLES } from 'types/roles';
 
 const { Option } = Select;
@@ -126,20 +126,16 @@ function MultiIngestionSettings(): JSX.Element {
 		setHasCreateLimitForIngestionKeyError,
 	] = useState(false);
 
-	const [
-		createLimitForIngestionKeyError,
-		setCreateLimitForIngestionKeyError,
-	] = useState<ErrorResponse | null>(null);
+	const [createLimitForIngestionKeyError, setCreateLimitForIngestionKeyError] =
+		useState<ErrorResponse | null>(null);
 
 	const [
 		hasUpdateLimitForIngestionKeyError,
 		setHasUpdateLimitForIngestionKeyError,
 	] = useState(false);
 
-	const [
-		updateLimitForIngestionKeyError,
-		setUpdateLimitForIngestionKeyError,
-	] = useState<ErrorResponse | null>(null);
+	const [updateLimitForIngestionKeyError, setUpdateLimitForIngestionKeyError] =
+		useState<ErrorResponse | null>(null);
 
 	const { t } = useTranslation(['ingestionKeys']);
 
@@ -243,20 +239,18 @@ function MultiIngestionSettings(): JSX.Element {
 		setSearchValue('');
 	};
 
-	const {
-		mutate: createIngestionKey,
-		isLoading: isLoadingCreateAPIKey,
-	} = useMutation(createIngestionKeyApi, {
-		onSuccess: (data) => {
-			setActiveAPIKey(data.payload);
-			setUpdatedTags([]);
-			hideAddViewModal();
-			refetchAPIKeys();
-		},
-		onError: (error) => {
-			showErrorNotification(notifications, error as AxiosError);
-		},
-	});
+	const { mutate: createIngestionKey, isLoading: isLoadingCreateAPIKey } =
+		useMutation(createIngestionKeyApi, {
+			onSuccess: (data) => {
+				setActiveAPIKey(data.payload);
+				setUpdatedTags([]);
+				hideAddViewModal();
+				refetchAPIKeys();
+			},
+			onError: (error) => {
+				showErrorNotification(notifications, error as AxiosError);
+			},
+		});
 
 	const { mutate: updateAPIKey, isLoading: isLoadingUpdateAPIKey } = useMutation(
 		updateIngestionKey,
@@ -284,24 +278,22 @@ function MultiIngestionSettings(): JSX.Element {
 		},
 	);
 
-	const {
-		mutate: createLimitForIngestionKey,
-		isLoading: isLoadingLimitForKey,
-	} = useMutation(createLimitForIngestionKeyApi, {
-		onSuccess: () => {
-			setActiveSignal(null);
-			setActiveAPIKey(null);
-			setIsEditAddLimitOpen(false);
-			setUpdatedTags([]);
-			hideAddViewModal();
-			refetchAPIKeys();
-			setHasCreateLimitForIngestionKeyError(false);
-		},
-		onError: (error: ErrorResponse) => {
-			setHasCreateLimitForIngestionKeyError(true);
-			setCreateLimitForIngestionKeyError(error);
-		},
-	});
+	const { mutate: createLimitForIngestionKey, isLoading: isLoadingLimitForKey } =
+		useMutation(createLimitForIngestionKeyApi, {
+			onSuccess: () => {
+				setActiveSignal(null);
+				setActiveAPIKey(null);
+				setIsEditAddLimitOpen(false);
+				setUpdatedTags([]);
+				hideAddViewModal();
+				refetchAPIKeys();
+				setHasCreateLimitForIngestionKeyError(false);
+			},
+			onError: (error: ErrorResponse) => {
+				setHasCreateLimitForIngestionKeyError(true);
+				setCreateLimitForIngestionKeyError(error);
+			},
+		});
 
 	const {
 		mutate: updateLimitForIngestionKey,
@@ -468,7 +460,7 @@ function MultiIngestionSettings(): JSX.Element {
 	};
 
 	const onDeleteLimitHandler = (): void => {
-		if (activeSignal && activeSignal?.id) {
+		if (activeSignal?.id) {
 			deleteLimitForKey(activeSignal.id);
 		}
 	};
@@ -504,7 +496,7 @@ function MultiIngestionSettings(): JSX.Element {
 			render: (APIKey: IngestionKeyProps): JSX.Element => {
 				const createdOn = getFormattedTime(APIKey.created_at);
 				const formattedDateAndTime =
-					APIKey && APIKey?.expires_at && getFormattedTime(APIKey?.expires_at);
+					APIKey?.expires_at && getFormattedTime(APIKey?.expires_at);
 
 				const updatedOn = getFormattedTime(APIKey?.updated_at);
 
@@ -585,21 +577,23 @@ function MultiIngestionSettings(): JSX.Element {
 									</Row>
 								)}
 
-								{APIKey.tags && Array.isArray(APIKey.tags) && APIKey.tags.length > 0 && (
-									<Row>
-										<Col span={6}> Tags </Col>
-										<Col span={12}>
-											<div className="ingestion-key-tags-container">
-												<div className="ingestion-key-tags">
-													{APIKey.tags.map((tag, index) => (
-														// eslint-disable-next-line react/no-array-index-key
-														<Tag key={`${tag}-${index}`}> {tag} </Tag>
-													))}
+								{APIKey.tags &&
+									Array.isArray(APIKey.tags) &&
+									APIKey.tags.length > 0 && (
+										<Row>
+											<Col span={6}> Tags </Col>
+											<Col span={12}>
+												<div className="ingestion-key-tags-container">
+													<div className="ingestion-key-tags">
+														{APIKey.tags.map((tag, index) => (
+															// eslint-disable-next-line react/no-array-index-key
+															<Tag key={`${tag}-${index}`}> {tag} </Tag>
+														))}
+													</div>
 												</div>
-											</div>
-										</Col>
-									</Row>
-								)}
+											</Col>
+										</Row>
+									)}
 
 								<div className="limits-container">
 									<h4 className=""> LIMITS </h4>

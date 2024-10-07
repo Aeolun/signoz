@@ -1,9 +1,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import userEvent from '@testing-library/user-event';
 import {
+	PANEL_TYPES,
 	initialQueriesMap,
 	initialQueryBuilderFormValues,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
 import ROUTES from 'constants/routes';
 import * as compositeQueryHook from 'hooks/queryBuilder/useGetCompositeQueryParam';
@@ -271,7 +271,7 @@ describe('TracesExplorer - Filters', () => {
 						({
 							...item,
 							filters: undefined,
-						} as any),
+						}) as any,
 				),
 			},
 		});
@@ -296,7 +296,7 @@ describe('TracesExplorer - Filters', () => {
 								...item.filters,
 								items: undefined,
 							},
-						} as any),
+						}) as any,
 				),
 			},
 		});

@@ -1,11 +1,11 @@
-import { DrawerProps } from 'antd';
-import { AddToQueryHOCProps } from 'components/Logs/AddToQueryHOC';
-import { ActionItemProps } from 'container/LogDetailedView/ActionItem';
-import { IField } from 'types/api/logs/fields';
-import { ILog } from 'types/api/logs/log';
-import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { DrawerProps } from 'antd';
+import type { AddToQueryHOCProps } from 'components/Logs/AddToQueryHOC';
+import type { ActionItemProps } from 'container/LogDetailedView/ActionItem';
+import type { IField } from 'types/api/logs/fields';
+import type { ILog } from 'types/api/logs/log';
+import type { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
-import { VIEWS } from './constants';
+import type { VIEWS } from './constants';
 
 export type LogDetailProps = {
 	log: ILog | null;

@@ -1,7 +1,7 @@
 import { Button, Popover } from 'antd';
 import { EllipsisIcon, PenLine, X } from 'lucide-react';
 import { useState } from 'react';
-import { Layout } from 'react-grid-layout';
+import type { Layout } from 'react-grid-layout';
 
 interface WidgetRowHeaderProps {
 	rowWidgetProperties: {

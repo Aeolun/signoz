@@ -8,7 +8,7 @@ import CustomTimePicker from 'components/CustomTimePicker/CustomTimePicker';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import { QueryParams } from 'constants/query';
 import ROUTES from 'constants/routes';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { updateStepInterval } from 'hooks/queryBuilder/useStepInterval';
 import useUrlQuery from 'hooks/useUrlQuery';
@@ -18,25 +18,30 @@ import history from 'lib/history';
 import { isObject } from 'lodash-es';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { connect, useSelector } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { bindActionCreators, Dispatch } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { type RouteComponentProps, withRouter } from 'react-router-dom';
+import { type Dispatch, bindActionCreators } from 'redux';
+import type { ThunkDispatch } from 'redux-thunk';
 import { GlobalTimeLoading, UpdateTimeInterval } from 'store/actions';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 import AutoRefresh from '../AutoRefresh';
-import CustomDateTimeModal, { DateTimeRangeType } from '../CustomDateTimeModal';
-import { CustomTimeType, Time as TimeV2 } from '../DateTimeSelectionV2/config';
+import CustomDateTimeModal, {
+	type DateTimeRangeType,
+} from '../CustomDateTimeModal';
+import type {
+	CustomTimeType,
+	Time as TimeV2,
+} from '../DateTimeSelectionV2/config';
+import RefreshText from './Refresh';
 import {
+	type LocalStorageTimeRange,
+	type Time,
+	type TimeRange,
 	getDefaultOption,
 	getOptions,
-	LocalStorageTimeRange,
-	Time,
-	TimeRange,
 } from './config';
-import RefreshText from './Refresh';
 import { Form, FormContainer, FormItem } from './styles';
 
 function DateTimeSelection({
@@ -53,42 +58,42 @@ function DateTimeSelection({
 	const searchStartTime = urlQuery.get('startTime');
 	const searchEndTime = urlQuery.get('endTime');
 
-	const {
-		localstorageStartTime,
-		localstorageEndTime,
-	} = ((): LocalStorageTimeRange => {
-		const routes = getLocalStorageKey(LOCALSTORAGE.METRICS_TIME_IN_DURATION);
+	const { localstorageStartTime, localstorageEndTime } =
+		((): LocalStorageTimeRange => {
+			const routes = getLocalStorageKey(LOCALSTORAGE.METRICS_TIME_IN_DURATION);
 
-		if (routes !== null) {
-			const routesObject = JSON.parse(routes || '{}');
-			const selectedTime = routesObject[location.pathname];
+			if (routes !== null) {
+				const routesObject = JSON.parse(routes || '{}');
+				const selectedTime = routesObject[location.pathname];
 
-			if (selectedTime) {
-				let parsedSelectedTime: TimeRange;
-				try {
-					parsedSelectedTime = JSON.parse(selectedTime);
-				} catch {
-					parsedSelectedTime = selectedTime;
+				if (selectedTime) {
+					let parsedSelectedTime: TimeRange;
+					try {
+						parsedSelectedTime = JSON.parse(selectedTime);
+					} catch {
+						parsedSelectedTime = selectedTime;
+					}
+
+					if (isObject(parsedSelectedTime)) {
+						return {
+							localstorageStartTime: parsedSelectedTime.startTime,
+							localstorageEndTime: parsedSelectedTime.endTime,
+						};
+					}
+					return { localstorageStartTime: null, localstorageEndTime: null };
 				}
-
-				if (isObject(parsedSelectedTime)) {
-					return {
-						localstorageStartTime: parsedSelectedTime.startTime,
-						localstorageEndTime: parsedSelectedTime.endTime,
-					};
-				}
-				return { localstorageStartTime: null, localstorageEndTime: null };
 			}
-		}
-		return { localstorageStartTime: null, localstorageEndTime: null };
-	})();
+			return { localstorageStartTime: null, localstorageEndTime: null };
+		})();
 
 	const getTime = useCallback((): [number, number] | undefined => {
 		if (searchEndTime && searchStartTime) {
 			const startDate = dayjs(
-				new Date(parseInt(getTimeString(searchStartTime), 10)),
+				new Date(Number.parseInt(getTimeString(searchStartTime), 10)),
 			);
-			const endDate = dayjs(new Date(parseInt(getTimeString(searchEndTime), 10)));
+			const endDate = dayjs(
+				new Date(Number.parseInt(getTimeString(searchEndTime), 10)),
+			);
 
 			return [startDate.toDate().getTime() || 0, endDate.toDate().getTime() || 0];
 		}
@@ -108,9 +113,8 @@ function DateTimeSelection({
 
 	const [options, setOptions] = useState(getOptions(location.pathname));
 	const [refreshButtonHidden, setRefreshButtonHidden] = useState<boolean>(false);
-	const [customDateTimeVisible, setCustomDTPickerVisible] = useState<boolean>(
-		false,
-	);
+	const [customDateTimeVisible, setCustomDTPickerVisible] =
+		useState<boolean>(false);
 
 	const { stagedQuery, initQueryBuilderData } = useQueryBuilder();
 

@@ -1,14 +1,14 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps } from 'types/api/user/getOrganization';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps } from 'types/api/user/getOrganization';
 
 const getOrganization = async (
 	token?: string,
 ): Promise<SuccessResponse<PayloadProps> | ErrorResponse> => {
 	try {
-		const response = await axios.get(`/org`, {
+		const response = await axios.get('/org', {
 			headers: {
 				Authorization: `bearer ${token}`,
 			},

@@ -1,12 +1,12 @@
 import { orange } from '@ant-design/colors';
 import { SettingOutlined } from '@ant-design/icons';
-import { Dropdown, MenuProps } from 'antd';
+import { Dropdown, type MenuProps } from 'antd';
 import { OPERATORS } from 'constants/queryBuilder';
 import { useActiveLog } from 'hooks/logs/useActiveLog';
 
 import { TitleWrapper } from './BodyTitleRenderer.styles';
+import type { BodyTitleRendererProps } from './LogDetailedView.types';
 import { DROPDOWN_KEY } from './constant';
-import { BodyTitleRendererProps } from './LogDetailedView.types';
 import {
 	generateFieldKeyForArray,
 	getDataTypes,

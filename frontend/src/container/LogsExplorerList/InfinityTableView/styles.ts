@@ -20,12 +20,12 @@ export const TableCellStyled = styled.td<TableHeaderCellStyledProps>`
 	padding: 0.5rem;
 	${({ fontSize }): string =>
 		fontSize === FontSize.SMALL
-			? `padding:0.3rem;`
+			? 'padding:0.3rem;'
 			: fontSize === FontSize.MEDIUM
-			? `padding:0.4rem;`
-			: fontSize === FontSize.LARGE
-			? `padding:0.5rem;`
-			: ``}
+				? 'padding:0.4rem;'
+				: fontSize === FontSize.LARGE
+					? 'padding:0.5rem;'
+					: ''}
 	background-color: ${(props): string =>
 		props.$isDarkMode ? 'inherit' : themeColors.whiteCream};
 
@@ -43,7 +43,7 @@ export const TableRowStyled = styled.tr<{
 			$isActiveLog
 				? `background-color: ${
 						$isDarkMode ? Color.BG_SLATE_500 : Color.BG_VANILLA_300
-				  } !important`
+					} !important`
 				: ''};
 	}
 
@@ -61,7 +61,7 @@ export const TableRowStyled = styled.tr<{
 					? getActiveLogBackground()
 					: `background-color: ${
 							!$isDarkMode ? 'var(--bg-vanilla-200)' : 'rgba(171, 189, 255, 0.04)'
-					  }`}
+						}`}
 		}
 		.log-line-action-buttons {
 			display: flex;
@@ -81,12 +81,12 @@ export const TableHeaderCellStyled = styled.th<TableHeaderCellStyledProps>`
 
 	${({ fontSize }): string =>
 		fontSize === FontSize.SMALL
-			? `font-size:11px; line-height:16px; padding: 0.1rem;`
+			? 'font-size:11px; line-height:16px; padding: 0.1rem;'
 			: fontSize === FontSize.MEDIUM
-			? `font-size:13px; line-height:20px; padding:0.3rem;`
-			: fontSize === FontSize.LARGE
-			? `font-size:14px; line-height:24px; padding: 0.5rem;`
-			: ``};
+				? 'font-size:13px; line-height:20px; padding:0.3rem;'
+				: fontSize === FontSize.LARGE
+					? 'font-size:14px; line-height:24px; padding: 0.5rem;'
+					: ''};
 	${({ $isTimestamp }): string => ($isTimestamp ? 'padding-left: 24px;' : '')}
 	color: ${(props): string =>
 		props.$isDarkMode ? 'var(--bg-vanilla-100, #fff)' : themeColors.bckgGrey};

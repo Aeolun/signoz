@@ -2,11 +2,11 @@ import { ENTITY_VERSION_V4 } from 'constants/app';
 import { LEGEND } from 'constants/global';
 import {
 	ATTRIBUTE_TYPES,
+	PANEL_TYPES,
 	initialAutocompleteData,
 	initialQueryBuilderFormValuesMap,
 	mapOfFormulaToFilters,
 	mapOfQueryFilters,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
 import {
 	metricsGaugeSpaceAggregateOperatorOptions,
@@ -22,19 +22,19 @@ import { getMetricsOperatorsByAttributeType } from 'lib/newQueryBuilder/getMetri
 import { getOperatorsBySourceAndPanelType } from 'lib/newQueryBuilder/getOperatorsBySourceAndPanelType';
 import { findDataTypeOfOperator } from 'lib/query/findDataTypeOfOperator';
 import { useCallback, useEffect, useState } from 'react';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import {
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type {
 	IBuilderFormula,
 	IBuilderQuery,
 	QueryFunctionProps,
 } from 'types/api/queryBuilder/queryBuilderData';
-import {
+import type {
 	HandleChangeFormulaData,
 	HandleChangeQueryData,
 	UseQueryOperations,
 } from 'types/common/operations.types';
 import { DataSource, MetricAggregateOperator } from 'types/common/queryBuilder';
-import { SelectOption } from 'types/common/select';
+import type { SelectOption } from 'types/common/select';
 import { getFormatedLegend } from 'utils/getFormatedLegend';
 
 export const useQueryOperations: UseQueryOperations = ({
@@ -75,8 +75,7 @@ export const useQueryOperations: UseQueryOperations = ({
 			const result: string[] = mapsOfFilters[dataSource]?.reduce<string[]>(
 				(acc, item) => {
 					if (
-						filterConfigs &&
-						filterConfigs[item.field as typeof additionalFiltersKeys[number]]
+						filterConfigs?.[item.field as (typeof additionalFiltersKeys)[number]]
 							?.isHidden
 					) {
 						return acc;
@@ -99,10 +98,8 @@ export const useQueryOperations: UseQueryOperations = ({
 		string[]
 	>(getNewListOfAdditionalFilters(dataSource, true));
 
-	const [
-		listOfAdditionalFormulaFilters,
-		setListOfAdditionalFormulaFilters,
-	] = useState<string[]>(getNewListOfAdditionalFilters(dataSource, false));
+	const [listOfAdditionalFormulaFilters, setListOfAdditionalFormulaFilters] =
+		useState<string[]>(getNewListOfAdditionalFilters(dataSource, false));
 
 	const handleChangeOperator = useCallback(
 		(value: string): void => {

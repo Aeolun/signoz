@@ -1,4 +1,9 @@
-import { expect, Page, PlaywrightTestOptions, test } from '@playwright/test';
+import {
+	type Page,
+	type PlaywrightTestOptions,
+	expect,
+	test,
+} from '@playwright/test';
 import ROUTES from 'constants/routes';
 
 import { loginApi, waitForVersionApiSuccess } from '../fixtures/common';
@@ -6,9 +11,9 @@ import {
 	confirmPasswordSelector,
 	getStartedButtonSelector,
 	validCompanyName,
-	validemail,
 	validName,
 	validPassword,
+	validemail,
 } from '../fixtures/constant';
 
 const waitForSignUpPageSuccess = async (

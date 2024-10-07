@@ -6,7 +6,7 @@ import { FontSize } from 'container/OptionsMenu/types';
 import styled from 'styled-components';
 import { getActiveLogBackground, getDefaultLogBackground } from 'utils/logs';
 
-import { RawLogContentProps } from './types';
+import type { RawLogContentProps } from './types';
 
 export const RawLogViewContainer = styled(Row)<{
 	$isDarkMode: boolean;
@@ -28,10 +28,10 @@ export const RawLogViewContainer = styled(Row)<{
 
 		${({ fontSize }): string =>
 			fontSize === FontSize.SMALL
-				? `margin: 1px 0;`
+				? 'margin: 1px 0;'
 				: fontSize === FontSize.MEDIUM
-				? `margin: 1px 0;`
-				: `margin: 2px 0;`}
+					? 'margin: 1px 0;'
+					: 'margin: 2px 0;'}
 	}
 
 	${({ $isActiveLog }): string => getActiveLogBackground($isActiveLog)}
@@ -45,7 +45,7 @@ export const RawLogViewContainer = styled(Row)<{
 		$isHightlightedLog
 			? `background-color: ${
 					$isDarkMode ? Color.BG_SLATE_500 : Color.BG_VANILLA_300
-			  };
+				};
 			  transition: background-color 2s ease-in;`
 			: ''}
 `;
@@ -81,10 +81,10 @@ export const RawLogContent = styled.div<RawLogContentProps>`
 	line-height: 24px;
 	${({ fontSize }): string =>
 		fontSize === FontSize.SMALL
-			? `font-size:11px; line-height:16px; padding:1px;`
+			? 'font-size:11px; line-height:16px; padding:1px;'
 			: fontSize === FontSize.MEDIUM
-			? `font-size:13px; line-height:20px; padding:1px;`
-			: `font-size:14px; line-height:24px; padding:2px;`}
+				? 'font-size:13px; line-height:20px; padding:1px;'
+				: 'font-size:14px; line-height:24px; padding:2px;'}
 
 	cursor: ${({ $isActiveLog, $isReadOnly }): string =>
 		$isActiveLog || $isReadOnly ? 'initial' : 'pointer'};

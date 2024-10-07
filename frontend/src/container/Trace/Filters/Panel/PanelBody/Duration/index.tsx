@@ -1,9 +1,9 @@
 import { Slider } from 'antd';
-import { SliderRangeProps } from 'antd/lib/slider';
+import type { SliderRangeProps } from 'antd/lib/slider';
 import getFilters from 'api/trace/getFilters';
 import useDebouncedFn from 'hooks/useDebouncedFunction';
 import {
-	ChangeEventHandler,
+	type ChangeEventHandler,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -11,13 +11,13 @@ import {
 	useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
+import type { Dispatch } from 'redux';
 import { getFilter, updateURL } from 'store/actions/trace/util';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { UPDATE_ALL_FILTERS } from 'types/actions/trace';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { TraceReducer } from 'types/reducer/trace';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { TraceReducer } from 'types/reducer/trace';
 
 import { Container, InputComponent, InputContainer, Text } from './styles';
 import { getMs } from './util';
@@ -65,10 +65,10 @@ function Duration(): JSX.Element {
 		const minDuration = duration.minDuration || '0';
 
 		if (preLocalMaxDuration.current === undefined) {
-			preLocalMaxDuration.current = parseFloat(maxDuration);
+			preLocalMaxDuration.current = Number.parseFloat(maxDuration);
 		}
 		if (preLocalMinDuration.current === undefined) {
-			preLocalMinDuration.current = parseFloat(minDuration);
+			preLocalMinDuration.current = Number.parseFloat(minDuration);
 		}
 
 		setPreMax(getMs(maxDuration));

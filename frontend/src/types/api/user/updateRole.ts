@@ -1,4 +1,4 @@
-import { ROLES } from 'types/roles';
+import type { ROLES } from 'types/roles';
 
 export interface Props {
 	group_name: ROLES;

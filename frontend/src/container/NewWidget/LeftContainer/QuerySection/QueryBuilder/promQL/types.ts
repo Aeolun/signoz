@@ -1,4 +1,4 @@
-import { IPromQLQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { IPromQLQuery } from 'types/api/queryBuilder/queryBuilderData';
 
 export interface IPromQLQueryHandleChange {
 	queryIndex: number | string;

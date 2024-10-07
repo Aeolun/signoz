@@ -1,8 +1,8 @@
-import { Chart, ChartEvent, ChartTypeRegistry, Plugin } from 'chart.js';
+import type { Chart, ChartEvent, ChartTypeRegistry, Plugin } from 'chart.js';
 import { getRelativePosition } from 'chart.js/helpers';
 
 // utils
-import { ChartEventHandler, mergeDefaultOptions } from './utils';
+import { type ChartEventHandler, mergeDefaultOptions } from './utils';
 
 export const intersectionCursorPluginId = 'intersection-cursor-plugin';
 
@@ -12,11 +12,12 @@ export type IntersectionCursorPluginOptions = {
 	gapSize?: number;
 };
 
-export const defaultIntersectionCursorPluginOptions: Required<IntersectionCursorPluginOptions> = {
-	color: 'white',
-	dashSize: 3,
-	gapSize: 3,
-};
+export const defaultIntersectionCursorPluginOptions: Required<IntersectionCursorPluginOptions> =
+	{
+		color: 'white',
+		dashSize: 3,
+		gapSize: 3,
+	};
 
 export function createIntersectionCursorPluginOptions(
 	isEnabled: boolean,

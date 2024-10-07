@@ -1,15 +1,15 @@
 import { mapQueryDataFromApi } from '../mapQueryDataFromApi';
 import {
 	compositeQueriesWithFunctions,
-	compositeQueryWithoutVariables,
 	compositeQueryWithVariables,
+	compositeQueryWithoutVariables,
 	defaultOutput,
 	outputWithFunctions,
 	replaceVariables,
 	stepIntervalUnchanged,
 	widgetQueriesWithFunctions,
-	widgetQueryWithoutVariables,
 	widgetQueryWithVariables,
+	widgetQueryWithoutVariables,
 } from './mapQueryDataFromApiInputs';
 
 jest.mock('uuid', () => ({

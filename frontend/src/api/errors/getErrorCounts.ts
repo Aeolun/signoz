@@ -1,14 +1,14 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/errors/getErrorCounts';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/errors/getErrorCounts';
 
 const getErrorCounts = async (
 	props: Props,
 ): Promise<SuccessResponse<PayloadProps> | ErrorResponse> => {
 	try {
-		const response = await axios.post(`/countErrors`, {
+		const response = await axios.post('/countErrors', {
 			start: `${props.start}`,
 			end: `${props.end}`,
 			exceptionType: props.exceptionType,

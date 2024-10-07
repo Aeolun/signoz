@@ -1,13 +1,16 @@
 import { StyledDiv } from 'components/Styled';
-import { ITraceMetaData } from 'container/GantChart';
-import { IIntervalUnit, INTERVAL_UNITS } from 'container/TraceDetail/utils';
+import type { ITraceMetaData } from 'container/GantChart';
+import {
+	type IIntervalUnit,
+	INTERVAL_UNITS,
+} from 'container/TraceDetail/utils';
 import { useIsDarkMode } from 'hooks/useDarkMode';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 import { useMeasure } from 'react-use';
 
-import { styles, Svg, TimelineInterval } from './styles';
-import { Interval } from './types';
-import { getIntervals, getIntervalSpread } from './utils';
+import { Svg, TimelineInterval, styles } from './styles';
+import type { Interval } from './types';
+import { getIntervalSpread, getIntervals } from './utils';
 
 const TimelineHeight = 22;
 const TimelineHSpacing = 0;
@@ -23,14 +26,11 @@ function Timeline({
 	const [intervals, setIntervals] = useState<Interval[] | null>(null);
 
 	useEffect(() => {
-		const {
-			baseInterval,
-			baseSpread,
-			intervalSpreadNormalized,
-		} = getIntervalSpread({
-			globalTraceMetadata,
-			localTraceMetaData: traceMetaData,
-		});
+		const { baseInterval, baseSpread, intervalSpreadNormalized } =
+			getIntervalSpread({
+				globalTraceMetadata,
+				localTraceMetaData: traceMetaData,
+			});
 
 		let intervalUnit = INTERVAL_UNITS[0];
 		for (let idx = INTERVAL_UNITS.length - 1; idx >= 0; idx -= 1) {
@@ -67,30 +67,29 @@ function Timeline({
 					stroke={isDarkMode ? 'white' : 'black'}
 					strokeWidth="1"
 				/>
-				{intervals &&
-					intervals.map((interval, index) => (
-						<TimelineInterval
-							transform={`translate(${
-								TimelineHSpacing +
-								(interval.percentage * (width - 2 * TimelineHSpacing)) / 100
-							},0)`}
-							key={`${interval.label + interval.percentage + index}`}
+				{intervals?.map((interval, index) => (
+					<TimelineInterval
+						transform={`translate(${
+							TimelineHSpacing +
+							(interval.percentage * (width - 2 * TimelineHSpacing)) / 100
+						},0)`}
+						key={`${interval.label + interval.percentage + index}`}
+					>
+						<text
+							y={13}
+							x={index === intervals.length - 1 ? -10 : 0}
+							fill={isDarkMode ? 'white' : 'black'}
 						>
-							<text
-								y={13}
-								x={index === intervals.length - 1 ? -10 : 0}
-								fill={isDarkMode ? 'white' : 'black'}
-							>
-								{interval.label}
-							</text>
-							<line
-								y1={TimelineHeight - 5}
-								y2={TimelineHeight + 0.5}
-								stroke={isDarkMode ? 'white' : 'black'}
-								strokeWidth="1"
-							/>
-						</TimelineInterval>
-					))}
+							{interval.label}
+						</text>
+						<line
+							y1={TimelineHeight - 5}
+							y2={TimelineHeight + 0.5}
+							stroke={isDarkMode ? 'white' : 'black'}
+							strokeWidth="1"
+						/>
+					</TimelineInterval>
+				))}
 			</Svg>
 		</StyledDiv>
 	);

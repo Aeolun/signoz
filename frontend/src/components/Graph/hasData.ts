@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-import { ChartData } from 'chart.js';
+import type { ChartData } from 'chart.js';
 
 export const hasData = (data: ChartData): boolean => {
 	const { datasets = [] } = data;

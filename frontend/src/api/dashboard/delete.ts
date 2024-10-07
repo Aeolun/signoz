@@ -1,5 +1,5 @@
 import axios from 'api';
-import { PayloadProps, Props } from 'types/api/dashboard/delete';
+import type { PayloadProps, Props } from 'types/api/dashboard/delete';
 
 const deleteDashboard = (props: Props): Promise<PayloadProps> =>
 	axios

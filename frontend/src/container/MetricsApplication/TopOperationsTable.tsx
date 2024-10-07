@@ -1,8 +1,8 @@
 import './TopOperationsTable.styles.scss';
 
 import { SearchOutlined } from '@ant-design/icons';
-import { InputRef, Tooltip, Typography } from 'antd';
-import { ColumnsType, ColumnType } from 'antd/lib/table';
+import { type InputRef, Tooltip, Typography } from 'antd';
+import type { ColumnType, ColumnsType } from 'antd/lib/table';
 import { ResizeTable } from 'components/ResizeTable';
 import Download from 'container/Download/Download';
 import { filterDropdown } from 'container/ServiceApplication/Filter/FilterDropdown';
@@ -11,13 +11,16 @@ import { convertRawQueriesToTraceSelectedTags } from 'hooks/useResourceAttribute
 import { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query, TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type {
+	Query,
+	TagFilterItem,
+} from 'types/api/queryBuilder/queryBuilderData';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { v4 as uuid } from 'uuid';
 
-import { IServiceName } from './Tabs/types';
+import type { IServiceName } from './Tabs/types';
 import { useGetAPMToTracesQueries } from './Tabs/util';
 import {
 	convertedTracesToDownloadData,

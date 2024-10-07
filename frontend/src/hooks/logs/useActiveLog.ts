@@ -11,18 +11,18 @@ import { useCallback, useMemo, useState } from 'react';
 import { useQueryClient } from 'react-query';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { SET_DETAILED_LOG_DATA } from 'types/actions/logs';
-import { ILog } from 'types/api/logs/log';
-import {
+import type { ILog } from 'types/api/logs/log';
+import type {
 	BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { ILogsReducer } from 'types/reducer/logs';
 import { v4 as uuid } from 'uuid';
 
-import { UseActiveLog } from './types';
+import type { UseActiveLog } from './types';
 
 export function getOldLogsOperatorFromNew(operator: string): string {
 	switch (operator) {
@@ -46,9 +46,10 @@ export const useActiveLog = (): UseActiveLog => {
 	const { currentQuery, redirectWithQueryBuilderData } = useQueryBuilder();
 	const { notifications } = useNotifications();
 
-	const isLogsPage = useMemo(() => pathname === ROUTES.OLD_LOGS_EXPLORER, [
-		pathname,
-	]);
+	const isLogsPage = useMemo(
+		() => pathname === ROUTES.OLD_LOGS_EXPLORER,
+		[pathname],
+	);
 
 	const [activeLog, setActiveLog] = useState<ILog | null>(null);
 

@@ -16,10 +16,10 @@ import { useActiveLog } from 'hooks/logs/useActiveLog';
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Virtuoso } from 'react-virtuoso';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { DataSource, StringOperators } from 'types/common/queryBuilder';
 // interfaces
-import { ILogsReducer } from 'types/reducer/logs';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 // styles
 import { Container, Heading } from './styles';
@@ -49,15 +49,15 @@ function LogsTable(props: LogsTableProps): JSX.Element {
 		liveTail,
 	} = useSelector<AppState, ILogsReducer>((state) => state.logs);
 
-	const isLiveTail = useMemo(() => logs.length === 0 && liveTail === 'PLAYING', [
-		logs?.length,
-		liveTail,
-	]);
+	const isLiveTail = useMemo(
+		() => logs.length === 0 && liveTail === 'PLAYING',
+		[logs?.length, liveTail],
+	);
 
-	const isNoLogs = useMemo(() => logs.length === 0 && liveTail === 'STOPPED', [
-		logs?.length,
-		liveTail,
-	]);
+	const isNoLogs = useMemo(
+		() => logs.length === 0 && liveTail === 'STOPPED',
+		[logs?.length, liveTail],
+	);
 
 	const { options } = useOptionsMenu({
 		storageKey: LOCALSTORAGE.LOGS_LIST_OPTIONS,

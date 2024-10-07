@@ -1,4 +1,4 @@
-import { PagerChannel } from 'container/CreateAlertChannels/config';
+import type { PagerChannel } from 'container/CreateAlertChannels/config';
 
 export interface Props extends PagerChannel {
 	id: string;

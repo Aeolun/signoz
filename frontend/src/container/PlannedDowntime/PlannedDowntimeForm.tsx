@@ -9,20 +9,20 @@ import {
 	DatePicker,
 	Divider,
 	Form,
-	FormInstance,
+	type FormInstance,
 	Input,
 	Modal,
 	Select,
 	Spin,
 	Typography,
 } from 'antd';
-import { DefaultOptionType } from 'antd/es/select';
-import { SelectProps } from 'antd/lib';
-import {
+import type { DefaultOptionType } from 'antd/es/select';
+import type { SelectProps } from 'antd/lib';
+import type {
 	DowntimeSchedules,
 	Recurrence,
 } from 'api/plannedDowntime/getAllDowntimeSchedules';
-import { DowntimeScheduleUpdatePayload } from 'api/plannedDowntime/updateDowntimeSchedule';
+import type { DowntimeScheduleUpdatePayload } from 'api/plannedDowntime/updateDowntimeSchedule';
 import {
 	ModalButtonWrapper,
 	ModalTitle,
@@ -43,8 +43,8 @@ import {
 	getEndTime,
 	handleTimeConversion,
 	isScheduleRecurring,
-	recurrenceOptions,
 	recurrenceOptionWithSubmenu,
+	recurrenceOptions,
 	recurrenceWeeklyOptions,
 } from './PlannedDowntimeutils';
 
@@ -152,7 +152,7 @@ export function PlannedDowntimeForm(
 									timezoneInitialValue,
 									values.timezone,
 									shouldKeepLocalTime,
-							  )
+								)
 							: undefined,
 						recurrence: values.recurrence as Recurrence,
 					},
@@ -209,7 +209,7 @@ export function PlannedDowntimeForm(
 									timezoneInitialValue,
 									values.timezone,
 									!isEditMode,
-							  )
+								)
 							: undefined,
 						startTime: handleTimeConversion(
 							values.startTime,
@@ -221,7 +221,7 @@ export function PlannedDowntimeForm(
 							? undefined
 							: values.recurrence?.repeatOn,
 						repeatType: values.recurrence?.repeatType,
-				  };
+					};
 
 		const payloadValues = { ...values, recurrence: recurrenceData };
 		await saveHanlder(payloadValues);

@@ -6,7 +6,7 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import { cloneDeep, pullAt } from 'lodash-es';
 import { Plus } from 'lucide-react';
 import { useState } from 'react';
-import {
+import type {
 	IBuilderQuery,
 	QueryFunctionProps,
 } from 'types/api/queryBuilder/queryBuilderData';
@@ -86,9 +86,8 @@ export default function QueryFunctions({
 	onChange,
 	maxFunctions = 3,
 }: QueryFunctionsProps): JSX.Element {
-	const [functions, setFunctions] = useState<QueryFunctionProps[]>(
-		queryFunctions,
-	);
+	const [functions, setFunctions] =
+		useState<QueryFunctionProps[]>(queryFunctions);
 
 	const isDarkMode = useIsDarkMode();
 

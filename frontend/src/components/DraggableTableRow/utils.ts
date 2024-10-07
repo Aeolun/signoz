@@ -1,4 +1,4 @@
-import { DragSourceMonitor, DropTargetMonitor } from 'react-dnd';
+import type { DragSourceMonitor, DropTargetMonitor } from 'react-dnd';
 
 export function dropHandler(monitor: DropTargetMonitor): { isOver: boolean } {
 	return {
@@ -6,9 +6,9 @@ export function dropHandler(monitor: DropTargetMonitor): { isOver: boolean } {
 	};
 }
 
-export function dragHandler(
-	monitor: DragSourceMonitor,
-): { isDragging: boolean } {
+export function dragHandler(monitor: DragSourceMonitor): {
+	isDragging: boolean;
+} {
 	return {
 		isDragging: monitor.isDragging(),
 	};

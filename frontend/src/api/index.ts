@@ -1,10 +1,13 @@
+import afterLogin from 'AppRoutes/utils';
 /* eslint-disable sonarjs/cognitive-complexity */
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import getLocalStorageApi from 'api/browser/localstorage/get';
 import loginApi from 'api/user/login';
-import afterLogin from 'AppRoutes/utils';
-import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import axios, {
+	type AxiosResponse,
+	type InternalAxiosRequestConfig,
+} from 'axios';
 import { ENVIRONMENT } from 'constants/env';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import store from 'store';
@@ -30,7 +33,7 @@ const interceptorsRequestResponse = (
 		getLocalStorageApi(LOCALSTORAGE.AUTH_TOKEN) ||
 		'';
 
-	if (value && value.headers) {
+	if (value?.headers) {
 		value.headers.Authorization = token ? `Bearer ${token}` : '';
 	}
 

@@ -1,4 +1,4 @@
-import { Dashboard, IDashboardVariable } from 'types/api/dashboard/getAll';
+import type { Dashboard, IDashboardVariable } from 'types/api/dashboard/getAll';
 
 export function areArraysEqual(
 	a: (string | number | boolean)[],

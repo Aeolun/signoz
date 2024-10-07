@@ -4,7 +4,7 @@ import './Query.styles.scss';
 import { Col, Input, Row, Tooltip, Typography } from 'antd';
 import { ENTITY_VERSION_V4 } from 'constants/app';
 // ** Constants
-import { ATTRIBUTE_TYPES, PANEL_TYPES } from 'constants/queryBuilder';
+import { type ATTRIBUTE_TYPES, PANEL_TYPES } from 'constants/queryBuilder';
 import ROUTES from 'constants/routes';
 // ** Components
 import {
@@ -28,22 +28,22 @@ import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useQueryOperations } from 'hooks/queryBuilder/useQueryBuilderOperations';
 // ** Hooks
 import {
-	ChangeEvent,
+	type ChangeEvent,
+	type ReactNode,
 	memo,
-	ReactNode,
 	useCallback,
 	useMemo,
 	useState,
 } from 'react';
 import { useLocation } from 'react-use';
-import { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
 import { transformToUpperCase } from 'utils/transformToUpperCase';
 
 import QBEntityOptions from '../QBEntityOptions/QBEntityOptions';
 import SpaceAggregationOptions from '../SpaceAggregationOptions/SpaceAggregationOptions';
 // ** Types
-import { QueryProps } from './Query.interfaces';
+import type { QueryProps } from './Query.interfaces';
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
 export const Query = memo(function Query({
@@ -82,9 +82,10 @@ export const Query = memo(function Query({
 		entityVersion: version,
 	});
 
-	const isLogsExplorerPage = useMemo(() => pathname === ROUTES.LOGS_EXPLORER, [
-		pathname,
-	]);
+	const isLogsExplorerPage = useMemo(
+		() => pathname === ROUTES.LOGS_EXPLORER,
+		[pathname],
+	);
 
 	const handleChangeAggregateEvery = useCallback(
 		(value: IBuilderQuery['stepInterval']) => {

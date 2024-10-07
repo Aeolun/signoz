@@ -10,7 +10,7 @@ import {
 	CurrencyFormats,
 	DataFormats,
 	DataRateFormats,
-	DataTypeCategories,
+	type DataTypeCategories,
 	DatetimeFormats,
 	FlopsFormats,
 	FlowFormats,

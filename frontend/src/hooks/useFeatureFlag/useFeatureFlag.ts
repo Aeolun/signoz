@@ -1,8 +1,8 @@
-import { FeatureKeys } from 'constants/features';
+import type { FeatureKeys } from 'constants/features';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { FeatureFlagProps as FeatureFlagPayload } from 'types/api/features/getFeaturesFlags';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { FeatureFlagProps as FeatureFlagPayload } from 'types/api/features/getFeaturesFlags';
+import type AppReducer from 'types/reducer/app';
 
 const useFeatureFlag = (
 	flagKey: keyof typeof FeatureKeys,

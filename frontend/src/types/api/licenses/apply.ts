@@ -1,4 +1,4 @@
-import { License } from './def';
+import type { License } from './def';
 
 export interface Props {
 	key: string;

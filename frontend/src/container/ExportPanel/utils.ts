@@ -1,5 +1,5 @@
-import { SelectProps } from 'antd';
-import { PayloadProps as AllDashboardsData } from 'types/api/dashboard/getAll';
+import type { SelectProps } from 'antd';
+import type { PayloadProps as AllDashboardsData } from 'types/api/dashboard/getAll';
 
 export const getSelectOptions = (
 	data: AllDashboardsData,

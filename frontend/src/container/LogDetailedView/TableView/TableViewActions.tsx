@@ -13,10 +13,10 @@ import { isEmpty } from 'lodash-es';
 import { ArrowDownToDot, ArrowUpFromDot, Ellipsis } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 import { FORBID_DOM_PURIFY_TAGS } from 'utils/app';
 
-import { DataType } from '../TableView';
+import type { DataType } from '../TableView';
 import {
 	filterKeyForField,
 	jsonToDataNodes,
@@ -84,7 +84,7 @@ export function TableViewActions(
 							FORBID_TAGS: [...FORBID_DOM_PURIFY_TAGS],
 						}),
 					),
-			  }
+				}
 			: { __html: '' };
 
 	const fieldFilterKey = filterKeyForField(fieldData.field);

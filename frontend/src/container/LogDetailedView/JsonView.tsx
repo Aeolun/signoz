@@ -1,12 +1,12 @@
 import './JsonView.styles.scss';
 
-import MEditor, { EditorProps, Monaco } from '@monaco-editor/react';
+import MEditor, { type EditorProps, type Monaco } from '@monaco-editor/react';
 import { Color } from '@signozhq/design-tokens';
 import { Switch, Typography } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { useMemo, useState } from 'react';
 
-import { JSONViewProps } from './LogDetailedView.types';
+import type { JSONViewProps } from './LogDetailedView.types';
 import { aggregateAttributesResourcesToString } from './utils';
 
 function JSONView({ logData }: JSONViewProps): JSX.Element {

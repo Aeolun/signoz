@@ -2,19 +2,19 @@ import { Input, List, Typography } from 'antd';
 import ROUTES from 'constants/routes';
 import { formUrlParams } from 'container/TraceDetail/utils';
 import {
-	ChangeEvent,
-	Dispatch,
-	SetStateAction,
+	type ChangeEvent,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useMemo,
 	useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ITraceTag } from 'types/api/trace/getTraceItem';
+import type { ITraceTag } from 'types/api/trace/getTraceItem';
 
-import { ModalText } from '..';
-import { Container } from './styles';
+import type { ModalText } from '..';
 import Tag from './Tag';
+import { Container } from './styles';
 
 function Tags({
 	tags,

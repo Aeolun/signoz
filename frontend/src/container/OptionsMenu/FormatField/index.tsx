@@ -1,9 +1,9 @@
-import { RadioChangeEvent } from 'antd';
+import type { RadioChangeEvent } from 'antd';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { FieldTitle } from '../styles';
-import { OptionsMenuConfig } from '../types';
+import type { OptionsMenuConfig } from '../types';
 import { FormatFieldWrapper, RadioButton, RadioGroup } from './styles';
 
 function FormatField({ config }: FormatFieldProps): JSX.Element | null {

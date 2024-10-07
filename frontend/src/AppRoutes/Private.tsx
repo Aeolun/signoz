@@ -8,16 +8,16 @@ import ROUTES from 'constants/routes';
 import useLicense from 'hooks/useLicense';
 import { useNotifications } from 'hooks/useNotifications';
 import history from 'lib/history';
-import { ReactChild, useEffect, useMemo } from 'react';
+import { type ReactChild, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { matchPath, Redirect, useLocation } from 'react-router-dom';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
+import { Redirect, matchPath, useLocation } from 'react-router-dom';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
 import { getInitialUserTokenRefreshToken } from 'store/utils';
-import AppActions from 'types/actions';
+import type AppActions from 'types/actions';
 import { UPDATE_USER_IS_FETCH } from 'types/actions/app';
-import AppReducer from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
 import { routePermission } from 'utils/permission';
 
 import routes, {
@@ -44,10 +44,8 @@ function PrivateRoute({ children }: PrivateRouteProps): JSX.Element {
 		[pathname],
 	);
 
-	const {
-		data: licensesData,
-		isFetching: isFetchingLicensesData,
-	} = useLicense();
+	const { data: licensesData, isFetching: isFetchingLicensesData } =
+		useLicense();
 
 	const {
 		isUserFetching,
@@ -122,11 +120,7 @@ function PrivateRoute({ children }: PrivateRouteProps): JSX.Element {
 	const handlePrivateRoutes = async (
 		key: keyof typeof ROUTES,
 	): Promise<void> => {
-		if (
-			localStorageUserAuthToken &&
-			localStorageUserAuthToken.refreshJwt &&
-			isUserFetching
-		) {
+		if (localStorageUserAuthToken?.refreshJwt && isUserFetching) {
 			handleUserLoginIfTokenPresent(key);
 		} else {
 			// user does have localstorage values

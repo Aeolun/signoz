@@ -1,6 +1,6 @@
 import { Tooltip, Typography } from 'antd';
 import { navigateToTrace } from 'container/MetricsApplication/utils';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 import { v4 as uuid } from 'uuid';
 

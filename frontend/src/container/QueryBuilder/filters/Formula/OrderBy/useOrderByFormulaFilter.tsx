@@ -1,16 +1,16 @@
 import { DEBOUNCE_DELAY } from 'constants/queryBuilderFilterConfig';
 import useDebounce from 'hooks/useDebounce';
-import { IOption } from 'hooks/useResourceAttribute/types';
+import type { IOption } from 'hooks/useResourceAttribute/types';
 import isEqual from 'lodash-es/isEqual';
 import uniqWith from 'lodash-es/uniqWith';
 import { parse } from 'papaparse';
 import { useMemo, useState } from 'react';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { OrderByPayload } from 'types/api/queryBuilder/queryBuilderData';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { OrderByPayload } from 'types/api/queryBuilder/queryBuilderData';
 
 import { ORDERBY_FILTERS } from '../../OrderByFilter/config';
 import { SIGNOZ_VALUE } from '../../OrderByFilter/constants';
-import { UseOrderByFilterResult } from '../../OrderByFilter/useOrderByFilter';
+import type { UseOrderByFilterResult } from '../../OrderByFilter/useOrderByFilter';
 import {
 	getLabelFromValue,
 	mapLabelValuePairs,
@@ -18,7 +18,7 @@ import {
 } from '../../OrderByFilter/utils';
 import { getRemoveOrderFromValue } from '../../QueryBuilderSearch/utils';
 import { getUniqueOrderByValues, getValidOrderByResult } from '../../utils';
-import { IOrderByFormulaFilterProps } from './types';
+import type { IOrderByFormulaFilterProps } from './types';
 import { transformToOrderByStringValuesByFormula } from './utils';
 
 export const useOrderByFormulaFilter = ({

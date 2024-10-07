@@ -1,8 +1,8 @@
 import { Form, Input } from 'antd';
-import { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { WebhookChannel } from '../../CreateAlertChannels/config';
+import type { WebhookChannel } from '../../CreateAlertChannels/config';
 
 function WebhookSettings({ setSelectedConfig }: WebhookProps): JSX.Element {
 	const { t } = useTranslation('channels');

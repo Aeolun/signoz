@@ -1,18 +1,18 @@
 import { Input, Slider } from 'antd';
-import { SliderRangeProps } from 'antd/es/slider';
+import type { SliderRangeProps } from 'antd/es/slider';
 import { getMs } from 'container/Trace/Filters/Panel/PanelBody/Duration/util';
 import useDebouncedFn from 'hooks/useDebouncedFunction';
 import {
-	ChangeEventHandler,
-	Dispatch,
-	SetStateAction,
+	type ChangeEventHandler,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
 
-import { addFilter, FilterType, traceFilterKeys } from './filterUtils';
+import { type FilterType, addFilter, traceFilterKeys } from './filterUtils';
 
 interface DurationProps {
 	selectedFilters: FilterType | undefined;

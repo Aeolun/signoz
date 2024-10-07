@@ -1,6 +1,6 @@
 import _set from 'lodash-es/set';
 
-import { Query } from './QueryBuilder';
+import type { Query } from './QueryBuilder';
 
 export const parseQuery = (queries: Query): Query => {
 	if (Array.isArray(queries)) {

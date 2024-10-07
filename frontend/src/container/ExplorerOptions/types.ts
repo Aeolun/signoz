@@ -1,14 +1,20 @@
-import { NotificationInstance } from 'antd/es/notification/interface';
-import { AxiosResponse } from 'axios';
-import { SaveViewWithNameProps } from 'components/ExplorerCard/types';
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { Dispatch, SetStateAction } from 'react';
-import { UseMutateAsyncFunction } from 'react-query';
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
-import { SaveViewPayloadProps, SaveViewProps } from 'types/api/saveViews/types';
-import { DataSource, QueryBuilderContextType } from 'types/common/queryBuilder';
+import type { NotificationInstance } from 'antd/es/notification/interface';
+import type { AxiosResponse } from 'axios';
+import type { SaveViewWithNameProps } from 'components/ExplorerCard/types';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { Dispatch, SetStateAction } from 'react';
+import type { UseMutateAsyncFunction } from 'react-query';
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type {
+	SaveViewPayloadProps,
+	SaveViewProps,
+} from 'types/api/saveViews/types';
+import type {
+	DataSource,
+	QueryBuilderContextType,
+} from 'types/common/queryBuilder';
 
-import { PreservedViewsTypes } from './constants';
+import type { PreservedViewsTypes } from './constants';
 
 export interface SaveNewViewHandlerProps {
 	viewName: string;

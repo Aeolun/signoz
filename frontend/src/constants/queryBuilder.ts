@@ -2,12 +2,12 @@
 import { createIdFromObjectFields } from 'lib/createIdFromObjectFields';
 import { createNewBuilderItemName } from 'lib/newQueryBuilder/createNewBuilderItemName';
 import {
-	AutocompleteType,
-	BaseAutocompleteData,
+	type AutocompleteType,
+	type BaseAutocompleteData,
 	DataTypes,
-	LocalDataType,
+	type LocalDataType,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import {
+import type {
 	HavingForm,
 	IBuilderFormula,
 	IBuilderQuery,
@@ -24,13 +24,13 @@ import {
 	LogsAggregatorOperator,
 	MetricAggregateOperator,
 	NumberOperators,
-	QueryAdditionalFilter,
-	QueryBuilderData,
-	ReduceOperators,
+	type QueryAdditionalFilter,
+	type QueryBuilderData,
+	type ReduceOperators,
 	StringOperators,
 	TracesAggregatorOperator,
 } from 'types/common/queryBuilder';
-import { SelectOption } from 'types/common/select';
+import type { SelectOption } from 'types/common/select';
 import { v4 as uuid } from 'uuid';
 
 import {

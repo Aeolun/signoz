@@ -22,30 +22,30 @@ export const Container = styled(Card)<{
 
 	${({ fontSize }): string =>
 		fontSize === FontSize.SMALL
-			? `margin-bottom:0.1rem;`
+			? 'margin-bottom:0.1rem;'
 			: fontSize === FontSize.MEDIUM
-			? `margin-bottom: 0.2rem;`
-			: fontSize === FontSize.LARGE
-			? `margin-bottom:0.3rem;`
-			: ``}
+				? 'margin-bottom: 0.2rem;'
+				: fontSize === FontSize.LARGE
+					? 'margin-bottom:0.3rem;'
+					: ''}
 	cursor: pointer;
 	.ant-card-body {
 		padding: 0.3rem 0.6rem;
 
 		${({ fontSize }): string =>
 			fontSize === FontSize.SMALL
-				? `padding:0.1rem 0.6rem;`
+				? 'padding:0.1rem 0.6rem;'
 				: fontSize === FontSize.MEDIUM
-				? `padding: 0.2rem 0.6rem;`
-				: fontSize === FontSize.LARGE
-				? `padding:0.3rem 0.6rem;`
-				: ``}
+					? 'padding: 0.2rem 0.6rem;'
+					: fontSize === FontSize.LARGE
+						? 'padding:0.3rem 0.6rem;'
+						: ''}
 
 		${({ $isActiveLog, $isDarkMode }): string =>
 			$isActiveLog
 				? `background-color: ${
 						$isDarkMode ? Color.BG_SLATE_500 : Color.BG_VANILLA_300
-				  } !important`
+					} !important`
 				: ''}
 	}
 `;
@@ -70,10 +70,10 @@ export const LogContainer = styled.div<LogContainerProps>`
 	gap: 6px;
 	${({ fontSize }): string =>
 		fontSize === FontSize.SMALL
-			? `gap: 2px;`
+			? 'gap: 2px;'
 			: fontSize === FontSize.MEDIUM
-			? ` gap:4px;`
-			: `gap:6px;`}
+				? ' gap:4px;'
+				: 'gap:6px;'}
 `;
 
 export const LogText = styled.div<LogTextProps>`

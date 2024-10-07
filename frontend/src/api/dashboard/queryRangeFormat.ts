@@ -1,7 +1,7 @@
 import { ApiV3Instance as axios } from 'api';
-import { ApiResponse } from 'types/api';
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
-import { QueryRangePayload } from 'types/api/metrics/getQueryRange';
+import type { ApiResponse } from 'types/api';
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type { QueryRangePayload } from 'types/api/metrics/getQueryRange';
 
 interface IQueryRangeFormat {
 	compositeQuery: ICompositeMetricQuery;

@@ -2,7 +2,7 @@ import { PANEL_TYPES } from 'constants/queryBuilder';
 import GridTableComponent from 'container/GridTableComponent';
 import { GRID_TABLE_CONFIG } from 'container/GridTableComponent/config';
 
-import { PanelWrapperProps } from './panelWrapper.types';
+import type { PanelWrapperProps } from './panelWrapper.types';
 
 function TablePanelWrapper({
 	widget,

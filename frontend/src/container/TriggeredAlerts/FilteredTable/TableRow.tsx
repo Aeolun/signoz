@@ -1,7 +1,7 @@
 import { MinusSquareOutlined, PlusSquareOutlined } from '@ant-design/icons';
 import { Tag } from 'antd';
 import { useState } from 'react';
-import { Alerts } from 'types/api/alerts/getTriggered';
+import type { Alerts } from 'types/api/alerts/getTriggered';
 
 import ExapandableRow from './ExapandableRow';
 import { IconContainer, StatusContainer, TableCell, TableRow } from './styles';
@@ -24,13 +24,11 @@ function TableRowComponent({
 						<IconContainer onClick={onClickHandler}>
 							{!isClicked ? <PlusSquareOutlined /> : <MinusSquareOutlined />}
 						</IconContainer>
-						<>
-							{tags.map((tag) => (
-								<Tag color="magenta" key={tag}>
-									{tag}
-								</Tag>
-							))}
-						</>
+						{tags.map((tag) => (
+							<Tag color="magenta" key={tag}>
+								{tag}
+							</Tag>
+						))}
 					</StatusContainer>
 				</TableCell>
 				<TableCell />

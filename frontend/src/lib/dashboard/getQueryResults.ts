@@ -3,19 +3,19 @@
 // @ts-nocheck
 
 import { getMetricsQueryRange } from 'api/metrics/getQueryRange';
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
-import { Time } from 'container/TopNav/DateTimeSelection/config';
-import {
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { timePreferenceType } from 'container/NewWidget/RightContainer/timeItems';
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
+import type {
 	CustomTimeType,
 	Time as TimeV2,
 } from 'container/TopNav/DateTimeSelectionV2/config';
-import { Pagination } from 'hooks/queryPagination';
+import type { Pagination } from 'hooks/queryPagination';
 import { convertNewDataToOld } from 'lib/newQueryBuilder/convertNewDataToOld';
-import { isEmpty, cloneDeep } from 'lodash-es';
-import { SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import { cloneDeep, isEmpty } from 'lodash-es';
+import type { SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
 import { prepareQueryRangePayload } from './prepareQueryRangePayload';
 
@@ -32,7 +32,6 @@ export async function GetMetricQueryRange(
 		signal,
 		headers,
 	);
-	
 
 	if (response.statusCode >= 400) {
 		let error = `API responded with ${response.statusCode} -  ${response.error} status: ${response.message}`;

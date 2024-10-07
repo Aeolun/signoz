@@ -2,9 +2,9 @@ import { Button } from 'antd';
 import CategoryHeading from 'components/Logs/CategoryHeading';
 import map from 'lodash-es/map';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 // import { ADD_SEARCH_FIELD_QUERY_STRING } from 'types/actions/logs';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 import FieldKey from './FieldKey';
 

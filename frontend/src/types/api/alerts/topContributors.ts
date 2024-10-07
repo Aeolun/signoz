@@ -1,4 +1,4 @@
-import { AlertDef } from './def';
+import type { AlertDef } from './def';
 
 export interface TopContributorsProps {
 	id: AlertDef['id'];

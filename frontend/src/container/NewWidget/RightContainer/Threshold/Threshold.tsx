@@ -6,7 +6,7 @@ import { PANEL_TYPES } from 'constants/queryBuilder';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { Check, Pencil, Trash2, X } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { useDrag, useDrop, XYCoord } from 'react-dnd';
+import { type XYCoord, useDrag, useDrop } from 'react-dnd';
 
 import {
 	operatorOptions,
@@ -17,7 +17,7 @@ import {
 import ColorSelector from './ColorSelector';
 import CustomColor from './CustomColor';
 import ShowCaseValue from './ShowCaseValue';
-import { ThresholdProps } from './types';
+import type { ThresholdProps } from './types';
 
 const wrapStyle = {
 	flexWrap: 'wrap',
@@ -48,9 +48,8 @@ function Threshold({
 	const [value, setValue] = useState<number>(thresholdValue);
 	const [unit, setUnit] = useState<string>(thresholdUnit);
 	const [color, setColor] = useState<string>(thresholdColor);
-	const [format, setFormat] = useState<ThresholdProps['thresholdFormat']>(
-		thresholdFormat,
-	);
+	const [format, setFormat] =
+		useState<ThresholdProps['thresholdFormat']>(thresholdFormat);
 	const [label, setLabel] = useState<string>(thresholdLabel);
 	const [tableSelectedOption, setTableSelectedOption] = useState<string>(
 		thresholdTableOptions,

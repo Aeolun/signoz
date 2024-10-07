@@ -6,9 +6,9 @@ import {
 	Decimation,
 	Filler,
 	Legend,
-	LinearScale,
 	LineController,
 	LineElement,
+	LinearScale,
 	PointElement,
 	SubTitle,
 	TimeScale,
@@ -30,14 +30,14 @@ import {
 	useRef,
 } from 'react';
 
-import { hasData } from './hasData';
 import { legend } from './Plugin';
 import { createDragSelectPlugin } from './Plugin/DragSelect';
 import { emptyGraph } from './Plugin/EmptyGraph';
 import { createIntersectionCursorPlugin } from './Plugin/IntersectionCursor';
 import { TooltipPosition as TooltipPositionHandler } from './Plugin/Tooltip';
+import { hasData } from './hasData';
 import { LegendsContainer } from './styles';
-import { CustomChartOptions, GraphProps, ToggleGraphProps } from './types';
+import type { CustomChartOptions, GraphProps, ToggleGraphProps } from './types';
 import { getGraphOptions, toggleGraph } from './utils';
 import { useXAxisTimeUnit } from './xAxisConfig';
 

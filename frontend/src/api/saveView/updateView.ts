@@ -1,5 +1,5 @@
 import axios from 'api';
-import {
+import type {
 	UpdateViewPayloadProps,
 	UpdateViewProps,
 } from 'types/api/saveViews/types';

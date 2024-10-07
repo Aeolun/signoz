@@ -2,9 +2,9 @@ import Graph from 'components/Graph';
 import Spinner from 'components/Spinner';
 import { QueryParams } from 'constants/query';
 import { themeColors } from 'constants/theme';
-import { CustomTimeType } from 'container/TopNav/DateTimeSelectionV2/config';
+import type { CustomTimeType } from 'container/TopNav/DateTimeSelectionV2/config';
 import useUrlQuery from 'hooks/useUrlQuery';
-import getChartData, { GetChartDataProps } from 'lib/getChartData';
+import getChartData, { type GetChartDataProps } from 'lib/getChartData';
 import GetMinMax from 'lib/getMinMax';
 import { colors } from 'lib/getRandomColor';
 import getTimeString from 'lib/getTimeString';
@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { UpdateTimeInterval } from 'store/actions';
 
-import { LogsExplorerChartProps } from './LogsExplorerChart.interfaces';
+import type { LogsExplorerChartProps } from './LogsExplorerChart.interfaces';
 import { CardStyled } from './LogsExplorerChart.styled';
 import { getColorsForSeverityLabels } from './utils';
 
@@ -28,23 +28,24 @@ function LogsExplorerChart({
 	const dispatch = useDispatch();
 	const urlQuery = useUrlQuery();
 	const location = useLocation();
-	const handleCreateDatasets: Required<GetChartDataProps>['createDataset'] = useCallback(
-		(element, index, allLabels) => ({
-			data: element,
-			backgroundColor: isLogsExplorerViews
-				? getColorsForSeverityLabels(allLabels[index], index)
-				: colors[index % colors.length] || themeColors.red,
-			borderColor: isLogsExplorerViews
-				? getColorsForSeverityLabels(allLabels[index], index)
-				: colors[index % colors.length] || themeColors.red,
-			...(isLabelEnabled
-				? {
-						label: allLabels[index],
-				  }
-				: {}),
-		}),
-		[isLabelEnabled, isLogsExplorerViews],
-	);
+	const handleCreateDatasets: Required<GetChartDataProps>['createDataset'] =
+		useCallback(
+			(element, index, allLabels) => ({
+				data: element,
+				backgroundColor: isLogsExplorerViews
+					? getColorsForSeverityLabels(allLabels[index], index)
+					: colors[index % colors.length] || themeColors.red,
+				borderColor: isLogsExplorerViews
+					? getColorsForSeverityLabels(allLabels[index], index)
+					: colors[index % colors.length] || themeColors.red,
+				...(isLabelEnabled
+					? {
+							label: allLabels[index],
+						}
+					: {}),
+			}),
+			[isLabelEnabled, isLogsExplorerViews],
+		);
 
 	const onDragSelect = useCallback(
 		(start: number, end: number): void => {
@@ -81,8 +82,8 @@ function LogsExplorerChart({
 		} else if (startTime && endTime && startTime !== endTime) {
 			dispatch(
 				UpdateTimeInterval('custom', [
-					parseInt(getTimeString(startTime), 10),
-					parseInt(getTimeString(endTime), 10),
+					Number.parseInt(getTimeString(startTime), 10),
+					Number.parseInt(getTimeString(endTime), 10),
 				]),
 			);
 		}

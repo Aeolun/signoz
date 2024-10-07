@@ -1,5 +1,5 @@
-import { MetricsType } from 'container/MetricsApplication/constant';
-import { ILog } from 'types/api/logs/log';
+import type { MetricsType } from 'container/MetricsApplication/constant';
+import type { ILog } from 'types/api/logs/log';
 
 export interface BodyTitleRendererProps {
 	title: string;

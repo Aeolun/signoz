@@ -1,11 +1,11 @@
 import { Card, Typography } from 'antd';
 import Spinner from 'components/Spinner';
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { WidgetGraphContainerProps } from 'container/NewWidget/types';
+import type { WidgetGraphContainerProps } from 'container/NewWidget/types';
 import { getSortedSeriesData } from 'utils/getSortedSeriesData';
 
-import { NotFoundContainer } from './styles';
 import WidgetGraph from './WidgetGraphs';
+import { NotFoundContainer } from './styles';
 
 function WidgetGraphContainer({
 	selectedGraph,

@@ -1,6 +1,9 @@
 import axios from 'api';
-import { AxiosResponse } from 'axios';
-import { SaveViewPayloadProps, SaveViewProps } from 'types/api/saveViews/types';
+import type { AxiosResponse } from 'axios';
+import type {
+	SaveViewPayloadProps,
+	SaveViewProps,
+} from 'types/api/saveViews/types';
 
 export const saveView = ({
 	compositeQuery,

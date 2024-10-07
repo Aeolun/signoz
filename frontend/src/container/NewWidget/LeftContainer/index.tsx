@@ -8,14 +8,14 @@ import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
-import { WidgetGraphProps } from '../types';
+import type { WidgetGraphProps } from '../types';
 import ExplorerColumnsRenderer from './ExplorerColumnsRenderer';
 import QuerySection from './QuerySection';
-import { QueryContainer } from './styles';
 import WidgetGraph from './WidgetGraph';
+import { QueryContainer } from './styles';
 
 function LeftContainer({
 	selectedGraph,

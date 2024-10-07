@@ -7,8 +7,8 @@ import useURLQuery from 'hooks/useUrlQuery';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 function Login(): JSX.Element {
 	const { isLoggedIn } = useSelector<AppState, AppReducer>((state) => state.app);
@@ -38,10 +38,7 @@ function Login(): JSX.Element {
 		);
 	}
 
-	if (
-		versionResult.status === 'loading' ||
-		!(versionResult.data && versionResult.data.payload)
-	) {
+	if (versionResult.status === 'loading' || !versionResult.data?.payload) {
 		return <Spinner tip="Loading..." />;
 	}
 

@@ -1,7 +1,7 @@
 import deleteDashboard from 'api/dashboard/delete';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
-import { useMutation, UseMutationResult } from 'react-query';
-import { PayloadProps } from 'types/api/dashboard/delete';
+import { type UseMutationResult, useMutation } from 'react-query';
+import type { PayloadProps } from 'types/api/dashboard/delete';
 
 export const useDeleteDashboard = (
 	id: string,

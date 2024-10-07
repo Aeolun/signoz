@@ -1,5 +1,5 @@
-import { AxiosResponse } from 'axios';
-import { ApDexPayloadAndSettingsProps } from 'types/api/metrics/getApDex';
+import type { AxiosResponse } from 'axios';
+import type { ApDexPayloadAndSettingsProps } from 'types/api/metrics/getApDex';
 
 export interface ApDexSettingsProps {
 	servicename: string;

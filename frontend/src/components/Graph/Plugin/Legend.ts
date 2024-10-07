@@ -1,4 +1,4 @@
-import { Chart, ChartType, Plugin } from 'chart.js';
+import type { Chart, ChartType, Plugin } from 'chart.js';
 import { Events } from 'constants/events';
 import { colors } from 'lib/getRandomColor';
 import { get } from 'lodash-es';
@@ -52,7 +52,7 @@ export const legend = (id: string, isLonger: boolean): Plugin<ChartType> => ({
 		])
 			? get(chart, ['options', 'plugins', 'legend', 'labels', 'generateLabels'])(
 					chart,
-			  )
+				)
 			: null;
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,5 +1,5 @@
 import { Button } from 'antd';
-import { StyledCSS } from 'container/GantChart/Trace/styles';
+import type { StyledCSS } from 'container/GantChart/Trace/styles';
 import styled, { css } from 'styled-components';
 
 interface Props {

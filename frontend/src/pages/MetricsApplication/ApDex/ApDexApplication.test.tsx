@@ -1,8 +1,8 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
 import { APPLICATION_SETTINGS } from '../constants';
-import { thresholdMockData } from './__mock__/thresholdMockData';
 import ApDexApplication from './ApDexApplication';
+import { thresholdMockData } from './__mock__/thresholdMockData';
 
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'),
@@ -14,7 +14,13 @@ jest.mock('react-router-dom', () => ({
 jest.mock('hooks/apDex/useGetApDexSettings', () => ({
 	__esModule: true,
 	useGetApDexSettings: jest.fn().mockReturnValue({
-		data: thresholdMockData,
+		data: {
+			data: [
+				{
+					threshold: 0.5,
+				},
+			],
+		},
 		isLoading: false,
 		error: null,
 		refetch: jest.fn(),

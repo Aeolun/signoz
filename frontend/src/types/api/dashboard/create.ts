@@ -1,4 +1,4 @@
-import { Dashboard, DashboardData } from './getAll';
+import type { Dashboard, DashboardData } from './getAll';
 
 export type Props =
 	| {

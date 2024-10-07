@@ -21,15 +21,15 @@ import { useDispatch } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import store from 'store';
 import { UpdateTimeInterval } from 'store/actions';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
 import { v4 as uuid } from 'uuid';
 
-import { GraphTitle, MENU_ITEMS, SERVICE_CHART_ID } from '../constant';
 import { getWidgetQueryBuilder } from '../MetricsApplication.factory';
+import { GraphTitle, MENU_ITEMS, SERVICE_CHART_ID } from '../constant';
 import { Card, GraphContainer, Row } from '../styles';
 import { Button } from './styles';
-import { IServiceName } from './types';
+import type { IServiceName } from './types';
 import {
 	dbSystemTags,
 	handleNonInQueryRange,

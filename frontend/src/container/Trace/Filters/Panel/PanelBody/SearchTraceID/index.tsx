@@ -1,16 +1,16 @@
 import { Input } from 'antd';
 import getFilters from 'api/trace/getFilters';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import { useNotifications } from 'hooks/useNotifications';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
+import type { Dispatch } from 'redux';
 import { getFilter, updateURL } from 'store/actions/trace/util';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { UPDATE_ALL_FILTERS } from 'types/actions/trace';
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { TraceReducer } from 'types/reducer/trace';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { TraceReducer } from 'types/reducer/trace';
 
 const { Search } = Input;
 

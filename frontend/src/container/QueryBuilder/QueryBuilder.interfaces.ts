@@ -1,10 +1,10 @@
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { WhereClauseConfig } from 'hooks/queryBuilder/useAutoComplete';
-import { ReactNode } from 'react';
-import { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
-import { DataSource } from 'types/common/queryBuilder';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { WhereClauseConfig } from 'hooks/queryBuilder/useAutoComplete';
+import type { ReactNode } from 'react';
+import type { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { DataSource } from 'types/common/queryBuilder';
 
-import { OrderByFilterProps } from './filters/OrderByFilter/OrderByFilter.interfaces';
+import type { OrderByFilterProps } from './filters/OrderByFilter/OrderByFilter.interfaces';
 
 type FilterConfigs = {
 	[Key in keyof Omit<IBuilderQuery, 'filters'>]: {

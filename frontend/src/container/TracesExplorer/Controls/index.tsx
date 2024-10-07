@@ -1,7 +1,7 @@
 import { OptionFormatTypes } from 'constants/optionsFormatTypes';
-import Controls, { ControlsProps } from 'container/Controls';
+import Controls, { type ControlsProps } from 'container/Controls';
 import OptionsMenu from 'container/OptionsMenu';
-import { OptionsMenuConfig } from 'container/OptionsMenu/types';
+import type { OptionsMenuConfig } from 'container/OptionsMenu/types';
 import useQueryPagination from 'hooks/queryPagination/useQueryPagination';
 import { memo } from 'react';
 

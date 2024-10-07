@@ -1,12 +1,12 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
+import type { ICompositeMetricQuery } from 'types/api/alerts/compositeQuery';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
 import { DataSource } from 'types/common/queryBuilder';
 
-export const compositeQueryWithoutVariables = ({
+export const compositeQueryWithoutVariables = {
 	builderQueries: {
 		A: {
 			queryName: 'A',
@@ -37,9 +37,9 @@ export const compositeQueryWithoutVariables = ({
 	},
 	panelType: PANEL_TYPES.TIME_SERIES,
 	queryType: EQueryType.QUERY_BUILDER,
-} as unknown) as ICompositeMetricQuery;
+} as unknown as ICompositeMetricQuery;
 
-export const widgetQueryWithoutVariables = ({
+export const widgetQueryWithoutVariables = {
 	clickhouse_sql: [
 		{
 			name: 'A',
@@ -92,7 +92,7 @@ export const widgetQueryWithoutVariables = ({
 	},
 	id: '2bbbd8d8-db99-40be-b9c6-9e197c5bc537',
 	queryType: 'builder',
-} as unknown) as Query;
+} as unknown as Query;
 
 export const stepIntervalUnchanged = {
 	builder: {
@@ -150,7 +150,7 @@ export const stepIntervalUnchanged = {
 	unit: undefined,
 };
 
-export const compositeQueryWithVariables = ({
+export const compositeQueryWithVariables = {
 	builderQueries: {
 		A: {
 			queryName: 'A',
@@ -232,9 +232,9 @@ export const compositeQueryWithVariables = ({
 	},
 	panelType: 'graph',
 	queryType: 'builder',
-} as unknown) as ICompositeMetricQuery;
+} as unknown as ICompositeMetricQuery;
 
-export const widgetQueryWithVariables = ({
+export const widgetQueryWithVariables = {
 	clickhouse_sql: [
 		{
 			name: 'A',
@@ -344,7 +344,7 @@ export const widgetQueryWithVariables = ({
 	},
 	id: '64fcd7be-61d0-4f92-bbb2-1449b089f766',
 	queryType: 'builder',
-} as unknown) as Query;
+} as unknown as Query;
 
 export const replaceVariables = {
 	builder: {
@@ -494,7 +494,7 @@ export const defaultOutput = {
 	unit: undefined,
 };
 
-export const compositeQueriesWithFunctions = ({
+export const compositeQueriesWithFunctions = {
 	builderQueries: {
 		A: {
 			queryName: 'A',
@@ -569,9 +569,9 @@ export const compositeQueriesWithFunctions = ({
 	},
 	panelType: 'graph',
 	queryType: 'builder',
-} as unknown) as ICompositeMetricQuery;
+} as unknown as ICompositeMetricQuery;
 
-export const widgetQueriesWithFunctions = ({
+export const widgetQueriesWithFunctions = {
 	clickhouse_sql: [
 		{
 			name: 'A',
@@ -660,7 +660,7 @@ export const widgetQueriesWithFunctions = ({
 	},
 	id: '5d1844fe-9b44-4f15-b6fe-f1b843550b77',
 	queryType: 'builder',
-} as unknown) as Query;
+} as unknown as Query;
 
 export const outputWithFunctions = {
 	builder: {

@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import ROUTES from 'constants/routes';
 
 import allErrorList from '../fixtures/api/allErrors/200.json';
@@ -84,7 +84,7 @@ test.describe('Expections Details', async () => {
 
 		const traceDetailButton = page.locator('text=See the error in trace graph');
 		const olderButton = page.locator('text=Older');
-		const newerButton = page.locator(`text=Newer`);
+		const newerButton = page.locator('text=Newer');
 
 		expect(await traceDetailButton.isVisible()).toBe(true);
 		expect(await olderButton.isVisible()).toBe(true);

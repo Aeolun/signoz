@@ -1,6 +1,6 @@
-import { SuccessResponse } from 'types/api/index';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { QueryData } from 'types/api/widgets/getQuery';
+import type { SuccessResponse } from 'types/api/index';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { QueryData } from 'types/api/widgets/getQuery';
 
 export const convertDataValueToMs = (
 	data?: SuccessResponse<MetricRangePayloadProps>,
@@ -15,7 +15,7 @@ export const convertDataValueToMs = (
 				});
 
 				return { ...item, values };
-		  })
+			})
 		: [];
 
 	if (convertedData?.payload?.data?.result && convertedResult) {

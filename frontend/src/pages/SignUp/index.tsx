@@ -4,8 +4,8 @@ import Spinner from 'components/Spinner';
 import { useTranslation } from 'react-i18next';
 import { useQueries } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 import SignUpComponent from './SignUp';
 
@@ -35,10 +35,7 @@ function SignUp(): JSX.Element {
 		);
 	}
 
-	if (
-		versionResponse.status === 'loading' ||
-		!(versionResponse.data && versionResponse.data.payload)
-	) {
+	if (versionResponse.status === 'loading' || !versionResponse.data?.payload) {
 		return <Spinner tip="Loading..." />;
 	}
 

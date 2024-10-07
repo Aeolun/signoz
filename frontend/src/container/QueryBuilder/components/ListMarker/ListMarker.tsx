@@ -1,9 +1,9 @@
 import { EyeFilled, EyeInvisibleFilled } from '@ant-design/icons';
-import { ButtonProps } from 'antd';
+import type { ButtonProps } from 'antd';
 import { memo } from 'react';
 
 // ** Types
-import { ListMarkerProps } from './ListMarker.interfaces';
+import type { ListMarkerProps } from './ListMarker.interfaces';
 // ** Styles
 import { StyledButton } from './ListMarker.styled';
 
@@ -21,7 +21,7 @@ export const ListMarker = memo(function ListMarker({
 				type: isDisabled ? 'default' : 'primary',
 				icon: isDisabled ? <EyeInvisibleFilled /> : <EyeFilled />,
 				onClick: (): void => onDisable(index),
-		  }
+			}
 		: { type: 'primary' };
 
 	return (

@@ -1,4 +1,4 @@
-import { Dashboard } from 'types/api/dashboard/getAll';
+import type { Dashboard } from 'types/api/dashboard/getAll';
 
 interface IDashboardSearchData {
 	title: string;

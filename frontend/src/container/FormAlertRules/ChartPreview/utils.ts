@@ -1,10 +1,10 @@
 import {
 	BooleanFormats,
-	DataFormats,
-	DataRateFormats,
+	type DataFormats,
+	type DataRateFormats,
 	MiscellaneousFormats,
-	ThroughputFormats,
-	TimeFormats,
+	type ThroughputFormats,
+	type TimeFormats,
 } from 'container/NewWidget/RightContainer/types';
 
 import {

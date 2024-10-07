@@ -1,6 +1,6 @@
-import { ChartData, ChartDataset } from 'chart.js';
+import type { ChartData, ChartDataset } from 'chart.js';
 import getLabelName from 'lib/getLabelName';
-import { QueryData } from 'types/api/widgets/getQuery';
+import type { QueryData } from 'types/api/widgets/getQuery';
 
 import convertIntoEpoc from './covertIntoEpoc';
 import { colors } from './getRandomColor';
@@ -39,17 +39,17 @@ const getChartData = ({
 				const dataValue = values?.map((e) => {
 					const [first = 0, second = ''] = e || [];
 					return {
-						first: new Date(parseInt(convertIntoEpoc(first * 1000), 10)), // converting in ms
-						second: Number(parseFloat(second)),
+						first: new Date(Number.parseInt(convertIntoEpoc(first * 1000), 10)), // converting in ms
+						second: Number(Number.parseFloat(second)),
 					};
 				});
 				// Fill the missing data with null
 				const filledDataValues = Array.from(labels).map((e) => {
-					const td1 = new Date(parseInt(convertIntoEpoc(e * 1000), 10));
+					const td1 = new Date(Number.parseInt(convertIntoEpoc(e * 1000), 10));
 					const data = dataValue.find((e1) => e1.first.getTime() === td1.getTime());
 					return (
 						data || {
-							first: new Date(parseInt(convertIntoEpoc(e * 1000), 10)),
+							first: new Date(Number.parseInt(convertIntoEpoc(e * 1000), 10)),
 							second: null,
 						}
 					);
@@ -107,7 +107,7 @@ const getChartData = ({
 			: datasetBaseConfig;
 	});
 
-	const updatedLabels = modifiedData.map((e) => e.first).flat();
+	const updatedLabels = modifiedData.flatMap((e) => e.first);
 
 	const updatedData = {
 		datasets: updatedDataSet,

@@ -1,6 +1,6 @@
-import { TraceReducer } from 'types/reducer/trace';
+import type { TraceReducer } from 'types/reducer/trace';
 
-import { ParsedUrl } from '../util';
+import type { ParsedUrl } from '../util';
 
 export const parseQueryIntoCurrent = (
 	query: string,
@@ -16,7 +16,7 @@ export const parseQueryIntoCurrent = (
 		try {
 			const parsedValue = JSON.parse(decodeURIComponent(selected));
 			if (Number.isInteger(parsedValue)) {
-				current = parseInt(parsedValue, 10);
+				current = Number.parseInt(parsedValue, 10);
 			}
 		} catch (error) {
 			console.log('error while parsing json');
@@ -25,7 +25,7 @@ export const parseQueryIntoCurrent = (
 
 	if (selected) {
 		return {
-			currentValue: parseInt(selected, 10),
+			currentValue: Number.parseInt(selected, 10),
 			urlValue: current,
 		};
 	}

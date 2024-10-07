@@ -27,9 +27,9 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { License } from 'types/api/licenses/def';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { License } from 'types/api/licenses/def';
+import type AppReducer from 'types/reducer/app';
 import { getFormattedDate } from 'utils/timeUtils';
 
 import CustomerStoryCard from './CustomerStoryCard';

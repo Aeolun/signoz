@@ -1,7 +1,7 @@
 import Spinner from 'components/Spinner';
 import { dragColumnParams } from 'hooks/useDragColumns/configs';
 import ReactDragListView from 'react-drag-listview';
-import { TableComponents } from 'react-virtuoso';
+import type { TableComponents } from 'react-virtuoso';
 
 import { TableStyled } from './styles';
 

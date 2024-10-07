@@ -2,7 +2,7 @@ import './Tabs2.styles.scss';
 
 import { Color } from '@signozhq/design-tokens';
 import { Button } from 'antd';
-import { TimelineFilter } from 'container/AlertHistory/types';
+import type { TimelineFilter } from 'container/AlertHistory/types';
 import { Undo } from 'lucide-react';
 import { useState } from 'react';
 

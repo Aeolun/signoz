@@ -1,8 +1,8 @@
-import { CheckboxChangeEvent } from 'antd/es/checkbox';
-import { ColumnType } from 'antd/es/table';
+import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import type { ColumnType } from 'antd/es/table';
 
 import { ColumnsKeyAndDataIndex, ColumnsTitle } from '../contants';
-import { DataSetProps, ExtendedChartDataset } from '../types';
+import type { DataSetProps, ExtendedChartDataset } from '../types';
 import { getGraphManagerTableHeaderTitle } from '../utils';
 import CustomCheckBox from './CustomCheckBox';
 import { getLabel } from './GetLabel';

@@ -1,5 +1,5 @@
-import { IField } from 'types/api/logs/fields';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { IField } from 'types/api/logs/fields';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
 export const convertKeysToColumnFields = (
 	keys: BaseAutocompleteData[],

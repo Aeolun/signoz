@@ -1,4 +1,4 @@
-import { TraceReducer } from 'types/reducer/trace';
+import type { TraceReducer } from 'types/reducer/trace';
 
 export const UPDATE_TRACE_FILTER = 'UPDATE_TRACE_FILTER';
 export const GET_TRACE_FILTER = 'GET_TRACE_FILTER';

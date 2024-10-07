@@ -5,19 +5,19 @@ import { Space, Tooltip } from 'antd';
 import { getYAxisFormattedValue } from 'components/Graph/yAxisConfig';
 import { Events } from 'constants/events';
 import { QueryTable } from 'container/QueryTable';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { cloneDeep, get, isEmpty } from 'lodash-es';
 import LineClampedText from 'periscope/components/LineClampedText/LineClampedText';
-import { memo, ReactNode, useCallback, useEffect, useMemo } from 'react';
+import { type ReactNode, memo, useCallback, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { eventEmitter } from 'utils/getEventEmitter';
 
 import { WrapperStyled } from './styles';
-import { GridTableComponentProps } from './types';
+import type { GridTableComponentProps } from './types';
 import {
+	type TableData,
 	createColumnsAndDataSource,
 	findMatchingThreshold,
-	TableData,
 } from './utils';
 
 function GridTableComponent({
@@ -34,7 +34,7 @@ function GridTableComponent({
 	// create columns and dataSource in the ui friendly structure
 	// use the query from the widget here to extract the legend information
 	const { columns, dataSource: originalDataSource } = useMemo(
-		() => createColumnsAndDataSource((data as unknown) as TableData, query),
+		() => createColumnsAndDataSource(data as unknown as TableData, query),
 		[query, data],
 	);
 
@@ -61,32 +61,30 @@ function GridTableComponent({
 				return mutateDataSource;
 			}
 
-			mutateDataSource = mutateDataSource.map(
-				(val): RowData => {
-					const newValue = { ...val };
-					Object.keys(val).forEach((k) => {
-						if (columnUnits[k]) {
-							// the check below takes care of not adding units for rows that have n/a values
-							newValue[k] =
-								val[k] !== 'n/a'
-									? getYAxisFormattedValue(String(val[k]), columnUnits[k])
-									: val[k];
-							newValue[`${k}_without_unit`] = val[k];
-						}
-					});
-					return newValue;
-				},
-			);
+			mutateDataSource = mutateDataSource.map((val): RowData => {
+				const newValue = { ...val };
+				Object.keys(val).forEach((k) => {
+					if (columnUnits[k]) {
+						// the check below takes care of not adding units for rows that have n/a values
+						newValue[k] =
+							val[k] !== 'n/a'
+								? getYAxisFormattedValue(String(val[k]), columnUnits[k])
+								: val[k];
+						newValue[`${k}_without_unit`] = val[k];
+					}
+				});
+				return newValue;
+			});
 
 			return mutateDataSource;
 		},
 		[columnUnits],
 	);
 
-	const dataSource = useMemo(() => applyColumnUnits(originalDataSource), [
-		applyColumnUnits,
-		originalDataSource,
-	]);
+	const dataSource = useMemo(
+		() => applyColumnUnits(originalDataSource),
+		[applyColumnUnits, originalDataSource],
+	);
 
 	useEffect(() => {
 		if (tableProcessedDataRef) {

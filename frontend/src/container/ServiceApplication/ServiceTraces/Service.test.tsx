@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from 'tests/test-utils';
 
-import { services } from './__mocks__/getServices';
 import ServiceTraceTable from './ServiceTracesTable';
+import { services } from './__mocks__/getServices';
 
 describe('Metrics Component', () => {
 	it('renders without errors', async () => {

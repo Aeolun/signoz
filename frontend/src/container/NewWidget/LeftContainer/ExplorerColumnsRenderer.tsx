@@ -12,7 +12,7 @@ import {
 	Tooltip,
 	Typography,
 } from 'antd';
-import { MenuProps } from 'antd/lib';
+import type { MenuProps } from 'antd/lib';
 import Spinner from 'components/Spinner';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
 import { useGetAggregateKeys } from 'hooks/queryBuilder/useGetAggregateKeys';
@@ -29,12 +29,12 @@ import { useState } from 'react';
 import {
 	DragDropContext,
 	Draggable,
+	type DropResult,
 	Droppable,
-	DropResult,
 } from 'react-beautiful-dnd';
 import { DataSource } from 'types/common/queryBuilder';
 
-import { WidgetGraphProps } from '../types';
+import type { WidgetGraphProps } from '../types';
 
 type LogColumnsRendererProps = {
 	setSelectedLogFields: WidgetGraphProps['setSelectedLogFields'];

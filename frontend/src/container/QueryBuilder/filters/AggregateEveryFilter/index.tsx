@@ -1,6 +1,6 @@
-import { InputNumber, InputNumberProps } from 'antd';
+import { InputNumber, type InputNumberProps } from 'antd';
 import { useMemo } from 'react';
-import { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
+import type { IBuilderQuery } from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
 
 import { selectStyle } from '../QueryBuilderSearch/config';

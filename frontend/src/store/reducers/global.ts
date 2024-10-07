@@ -1,7 +1,7 @@
 import { getDefaultOption } from 'container/TopNav/DateTimeSelection/config';
 import {
 	GLOBAL_TIME_LOADING_START,
-	GlobalTimeAction,
+	type GlobalTimeAction,
 	UPDATE_AUTO_REFRESH_DISABLED,
 	UPDATE_AUTO_REFRESH_INTERVAL,
 	UPDATE_TIME_INTERVAL,
@@ -10,7 +10,7 @@ import {
 	RESET_ID_START_AND_END,
 	SET_SEARCH_QUERY_STRING,
 } from 'types/actions/logs';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 const initialState: GlobalReducer = {
 	maxTime: Date.now() * 1000000,
@@ -25,9 +25,9 @@ const initialState: GlobalReducer = {
 
 const globalTimeReducer = (
 	state = initialState,
-	action: GlobalTimeAction,
+	action?: GlobalTimeAction,
 ): GlobalReducer => {
-	switch (action.type) {
+	switch (action?.type) {
 		case UPDATE_TIME_INTERVAL: {
 			return {
 				...state,

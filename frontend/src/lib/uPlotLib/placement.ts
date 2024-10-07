@@ -16,7 +16,7 @@
 
 // https://tobyzerner.github.io/placement.js/dist/index.js
 
-export const placement = (function () {
+export const placement = (() => {
 	const e = {
 		size: ['height', 'width'],
 		clientSize: ['clientHeight', 'clientWidth'],
@@ -31,7 +31,7 @@ export const placement = (function () {
 	function t(e) {
 		return { top: e.top, bottom: e.bottom, left: e.left, right: e.right };
 	}
-	return function (o, r, f, a, i) {
+	return (o, r, f, a, i) => {
 		void 0 === f && (f = 'bottom'),
 			void 0 === a && (a = 'center'),
 			void 0 === i && (i = {}),
@@ -63,34 +63,33 @@ export const placement = (function () {
 		(o.style.position = 'absolute'),
 			(o.style.maxWidth = ''),
 			(o.style.maxHeight = '');
-		const d = parseInt(l[b.marginBefore]);
-		const c = parseInt(l[b.marginAfter]);
+		const d = Number.parseInt(l[b.marginBefore]);
+		const c = Number.parseInt(l[b.marginAfter]);
 		const u = d + c;
 		const p = s[b.after] - s[b.before] - u;
-		const h = parseInt(l[b.maxSize]);
+		const h = Number.parseInt(l[b.maxSize]);
 		(!h || p < h) && (o.style[b.maxSize] = `${p}px`);
-		const x = parseInt(l[m.marginBefore]) + parseInt(l[m.marginAfter]);
+		const x =
+			Number.parseInt(l[m.marginBefore]) + Number.parseInt(l[m.marginAfter]);
 		const y = n[m.before] - s[m.before] - x;
 		const z = s[m.after] - n[m.after] - x;
 		((f === m.before && o[m.offsetSize] > y) ||
 			(f === m.after && o[m.offsetSize] > z)) &&
 			(f = y > z ? m.before : m.after);
 		const S = f === m.before ? y : z;
-		const v = parseInt(l[m.maxSize]);
+		const v = Number.parseInt(l[m.maxSize]);
 		(!v || S < v) && (o.style[m.maxSize] = `${S}px`);
 		const w = window[m.scrollOffset];
-		const O = function (e) {
-			return Math.max(s[m.before], Math.min(e, s[m.after] - o[m.offsetSize] - x));
-		};
+		const O = (e) =>
+			Math.max(s[m.before], Math.min(e, s[m.after] - o[m.offsetSize] - x));
 		f === m.before
 			? ((o.style[m.before] = `${w + O(n[m.before] - o[m.offsetSize] - x)}px`),
-			  (o.style[m.after] = 'auto'))
+				(o.style[m.after] = 'auto'))
 			: ((o.style[m.before] = `${w + O(n[m.after])}px`),
-			  (o.style[m.after] = 'auto'));
+				(o.style[m.after] = 'auto'));
 		const B = window[b.scrollOffset];
-		const I = function (e) {
-			return Math.max(s[b.before], Math.min(e, s[b.after] - o[b.offsetSize] - u));
-		};
+		const I = (e) =>
+			Math.max(s[b.before], Math.min(e, s[b.after] - o[b.offsetSize] - u));
 		switch (a) {
 			case 'start':
 				(o.style[b.before] = `${B + I(n[b.before] - d)}px`),
@@ -102,12 +101,13 @@ export const placement = (function () {
 						B + I(document.documentElement[b.clientSize] - n[b.after] - c)
 					}px`);
 				break;
-			default:
-				var H = n[b.after] - n[b.before];
+			default: {
+				const H = n[b.after] - n[b.before];
 				(o.style[b.before] = `${
 					B + I(n[b.before] + H / 2 - o[b.offsetSize] / 2 - d)
 				}px`),
 					(o.style[b.after] = 'auto');
+			}
 		}
 		(o.dataset.side = f), (o.dataset.align = a);
 	};

@@ -1,13 +1,13 @@
-import { Page, test, expect } from '@playwright/test';
-import { loginApi } from '../fixtures/common';
+import { type Page, expect, test } from '@playwright/test';
 import ROUTES from 'constants/routes';
-import dashboardsListEmptyResponse from '../fixtures/api/dashboard/getDashboardListEmpty200.json';
 import createNewDashboardPostResponse from '../fixtures/api/dashboard/createNewDashboardPost200.json';
-import queryRangeSuccessResponse from '../fixtures/api/traces/queryRange200.json';
-import getIndividualDashboardResponse from '../fixtures/api/dashboard/getIndividualDashboard200.json';
-import putNewDashboardResponse from '../fixtures/api/dashboard/putNewDashboardUpdate200.json';
-import putDashboardTimeSeriesResponse from '../fixtures/api/dashboard/putDashboardWithTimeSeries200.json';
 import dashboardGetCallWithTimeSeriesWidgetResponse from '../fixtures/api/dashboard/dashboardGetCallWithTimeSeriesWidget200.json';
+import dashboardsListEmptyResponse from '../fixtures/api/dashboard/getDashboardListEmpty200.json';
+import getIndividualDashboardResponse from '../fixtures/api/dashboard/getIndividualDashboard200.json';
+import putDashboardTimeSeriesResponse from '../fixtures/api/dashboard/putDashboardWithTimeSeries200.json';
+import putNewDashboardResponse from '../fixtures/api/dashboard/putNewDashboardUpdate200.json';
+import queryRangeSuccessResponse from '../fixtures/api/traces/queryRange200.json';
+import { loginApi } from '../fixtures/common';
 import {
 	addPanelID,
 	configureDashboardDescriptonID,

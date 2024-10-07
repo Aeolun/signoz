@@ -36,7 +36,7 @@ function Configure(props: ConfigurationProps): JSX.Element {
 	}, []);
 
 	const markdownDetailsForTracking = {
-		trackingTitle: `Integrations Detail Page: Copy button`,
+		trackingTitle: 'Integrations Detail Page: Copy button',
 		sectionName: configuration[selectedConfigStep].title,
 		integrationId,
 	};

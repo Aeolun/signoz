@@ -1,6 +1,6 @@
-import { InputNumberProps, RadioProps, SelectProps } from 'antd';
-import { LogViewMode } from 'container/LogsTable';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { InputNumberProps, RadioProps, SelectProps } from 'antd';
+import type { LogViewMode } from 'container/LogsTable';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
 export enum FontSize {
 	SMALL = 'small',

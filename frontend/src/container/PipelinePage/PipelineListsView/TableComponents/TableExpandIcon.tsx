@@ -1,6 +1,6 @@
 import { DownOutlined, RightOutlined } from '@ant-design/icons';
-import React from 'react';
-import { PipelineData } from 'types/api/pipeline/def';
+import type React from 'react';
+import type { PipelineData } from 'types/api/pipeline/def';
 
 function TableExpandIcon({
 	expanded,

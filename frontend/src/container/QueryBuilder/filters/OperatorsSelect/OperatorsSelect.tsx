@@ -3,7 +3,7 @@ import { memo } from 'react';
 
 // ** Types
 import { selectStyle } from '../QueryBuilderSearch/config';
-import { OperatorsSelectProps } from './OperatorsSelect.interfaces';
+import type { OperatorsSelectProps } from './OperatorsSelect.interfaces';
 
 export const OperatorsSelect = memo(function OperatorsSelect({
 	operators,

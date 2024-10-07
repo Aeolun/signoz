@@ -8,12 +8,12 @@ import {
 	CornerDownLeft,
 	Slash,
 } from 'lucide-react';
-import { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
-import { getUserOperatingSystem, UserOperatingSystem } from 'utils/getUserOS';
+import type { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import { UserOperatingSystem, getUserOperatingSystem } from 'utils/getUserOS';
 
 import ExampleQueriesRendererForLogs from '../QueryBuilderSearch/ExampleQueriesRendererForLogs';
 import { convertExampleQueriesToOptions } from '../QueryBuilderSearch/utils';
-import { ITag, Option } from './QueryBuilderSearchV2';
+import type { ITag, Option } from './QueryBuilderSearchV2';
 
 interface ICustomDropdownProps {
 	menu: React.ReactElement;

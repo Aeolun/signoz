@@ -3,7 +3,7 @@ import { useForm } from 'antd/lib/form/Form';
 import { useNotifications } from 'hooks/useNotifications';
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AuthDomain, GOOGLE_AUTH, SAML } from 'types/api/SAML/listDomain';
+import { type AuthDomain, GOOGLE_AUTH, SAML } from 'types/api/SAML/listDomain';
 
 import EditGoogleAuth from './EditGoogleAuth';
 import EditSAML from './EditSAML';
@@ -17,7 +17,6 @@ const renderFormInputs = (
 	switch (record?.ssoType) {
 		case GOOGLE_AUTH:
 			return <EditGoogleAuth />;
-		case SAML:
 		default:
 			return <EditSAML />;
 	}

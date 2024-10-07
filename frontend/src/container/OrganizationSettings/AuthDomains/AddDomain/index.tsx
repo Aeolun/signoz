@@ -9,8 +9,8 @@ import { useNotifications } from 'hooks/useNotifications';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 import { Container } from '../styles';
 
@@ -84,9 +84,8 @@ function AddDomain({ refetch }: Props): JSX.Element {
 							{
 								message: 'Please enter a valid domain',
 								required: true,
-								pattern: new RegExp(
-									'^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$',
-								),
+								pattern:
+									/^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/,
 							},
 						]}
 					>

@@ -7,10 +7,10 @@ import { ORDERBY_FILTERS } from 'container/QueryBuilder/filters/OrderByFilter/co
 import QueryBuilderSearch from 'container/QueryBuilder/filters/QueryBuilderSearch';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { memo, useCallback, useState } from 'react';
-import { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 
 import { EditButton, LogContainer, TitleWrapper } from './styles';
-import { LogsExplorerContextProps } from './types';
+import type { LogsExplorerContextProps } from './types';
 import useInitialQuery from './useInitialQuery';
 
 function LogsExplorerContext({

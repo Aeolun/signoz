@@ -4,14 +4,14 @@ import {
 	Card,
 	Input,
 	Space,
-	TableProps,
+	type TableProps,
 	Tooltip,
 	Typography,
 } from 'antd';
-import { ColumnType, TablePaginationConfig } from 'antd/es/table';
-import { FilterValue, SorterResult } from 'antd/es/table/interface';
-import { ColumnsType } from 'antd/lib/table';
-import { FilterConfirmProps } from 'antd/lib/table/interface';
+import type { ColumnType, TablePaginationConfig } from 'antd/es/table';
+import type { FilterValue, SorterResult } from 'antd/es/table/interface';
+import type { ColumnsType } from 'antd/lib/table';
+import type { FilterConfirmProps } from 'antd/lib/table/interface';
 import logEvent from 'api/common/logEvent';
 import getAll from 'api/errors/getAll';
 import getErrorCounts from 'api/errors/getErrorCounts';
@@ -30,12 +30,12 @@ import { useTranslation } from 'react-i18next';
 import { useQueries } from 'react-query';
 import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { Exception, PayloadProps } from 'types/api/errors/getAll';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { Exception, PayloadProps } from 'types/api/errors/getAll';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
-import { FilterDropdownExtendsProps } from './types';
+import type { FilterDropdownExtendsProps } from './types';
 import {
 	extractFilterValues,
 	getDefaultFilterValue,
@@ -166,32 +166,33 @@ function AllErrors(): JSX.Element {
 			confirm: (param?: FilterConfirmProps) => void,
 			filterValue: string,
 			filterKey: string,
-		): VoidFunction => (): void => {
-			const { exceptionFilterValue, serviceFilterValue } = getFilterValues(
-				getUpdatedServiceName || '',
-				getUpdatedExceptionType || '',
-				filterKey,
-				filterValue || '',
-			);
+		): VoidFunction =>
+			(): void => {
+				const { exceptionFilterValue, serviceFilterValue } = getFilterValues(
+					getUpdatedServiceName || '',
+					getUpdatedExceptionType || '',
+					filterKey,
+					filterValue || '',
+				);
 
-			const queryParams: QueryParams = {
-				order: updatedOrder,
-				offset: getUpdatedOffset,
-				orderParam: getUpdatedParams,
-				pageSize: getUpdatedPageSize,
-			};
+				const queryParams: QueryParams = {
+					order: updatedOrder,
+					offset: getUpdatedOffset,
+					orderParam: getUpdatedParams,
+					pageSize: getUpdatedPageSize,
+				};
 
-			if (exceptionFilterValue && exceptionFilterValue !== 'undefined') {
-				queryParams.exceptionType = exceptionFilterValue;
-			}
+				if (exceptionFilterValue && exceptionFilterValue !== 'undefined') {
+					queryParams.exceptionType = exceptionFilterValue;
+				}
 
-			if (serviceFilterValue && serviceFilterValue !== 'undefined') {
-				queryParams.serviceName = serviceFilterValue;
-			}
+				if (serviceFilterValue && serviceFilterValue !== 'undefined') {
+					queryParams.serviceName = serviceFilterValue;
+				}
 
-			history.replace(`${pathname}?${createQueryParams(queryParams)}`);
-			confirm();
-		},
+				history.replace(`${pathname}?${createQueryParams(queryParams)}`);
+				confirm();
+			},
 		[
 			getUpdatedExceptionType,
 			getUpdatedOffset,

@@ -1,4 +1,4 @@
-import { IQueryBuilderState } from 'constants/queryBuilder';
+import type { IQueryBuilderState } from 'constants/queryBuilder';
 
 export interface InitialStateI {
 	search: string;

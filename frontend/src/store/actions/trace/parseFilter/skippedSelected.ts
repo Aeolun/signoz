@@ -1,4 +1,4 @@
-import { ParsedUrl } from '../util';
+import type { ParsedUrl } from '../util';
 
 export const parseIsSkippedSelection = (query: string): ParsedUrl<boolean> => {
 	const url = new URLSearchParams(query);

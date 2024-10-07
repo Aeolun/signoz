@@ -1,10 +1,10 @@
+import afterLogin from 'AppRoutes/utils';
 import { Button, Form, Input, Space, Switch, Typography } from 'antd';
 import logEvent from 'api/common/logEvent';
 import editOrg from 'api/user/editOrg';
 import getInviteDetails from 'api/user/getInviteDetails';
 import loginApi from 'api/user/login';
 import signUpApi from 'api/user/signup';
-import afterLogin from 'AppRoutes/utils';
 import WelcomeLeftContainer from 'components/WelcomeLeftContainer';
 import { FeatureKeys } from 'constants/features';
 import ROUTES from 'constants/routes';
@@ -15,9 +15,9 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router-dom';
-import { SuccessResponse } from 'types/api';
-import { PayloadProps } from 'types/api/user/getUser';
-import { PayloadProps as LoginPrecheckPayloadProps } from 'types/api/user/loginPrecheck';
+import type { SuccessResponse } from 'types/api';
+import type { PayloadProps } from 'types/api/user/getUser';
+import type { PayloadProps as LoginPrecheckPayloadProps } from 'types/api/user/loginPrecheck';
 import { isCloudUser } from 'utils/app';
 
 import {
@@ -47,15 +47,14 @@ function SignUp({ version }: SignUpProps): JSX.Element {
 
 	const [precheck, setPrecheck] = useState<LoginPrecheckPayloadProps>({
 		sso: false,
+		ldap: false,
 		isUser: false,
 	});
 
-	const [confirmPasswordError, setConfirmPasswordError] = useState<boolean>(
-		false,
-	);
-	const [isPasswordPolicyError, setIsPasswordPolicyError] = useState<boolean>(
-		false,
-	);
+	const [confirmPasswordError, setConfirmPasswordError] =
+		useState<boolean>(false);
+	const [isPasswordPolicyError, setIsPasswordPolicyError] =
+		useState<boolean>(false);
 	const { search } = useLocation();
 	const params = new URLSearchParams(search);
 	const token = params.get('token');
@@ -257,16 +256,13 @@ function SignUp({ version }: SignUpProps): JSX.Element {
 						name: values.firstName,
 					});
 
-					await commonHandler(
-						values,
-						async (): Promise<void> => {
-							if (isOnboardingEnabled && isCloudUser()) {
-								history.push(ROUTES.GET_STARTED);
-							} else {
-								history.push(ROUTES.APPLICATION);
-							}
-						},
-					);
+					await commonHandler(values, async (): Promise<void> => {
+						if (isOnboardingEnabled && isCloudUser()) {
+							history.push(ROUTES.GET_STARTED);
+						} else {
+							history.push(ROUTES.APPLICATION);
+						}
+					});
 				}
 
 				setLoading(false);

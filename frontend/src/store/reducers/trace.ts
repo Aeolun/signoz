@@ -1,7 +1,7 @@
 import {
 	RESET_TRACE_FILTER,
 	SELECT_TRACE_FILTER,
-	TraceActions,
+	type TraceActions,
 	UPDATE_ALL_FILTERS,
 	UPDATE_FILTER_EXCLUDE,
 	UPDATE_FILTER_RESPONSE_SELECTED,
@@ -9,12 +9,12 @@ import {
 	UPDATE_SELECTED_FUNCTION,
 	UPDATE_SELECTED_GROUP_BY,
 	UPDATE_SELECTED_TAGS,
-	UPDATE_SPAN_ORDER,
-	UPDATE_SPAN_ORDER_PARAMS,
-	UPDATE_SPAN_UPDATE_FILTER_DISPLAY_VALUE,
 	UPDATE_SPANS_AGGREGATE,
 	UPDATE_SPANS_AGGREGATE_PAGE_NUMBER,
 	UPDATE_SPANS_AGGREGATE_PAGE_SIZE,
+	UPDATE_SPAN_ORDER,
+	UPDATE_SPAN_ORDER_PARAMS,
+	UPDATE_SPAN_UPDATE_FILTER_DISPLAY_VALUE,
 	UPDATE_TAG_MODAL_VISIBILITY,
 	UPDATE_TRACE_FILTER,
 	UPDATE_TRACE_FILTER_LOADING,
@@ -22,7 +22,7 @@ import {
 	UPDATE_TRACE_GRAPH_LOADING,
 	UPDATE_TRACE_GRAPH_SUCCESS,
 } from 'types/actions/trace';
-import { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
+import type { TraceFilterEnum, TraceReducer } from 'types/reducer/trace';
 
 export const INITIAL_FILTER_VALUE = 8;
 
@@ -73,9 +73,9 @@ const initialValue: TraceReducer = {
 
 const traceReducer = (
 	state = initialValue,
-	action: TraceActions,
+	action?: TraceActions,
 ): TraceReducer => {
-	switch (action.type) {
+	switch (action?.type) {
 		case UPDATE_TRACE_FILTER: {
 			return {
 				...state,

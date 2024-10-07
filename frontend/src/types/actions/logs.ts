@@ -1,13 +1,17 @@
-import { LogViewMode } from 'container/LogsTable';
-import { Pagination } from 'hooks/queryPagination';
-import { ILogQLParsedQueryItem } from 'lib/logql/types';
-import { OrderPreferenceItems } from 'pages/Logs/config';
-import { IField, IFieldMoveToSelected, IFields } from 'types/api/logs/fields';
-import { TLogsLiveTailState } from 'types/api/logs/liveTail';
-import { ILog } from 'types/api/logs/log';
-import { ILogsAggregate } from 'types/api/logs/logAggregate';
+import type { LogViewMode } from 'container/LogsTable';
+import type { Pagination } from 'hooks/queryPagination';
+import type { ILogQLParsedQueryItem } from 'lib/logql/types';
+import type { OrderPreferenceItems } from 'pages/Logs/config';
+import type {
+	IField,
+	IFieldMoveToSelected,
+	IFields,
+} from 'types/api/logs/fields';
+import type { TLogsLiveTailState } from 'types/api/logs/liveTail';
+import type { ILog } from 'types/api/logs/log';
+import type { ILogsAggregate } from 'types/api/logs/logAggregate';
 
-import { GlobalTime } from './globalTime';
+import type { GlobalTime } from './globalTime';
 
 export const GET_FIELDS = 'LOGS_GET_FIELDS';
 export const SET_FIELDS = 'LOGS_SET_FIELDS';

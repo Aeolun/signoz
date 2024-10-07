@@ -2,7 +2,7 @@ import getLocalStorageKey from 'api/browser/localstorage/get';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import { getInitialUserTokenRefreshToken } from 'store/utils';
 import {
-	AppAction,
+	type AppAction,
 	LOGGED_IN,
 	UPDATE_CONFIGS,
 	UPDATE_CURRENT_ERROR,
@@ -18,11 +18,12 @@ import {
 	UPDATE_USER_IS_FETCH,
 	UPDATE_USER_ORG_ROLE,
 } from 'types/actions/app';
-import {
-	Organization,
+import type {
 	PayloadProps as OrgPayload,
+	Organization,
 } from 'types/api/user/getOrganization';
-import InitialValueTypes, { User } from 'types/reducer/app';
+import type InitialValueTypes from 'types/reducer/app';
+import type { User } from 'types/reducer/app';
 
 const getInitialUser = (): User | null => {
 	const response = getInitialUserTokenRefreshToken();
@@ -63,9 +64,9 @@ const InitialValue: InitialValueTypes = {
 
 const appReducer = (
 	state = InitialValue,
-	action: AppAction,
+	action?: AppAction,
 ): InitialValueTypes => {
-	switch (action.type) {
+	switch (action?.type) {
 		case LOGGED_IN: {
 			return {
 				...state,

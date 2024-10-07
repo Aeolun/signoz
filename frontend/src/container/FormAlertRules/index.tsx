@@ -4,9 +4,9 @@ import { ExclamationCircleOutlined, SaveOutlined } from '@ant-design/icons';
 import {
 	Button,
 	Col,
-	FormInstance,
+	type FormInstance,
 	Modal,
-	SelectProps,
+	type SelectProps,
 	Tooltip,
 	Typography,
 } from 'antd';
@@ -37,21 +37,22 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { AlertTypes } from 'types/api/alerts/alertTypes';
 import {
-	AlertDef,
+	type AlertDef,
 	defaultEvalWindow,
 	defaultMatchType,
 } from 'types/api/alerts/def';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 import BasicInfo from './BasicInfo';
 import ChartPreview from './ChartPreview';
 import QuerySection from './QuerySection';
 import RuleOptions from './RuleOptions';
+import UserGuide from './UserGuide';
 import {
 	ActionButton,
 	ButtonContainer,
@@ -60,7 +61,6 @@ import {
 	StepContainer,
 	StyledLeftContainer,
 } from './styles';
-import UserGuide from './UserGuide';
 import { getSelectedQueryOptions } from './utils';
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
@@ -116,9 +116,10 @@ function FormAlertRules({
 	}, [currentQuery.unit]);
 
 	// initQuery contains initial query when component was mounted
-	const initQuery = useMemo(() => initialValue.condition.compositeQuery, [
-		initialValue,
-	]);
+	const initQuery = useMemo(
+		() => initialValue.condition.compositeQuery,
+		[initialValue],
+	);
 
 	const queryOptions = useMemo(() => {
 		const queryConfig: Record<EQueryType, () => SelectProps['options']> = {
@@ -140,8 +141,7 @@ function FormAlertRules({
 
 	useEffect(() => {
 		const broadcastToSpecificChannels =
-			(initialValue &&
-				initialValue.preferredChannels &&
+			(initialValue?.preferredChannels &&
 				initialValue.preferredChannels.length > 0) ||
 			isNewRule;
 

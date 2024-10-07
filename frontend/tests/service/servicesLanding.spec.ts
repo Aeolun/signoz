@@ -1,4 +1,4 @@
-import { expect, Page, test } from '@playwright/test';
+import { type Page, expect, test } from '@playwright/test';
 import ROUTES from 'constants/routes';
 
 import servicesSuccessResponse from '../fixtures/api/services/200.json';
@@ -23,7 +23,7 @@ test.describe('Service flow', () => {
 		// visit services page
 		await page.goto(`${baseURL}${ROUTES.APPLICATION}`);
 
-		await page.route(`**/services`, (route) =>
+		await page.route('**/services', (route) =>
 			route.fulfill({
 				status: 200,
 				json: [],
@@ -44,7 +44,7 @@ test.describe('Service flow', () => {
 		await expect(page).toHaveURL(`${baseURL}${ROUTES.APPLICATION}`);
 
 		// mock the services list call to return non-empty data
-		await page.route(`**/services`, (route) =>
+		await page.route('**/services', (route) =>
 			route.fulfill({
 				status: 200,
 				json: servicesSuccessResponse,

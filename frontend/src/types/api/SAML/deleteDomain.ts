@@ -1,4 +1,4 @@
-import { AuthDomain } from './listDomain';
+import type { AuthDomain } from './listDomain';
 
 export type Props = AuthDomain;
 

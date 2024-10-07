@@ -1,11 +1,11 @@
-import MEditor, { Monaco } from '@monaco-editor/react';
+import MEditor, { type Monaco } from '@monaco-editor/react';
 import { Color } from '@signozhq/design-tokens';
 import { Input } from 'antd';
 import { LEGEND } from 'constants/global';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useIsDarkMode } from 'hooks/useDarkMode';
-import { ChangeEvent, useCallback } from 'react';
-import { IClickHouseQuery } from 'types/api/queryBuilder/queryBuilderData';
+import { type ChangeEvent, useCallback } from 'react';
+import type { IClickHouseQuery } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
 import { getFormatedLegend } from 'utils/getFormatedLegend';
 
@@ -22,10 +22,8 @@ function ClickHouseQueryBuilder({
 	queryIndex,
 	deletable,
 }: IClickHouseQueryBuilderProps): JSX.Element | null {
-	const {
-		handleSetQueryItemData,
-		removeQueryTypeItemByIndex,
-	} = useQueryBuilder();
+	const { handleSetQueryItemData, removeQueryTypeItemByIndex } =
+		useQueryBuilder();
 
 	const handleRemoveQuery = useCallback(() => {
 		removeQueryTypeItemByIndex(EQueryType.CLICKHOUSE, queryIndex);

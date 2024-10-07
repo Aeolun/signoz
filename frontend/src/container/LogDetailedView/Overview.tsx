@@ -1,6 +1,6 @@
 import './Overview.styles.scss';
 
-import MEditor, { EditorProps, Monaco } from '@monaco-editor/react';
+import MEditor, { type EditorProps, type Monaco } from '@monaco-editor/react';
 import { Color } from '@signozhq/design-tokens';
 import {
 	Button,
@@ -11,16 +11,16 @@ import {
 	Tag,
 	Typography,
 } from 'antd';
-import { AddToQueryHOCProps } from 'components/Logs/AddToQueryHOC';
-import { OptionsQuery } from 'container/OptionsMenu/types';
+import type { AddToQueryHOCProps } from 'components/Logs/AddToQueryHOC';
+import type { OptionsQuery } from 'container/OptionsMenu/types';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { ChevronDown, ChevronRight, Search } from 'lucide-react';
-import { ReactNode, useState } from 'react';
-import { IField } from 'types/api/logs/fields';
-import { ILog } from 'types/api/logs/log';
-import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import { type ReactNode, useState } from 'react';
+import type { IField } from 'types/api/logs/fields';
+import type { ILog } from 'types/api/logs/log';
+import type { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
-import { ActionItemProps } from './ActionItem';
+import type { ActionItemProps } from './ActionItem';
 import TableView from './TableView';
 import { removeEscapeCharacters } from './utils';
 
@@ -51,9 +51,8 @@ function Overview({
 }: Props): JSX.Element {
 	const [isWrapWord, setIsWrapWord] = useState<boolean>(true);
 	const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
-	const [isAttributesExpanded, setIsAttributesExpanded] = useState<boolean>(
-		true,
-	);
+	const [isAttributesExpanded, setIsAttributesExpanded] =
+		useState<boolean>(true);
 	const [fieldSearchInput, setFieldSearchInput] = useState<string>('');
 
 	const isDarkMode = useIsDarkMode();

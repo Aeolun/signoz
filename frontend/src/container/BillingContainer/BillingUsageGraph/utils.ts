@@ -1,11 +1,11 @@
-import { UsageResponsePayloadProps } from 'api/billing/getUsage';
+import type { UsageResponsePayloadProps } from 'api/billing/getUsage';
 import dayjs from 'dayjs';
 import { getUPlotChartData } from 'lib/uPlotLib/utils/getUplotChartData';
 import { isEmpty, isNull } from 'lodash-es';
 import { unparse } from 'papaparse';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 
-import generateCsvData, { QuantityData } from './generateCsvData';
+import generateCsvData, { type QuantityData } from './generateCsvData';
 
 export const convertDataToMetricRangePayload = (
 	data: any,
@@ -102,7 +102,7 @@ const formatDate = (timestamp: number): string =>
 
 export function csvFileName(csvData: QuantityData[]): string {
 	if (!csvData.length) {
-		return `billing-usage.csv`;
+		return 'billing-usage.csv';
 	}
 
 	const { values } = csvData[0];
@@ -114,9 +114,7 @@ export function csvFileName(csvData: QuantityData[]): string {
 	return `billing_usage_(${startDate}-${endDate}).csv`;
 }
 
-export function prepareCsvData(
-	data: Partial<UsageResponsePayloadProps>,
-): {
+export function prepareCsvData(data: Partial<UsageResponsePayloadProps>): {
 	csvData: string;
 	fileName: string;
 } {

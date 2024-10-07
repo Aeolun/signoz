@@ -3,23 +3,23 @@ import { ENTITY_VERSION_V4 } from 'constants/app';
 import { FeatureKeys } from 'constants/features';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import Graph from 'container/GridCardLayout/GridCard';
+import { getWidgetQueryBuilder } from 'container/MetricsApplication/MetricsApplication.factory';
+import { latency } from 'container/MetricsApplication/MetricsPageQueries/OverviewQueries';
 import {
 	GraphTitle,
 	SERVICE_CHART_ID,
 } from 'container/MetricsApplication/constant';
-import { getWidgetQueryBuilder } from 'container/MetricsApplication/MetricsApplication.factory';
-import { latency } from 'container/MetricsApplication/MetricsPageQueries/OverviewQueries';
 import { Card, GraphContainer } from 'container/MetricsApplication/styles';
 import useFeatureFlag from 'hooks/useFeatureFlag';
 import useResourceAttribute from 'hooks/useResourceAttribute';
 import { resourceAttributesToTagFilterItems } from 'hooks/useResourceAttribute/utils';
-import { OnClickPluginOpts } from 'lib/uPlotLib/plugins/onClickPlugin';
+import type { OnClickPluginOpts } from 'lib/uPlotLib/plugins/onClickPlugin';
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { EQueryType } from 'types/common/dashboard';
 import { v4 as uuid } from 'uuid';
 
-import { IServiceName } from '../types';
+import type { IServiceName } from '../types';
 import {
 	handleNonInQueryRange,
 	onViewTracePopupClick,
@@ -40,8 +40,9 @@ function ServiceOverview({
 	const { servicename: encodedServiceName } = useParams<IServiceName>();
 	const servicename = decodeURIComponent(encodedServiceName);
 
-	const isSpanMetricEnable = useFeatureFlag(FeatureKeys.USE_SPAN_METRICS)
-		?.active;
+	const isSpanMetricEnable = useFeatureFlag(
+		FeatureKeys.USE_SPAN_METRICS,
+	)?.active;
 
 	const { queries } = useResourceAttribute();
 

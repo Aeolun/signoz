@@ -1,4 +1,4 @@
-import {
+import type {
 	ActiveElement,
 	Chart,
 	ChartData,
@@ -7,15 +7,15 @@ import {
 	ChartType,
 	TimeUnit,
 } from 'chart.js';
-import { ForwardedRef, ReactNode } from 'react';
+import type { ForwardedRef, ReactNode } from 'react';
 
 import {
+	type DragSelectPluginOptions,
 	dragSelectPluginId,
-	DragSelectPluginOptions,
 } from './Plugin/DragSelect';
 import {
+	type IntersectionCursorPluginOptions,
 	intersectionCursorPluginId,
-	IntersectionCursorPluginOptions,
 } from './Plugin/IntersectionCursor';
 
 export interface StaticLineProps {

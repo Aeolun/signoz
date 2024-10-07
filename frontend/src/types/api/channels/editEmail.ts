@@ -1,4 +1,4 @@
-import { EmailChannel } from 'container/CreateAlertChannels/config';
+import type { EmailChannel } from 'container/CreateAlertChannels/config';
 
 export interface Props extends EmailChannel {
 	id: string;

@@ -1,10 +1,10 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { Dayjs } from 'dayjs';
-import { ErrorResponse, SuccessResponse } from 'types/api';
+import type { AxiosError } from 'axios';
+import type { Dayjs } from 'dayjs';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
 
-import { Recurrence } from './getAllDowntimeSchedules';
+import type { Recurrence } from './getAllDowntimeSchedules';
 
 export interface DowntimeSchedulePayload {
 	name: string;

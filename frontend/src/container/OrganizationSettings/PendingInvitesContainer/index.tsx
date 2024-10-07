@@ -1,6 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Space, Typography } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
+import type { ColumnsType } from 'antd/lib/table';
 import deleteInvite from 'api/user/deleteInvite';
 import getPendingInvites from 'api/user/getPendingInvites';
 import { ResizeTable } from 'components/ResizeTable';
@@ -13,19 +13,17 @@ import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useCopyToClipboard } from 'react-use';
-import { AppState } from 'store/reducers';
-import { PayloadProps } from 'types/api/user/getPendingInvites';
-import AppReducer from 'types/reducer/app';
-import { ROLES } from 'types/roles';
+import type { AppState } from 'store/reducers';
+import type { PayloadProps } from 'types/api/user/getPendingInvites';
+import type AppReducer from 'types/reducer/app';
+import type { ROLES } from 'types/roles';
 
 import InviteUserModal from '../InviteUserModal/InviteUserModal';
 import { TitleWrapper } from './styles';
 
 function PendingInvitesContainer(): JSX.Element {
-	const [
-		isInviteTeamMemberModalOpen,
-		setIsInviteTeamMemberModalOpen,
-	] = useState<boolean>(false);
+	const [isInviteTeamMemberModalOpen, setIsInviteTeamMemberModalOpen] =
+		useState<boolean>(false);
 	const [form] = Form.useForm<InviteMemberFormValues>();
 	const { t } = useTranslation(['organizationsettings', 'common']);
 	const [state, setText] = useCopyToClipboard();

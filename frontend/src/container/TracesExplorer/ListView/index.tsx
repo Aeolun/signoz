@@ -2,7 +2,7 @@ import { ResizeTable } from 'components/ResizeTable';
 import { DEFAULT_ENTITY_VERSION } from 'constants/app';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import { QueryParams } from 'constants/query';
-import { initialQueriesMap, PANEL_TYPES } from 'constants/queryBuilder';
+import { PANEL_TYPES, initialQueriesMap } from 'constants/queryBuilder';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import EmptyLogsSearch from 'container/EmptyLogsSearch/EmptyLogsSearch';
 import NoLogs from 'container/NoLogs/NoLogs';
@@ -10,19 +10,19 @@ import { useOptionsMenu } from 'container/OptionsMenu';
 import TraceExplorerControls from 'container/TracesExplorer/Controls';
 import { useGetQueryRange } from 'hooks/queryBuilder/useGetQueryRange';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
-import { Pagination } from 'hooks/queryPagination';
+import type { Pagination } from 'hooks/queryPagination';
 import useDragColumns from 'hooks/useDragColumns';
 import { getDraggedColumns } from 'hooks/useDragColumns/utils';
 import useUrlQueryData from 'hooks/useUrlQueryData';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 import { DataSource } from 'types/common/queryBuilder';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 import { TracesLoading } from '../TraceLoading/TraceLoading';
-import { defaultSelectedColumns, PER_PAGE_OPTIONS } from './configs';
+import { PER_PAGE_OPTIONS, defaultSelectedColumns } from './configs';
 import { Container, ErrorText, tableStyles } from './styles';
 import { getListColumns, transformDataWithDate } from './utils';
 
@@ -33,10 +33,11 @@ interface ListViewProps {
 function ListView({ isFilterApplied }: ListViewProps): JSX.Element {
 	const { stagedQuery, panelType } = useQueryBuilder();
 
-	const { selectedTime: globalSelectedTime, maxTime, minTime } = useSelector<
-		AppState,
-		GlobalReducer
-	>((state) => state.globalTime);
+	const {
+		selectedTime: globalSelectedTime,
+		maxTime,
+		minTime,
+	} = useSelector<AppState, GlobalReducer>((state) => state.globalTime);
 
 	const { options, config } = useOptionsMenu({
 		storageKey: LOCALSTORAGE.TRACES_LIST_OPTIONS,
@@ -93,9 +94,10 @@ function ListView({ isFilterApplied }: ListViewProps): JSX.Element {
 	const totalCount = useMemo(() => dataLength || 0, [dataLength]);
 
 	const queryTableDataResult = data?.payload?.data?.newResult?.data?.result;
-	const queryTableData = useMemo(() => queryTableDataResult || [], [
-		queryTableDataResult,
-	]);
+	const queryTableData = useMemo(
+		() => queryTableDataResult || [],
+		[queryTableDataResult],
+	);
 
 	const columns = useMemo(() => {
 		const updatedColumns = getListColumns(options?.selectColumns || []);

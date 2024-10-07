@@ -1,8 +1,8 @@
-import { NotificationInstance } from 'antd/es/notification/interface';
-import { MenuItemLabelGeneratorProps } from 'components/ExplorerCard/types';
+import type { NotificationInstance } from 'antd/es/notification/interface';
+import type { MenuItemLabelGeneratorProps } from 'components/ExplorerCard/types';
 import { showErrorNotification } from 'components/ExplorerCard/utils';
-import { UseMutateAsyncFunction } from 'react-query';
-import { DeleteViewPayloadProps } from 'types/api/saveViews/types';
+import type { UseMutateAsyncFunction } from 'react-query';
+import type { DeleteViewPayloadProps } from 'types/api/saveViews/types';
 
 type DeleteViewProps = {
 	deleteViewAsync: UseMutateAsyncFunction<DeleteViewPayloadProps, Error, string>;

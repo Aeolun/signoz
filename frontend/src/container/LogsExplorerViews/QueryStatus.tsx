@@ -4,7 +4,8 @@ import { LoadingOutlined } from '@ant-design/icons';
 import { Color } from '@signozhq/design-tokens';
 import { Spin } from 'antd';
 import { CircleCheck } from 'lucide-react';
-import React, { useMemo } from 'react';
+import type React from 'react';
+import { useMemo } from 'react';
 
 interface IQueryStatusProps {
 	loading: boolean;

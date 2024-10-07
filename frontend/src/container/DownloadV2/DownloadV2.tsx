@@ -5,7 +5,7 @@ import { Excel } from 'antd-table-saveas-excel';
 import { FileDigit, FileDown, Sheet } from 'lucide-react';
 import { unparse } from 'papaparse';
 
-import { DownloadProps } from './DownloadV2.types';
+import type { DownloadProps } from './DownloadV2.types';
 
 function Download({ data, isLoading, fileName }: DownloadProps): JSX.Element {
 	const downloadExcelFile = (): void => {

@@ -9,11 +9,11 @@ import {
 	useSensors,
 } from '@dnd-kit/core';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
-import { arrayMove, SortableContext, useSortable } from '@dnd-kit/sortable';
+import { SortableContext, arrayMove, useSortable } from '@dnd-kit/sortable';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { CSS } from '@dnd-kit/utilities';
 import { Button, Modal, Row, Space, Table, Typography } from 'antd';
-import { RowProps } from 'antd/lib';
+import type { RowProps } from 'antd/lib';
 import { convertVariablesToDbFormat } from 'container/NewDashboard/DashboardVariablesSelection/util';
 import { useUpdateDashboard } from 'hooks/dashboard/useUpdateDashboard';
 import { useNotifications } from 'hooks/useNotifications';
@@ -21,10 +21,10 @@ import { PenLine, Trash2 } from 'lucide-react';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Dashboard, IDashboardVariable } from 'types/api/dashboard/getAll';
+import type { Dashboard, IDashboardVariable } from 'types/api/dashboard/getAll';
 
-import { TVariableMode } from './types';
 import VariableItem from './VariableItem/VariableItem';
+import type { TVariableMode } from './types';
 
 function TableRow({ children, ...props }: RowProps): JSX.Element {
 	const {
@@ -100,10 +100,8 @@ function VariablesSetting({
 		null,
 	);
 
-	const [
-		variableEditData,
-		setVariableEditData,
-	] = useState<null | IDashboardVariable>(null);
+	const [variableEditData, setVariableEditData] =
+		useState<null | IDashboardVariable>(null);
 
 	const onDoneVariableViewMode = (): void => {
 		setVariableViewMode(null);

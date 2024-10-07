@@ -1,6 +1,6 @@
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { liveLogsCompositeQuery } from 'container/LiveLogs/constants';
 import LiveLogsContainer from 'container/LiveLogs/LiveLogsContainer';
+import { liveLogsCompositeQuery } from 'container/LiveLogs/constants';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useShareBuilderUrl } from 'hooks/queryBuilder/useShareBuilderUrl';
 import { EventSourceProvider } from 'providers/EventSource';

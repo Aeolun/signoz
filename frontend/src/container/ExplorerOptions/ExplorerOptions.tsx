@@ -9,7 +9,7 @@ import {
 	Divider,
 	Input,
 	Modal,
-	RefSelectProps,
+	type RefSelectProps,
 	Select,
 	Tooltip,
 	Typography,
@@ -26,7 +26,7 @@ import ROUTES from 'constants/routes';
 import ExportPanelContainer from 'container/ExportPanel/ExportPanelContainer';
 import { useOptionsMenu } from 'container/OptionsMenu';
 import { defaultTraceSelectedColumns } from 'container/OptionsMenu/constants';
-import { OptionsQuery } from 'container/OptionsMenu/types';
+import type { OptionsQuery } from 'container/OptionsMenu/types';
 import { useGetSearchQueryParam } from 'hooks/queryBuilder/useGetSearchQueryParam';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useGetAllViews } from 'hooks/saveViews/useGetAllViews';
@@ -48,9 +48,9 @@ import {
 	XCircle,
 } from 'lucide-react';
 import {
-	CSSProperties,
-	Dispatch,
-	SetStateAction,
+	type CSSProperties,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -59,18 +59,18 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { Dashboard } from 'types/api/dashboard/getAll';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { ViewProps } from 'types/api/saveViews/types';
+import type { AppState } from 'store/reducers';
+import type { Dashboard } from 'types/api/dashboard/getAll';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { ViewProps } from 'types/api/saveViews/types';
 import { DataSource, StringOperators } from 'types/common/queryBuilder';
-import AppReducer from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
 import { USER_ROLES } from 'types/roles';
 
-import { PreservedViewsTypes } from './constants';
 import ExplorerOptionsHideArea from './ExplorerOptionsHideArea';
-import { PreservedViewsInLocalStorage } from './types';
+import { PreservedViewsTypes } from './constants';
+import type { PreservedViewsInLocalStorage } from './types';
 import {
 	DATASOURCE_VS_ROUTES,
 	generateRGBAFromHex,
@@ -202,8 +202,9 @@ function ExplorerOptions({
 	const viewName = useGetSearchQueryParam(QueryParams.viewName) || '';
 	const viewKey = useGetSearchQueryParam(QueryParams.viewKey) || '';
 
-	const extraData = viewsData?.data?.data?.find((view) => view.uuid === viewKey)
-		?.extraData;
+	const extraData = viewsData?.data?.data?.find(
+		(view) => view.uuid === viewKey,
+	)?.extraData;
 
 	const extraDataColor = extraData ? JSON.parse(extraData).color : '';
 	const rgbaColor = generateRGBAFromHex(
@@ -211,16 +212,14 @@ function ExplorerOptions({
 		0.08,
 	);
 
-	const {
-		mutateAsync: updateViewAsync,
-		isLoading: isViewUpdating,
-	} = useUpdateView({
-		compositeQuery,
-		viewKey,
-		extraData: extraData || JSON.stringify({ color: Color.BG_SIENNA_500 }),
-		sourcePage: sourcepage,
-		viewName,
-	});
+	const { mutateAsync: updateViewAsync, isLoading: isViewUpdating } =
+		useUpdateView({
+			compositeQuery,
+			viewKey,
+			extraData: extraData || JSON.stringify({ color: Color.BG_SIENNA_500 }),
+			sourcePage: sourcepage,
+			viewName,
+		});
 
 	const showErrorNotification = (err: Error): void => {
 		notifications.error({
@@ -229,8 +228,9 @@ function ExplorerOptions({
 	};
 
 	const onUpdateQueryHandler = (): void => {
-		const extraData = viewsData?.data?.data?.find((view) => view.uuid === viewKey)
-			?.extraData;
+		const extraData = viewsData?.data?.data?.find(
+			(view) => view.uuid === viewKey,
+		)?.extraData;
 		updateViewAsync(
 			{
 				compositeQuery: mapCompositeQueryFromQuery(currentQuery, panelType),
@@ -405,18 +405,16 @@ function ExplorerOptions({
 
 	const isQueryUpdated = isStagedQueryUpdated(viewsData?.data?.data, viewKey);
 
-	const {
-		isLoading: isSaveViewLoading,
-		mutateAsync: saveViewAsync,
-	} = useSaveView({
-		viewName: newViewName || '',
-		compositeQuery,
-		sourcePage: sourcepage,
-		extraData: JSON.stringify({
-			color,
-			selectColumns: options.selectColumns,
-		}),
-	});
+	const { isLoading: isSaveViewLoading, mutateAsync: saveViewAsync } =
+		useSaveView({
+			viewName: newViewName || '',
+			compositeQuery,
+			sourcePage: sourcepage,
+			extraData: JSON.stringify({
+				color,
+				selectColumns: options.selectColumns,
+			}),
+		});
 
 	const onSaveHandler = (): void => {
 		saveNewViewHandler({
@@ -475,10 +473,8 @@ function ExplorerOptions({
 
 	const isEditDeleteSupported = allowedRoles.includes(role as string);
 
-	const [
-		isRecentlyUsedSavedViewSelected,
-		setIsRecentlyUsedSavedViewSelected,
-	] = useState(false);
+	const [isRecentlyUsedSavedViewSelected, setIsRecentlyUsedSavedViewSelected] =
+		useState(false);
 
 	useEffect(() => {
 		const parsedPreservedView = JSON.parse(

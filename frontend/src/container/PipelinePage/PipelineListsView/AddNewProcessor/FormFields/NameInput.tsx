@@ -3,7 +3,7 @@ import { ModalFooterTitle } from 'container/PipelinePage/styles';
 import { useTranslation } from 'react-i18next';
 
 import { formValidationRules } from '../../config';
-import { ProcessorFormField } from '../config';
+import type { ProcessorFormField } from '../config';
 import { Container, FormWrapper, PipelineIndexIcon } from '../styles';
 
 function NameInput({ fieldData }: NameInputProps): JSX.Element {

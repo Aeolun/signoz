@@ -4,8 +4,8 @@ import RawLogView from 'components/Logs/RawLogView';
 import LogsContextList from 'container/LogsContextList';
 import { FontSize } from 'container/OptionsMenu/types';
 import { ORDERBY_FILTERS } from 'container/QueryBuilder/filters/OrderByFilter/config';
-import { ILog } from 'types/api/logs/log';
-import { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { ILog } from 'types/api/logs/log';
+import type { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 
 interface LogContextProps {
 	log: ILog;

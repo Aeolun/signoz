@@ -5,10 +5,10 @@ import {
 	GET_SERVICE_LIST_ERROR,
 	GET_SERVICE_LIST_LOADING_START,
 	GET_SERVICE_LIST_SUCCESS,
-	MetricsActions,
+	type MetricsActions,
 	RESET_INITIAL_APPLICATION_DATA,
 } from 'types/actions/metrics';
-import InitialValueTypes from 'types/reducer/metrics';
+import type InitialValueTypes from 'types/reducer/metrics';
 
 export const InitialValue: InitialValueTypes = {
 	error: false,
@@ -27,9 +27,9 @@ export const InitialValue: InitialValueTypes = {
 
 const metrics = (
 	state = InitialValue,
-	action: MetricsActions,
+	action?: MetricsActions,
 ): InitialValueTypes => {
-	switch (action.type) {
+	switch (action?.type) {
 		case GET_SERVICE_LIST_ERROR: {
 			const { errorMessage } = action.payload;
 

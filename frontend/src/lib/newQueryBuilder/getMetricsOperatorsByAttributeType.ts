@@ -1,11 +1,11 @@
 import {
 	ATTRIBUTE_TYPES,
+	type PANEL_TYPES,
 	metricsOperatorsByType,
-	PANEL_TYPES,
 } from 'constants/queryBuilder';
 import { metricsEmptyTimeAggregateOperatorOptions } from 'constants/queryBuilderOperators';
 import { DataSource } from 'types/common/queryBuilder';
-import { SelectOption } from 'types/common/select';
+import type { SelectOption } from 'types/common/select';
 
 type GetQueryOperatorsParams = {
 	dataSource: DataSource;

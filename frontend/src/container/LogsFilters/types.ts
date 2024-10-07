@@ -1,5 +1,5 @@
-import { SetStateAction } from 'react';
-import {
+import type { SetStateAction } from 'react';
+import type {
 	IField,
 	IInterestingFields,
 	ISelectedFields,

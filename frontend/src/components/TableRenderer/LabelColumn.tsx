@@ -2,7 +2,7 @@ import './LabelColumn.styles.scss';
 
 import { Popover, Tag } from 'antd';
 
-import { LabelColumnProps } from './TableRenderer.types';
+import type { LabelColumnProps } from './TableRenderer.types';
 import TagWithToolTip from './TagWithToolTip';
 import { getLabelAndValueContent } from './utils';
 
@@ -27,7 +27,7 @@ function LabelColumn({ labels, value, color }: LabelColumnProps): JSX.Element {
 								(label: string): JSX.Element => (
 									<div key={label}>
 										<Tag className="label-column--tag" color={color}>
-											{getLabelAndValueContent(label, value && value[label])}
+											{getLabelAndValueContent(label, value?.[label])}
 										</Tag>
 									</div>
 								),

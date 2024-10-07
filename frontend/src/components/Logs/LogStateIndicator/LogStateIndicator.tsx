@@ -1,7 +1,7 @@
 import './LogStateIndicator.styles.scss';
 
 import cx from 'classnames';
-import { FontSize } from 'container/OptionsMenu/types';
+import type { FontSize } from 'container/OptionsMenu/types';
 
 export const SEVERITY_TEXT_TYPE = {
 	TRACE: 'TRACE',

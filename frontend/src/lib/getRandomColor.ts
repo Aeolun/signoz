@@ -1,5 +1,5 @@
 /* eslint-disable no-bitwise */
-import { Span } from 'types/api/trace/getTraceItem';
+import type { Span } from 'types/api/trace/getTraceItem';
 
 import { themeColors } from '../constants/theme';
 
@@ -10,12 +10,15 @@ export function getRandomNumber(min: number, max: number): number {
 }
 
 const getRandomColor = (): string => {
-	const index = parseInt(getRandomNumber(0, colors.length - 1).toString(), 10);
+	const index = Number.parseInt(
+		getRandomNumber(0, colors.length - 1).toString(),
+		10,
+	);
 	return colors[index];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-export function hexToRgba(hex: string, alpha: number = 1): string {
+export function hexToRgba(hex: string, alpha = 1): string {
 	// Create a new local variable to work with
 	let hexColor = hex;
 
@@ -33,7 +36,7 @@ export function hexToRgba(hex: string, alpha: number = 1): string {
 	}
 
 	// Parse the r, g, b values
-	const bigint = parseInt(hexColor, 16);
+	const bigint = Number.parseInt(hexColor, 16);
 	const r = (bigint >> 16) & 255;
 	const g = (bigint >> 8) & 255;
 	const b = bigint & 255;

@@ -4,8 +4,8 @@ import Spinner from 'components/Spinner';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useMeasure } from 'react-use';
-import { AppState } from 'store/reducers';
-import { TraceReducer } from 'types/reducer/trace';
+import type { AppState } from 'store/reducers';
+import type { TraceReducer } from 'types/reducer/trace';
 
 import { getChartData, getChartDataforGroupBy } from './config';
 import { Container } from './styles';

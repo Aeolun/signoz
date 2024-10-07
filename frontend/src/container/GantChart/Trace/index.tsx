@@ -1,21 +1,21 @@
 import { CaretDownFilled, CaretRightFilled } from '@ant-design/icons';
 import { Col, Typography } from 'antd';
 import { StyledCol, StyledRow } from 'components/Styled';
-import { IIntervalUnit } from 'container/TraceDetail/utils';
+import type { IIntervalUnit } from 'container/TraceDetail/utils';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { SPAN_DETAILS_LEFT_COL_WIDTH } from 'pages/TraceDetail/constants';
 import {
-	Dispatch,
-	MouseEventHandler,
-	SetStateAction,
+	type Dispatch,
+	type MouseEventHandler,
+	type SetStateAction,
 	useEffect,
 	useMemo,
 	useRef,
 	useState,
 } from 'react';
-import { ITraceTree } from 'types/api/trace/getTraceItem';
+import type { ITraceTree } from 'types/api/trace/getTraceItem';
 
-import { ITraceMetaData } from '..';
+import type { ITraceMetaData } from '..';
 import Span from '../Span';
 import SpanName from '../SpanName';
 import { getMetaDataFromSpanTree, getTopLeftFromBody } from '../utils';
@@ -24,8 +24,8 @@ import {
 	CardContainer,
 	CaretContainer,
 	HoverCard,
-	styles,
 	Wrapper,
+	styles,
 } from './styles';
 import { getIconStyles } from './utils';
 
@@ -181,28 +181,25 @@ function Trace(props: TraceProps): JSX.Element {
 				</Col>
 			</CardContainer>
 
-			{isOpen && (
-				<>
-					{children.map((child) => (
-						<Trace
-							key={child.id}
-							activeHoverId={activeHoverId}
-							setActiveHoverId={setActiveHoverId}
-							// eslint-disable-next-line react/jsx-props-no-spreading
-							{...child}
-							globalSpread={globalSpread}
-							globalStart={globalStart}
-							setActiveSelectedId={setActiveSelectedId}
-							activeSelectedId={activeSelectedId}
-							level={level + 1}
-							activeSpanPath={activeSpanPath}
-							isExpandAll={isExpandAll}
-							intervalUnit={intervalUnit}
-							isMissing={child.isMissing}
-						/>
-					))}
-				</>
-			)}
+			{isOpen &&
+				children.map((child) => (
+					<Trace
+						key={child.id}
+						activeHoverId={activeHoverId}
+						setActiveHoverId={setActiveHoverId}
+						// eslint-disable-next-line react/jsx-props-no-spreading
+						{...child}
+						globalSpread={globalSpread}
+						globalStart={globalStart}
+						setActiveSelectedId={setActiveSelectedId}
+						activeSelectedId={activeSelectedId}
+						level={level + 1}
+						activeSpanPath={activeSpanPath}
+						isExpandAll={isExpandAll}
+						intervalUnit={intervalUnit}
+						isMissing={child.isMissing}
+					/>
+				))}
 		</Wrapper>
 	);
 }

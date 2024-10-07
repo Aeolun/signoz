@@ -1,8 +1,11 @@
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
-import { ReactNode } from 'react';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
-import { DataSource, MetricAggregateOperator } from 'types/common/queryBuilder';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { ReactNode } from 'react';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type {
+	DataSource,
+	MetricAggregateOperator,
+} from 'types/common/queryBuilder';
 
 export interface IServiceName {
 	servicename: string;

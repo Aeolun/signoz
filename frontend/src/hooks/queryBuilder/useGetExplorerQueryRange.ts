@@ -1,13 +1,13 @@
-import { initialQueriesMap, PANEL_TYPES } from 'constants/queryBuilder';
+import { PANEL_TYPES, initialQueriesMap } from 'constants/queryBuilder';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
-import { MutableRefObject, useMemo } from 'react';
-import { UseQueryOptions, UseQueryResult } from 'react-query';
+import { type MutableRefObject, useMemo } from 'react';
+import type { UseQueryOptions, UseQueryResult } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 import { useGetQueryRange } from './useGetQueryRange';
 import { useQueryBuilder } from './useQueryBuilder';
@@ -23,10 +23,11 @@ export const useGetExplorerQueryRange = (
 	headers?: Record<string, string>,
 ): UseQueryResult<SuccessResponse<MetricRangePayloadProps>, Error> => {
 	const { isEnabledQuery } = useQueryBuilder();
-	const { selectedTime: globalSelectedInterval, minTime, maxTime } = useSelector<
-		AppState,
-		GlobalReducer
-	>((state) => state.globalTime);
+	const {
+		selectedTime: globalSelectedInterval,
+		minTime,
+		maxTime,
+	} = useSelector<AppState, GlobalReducer>((state) => state.globalTime);
 
 	const key =
 		typeof options?.queryKey === 'string'

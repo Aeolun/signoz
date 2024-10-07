@@ -19,16 +19,23 @@ import {
 	RocketIcon,
 	UserCircle,
 } from 'lucide-react';
-import { MouseEvent, useCallback, useEffect, useMemo, useState } from 'react';
+import {
+	type MouseEvent,
+	useCallback,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { AppState } from 'store/reducers';
-import { License } from 'types/api/licenses/def';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { License } from 'types/api/licenses/def';
+import type AppReducer from 'types/reducer/app';
 import { USER_ROLES } from 'types/roles';
 import { checkVersionState, isCloudUser, isEECloudUser } from 'utils/app';
 
+import NavItem from './NavItem/NavItem';
 import { routeConfig } from './config';
 import { getQueryString } from './helper';
 import defaultMenuItems, {
@@ -39,8 +46,7 @@ import defaultMenuItems, {
 	slackSupportMenuItem,
 	trySignozCloudMenuItem,
 } from './menuItems';
-import NavItem from './NavItem/NavItem';
-import { SecondaryMenuItemKey, SidebarItem } from './sideNav.types';
+import { SecondaryMenuItemKey, type SidebarItem } from './sideNav.types';
 import { getActiveMenuKeyFromPath } from './sideNav.utils';
 
 interface UserManagementMenuItems {
@@ -181,7 +187,7 @@ function SideNav({
 		if (isCtrlMetaKey(e)) {
 			openInNewTab('/shortcuts');
 		} else {
-			history.push(`/shortcuts`);
+			history.push('/shortcuts');
 		}
 	};
 
@@ -193,7 +199,7 @@ function SideNav({
 		if (isCtrlMetaKey(event)) {
 			openInNewTab('/get-started');
 		} else {
-			history.push(`/get-started`);
+			history.push('/get-started');
 		}
 	};
 
@@ -225,9 +231,10 @@ function SideNav({
 		[pathname, search],
 	);
 
-	const activeMenuKey = useMemo(() => getActiveMenuKeyFromPath(pathname), [
-		pathname,
-	]);
+	const activeMenuKey = useMemo(
+		() => getActiveMenuKeyFromPath(pathname),
+		[pathname],
+	);
 
 	useEffect(() => {
 		if (isCloudUser() || isEECloudUser()) {
@@ -399,7 +406,7 @@ function SideNav({
 					</div>
 				)}
 
-				<div className={cx(`nav-wrapper`, isCloudUserVal && 'nav-wrapper-cloud')}>
+				<div className={cx('nav-wrapper', isCloudUserVal && 'nav-wrapper-cloud')}>
 					<div className="primary-nav-items">
 						{menuItems.map((item, index) => (
 							<NavItem

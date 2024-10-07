@@ -1,4 +1,4 @@
-import { OptionsMenuConfig } from 'container/OptionsMenu/types';
+import type { OptionsMenuConfig } from 'container/OptionsMenu/types';
 
 export type ExplorerControlPanelProps = {
 	selectedOptionFormat: string;

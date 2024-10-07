@@ -9,17 +9,14 @@ import useComponentPermission from 'hooks/useComponentPermission';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
-import { ROLES, USER_ROLES } from 'types/roles';
-import { ComponentTypes } from 'utils/permission';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
+import { type ROLES, USER_ROLES } from 'types/roles';
+import type { ComponentTypes } from 'utils/permission';
 
 export default function DashboardEmptyState(): JSX.Element {
-	const {
-		selectedDashboard,
-		isDashboardLocked,
-		handleToggleDashboardSlider,
-	} = useDashboard();
+	const { selectedDashboard, isDashboardLocked, handleToggleDashboardSlider } =
+		useDashboard();
 
 	const { user, role } = useSelector<AppState, AppReducer>((state) => state.app);
 	let permissions: ComponentTypes[] = ['add_panel'];

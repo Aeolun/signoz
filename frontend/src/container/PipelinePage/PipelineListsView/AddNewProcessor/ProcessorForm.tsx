@@ -5,8 +5,8 @@ import { ModalFooterTitle } from 'container/PipelinePage/styles';
 import { useTranslation } from 'react-i18next';
 
 import { formValidationRules } from '../config';
-import { processorFields, ProcessorFormField } from './config';
 import CSVInput from './FormFields/CSVInput';
+import { type ProcessorFormField, processorFields } from './config';
 import { FormWrapper, PipelineIndexIcon, StyledSelect } from './styles';
 
 function ProcessorFieldInput({

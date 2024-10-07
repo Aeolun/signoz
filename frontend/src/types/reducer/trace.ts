@@ -1,4 +1,4 @@
-import { PayloadProps } from 'types/api/trace/getSpans';
+import type { PayloadProps } from 'types/api/trace/getSpans';
 
 export interface TraceReducer {
 	filter: Map<TraceFilterEnum, Record<string, string>>;

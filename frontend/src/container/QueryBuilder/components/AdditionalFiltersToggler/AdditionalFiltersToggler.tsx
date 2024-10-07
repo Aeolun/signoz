@@ -3,10 +3,10 @@ import './AdditionalFiltersToggler.styles.scss';
 import { Color } from '@signozhq/design-tokens';
 import { Col, Row, Typography } from 'antd';
 import { Minus, Plus } from 'lucide-react';
-import { Fragment, memo, ReactNode, useState } from 'react';
+import { Fragment, type ReactNode, memo, useState } from 'react';
 
 // ** Types
-import { AdditionalFiltersProps } from './AdditionalFiltersToggler.interfaces';
+import type { AdditionalFiltersProps } from './AdditionalFiltersToggler.interfaces';
 // ** Styles
 import { StyledInner, StyledLink } from './AdditionalFiltersToggler.styled';
 

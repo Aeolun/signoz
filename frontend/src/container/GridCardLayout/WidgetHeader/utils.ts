@@ -1,7 +1,7 @@
-import { MenuItemType } from 'antd/es/menu/hooks/useItems';
+import type { MenuItemType } from 'antd/es/menu/hooks/useItems';
 
 import { MenuItemKeys } from './contants';
-import { MenuItem } from './types';
+import type { MenuItem } from './types';
 
 export const generateMenuList = (actions: MenuItem[]): MenuItemType[] =>
 	actions

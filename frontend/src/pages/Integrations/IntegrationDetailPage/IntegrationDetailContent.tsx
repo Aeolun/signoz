@@ -1,9 +1,9 @@
 import './IntegrationDetailPage.styles.scss';
 
-import { Button, Tabs, TabsProps, Typography } from 'antd';
+import { Button, Tabs, type TabsProps, Typography } from 'antd';
 import ConfigureIcon from 'assets/Integrations/ConfigureIcon';
 import { CableCar, Group } from 'lucide-react';
-import { IntegrationDetailedProps } from 'types/api/integrations/types';
+import type { IntegrationDetailedProps } from 'types/api/integrations/types';
 
 import Configure from './IntegrationDetailContentTabs/Configure';
 import DataCollected from './IntegrationDetailContentTabs/DataCollected';
@@ -19,12 +19,8 @@ interface IntegrationDetailContentProps {
 function IntegrationDetailContent(
 	props: IntegrationDetailContentProps,
 ): JSX.Element {
-	const {
-		activeDetailTab,
-		integrationData,
-		integrationId,
-		setActiveDetailTab,
-	} = props;
+	const { activeDetailTab, integrationData, integrationId, setActiveDetailTab } =
+		props;
 	const items: TabsProps['items'] = [
 		{
 			key: 'overview',

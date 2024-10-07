@@ -3,8 +3,8 @@ import { Button, Card, Form, Space, Typography } from 'antd';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 import { checkVersionState } from 'utils/app';
 
 import { githubReleaseURL } from './constant';

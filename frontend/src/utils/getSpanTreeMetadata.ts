@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { themeColors } from 'constants/theme';
-import { ITraceForest, ITraceTree } from 'types/api/trace/getTraceItem';
+import type { ITraceForest, ITraceTree } from 'types/api/trace/getTraceItem';
 /**
  * Traverses the Span Tree data and returns the relevant meta data.
  * Metadata includes globalStart, globalEnd,

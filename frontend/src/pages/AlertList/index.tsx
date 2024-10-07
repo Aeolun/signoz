@@ -1,5 +1,5 @@
 import { Tabs } from 'antd';
-import { TabsProps } from 'antd/lib';
+import type { TabsProps } from 'antd/lib';
 import ConfigureIcon from 'assets/AlertHistory/ConfigureIcon';
 import ROUTES from 'constants/routes';
 import AllAlertRules from 'container/ListAlertRules';

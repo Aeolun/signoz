@@ -1,7 +1,10 @@
-import GetMinMax, { GetMinMaxPayload } from 'lib/getMinMax';
+import GetMinMax, { type GetMinMaxPayload } from 'lib/getMinMax';
 
-import { Time } from '../DateTimeSelection/config';
-import { CustomTimeType, Time as TimeV2 } from '../DateTimeSelectionV2/config';
+import type { Time } from '../DateTimeSelection/config';
+import type {
+	CustomTimeType,
+	Time as TimeV2,
+} from '../DateTimeSelectionV2/config';
 
 export const options: IOptions[] = [
 	{

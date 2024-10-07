@@ -1,13 +1,13 @@
 import './InfraMetrics.styles.scss';
 
 import { Empty, Radio } from 'antd';
-import { RadioChangeEvent } from 'antd/lib';
+import type { RadioChangeEvent } from 'antd/lib';
 import { History, Table } from 'lucide-react';
 import { useState } from 'react';
 
-import { VIEW_TYPES } from './constants';
 import NodeMetrics from './NodeMetrics';
 import PodMetrics from './PodMetrics';
+import { VIEW_TYPES } from './constants';
 
 interface MetricsDataProps {
 	podName: string;

@@ -1,9 +1,9 @@
-import { ColumnType } from 'antd/lib/table/interface';
+import type { ColumnType } from 'antd/lib/table/interface';
 import dayjs from 'dayjs';
 import update from 'react-addons-update';
-import { ProcessorData } from 'types/api/pipeline/def';
+import type { ProcessorData } from 'types/api/pipeline/def';
 
-import TableComponents, { Record } from './TableComponents';
+import TableComponents, { type Record } from './TableComponents';
 
 export function getElementFromArray<T>(
 	arr: Array<T>,
@@ -90,6 +90,6 @@ export function getProcessorUpdatedRow<T extends ProcessorData>(
 	for (let i = 0; i < data.length - 1; i += 1) {
 		data[i].output = data[i + 1].id;
 	}
-	delete data[data.length - 1].output;
+	data[data.length - 1].output = undefined;
 	return data;
 }

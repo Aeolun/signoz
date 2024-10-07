@@ -1,14 +1,14 @@
 import { Tag, Typography } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import type { ColumnsType } from 'antd/es/table';
 import ROUTES from 'constants/routes';
 import { getMs } from 'container/Trace/Filters/Panel/PanelBody/Duration/util';
 import { formUrlParams } from 'container/TraceDetail/utils';
 import dayjs from 'dayjs';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
 import { Link } from 'react-router-dom';
-import { ILog } from 'types/api/logs/log';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { QueryDataV3 } from 'types/api/widgets/getQuery';
+import type { ILog } from 'types/api/logs/log';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { QueryDataV3 } from 'types/api/widgets/getQuery';
 
 function BlockLink({
 	children,

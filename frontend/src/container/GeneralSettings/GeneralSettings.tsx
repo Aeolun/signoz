@@ -9,22 +9,22 @@ import { useNotifications } from 'hooks/useNotifications';
 import find from 'lodash-es/find';
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { UseQueryResult } from 'react-query';
+import type { UseQueryResult } from 'react-query';
 import { useSelector } from 'react-redux';
 import { useInterval } from 'react-use';
-import { AppState } from 'store/reducers';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import {
-	IDiskType,
+import type { AppState } from 'store/reducers';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type {
 	PayloadProps as GetDisksPayload,
+	IDiskType,
 } from 'types/api/disks/getDisks';
-import { TTTLType } from 'types/api/settings/common';
-import {
+import type { TTTLType } from 'types/api/settings/common';
+import type {
 	PayloadPropsLogs as GetRetentionPeriodLogsPayload,
 	PayloadPropsMetrics as GetRetentionPeriodMetricsPayload,
 	PayloadPropsTraces as GetRetentionPeriodTracesPayload,
 } from 'types/api/settings/getRetention';
-import AppReducer from 'types/reducer/app';
+import type AppReducer from 'types/reducer/app';
 import { isCloudUser } from 'utils/app';
 
 import Retention from './Retention';
@@ -47,12 +47,10 @@ function GeneralSettings({
 	const [modalTraces, setModalTraces] = useState<boolean>(false);
 	const [modalLogs, setModalLogs] = useState<boolean>(false);
 
-	const [postApiLoadingMetrics, setPostApiLoadingMetrics] = useState<boolean>(
-		false,
-	);
-	const [postApiLoadingTraces, setPostApiLoadingTraces] = useState<boolean>(
-		false,
-	);
+	const [postApiLoadingMetrics, setPostApiLoadingMetrics] =
+		useState<boolean>(false);
+	const [postApiLoadingTraces, setPostApiLoadingTraces] =
+		useState<boolean>(false);
 	const [postApiLoadingLogs, setPostApiLoadingLogs] = useState<boolean>(false);
 
 	const [availableDisks] = useState<IDiskType[]>(getAvailableDiskPayload);
@@ -64,9 +62,8 @@ function GeneralSettings({
 		tracesTtlValuesPayload,
 	);
 
-	const [logsCurrentTTLValues, setLogsCurrentTTLValues] = useState(
-		logsTtlValuesPayload,
-	);
+	const [logsCurrentTTLValues, setLogsCurrentTTLValues] =
+		useState(logsTtlValuesPayload);
 
 	const { role } = useSelector<AppState, AppReducer>((state) => state.app);
 
@@ -75,31 +72,19 @@ function GeneralSettings({
 		role,
 	);
 
-	const [
-		metricsTotalRetentionPeriod,
-		setMetricsTotalRetentionPeriod,
-	] = useState<NumberOrNull>(null);
-	const [
-		metricsS3RetentionPeriod,
-		setMetricsS3RetentionPeriod,
-	] = useState<NumberOrNull>(null);
-	const [
-		tracesTotalRetentionPeriod,
-		setTracesTotalRetentionPeriod,
-	] = useState<NumberOrNull>(null);
-	const [
-		tracesS3RetentionPeriod,
-		setTracesS3RetentionPeriod,
-	] = useState<NumberOrNull>(null);
+	const [metricsTotalRetentionPeriod, setMetricsTotalRetentionPeriod] =
+		useState<NumberOrNull>(null);
+	const [metricsS3RetentionPeriod, setMetricsS3RetentionPeriod] =
+		useState<NumberOrNull>(null);
+	const [tracesTotalRetentionPeriod, setTracesTotalRetentionPeriod] =
+		useState<NumberOrNull>(null);
+	const [tracesS3RetentionPeriod, setTracesS3RetentionPeriod] =
+		useState<NumberOrNull>(null);
 
-	const [
-		logsTotalRetentionPeriod,
-		setLogsTotalRetentionPeriod,
-	] = useState<NumberOrNull>(null);
-	const [
-		logsS3RetentionPeriod,
-		setLogsS3RetentionPeriod,
-	] = useState<NumberOrNull>(null);
+	const [logsTotalRetentionPeriod, setLogsTotalRetentionPeriod] =
+		useState<NumberOrNull>(null);
+	const [logsS3RetentionPeriod, setLogsS3RetentionPeriod] =
+		useState<NumberOrNull>(null);
 
 	useEffect(() => {
 		if (metricsCurrentTTLValues) {
@@ -599,7 +584,7 @@ function GeneralSettings({
 					{!isCloudUserVal && (
 						<TextToolTip
 							{...{
-								text: `More details on how to set retention period`,
+								text: 'More details on how to set retention period',
 								url: 'https://signoz.io/docs/userguide/retention-period/',
 							}}
 						/>

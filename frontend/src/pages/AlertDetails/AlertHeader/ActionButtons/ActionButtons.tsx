@@ -1,7 +1,7 @@
 import './ActionButtons.styles.scss';
 
 import { Color } from '@signozhq/design-tokens';
-import { Divider, Dropdown, MenuProps, Switch, Tooltip } from 'antd';
+import { Divider, Dropdown, type MenuProps, Switch, Tooltip } from 'antd';
 import { QueryParams } from 'constants/query';
 import ROUTES from 'constants/routes';
 import { useIsDarkMode } from 'hooks/useDarkMode';
@@ -16,10 +16,10 @@ import {
 import CopyToClipboard from 'periscope/components/CopyToClipboard';
 import { useAlertRule } from 'providers/Alert';
 import React from 'react';
-import { CSSProperties } from 'styled-components';
-import { AlertDef } from 'types/api/alerts/def';
+import type { CSSProperties } from 'styled-components';
+import type { AlertDef } from 'types/api/alerts/def';
 
-import { AlertHeaderProps } from '../AlertHeader';
+import type { AlertHeaderProps } from '../AlertHeader';
 
 const menuItemStyle: CSSProperties = {
 	fontSize: '14px',
@@ -36,7 +36,7 @@ function AlertActionButtons({
 	const { handleAlertStateToggle } = useAlertRuleStatusToggle({ ruleId });
 
 	const { handleAlertDuplicate } = useAlertRuleDuplicate({
-		alertDetails: (alertDetails as unknown) as AlertDef,
+		alertDetails: alertDetails as unknown as AlertDef,
 	});
 	const { handleAlertDelete } = useAlertRuleDelete({ ruleId: Number(ruleId) });
 

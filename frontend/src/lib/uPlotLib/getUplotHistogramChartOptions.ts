@@ -1,13 +1,13 @@
 /* eslint-disable sonarjs/cognitive-complexity */
-import { PANEL_TYPES } from 'constants/queryBuilder';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
 import { themeColors } from 'constants/theme';
 import { saveLegendEntriesToLocalStorage } from 'container/GridCardLayout/GridCard/FullView/utils';
-import { Dimensions } from 'hooks/useDimensions';
+import type { Dimensions } from 'hooks/useDimensions';
 import getLabelName from 'lib/getLabelName';
-import { Dispatch, SetStateAction } from 'react';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { QueryData } from 'types/api/widgets/getQuery';
+import type { Dispatch, SetStateAction } from 'react';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { QueryData } from 'types/api/widgets/getQuery';
 import uPlot from 'uplot';
 
 import tooltipPlugin from './plugins/tooltipPlugin';
@@ -46,9 +46,9 @@ const paths = (
 	idx0: number,
 	idx1: number,
 ): uPlot.Series.Paths | null | undefined => {
-	const renderer = bars && bars({ size: [1], align: -1 });
+	const renderer = bars?.({ size: [1], align: -1 });
 
-	return renderer && renderer(u, seriesIdx, idx0, idx1);
+	return renderer?.(u, seriesIdx, idx0, idx1);
 };
 
 const getHistogramSeries = ({
@@ -67,8 +67,11 @@ const getHistogramSeries = ({
 	const newGraphVisibilityStates = graphsVisibilityStates?.slice(1);
 
 	for (let i = 0; i < seriesList?.length; i += 1) {
-		const { metric = {}, queryName = '', legend: lgd } =
-			(widgetMetaData && widgetMetaData[i]) || {};
+		const {
+			metric = {},
+			queryName = '',
+			legend: lgd,
+		} = widgetMetaData?.[i] || {};
 
 		const newLegend =
 			currentQuery?.builder.queryData.find((item) => item.queryName === queryName)
@@ -203,4 +206,4 @@ export const getUplotHistogramChartOptions = ({
 			],
 		},
 		axes: getAxes(isDarkMode),
-	} as uPlot.Options);
+	}) as uPlot.Options;

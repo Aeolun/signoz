@@ -1,12 +1,12 @@
-import { NotificationInstance } from 'antd/es/notification/interface';
+import type { NotificationInstance } from 'antd/es/notification/interface';
 import deleteAlerts from 'api/alerts/delete';
-import { State } from 'hooks/useFetch';
-import { Dispatch, SetStateAction, useState } from 'react';
+import type { State } from 'hooks/useFetch';
+import { type Dispatch, type SetStateAction, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { PayloadProps as DeleteAlertPayloadProps } from 'types/api/alerts/delete';
-import { GettableAlert } from 'types/api/alerts/get';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type { PayloadProps as DeleteAlertPayloadProps } from 'types/api/alerts/delete';
+import type { GettableAlert } from 'types/api/alerts/get';
+import type AppReducer from 'types/reducer/app';
 
 import { ColumnButton } from './styles';
 

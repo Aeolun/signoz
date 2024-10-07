@@ -1,8 +1,8 @@
-import { SelectProps } from 'antd';
-import { Time } from 'container/TopNav/DateTimeSelection/config';
+import type { SelectProps } from 'antd';
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
 import getStartEndRangeTime from 'lib/getStartEndRangeTime';
 import getStep from 'lib/getStep';
-import {
+import type {
 	IBuilderFormula,
 	IBuilderQuery,
 	IClickHouseQuery,

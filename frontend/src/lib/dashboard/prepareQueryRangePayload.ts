@@ -3,10 +3,10 @@ import getStep from 'lib/getStep';
 import { mapQueryDataToApi } from 'lib/newQueryBuilder/queryBuilderMappers/mapQueryDataToApi';
 import { isUndefined } from 'lodash-es';
 import store from 'store';
-import { QueryRangePayload } from 'types/api/metrics/getQueryRange';
+import type { QueryRangePayload } from 'types/api/metrics/getQueryRange';
 import { EQueryType } from 'types/common/dashboard';
 
-import { GetQueryResultsProps } from './getQueryResults';
+import type { GetQueryResultsProps } from './getQueryResults';
 
 type PrepareQueryRangePayload = {
 	queryPayload: QueryRangePayload;
@@ -58,15 +58,18 @@ export const prepareQueryRangePayload = ({
 			break;
 		}
 		case EQueryType.CLICKHOUSE: {
-			const chQueries = query[query.queryType].reduce((acc, query) => {
-				if (!query.query) return acc;
+			const chQueries = query[query.queryType].reduce(
+				(acc, query) => {
+					if (!query.query) return acc;
 
-				acc[query.name] = query;
+					acc[query.name] = query;
 
-				legendMap[query.name] = query.legend;
+					legendMap[query.name] = query.legend;
 
-				return acc;
-			}, {} as NonNullable<QueryRangePayload['compositeQuery']['chQueries']>);
+					return acc;
+				},
+				{} as NonNullable<QueryRangePayload['compositeQuery']['chQueries']>,
+			);
 
 			compositeQuery.chQueries = chQueries;
 
@@ -74,15 +77,18 @@ export const prepareQueryRangePayload = ({
 		}
 		case EQueryType.PROM: {
 			// eslint-disable-next-line sonarjs/no-identical-functions
-			const promQueries = query[query.queryType].reduce((acc, query) => {
-				if (!query.query) return acc;
+			const promQueries = query[query.queryType].reduce(
+				(acc, query) => {
+					if (!query.query) return acc;
 
-				acc[query.name] = query;
+					acc[query.name] = query;
 
-				legendMap[query.name] = query.legend;
+					legendMap[query.name] = query.legend;
 
-				return acc;
-			}, {} as NonNullable<QueryRangePayload['compositeQuery']['promQueries']>);
+					return acc;
+				},
+				{} as NonNullable<QueryRangePayload['compositeQuery']['promQueries']>,
+			);
 
 			compositeQuery.promQueries = promQueries;
 			break;
@@ -102,8 +108,10 @@ export const prepareQueryRangePayload = ({
 		: undefined;
 
 	const queryPayload: QueryRangePayload = {
-		start: startTime ? startTime * 1e3 : parseInt(start, 10) * 1e3,
-		end: endTime ? endTime * 1e3 : endLogTimeStamp || parseInt(end, 10) * 1e3,
+		start: startTime ? startTime * 1e3 : Number.parseInt(start, 10) * 1e3,
+		end: endTime
+			? endTime * 1e3
+			: endLogTimeStamp || Number.parseInt(end, 10) * 1e3,
 		step: getStep({
 			start: allowSelectedIntervalForStepGen
 				? start

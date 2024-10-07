@@ -4,10 +4,10 @@ import get from 'api/channels/get';
 import Spinner from 'components/Spinner';
 import {
 	ChannelType,
-	MsTeamsChannel,
-	PagerChannel,
-	SlackChannel,
-	WebhookChannel,
+	type MsTeamsChannel,
+	type PagerChannel,
+	type SlackChannel,
+	type WebhookChannel,
 } from 'container/CreateAlertChannels/config';
 import EditAlertChannels from 'container/EditAlertChannels';
 import { useTranslation } from 'react-i18next';

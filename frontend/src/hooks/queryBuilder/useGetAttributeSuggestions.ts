@@ -1,9 +1,13 @@
 import { getAttributeSuggestions } from 'api/queryBuilder/getAttributeSuggestions';
 import { QueryBuilderKeys } from 'constants/queryBuilder';
 import { useMemo } from 'react';
-import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query';
-import { ErrorResponse, SuccessResponse } from 'types/api';
 import {
+	type UseQueryOptions,
+	type UseQueryResult,
+	useQuery,
+} from 'react-query';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type {
 	IGetAttributeSuggestionsPayload,
 	IGetAttributeSuggestionsSuccessResponse,
 } from 'types/api/queryBuilder/getAttributeSuggestions';

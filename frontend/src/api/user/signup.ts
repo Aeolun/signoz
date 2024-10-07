@@ -1,15 +1,15 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps } from 'types/api/user/loginPrecheck';
-import { Props } from 'types/api/user/signup';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps } from 'types/api/user/loginPrecheck';
+import type { Props } from 'types/api/user/signup';
 
 const signup = async (
 	props: Props,
 ): Promise<SuccessResponse<null | PayloadProps> | ErrorResponse> => {
 	try {
-		const response = await axios.post(`/register`, {
+		const response = await axios.post('/register', {
 			...props,
 		});
 		return {

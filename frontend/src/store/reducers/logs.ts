@@ -7,7 +7,7 @@ import {
 	GET_FIELDS,
 	GET_NEXT_LOG_LINES,
 	GET_PREVIOUS_LOG_LINES,
-	LogsActions,
+	type LogsActions,
 	PUSH_LIVE_TAIL_EVENT,
 	RESET_ID_START_AND_END,
 	SET_DETAILED_LOG_DATA,
@@ -16,10 +16,10 @@ import {
 	SET_LIVE_TAIL_START_TIME,
 	SET_LOADING,
 	SET_LOADING_AGGREGATE,
-	SET_LOG_LINES_PER_PAGE,
 	SET_LOGS,
 	SET_LOGS_AGGREGATE_SERIES,
 	SET_LOGS_ORDER,
+	SET_LOG_LINES_PER_PAGE,
 	SET_SEARCH_QUERY_PARSED_PAYLOAD,
 	SET_SEARCH_QUERY_STRING,
 	SET_VIEW_MODE,
@@ -28,7 +28,7 @@ import {
 	UPDATE_INTERESTING_FIELDS,
 	UPDATE_SELECTED_FIELDS,
 } from 'types/actions/logs';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 const supportedLogsOrder = [
 	OrderPreferenceItems.ASC,
@@ -81,9 +81,9 @@ const initialState: ILogsReducer = {
 
 export const LogsReducer = (
 	state = initialState,
-	action: LogsActions,
+	action?: LogsActions,
 ): ILogsReducer => {
-	switch (action.type) {
+	switch (action?.type) {
 		case SET_LOADING: {
 			return {
 				...state,

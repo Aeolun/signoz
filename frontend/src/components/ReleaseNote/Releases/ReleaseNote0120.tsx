@@ -3,14 +3,14 @@ import setFlags from 'api/user/setFlags';
 import MessageTip from 'components/MessageTip';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from 'redux';
-import { AppState } from 'store/reducers';
-import AppActions from 'types/actions';
+import type { Dispatch } from 'redux';
+import type { AppState } from 'store/reducers';
+import type AppActions from 'types/actions';
 import { UPDATE_USER_FLAG } from 'types/actions/app';
-import { UserFlags } from 'types/api/user/setFlags';
-import AppReducer from 'types/reducer/app';
+import type { UserFlags } from 'types/api/user/setFlags';
+import type AppReducer from 'types/reducer/app';
 
-import ReleaseNoteProps from '../ReleaseNoteProps';
+import type ReleaseNoteProps from '../ReleaseNoteProps';
 
 export default function ReleaseNote0120({
 	release,

@@ -1,5 +1,10 @@
 import { Input } from 'antd';
-import { ChangeEvent, Dispatch, SetStateAction, useCallback } from 'react';
+import {
+	type ChangeEvent,
+	type Dispatch,
+	type SetStateAction,
+	useCallback,
+} from 'react';
 
 import { Container } from './styles';
 

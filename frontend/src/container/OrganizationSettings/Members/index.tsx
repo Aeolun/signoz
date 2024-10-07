@@ -1,5 +1,5 @@
 import { Button, Modal, Space, Typography } from 'antd';
-import { ColumnsType } from 'antd/lib/table';
+import type { ColumnsType } from 'antd/lib/table';
 import deleteUser from 'api/user/deleteUser';
 import editUserApi from 'api/user/editUser';
 import getOrgUser from 'api/user/getOrgUser';
@@ -7,13 +7,13 @@ import updateRole from 'api/user/updateRole';
 import { ResizeTable } from 'components/ResizeTable';
 import dayjs from 'dayjs';
 import { useNotifications } from 'hooks/useNotifications';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
-import { ROLES } from 'types/roles';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
+import type { ROLES } from 'types/roles';
 
 import DeleteMembersDetails from '../DeleteMembersDetails';
 import EditMembersDetails from '../EditMembersDetails';

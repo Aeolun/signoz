@@ -11,11 +11,11 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQueryClient } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 import { USER_ROLES } from 'types/roles';
 
-import { Data } from '../DashboardsList';
+import type { Data } from '../DashboardsList';
 import { TableLinkText } from './styles';
 
 interface DeleteButtonProps {

@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unstable-nested-components */
 import Color from 'color';
-import { ITraceMetaData } from 'container/GantChart';
+import type { ITraceMetaData } from 'container/GantChart';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import {
-	Dispatch,
-	SetStateAction,
+	type Dispatch,
+	type SetStateAction,
 	useLayoutEffect,
 	useMemo,
 	useState,
 } from 'react';
-import { ITraceTree } from 'types/api/trace/getTraceItem';
+import type { ITraceTree } from 'types/api/trace/getTraceItem';
 
 import {
 	SpanItemContainer,

@@ -1,6 +1,13 @@
 import './MySettings.styles.scss';
 
-import { Button, Radio, RadioChangeEvent, Space, Tag, Typography } from 'antd';
+import {
+	Button,
+	Radio,
+	type RadioChangeEvent,
+	Space,
+	Tag,
+	Typography,
+} from 'antd';
 import { Logout } from 'api/utils';
 import useThemeMode, { useIsDarkMode } from 'hooks/useDarkMode';
 import { LogOut, Moon, Sun } from 'lucide-react';

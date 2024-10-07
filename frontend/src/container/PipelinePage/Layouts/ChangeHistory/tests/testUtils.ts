@@ -1,5 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
-import { Pipeline } from 'types/api/pipeline/def';
+import type { Pipeline } from 'types/api/pipeline/def';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
 export const pipelineData: Pipeline = {

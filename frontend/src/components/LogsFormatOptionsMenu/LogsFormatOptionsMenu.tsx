@@ -5,8 +5,8 @@ import './LogsFormatOptionsMenu.styles.scss';
 
 import { Button, Divider, Input, InputNumber, Tooltip, Typography } from 'antd';
 import cx from 'classnames';
-import { LogViewMode } from 'container/LogsTable';
-import { FontSize, OptionsMenuConfig } from 'container/OptionsMenu/types';
+import type { LogViewMode } from 'container/LogsTable';
+import { FontSize, type OptionsMenuConfig } from 'container/OptionsMenu/types';
 import useDebouncedFn from 'hooks/useDebouncedFunction';
 import { Check, ChevronLeft, ChevronRight, Minus, Plus, X } from 'lucide-react';
 import { useCallback, useEffect, useState } from 'react';
@@ -31,9 +31,8 @@ export default function LogsFormatOptionsMenu({
 	const [fontSizeValue, setFontSizeValue] = useState<FontSize>(
 		fontSize?.value || FontSize.SMALL,
 	);
-	const [isFontSizeOptionsOpen, setIsFontSizeOptionsOpen] = useState<boolean>(
-		false,
-	);
+	const [isFontSizeOptionsOpen, setIsFontSizeOptionsOpen] =
+		useState<boolean>(false);
 
 	const [addNewColumn, setAddNewColumn] = useState(false);
 
@@ -69,7 +68,7 @@ export default function LogsFormatOptionsMenu({
 		// @ts-ignore
 		const value = event?.target?.value || '';
 
-		if (addColumn && addColumn?.onSearch) {
+		if (addColumn?.onSearch) {
 			addColumn?.onSearch(value);
 		}
 	}, 300);
@@ -297,7 +296,7 @@ export default function LogsFormatOptionsMenu({
 													onClick={(eve): void => {
 														eve.stopPropagation();
 
-														if (addColumn && addColumn?.onSelect) {
+														if (addColumn?.onSelect) {
 															addColumn?.onSelect(value, { label, disabled: false });
 														}
 													}}

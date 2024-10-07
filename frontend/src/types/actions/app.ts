@@ -1,12 +1,13 @@
-import { QueryObserverBaseResult } from 'react-query';
-import { PayloadProps as FeatureFlagPayload } from 'types/api/features/getFeaturesFlags';
-import {
-	Organization,
+import type { QueryObserverBaseResult } from 'react-query';
+import type { PayloadProps as FeatureFlagPayload } from 'types/api/features/getFeaturesFlags';
+import type {
 	PayloadProps as OrgPayload,
+	Organization,
 } from 'types/api/user/getOrganization';
-import { UserFlags } from 'types/api/user/setFlags';
-import AppReducer, { User } from 'types/reducer/app';
-import { ROLES } from 'types/roles';
+import type { UserFlags } from 'types/api/user/setFlags';
+import type AppReducer from 'types/reducer/app';
+import type { User } from 'types/reducer/app';
+import type { ROLES } from 'types/roles';
 
 export const LOGGED_IN = 'LOGGED_IN';
 export const SIDEBAR_COLLAPSE = 'SIDEBAR_COLLAPSE';

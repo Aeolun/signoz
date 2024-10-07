@@ -1,9 +1,9 @@
 import { Select } from 'antd';
-import { State } from 'hooks/useFetch';
+import type { State } from 'hooks/useFetch';
 import { useNotifications } from 'hooks/useNotifications';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PayloadProps } from 'types/api/channels/getAll';
+import type { PayloadProps } from 'types/api/channels/getAll';
 
 import { StyledSelect } from './styles';
 

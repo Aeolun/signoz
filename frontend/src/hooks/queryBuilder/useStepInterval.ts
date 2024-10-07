@@ -1,8 +1,8 @@
 import getStep from 'lib/getStep';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { Widgets } from 'types/api/dashboard/getAll';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 export const updateStepInterval = (
 	query: Widgets['query'],

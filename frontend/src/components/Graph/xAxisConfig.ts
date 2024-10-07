@@ -1,10 +1,10 @@
-import { Chart, TimeUnit } from 'chart.js';
+import type { Chart, TimeUnit } from 'chart.js';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
-import { IAxisTimeConfig, IAxisTimeUintConfig, ITimeRange } from './types';
+import type { IAxisTimeConfig, IAxisTimeUintConfig, ITimeRange } from './types';
 
 export const TIME_UNITS: Record<TimeUnit, TimeUnit> = {
 	millisecond: 'millisecond',
@@ -104,8 +104,8 @@ export const useXAxisTimeUnit = (data: Chart['data']): IAxisTimeConfig => {
 			};
 			const time = getTimeStamp(timeStamp as Date | number);
 
-			minTime = Math.min(parseInt(time.toString(), 10), minTime);
-			maxTime = Math.max(parseInt(time.toString(), 10), maxTime);
+			minTime = Math.min(Number.parseInt(time.toString(), 10), minTime);
+			maxTime = Math.max(Number.parseInt(time.toString(), 10), maxTime);
 		});
 
 		localTime = {
@@ -124,7 +124,7 @@ export const useXAxisTimeUnit = (data: Chart['data']): IAxisTimeConfig => {
 
 	// Use local time if valid else use the global time range
 	const { maxTime, minTime } = useMemo(() => {
-		if (localTime && localTime.maxTime && localTime.minTime) {
+		if (localTime?.maxTime && localTime.minTime) {
 			return {
 				minTime: localTime.minTime,
 				maxTime: localTime.maxTime,

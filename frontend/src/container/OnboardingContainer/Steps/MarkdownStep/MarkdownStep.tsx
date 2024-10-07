@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { MarkdownRenderer } from 'components/MarkdownRenderer/MarkdownRenderer';
+import { ModulesMap } from 'container/OnboardingContainer/OnboardingContainer';
 import { ApmDocFilePaths } from 'container/OnboardingContainer/constants/apmDocFilePaths';
 import { AwsMonitoringDocFilePaths } from 'container/OnboardingContainer/constants/awsMonitoringDocFilePaths';
 import { AzureMonitoringDocFilePaths } from 'container/OnboardingContainer/constants/azureMonitoringDocFilePaths';
@@ -9,7 +10,6 @@ import {
 	OnboardingMethods,
 	useOnboardingContext,
 } from 'container/OnboardingContainer/context/OnboardingContext';
-import { ModulesMap } from 'container/OnboardingContainer/OnboardingContainer';
 import { useEffect, useState } from 'react';
 
 export interface IngestionInfoProps {
@@ -74,7 +74,7 @@ export default function MarkdownStep(): JSX.Element {
 			docFilePaths = AzureMonitoringDocFilePaths;
 		}
 		// @ts-ignore
-		if (docFilePaths && docFilePaths[path]) {
+		if (docFilePaths?.[path]) {
 			// @ts-ignore
 			setMarkdownContent(docFilePaths[path]);
 		}

@@ -4,7 +4,7 @@ import './CustomTimePicker.styles.scss';
 
 import { Input, Popover, Tooltip, Typography } from 'antd';
 import cx from 'classnames';
-import { DateTimeRangeType } from 'container/TopNav/CustomDateTimeModal';
+import type { DateTimeRangeType } from 'container/TopNav/CustomDateTimeModal';
 import {
 	FixedDurationSuggestionOptions,
 	Options,
@@ -16,9 +16,9 @@ import { defaultTo, isFunction, noop } from 'lodash-es';
 import debounce from 'lodash-es/debounce';
 import { CheckCircle, ChevronDown, Clock } from 'lucide-react';
 import {
-	ChangeEvent,
-	Dispatch,
-	SetStateAction,
+	type ChangeEvent,
+	type Dispatch,
+	type SetStateAction,
 	useEffect,
 	useState,
 } from 'react';
@@ -68,10 +68,8 @@ function CustomTimePicker({
 	onCustomDateHandler,
 	handleGoLive,
 }: CustomTimePickerProps): JSX.Element {
-	const [
-		selectedTimePlaceholderValue,
-		setSelectedTimePlaceholderValue,
-	] = useState('Select / Enter Time Range');
+	const [selectedTimePlaceholderValue, setSelectedTimePlaceholderValue] =
+		useState('Select / Enter Time Range');
 
 	const [inputValue, setInputValue] = useState('');
 	const [inputStatus, setInputStatus] = useState<'' | 'error' | 'success'>('');
@@ -144,7 +142,7 @@ function CustomTimePicker({
 
 			const match = inputValue.match(/^(\d+)([mhdw])$/);
 
-			const value = parseInt(match[1], 10);
+			const value = Number.parseInt(match[1], 10);
 			const unit = match[2];
 
 			const currentTime = dayjs();

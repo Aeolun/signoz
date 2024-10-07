@@ -1,5 +1,5 @@
 import { set } from 'lodash-es';
-import { ITraceForest, ITraceTree } from 'types/api/trace/getTraceItem';
+import type { ITraceForest, ITraceTree } from 'types/api/trace/getTraceItem';
 
 interface GetTraceMetaData {
 	globalStart: number;
@@ -44,9 +44,10 @@ export const getMetaDataFromSpanTree = (
 	};
 };
 
-export function getTopLeftFromBody(
-	elem: HTMLElement,
-): { top: number; left: number } {
+export function getTopLeftFromBody(elem: HTMLElement): {
+	top: number;
+	left: number;
+} {
 	const box = elem.getBoundingClientRect();
 
 	const { body } = document;
@@ -148,7 +149,7 @@ export const isSpanPresent = (
 
 	const traverse = (
 		treeNode: ITraceTree,
-		level = 0,
+		level: any,
 		foundNode: ITraceTree[],
 	): void => {
 		if (!treeNode) {

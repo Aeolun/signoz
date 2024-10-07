@@ -8,11 +8,11 @@ import { ListMinus } from 'lucide-react';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { MessagingQueuesViewType } from '../MessagingQueuesUtils';
 import { SelectLabelWithComingSoon } from '../MQCommon/MQCommon';
 import MessagingQueuesDetails from '../MQDetails/MQDetails';
 import MessagingQueuesConfigOptions from '../MQGraph/MQConfigOptions';
 import MessagingQueuesGraph from '../MQGraph/MQGraph';
+import { MessagingQueuesViewType } from '../MessagingQueuesUtils';
 
 function MQDetailPage(): JSX.Element {
 	const history = useHistory();

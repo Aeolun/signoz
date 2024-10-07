@@ -8,12 +8,12 @@ import {
 } from 'lib/logql/tokens';
 import { useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { AppState } from 'store/reducers';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 import FieldKey from '../FieldKey';
 import { QueryFieldContainer } from '../styles';
-import { QueryFields } from '../utils';
+import type { QueryFields } from '../utils';
 import { Container, QueryWrapper } from './styles';
 
 const { Option } = Select;
@@ -28,8 +28,10 @@ function QueryConditionField({
 		<Select
 			defaultValue={
 				(query as QueryFields).value &&
-				(((((query as QueryFields)
-					?.value as unknown) as QueryFields) as unknown) as string).toUpperCase()
+				(
+					(query as QueryFields)
+						?.value as unknown as QueryFields as unknown as string
+				).toUpperCase()
 			}
 			onChange={(e): void => {
 				onUpdate({ ...query, value: e }, queryIndex);
@@ -72,10 +74,10 @@ function QueryField({
 		[selected],
 	);
 
-	const fieldType = useMemo(() => getFieldType(query[0].value as string), [
-		getFieldType,
-		query,
-	]);
+	const fieldType = useMemo(
+		() => getFieldType(query[0].value as string),
+		[getFieldType, query],
+	);
 
 	const handleChange = (qIdx: number, value: string): void => {
 		const updatedQuery = [...query];
@@ -108,15 +110,13 @@ function QueryField({
 			style={{ ...(queryIndex === 0 && { gridColumnStart: 2 }) }}
 		>
 			<div style={{ flex: 1, minWidth: 100 }}>
-				<FieldKey name={(query[0] && query[0].value) as string} type={fieldType} />
+				<FieldKey name={query[0]?.value as string} type={fieldType} />
 			</div>
 			<Select
 				defaultActiveFirstOption={false}
 				placeholder="Select Operator"
 				defaultValue={
-					query[1] && query[1].value
-						? (query[1].value as string).toUpperCase()
-						: null
+					query[1]?.value ? (query[1].value as string).toUpperCase() : null
 				}
 				onChange={(e): void => handleChange(1, e)}
 				style={{ minWidth: 150 }}
@@ -140,7 +140,7 @@ function QueryField({
 						style={{ width: '100%' }}
 						open={isDropDownOpen}
 						onChange={(e): void => handleChange(2, e as never)}
-						defaultValue={(query[2] && query[2].value) || []}
+						defaultValue={query[2]?.value || []}
 						notFoundContent={null}
 						onInputKeyDown={(): void => setIsDropDownOpen(true)}
 						onSelect={(): void => setIsDropDownOpen(false)}
@@ -151,8 +151,8 @@ function QueryField({
 							handleChange(2, e.target.value);
 						}}
 						style={{ width: '100%' }}
-						defaultValue={query[2] && query[2].value}
-						value={query[2] && query[2].value}
+						defaultValue={query[2]?.value}
+						value={query[2]?.value}
 					/>
 				)}
 			</div>

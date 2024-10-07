@@ -14,9 +14,9 @@ import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { useCallback } from 'react';
 import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { Widgets } from 'types/api/dashboard/getAll';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { getGraphType } from 'utils/getGraphType';
 
 const useCreateAlerts = (widget?: Widgets, caller?: string): VoidFunction => {

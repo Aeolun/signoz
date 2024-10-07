@@ -1,3 +1,8 @@
+import type {
+	ModuleProps,
+	SelectedModuleStepProps,
+} from '../OnboardingContainer';
+import type { DataSourceType } from '../Steps/DataSource/DataSource';
 import {
 	AddHttpDrain,
 	CheckServiceStatus,
@@ -35,8 +40,6 @@ import {
 	StartContainer,
 	TestConnectionStep,
 } from '../constants/stepsConfig';
-import { ModuleProps, SelectedModuleStepProps } from '../OnboardingContainer';
-import { DataSourceType } from '../Steps/DataSource/DataSource';
 
 interface GetStepsProps {
 	selectedModule?: ModuleProps;

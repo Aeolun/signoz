@@ -4,7 +4,7 @@ import './LogDetails.styles.scss';
 import { Color, Spacing } from '@signozhq/design-tokens';
 import Convert from 'ansi-to-html';
 import { Button, Divider, Drawer, Radio, Tooltip, Typography } from 'antd';
-import { RadioChangeEvent } from 'antd/lib';
+import type { RadioChangeEvent } from 'antd/lib';
 import cx from 'classnames';
 import { LogType } from 'components/Logs/LogStateIndicator/LogStateIndicator';
 import { LOCALSTORAGE } from 'constants/localStorage';
@@ -34,13 +34,13 @@ import {
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useCopyToClipboard } from 'react-use';
-import { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query, TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource, StringOperators } from 'types/common/queryBuilder';
 import { FORBID_DOM_PURIFY_TAGS } from 'utils/app';
 
-import { RESOURCE_KEYS, VIEW_TYPES, VIEWS } from './constants';
-import { LogDetailProps } from './LogDetail.interfaces';
+import type { LogDetailProps } from './LogDetail.interfaces';
 import QueryBuilderSearchWrapper from './QueryBuilderSearchWrapper';
+import { RESOURCE_KEYS, type VIEWS, VIEW_TYPES } from './constants';
 
 const convert = new Convert();
 

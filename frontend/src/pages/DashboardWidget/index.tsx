@@ -1,7 +1,7 @@
 import { Card, Typography } from 'antd';
 import Spinner from 'components/Spinner';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
-import { PANEL_TYPES } from 'constants/queryBuilder';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
 import ROUTES from 'constants/routes';
 import NewWidget from 'container/NewWidget';
 import useUrlQuery from 'hooks/useUrlQuery';
@@ -9,7 +9,7 @@ import history from 'lib/history';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { useEffect, useState } from 'react';
 import { generatePath, useLocation, useParams } from 'react-router-dom';
-import { Widgets } from 'types/api/dashboard/getAll';
+import type { Widgets } from 'types/api/dashboard/getAll';
 
 function DashboardWidget(): JSX.Element | null {
 	const { search } = useLocation();

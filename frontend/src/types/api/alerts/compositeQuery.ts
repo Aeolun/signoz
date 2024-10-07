@@ -1,11 +1,11 @@
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import {
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type {
 	BuilderClickHouseResource,
 	BuilderPromQLResource,
 	BuilderQueryDataResourse,
 	Query,
 } from 'types/api/queryBuilder/queryBuilderData';
-import { EQueryType } from 'types/common/dashboard';
+import type { EQueryType } from 'types/common/dashboard';
 
 export interface ICompositeMetricQuery {
 	builderQueries: BuilderQueryDataResourse;

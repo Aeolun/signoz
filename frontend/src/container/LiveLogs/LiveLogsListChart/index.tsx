@@ -6,11 +6,11 @@ import { useGetExplorerQueryRange } from 'hooks/queryBuilder/useGetExplorerQuery
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useEventSource } from 'providers/EventSource';
 import { useMemo } from 'react';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
-import { QueryData } from 'types/api/widgets/getQuery';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { QueryData } from 'types/api/widgets/getQuery';
 import { DataSource, LogsAggregatorOperator } from 'types/common/queryBuilder';
 
-import { LiveLogsListChartProps } from './types';
+import type { LiveLogsListChartProps } from './types';
 
 function LiveLogsListChart({
 	className,

@@ -1,8 +1,8 @@
 import { ApiBaseInstance as axios } from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { EventSuccessPayloadProps } from 'types/api/events/types';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { EventSuccessPayloadProps } from 'types/api/events/types';
 
 const logEvent = async (
 	eventName: string,

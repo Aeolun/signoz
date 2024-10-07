@@ -1,6 +1,6 @@
 import axios from 'api';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/alerts/delete';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/alerts/delete';
 
 const deleteAlerts = async (
 	props: Props,

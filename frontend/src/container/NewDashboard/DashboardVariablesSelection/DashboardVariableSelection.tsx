@@ -2,7 +2,7 @@ import { Row } from 'antd';
 import { isNull } from 'lodash-es';
 import { useDashboard } from 'providers/Dashboard/Dashboard';
 import { memo, useEffect, useState } from 'react';
-import { IDashboardVariable } from 'types/api/dashboard/getAll';
+import type { IDashboardVariable } from 'types/api/dashboard/getAll';
 
 import VariableItem from './VariableItem';
 

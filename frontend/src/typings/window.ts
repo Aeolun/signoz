@@ -1,4 +1,4 @@
-import { compose, Store } from 'redux';
+import type { Store, compose } from 'redux';
 
 declare global {
 	interface Window {
@@ -8,5 +8,3 @@ declare global {
 		__REDUX_DEVTOOLS_EXTENSION_COMPOSE__: typeof compose;
 	}
 }
-
-export {};

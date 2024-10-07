@@ -1,13 +1,13 @@
 import './RangePickerModal.styles.scss';
 
 import { DatePicker } from 'antd';
-import { DateTimeRangeType } from 'container/TopNav/CustomDateTimeModal';
+import type { DateTimeRangeType } from 'container/TopNav/CustomDateTimeModal';
 import { LexicalContext } from 'container/TopNav/DateTimeSelectionV2/config';
-import dayjs, { Dayjs } from 'dayjs';
-import { Dispatch, SetStateAction } from 'react';
+import dayjs, { type Dayjs } from 'dayjs';
+import type { Dispatch, SetStateAction } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 
 interface RangePickerModalProps {
 	setCustomDTPickerVisible: Dispatch<SetStateAction<boolean>>;

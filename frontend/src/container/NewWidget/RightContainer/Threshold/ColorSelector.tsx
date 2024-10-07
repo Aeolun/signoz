@@ -2,10 +2,10 @@ import './ColorSelector.styles.scss';
 
 import { DownOutlined } from '@ant-design/icons';
 import { Button, ColorPicker, Dropdown, Space } from 'antd';
-import { Color } from 'antd/es/color-picker';
-import { MenuProps } from 'antd/lib';
+import type { Color } from 'antd/es/color-picker';
+import type { MenuProps } from 'antd/lib';
 import useDebounce from 'hooks/useDebounce';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { type Dispatch, type SetStateAction, useEffect, useState } from 'react';
 
 import CustomColor from './CustomColor';
 

@@ -1,9 +1,9 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
-import { ConsumerLagDetailType } from 'pages/MessagingQueues/MessagingQueuesUtils';
-import { ErrorResponse, SuccessResponse } from 'types/api';
+import type { ConsumerLagDetailType } from 'pages/MessagingQueues/MessagingQueuesUtils';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
 
 export interface ConsumerLagPayload {
 	start?: number | string;

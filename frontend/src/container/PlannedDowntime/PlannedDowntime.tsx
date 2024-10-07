@@ -7,13 +7,13 @@ import { Button, Flex, Form, Input, Typography } from 'antd';
 import getAll from 'api/alerts/getAll';
 import { useDeleteDowntimeSchedule } from 'api/plannedDowntime/deleteDowntimeSchedule';
 import {
-	DowntimeSchedules,
+	type DowntimeSchedules,
 	useGetAllDowntimeSchedules,
 } from 'api/plannedDowntime/getAllDowntimeSchedules';
 import dayjs from 'dayjs';
 import { useNotifications } from 'hooks/useNotifications';
 import { Search } from 'lucide-react';
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { type ChangeEvent, useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { PlannedDowntimeDeleteModal } from './PlannedDowntimeDeleteModal';
@@ -34,9 +34,10 @@ export function PlannedDowntime(): JSX.Element {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [form] = Form.useForm();
 
-	const [initialValues, setInitialValues] = useState<
-		Partial<DowntimeSchedules & { editMode: boolean }>
-	>(defautlInitialValues);
+	const [initialValues, setInitialValues] =
+		useState<Partial<DowntimeSchedules & { editMode: boolean }>>(
+			defautlInitialValues,
+		);
 
 	const downtimeSchedules = useGetAllDowntimeSchedules();
 	const alertOptions = React.useMemo(

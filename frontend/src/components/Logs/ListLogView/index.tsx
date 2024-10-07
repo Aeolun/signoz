@@ -7,7 +7,7 @@ import cx from 'classnames';
 import LogDetail from 'components/LogDetail';
 import { VIEW_TYPES } from 'components/LogDetail/constants';
 import { unescapeString } from 'container/LogDetailedView/utils';
-import { FontSize } from 'container/OptionsMenu/types';
+import type { FontSize } from 'container/OptionsMenu/types';
 import dayjs from 'dayjs';
 import dompurify from 'dompurify';
 import { useActiveLog } from 'hooks/logs/useActiveLog';
@@ -17,12 +17,12 @@ import { useIsDarkMode } from 'hooks/useDarkMode';
 import { FlatLogData } from 'lib/logs/flatLogData';
 import { useCallback, useMemo, useState } from 'react';
 // interfaces
-import { IField } from 'types/api/logs/fields';
-import { ILog } from 'types/api/logs/log';
+import type { IField } from 'types/api/logs/fields';
+import type { ILog } from 'types/api/logs/log';
 import { FORBID_DOM_PURIFY_TAGS } from 'utils/app';
 
 // components
-import AddToQueryHOC, { AddToQueryHOCProps } from '../AddToQueryHOC';
+import AddToQueryHOC, { type AddToQueryHOCProps } from '../AddToQueryHOC';
 import LogLinesActionButtons from '../LogLinesActionButtons/LogLinesActionButtons';
 import LogStateIndicator from '../LogStateIndicator/LogStateIndicator';
 import { getLogIndicatorType } from '../LogStateIndicator/utils';

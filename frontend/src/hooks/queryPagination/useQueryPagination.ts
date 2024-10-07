@@ -1,10 +1,10 @@
 import { QueryParams } from 'constants/query';
-import { ControlsProps } from 'container/Controls';
+import type { ControlsProps } from 'container/Controls';
 import useUrlQueryData from 'hooks/useUrlQueryData';
 import { useCallback, useEffect, useMemo } from 'react';
 
 import { DEFAULT_PER_PAGE_OPTIONS } from './config';
-import { Pagination } from './types';
+import type { Pagination } from './types';
 import {
 	checkIsValidPaginationData,
 	getDefaultPaginationConfig,

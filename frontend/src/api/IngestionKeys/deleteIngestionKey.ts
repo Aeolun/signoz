@@ -1,8 +1,8 @@
 import { GatewayApiV1Instance } from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { AllIngestionKeyProps } from 'types/api/ingestionKeys/types';
+import type { AxiosError } from 'axios';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { AllIngestionKeyProps } from 'types/api/ingestionKeys/types';
 
 const deleteIngestionKey = async (
 	id: string,

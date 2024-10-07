@@ -1,6 +1,6 @@
 import { deleteView } from 'api/saveView/deleteView';
-import { useMutation, UseMutationResult } from 'react-query';
-import { DeleteViewPayloadProps } from 'types/api/saveViews/types';
+import { type UseMutationResult, useMutation } from 'react-query';
+import type { DeleteViewPayloadProps } from 'types/api/saveViews/types';
 
 export const useDeleteView = (
 	uuid: string,

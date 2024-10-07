@@ -7,10 +7,10 @@ import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { memo } from 'react';
 
-import { WidgetGraphContainerProps } from '../../types';
+import type { WidgetGraphContainerProps } from '../../types';
 import PlotTag from './PlotTag';
-import { AlertIconContainer, Container } from './styles';
 import WidgetGraphComponent from './WidgetGraphContainer';
+import { AlertIconContainer, Container } from './styles';
 
 function WidgetGraph({
 	selectedGraph,

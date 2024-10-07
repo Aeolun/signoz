@@ -1,5 +1,5 @@
-import { FilterValue, SorterResult } from 'antd/es/table/interface';
-import { TablePaginationConfig, TableProps } from 'antd/lib';
+import type { FilterValue, SorterResult } from 'antd/es/table/interface';
+import type { TablePaginationConfig, TableProps } from 'antd/lib';
 import deleteAlerts from 'api/alerts/delete';
 import get from 'api/alerts/get';
 import getAll from 'api/alerts/getAll';
@@ -9,7 +9,7 @@ import save from 'api/alerts/save';
 import timelineGraph from 'api/alerts/timelineGraph';
 import timelineTable from 'api/alerts/timelineTable';
 import topContributors from 'api/alerts/topContributors';
-import { TabRoutes } from 'components/RouteTab/types';
+import type { TabRoutes } from 'components/RouteTab/types';
 import { QueryParams } from 'constants/query';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import ROUTES from 'constants/routes';
@@ -33,8 +33,8 @@ import { useAlertRule } from 'providers/Alert';
 import { useCallback, useMemo } from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { generatePath, useLocation } from 'react-router-dom';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import {
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type {
 	AlertDef,
 	AlertRuleStatsPayload,
 	AlertRuleTimelineGraphResponsePayload,
@@ -42,7 +42,7 @@ import {
 	AlertRuleTimelineTableResponsePayload,
 	AlertRuleTopContributorsPayload,
 } from 'types/api/alerts/def';
-import { PayloadProps } from 'types/api/alerts/get';
+import type { PayloadProps } from 'types/api/alerts/get';
 import { nanoToMilli } from 'utils/timeUtils';
 
 export const useAlertHistoryQueryParams = (): {
@@ -59,8 +59,8 @@ export const useAlertHistoryQueryParams = (): {
 	const relativeTime =
 		params.get(QueryParams.relativeTime) ?? RelativeTimeMap['6hr'];
 
-	const intStartTime = parseInt(startTime || '0', 10);
-	const intEndTime = parseInt(endTime || '0', 10);
+	const intStartTime = Number.parseInt(startTime || '0', 10);
+	const intEndTime = Number.parseInt(endTime || '0', 10);
 	const hasStartAndEndParams = !!intStartTime && !!intEndTime;
 
 	const { maxTime, minTime } = useMemo(() => {
@@ -158,7 +158,7 @@ export const useGetAlertRuleDetails = (): Props => {
 	} = useQuery([REACT_QUERY_KEY.ALERT_RULE_DETAILS, ruleId], {
 		queryFn: () =>
 			get({
-				id: parseInt(ruleId || '', 10),
+				id: Number.parseInt(ruleId || '', 10),
 			}),
 		enabled: isValidRuleId,
 		refetchOnMount: false,
@@ -190,28 +190,29 @@ type GetAlertRuleDetailsStatsProps = GetAlertRuleDetailsApiProps & {
 		| undefined;
 };
 
-export const useGetAlertRuleDetailsStats = (): GetAlertRuleDetailsStatsProps => {
-	const { ruleId, startTime, endTime } = useAlertHistoryQueryParams();
+export const useGetAlertRuleDetailsStats =
+	(): GetAlertRuleDetailsStatsProps => {
+		const { ruleId, startTime, endTime } = useAlertHistoryQueryParams();
 
-	const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
+		const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
 
-	const { isLoading, isRefetching, isError, data } = useQuery(
-		[REACT_QUERY_KEY.ALERT_RULE_STATS, ruleId, startTime, endTime],
-		{
-			queryFn: () =>
-				ruleStats({
-					id: parseInt(ruleId || '', 10),
-					start: startTime,
-					end: endTime,
-				}),
-			enabled: isValidRuleId && !!startTime && !!endTime,
-			refetchOnMount: false,
-			refetchOnWindowFocus: false,
-		},
-	);
+		const { isLoading, isRefetching, isError, data } = useQuery(
+			[REACT_QUERY_KEY.ALERT_RULE_STATS, ruleId, startTime, endTime],
+			{
+				queryFn: () =>
+					ruleStats({
+						id: Number.parseInt(ruleId || '', 10),
+						start: startTime,
+						end: endTime,
+					}),
+				enabled: isValidRuleId && !!startTime && !!endTime,
+				refetchOnMount: false,
+				refetchOnWindowFocus: false,
+			},
+		);
 
-	return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
-};
+		return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
+	};
 
 type GetAlertRuleDetailsTopContributorsProps = GetAlertRuleDetailsApiProps & {
 	data:
@@ -220,28 +221,29 @@ type GetAlertRuleDetailsTopContributorsProps = GetAlertRuleDetailsApiProps & {
 		| undefined;
 };
 
-export const useGetAlertRuleDetailsTopContributors = (): GetAlertRuleDetailsTopContributorsProps => {
-	const { ruleId, startTime, endTime } = useAlertHistoryQueryParams();
+export const useGetAlertRuleDetailsTopContributors =
+	(): GetAlertRuleDetailsTopContributorsProps => {
+		const { ruleId, startTime, endTime } = useAlertHistoryQueryParams();
 
-	const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
+		const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
 
-	const { isLoading, isRefetching, isError, data } = useQuery(
-		[REACT_QUERY_KEY.ALERT_RULE_TOP_CONTRIBUTORS, ruleId, startTime, endTime],
-		{
-			queryFn: () =>
-				topContributors({
-					id: parseInt(ruleId || '', 10),
-					start: startTime,
-					end: endTime,
-				}),
-			enabled: isValidRuleId,
-			refetchOnMount: false,
-			refetchOnWindowFocus: false,
-		},
-	);
+		const { isLoading, isRefetching, isError, data } = useQuery(
+			[REACT_QUERY_KEY.ALERT_RULE_TOP_CONTRIBUTORS, ruleId, startTime, endTime],
+			{
+				queryFn: () =>
+					topContributors({
+						id: Number.parseInt(ruleId || '', 10),
+						start: startTime,
+						end: endTime,
+					}),
+				enabled: isValidRuleId,
+				refetchOnMount: false,
+				refetchOnWindowFocus: false,
+			},
+		);
 
-	return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
-};
+		return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
+	};
 
 type GetAlertRuleDetailsTimelineTableProps = GetAlertRuleDetailsApiProps & {
 	data:
@@ -250,55 +252,56 @@ type GetAlertRuleDetailsTimelineTableProps = GetAlertRuleDetailsApiProps & {
 		| undefined;
 };
 
-export const useGetAlertRuleDetailsTimelineTable = (): GetAlertRuleDetailsTimelineTableProps => {
-	const { ruleId, startTime, endTime, params } = useAlertHistoryQueryParams();
-	const { updatedOrder, offset } = useMemo(
-		() => ({
-			updatedOrder: params.get(urlKey.order) ?? OrderPreferenceItems.ASC,
-			offset: parseInt(params.get(urlKey.offset) ?? '0', 10),
-		}),
-		[params],
-	);
+export const useGetAlertRuleDetailsTimelineTable =
+	(): GetAlertRuleDetailsTimelineTableProps => {
+		const { ruleId, startTime, endTime, params } = useAlertHistoryQueryParams();
+		const { updatedOrder, offset } = useMemo(
+			() => ({
+				updatedOrder: params.get(urlKey.order) ?? OrderPreferenceItems.ASC,
+				offset: Number.parseInt(params.get(urlKey.offset) ?? '0', 10),
+			}),
+			[params],
+		);
 
-	const timelineFilter = params.get('timelineFilter');
+		const timelineFilter = params.get('timelineFilter');
 
-	const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
-	const hasStartAndEnd = startTime !== null && endTime !== null;
+		const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
+		const hasStartAndEnd = startTime !== null && endTime !== null;
 
-	const { isLoading, isRefetching, isError, data } = useQuery(
-		[
-			REACT_QUERY_KEY.ALERT_RULE_TIMELINE_TABLE,
-			ruleId,
-			startTime,
-			endTime,
-			timelineFilter,
-			updatedOrder,
-			offset,
-		],
-		{
-			queryFn: () =>
-				timelineTable({
-					id: parseInt(ruleId || '', 10),
-					start: startTime,
-					end: endTime,
-					limit: TIMELINE_TABLE_PAGE_SIZE,
-					order: updatedOrder,
-					offset,
+		const { isLoading, isRefetching, isError, data } = useQuery(
+			[
+				REACT_QUERY_KEY.ALERT_RULE_TIMELINE_TABLE,
+				ruleId,
+				startTime,
+				endTime,
+				timelineFilter,
+				updatedOrder,
+				offset,
+			],
+			{
+				queryFn: () =>
+					timelineTable({
+						id: Number.parseInt(ruleId || '', 10),
+						start: startTime,
+						end: endTime,
+						limit: TIMELINE_TABLE_PAGE_SIZE,
+						order: updatedOrder,
+						offset,
 
-					...(timelineFilter && timelineFilter !== TimelineFilter.ALL
-						? {
-								state: timelineFilter === TimelineFilter.FIRED ? 'firing' : 'normal',
-						  }
-						: {}),
-				}),
-			enabled: isValidRuleId && hasStartAndEnd,
-			refetchOnMount: false,
-			refetchOnWindowFocus: false,
-		},
-	);
+						...(timelineFilter && timelineFilter !== TimelineFilter.ALL
+							? {
+									state: timelineFilter === TimelineFilter.FIRED ? 'firing' : 'normal',
+								}
+							: {}),
+					}),
+				enabled: isValidRuleId && hasStartAndEnd,
+				refetchOnMount: false,
+				refetchOnWindowFocus: false,
+			},
+		);
 
-	return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
-};
+		return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
+	};
 
 export const useTimelineTable = ({
 	totalItems,
@@ -321,36 +324,37 @@ export const useTimelineTable = ({
 
 	const offset = params.get('offset') ?? '0';
 
-	const onChangeHandler: TableProps<AlertRuleTimelineTableResponse>['onChange'] = useCallback(
-		(
-			pagination: TablePaginationConfig,
-			filters: Record<string, FilterValue | null>,
-			sorter:
-				| SorterResult<AlertRuleTimelineTableResponse>[]
-				| SorterResult<AlertRuleTimelineTableResponse>,
-		) => {
-			if (!Array.isArray(sorter)) {
-				const { pageSize = 0, current = 0 } = pagination;
-				const { order } = sorter;
-				const updatedOrder = order === 'ascend' ? 'asc' : 'desc';
-				const params = new URLSearchParams(window.location.search);
+	const onChangeHandler: TableProps<AlertRuleTimelineTableResponse>['onChange'] =
+		useCallback(
+			(
+				pagination: TablePaginationConfig,
+				filters: Record<string, FilterValue | null>,
+				sorter:
+					| SorterResult<AlertRuleTimelineTableResponse>[]
+					| SorterResult<AlertRuleTimelineTableResponse>,
+			) => {
+				if (!Array.isArray(sorter)) {
+					const { pageSize = 0, current = 0 } = pagination;
+					const { order } = sorter;
+					const updatedOrder = order === 'ascend' ? 'asc' : 'desc';
+					const params = new URLSearchParams(window.location.search);
 
-				history.replace(
-					`${pathname}?${createQueryParams({
-						...Object.fromEntries(params),
-						order: updatedOrder,
-						offset: current * TIMELINE_TABLE_PAGE_SIZE - TIMELINE_TABLE_PAGE_SIZE,
-						pageSize,
-					})}`,
-				);
-			}
-		},
-		[pathname],
-	);
+					history.replace(
+						`${pathname}?${createQueryParams({
+							...Object.fromEntries(params),
+							order: updatedOrder,
+							offset: current * TIMELINE_TABLE_PAGE_SIZE - TIMELINE_TABLE_PAGE_SIZE,
+							pageSize,
+						})}`,
+					);
+				}
+			},
+			[pathname],
+		);
 
-	const offsetInt = parseInt(offset, 10);
+	const offsetInt = Number.parseInt(offset, 10);
 	const pageSize = params.get('pageSize') ?? String(TIMELINE_TABLE_PAGE_SIZE);
-	const pageSizeInt = parseInt(pageSize, 10);
+	const pageSizeInt = Number.parseInt(pageSize, 10);
 
 	const paginationConfig: TablePaginationConfig = {
 		pageSize: pageSizeInt,
@@ -398,7 +402,7 @@ export const useAlertRuleStatusToggle = ({
 
 	const handleAlertStateToggle = (): void => {
 		const args = {
-			id: parseInt(ruleId, 10),
+			id: Number.parseInt(ruleId, 10),
 			data: { disabled: !isAlertRuleDisabled },
 		};
 		toggleAlertState(args);
@@ -429,16 +433,12 @@ export const useAlertRuleDuplicate = ({
 		{
 			onSuccess: async () => {
 				notifications.success({
-					message: `Success`,
+					message: 'Success',
 				});
 
 				const { data: allAlertsData } = await refetch();
 
-				if (
-					allAlertsData &&
-					allAlertsData.payload &&
-					allAlertsData.payload.length > 0
-				) {
+				if (allAlertsData?.payload && allAlertsData.payload.length > 0) {
 					const clonedAlert =
 						allAlertsData.payload[allAlertsData.payload.length - 1];
 					params.set(QueryParams.ruleId, String(clonedAlert.id));
@@ -475,7 +475,7 @@ export const useAlertRuleDelete = ({
 		{
 			onSuccess: async () => {
 				notifications.success({
-					message: `Success`,
+					message: 'Success',
 				});
 
 				history.push(ROUTES.LIST_ALL_ALERT);
@@ -499,26 +499,27 @@ type GetAlertRuleDetailsTimelineGraphProps = GetAlertRuleDetailsApiProps & {
 		| undefined;
 };
 
-export const useGetAlertRuleDetailsTimelineGraphData = (): GetAlertRuleDetailsTimelineGraphProps => {
-	const { ruleId, startTime, endTime } = useAlertHistoryQueryParams();
+export const useGetAlertRuleDetailsTimelineGraphData =
+	(): GetAlertRuleDetailsTimelineGraphProps => {
+		const { ruleId, startTime, endTime } = useAlertHistoryQueryParams();
 
-	const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
-	const hasStartAndEnd = startTime !== null && endTime !== null;
+		const isValidRuleId = ruleId !== null && String(ruleId).length !== 0;
+		const hasStartAndEnd = startTime !== null && endTime !== null;
 
-	const { isLoading, isRefetching, isError, data } = useQuery(
-		[REACT_QUERY_KEY.ALERT_RULE_TIMELINE_GRAPH, ruleId, startTime, endTime],
-		{
-			queryFn: () =>
-				timelineGraph({
-					id: parseInt(ruleId || '', 10),
-					start: startTime,
-					end: endTime,
-				}),
-			enabled: isValidRuleId && hasStartAndEnd,
-			refetchOnMount: false,
-			refetchOnWindowFocus: false,
-		},
-	);
+		const { isLoading, isRefetching, isError, data } = useQuery(
+			[REACT_QUERY_KEY.ALERT_RULE_TIMELINE_GRAPH, ruleId, startTime, endTime],
+			{
+				queryFn: () =>
+					timelineGraph({
+						id: Number.parseInt(ruleId || '', 10),
+						start: startTime,
+						end: endTime,
+					}),
+				enabled: isValidRuleId && hasStartAndEnd,
+				refetchOnMount: false,
+				refetchOnWindowFocus: false,
+			},
+		);
 
-	return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
-};
+		return { isLoading, isRefetching, isError, data, isValidRuleId, ruleId };
+	};

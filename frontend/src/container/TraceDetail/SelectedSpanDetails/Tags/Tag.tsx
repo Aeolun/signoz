@@ -3,11 +3,11 @@ import './Tags.styles.scss';
 import { Tooltip } from 'antd';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { Fragment, useMemo } from 'react';
-import { ITraceTag } from 'types/api/trace/getTraceItem';
+import type { ITraceTag } from 'types/api/trace/getTraceItem';
 
+import type { CommonTagsProps } from '.';
 import EllipsedButton from '../EllipsedButton';
 import { CustomSubText, CustomSubTitle, SubTextContainer } from '../styles';
-import { CommonTagsProps } from '.';
 import { Container } from './styles';
 
 function Tag({ tags, onToggleHandler, setText }: TagProps): JSX.Element {

@@ -1,5 +1,5 @@
 import { QueryParams } from 'constants/query';
-import { PANEL_TYPES } from 'constants/queryBuilder';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { useMemo } from 'react';
 

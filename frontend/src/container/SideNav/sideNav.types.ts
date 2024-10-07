@@ -1,5 +1,5 @@
-import { MenuProps } from 'antd';
-import { ReactNode } from 'react';
+import type { MenuProps } from 'antd';
+import type { ReactNode } from 'react';
 
 export type MenuItem = Required<MenuProps>['items'][number];
 

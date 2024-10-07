@@ -26,7 +26,7 @@ describe('dashboard list page', () => {
 	it('should render the list even when the columnKey or the order is mismatched', async () => {
 		const mockLocation = {
 			pathname: `${process.env.FRONTEND_API_ENDPOINT}/${ROUTES.ALL_DASHBOARD}/`,
-			search: `columnKey=asgard&order=stones&page=1`,
+			search: 'columnKey=asgard&order=stones&page=1',
 		};
 		(useLocation as jest.Mock).mockReturnValue(mockLocation);
 		const { getByText, getByTestId } = render(
@@ -50,7 +50,7 @@ describe('dashboard list page', () => {
 	it('should render the list even when the columnKey and the order are given', async () => {
 		const mockLocation = {
 			pathname: `${process.env.FRONTEND_API_ENDPOINT}/${ROUTES.ALL_DASHBOARD}/`,
-			search: `columnKey=createdAt&order=descend&page=1`,
+			search: 'columnKey=createdAt&order=descend&page=1',
 		};
 		(useLocation as jest.Mock).mockReturnValue(mockLocation);
 		const { getByText, getByTestId } = render(
@@ -112,7 +112,7 @@ describe('dashboard list page', () => {
 	it('should filter dashboards based on search string', async () => {
 		const mockLocation = {
 			pathname: `${process.env.FRONTEND_API_ENDPOINT}/${ROUTES.ALL_DASHBOARD}/`,
-			search: `columnKey=createdAt&order=descend&page=1&search=tho`,
+			search: 'columnKey=createdAt&order=descend&page=1&search=tho',
 		};
 		(useLocation as jest.Mock).mockReturnValue(mockLocation);
 		const { getByText, getByTestId, queryByText } = render(
@@ -141,7 +141,7 @@ describe('dashboard list page', () => {
 	it('dashboard empty search state', async () => {
 		const mockLocation = {
 			pathname: `${process.env.FRONTEND_API_ENDPOINT}/${ROUTES.ALL_DASHBOARD}/`,
-			search: `columnKey=createdAt&order=descend&page=1&search=someRandomString`,
+			search: 'columnKey=createdAt&order=descend&page=1&search=someRandomString',
 		};
 		(useLocation as jest.Mock).mockReturnValue(mockLocation);
 		const { getByText } = render(
@@ -168,7 +168,7 @@ describe('dashboard list page', () => {
 	it('dashboard empty state', async () => {
 		const mockLocation = {
 			pathname: `${process.env.FRONTEND_API_ENDPOINT}/${ROUTES.ALL_DASHBOARD}/`,
-			search: `columnKey=createdAt&order=descend&page=1`,
+			search: 'columnKey=createdAt&order=descend&page=1',
 		};
 		(useLocation as jest.Mock).mockReturnValue(mockLocation);
 		server.use(

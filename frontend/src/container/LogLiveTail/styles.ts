@@ -20,6 +20,5 @@ export const StopContainer = styled.div<Props>`
 	height: 0.8rem;
 	width: 0.8rem;
 	border-radius: 0.1rem;
-	background-color: ${({ isDarkMode }): string =>
-		isDarkMode ? '#fff' : '#000'};
+	background-color: ${({ isDarkMode }): string => (isDarkMode ? '#fff' : '#000')};
 `;

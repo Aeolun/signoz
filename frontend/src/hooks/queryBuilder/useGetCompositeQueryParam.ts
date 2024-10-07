@@ -1,7 +1,7 @@
 import { QueryParams } from 'constants/query';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { useMemo } from 'react';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 
 export const useGetCompositeQueryParam = (): Query | null => {
 	const urlQuery = useUrlQuery();

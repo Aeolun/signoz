@@ -1,5 +1,5 @@
-import { GlobalReducer } from 'types/reducer/globalTime';
-import { TraceReducer } from 'types/reducer/trace';
+import type { GlobalReducer } from 'types/reducer/globalTime';
+import type { TraceReducer } from 'types/reducer/trace';
 
 export interface Props {
 	start: GlobalReducer['minTime'];

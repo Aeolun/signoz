@@ -2,8 +2,8 @@
 import './IntegrationDetailPage.styles.scss';
 
 import { Button, Modal, Tooltip, Typography } from 'antd';
-import logEvent from 'api/common/logEvent';
 import installIntegration from 'api/Integrations/installIntegration';
+import logEvent from 'api/common/logEvent';
 import ConfigureIcon from 'assets/Integrations/ConfigureIcon';
 import cx from 'classnames';
 import { SOMETHING_WENT_WRONG } from 'constants/api';
@@ -12,7 +12,7 @@ import { useNotifications } from 'hooks/useNotifications';
 import { ArrowLeftRight, Check } from 'lucide-react';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
-import { IntegrationConnectionStatus } from 'types/api/integrations/types';
+import type { IntegrationConnectionStatus } from 'types/api/integrations/types';
 
 import { INTEGRATION_TELEMETRY_EVENTS } from '../utils';
 import TestConnection, { ConnectionStates } from './TestConnection';
@@ -150,7 +150,7 @@ function IntegrationDetailHeader(
 						showModal();
 					}}
 				>
-					{isConnectionStateNotInstalled ? `Connect ${title}` : `Test Connection`}
+					{isConnectionStateNotInstalled ? `Connect ${title}` : 'Test Connection'}
 				</Button>
 			</div>
 
@@ -249,7 +249,7 @@ function IntegrationDetailHeader(
 									title={
 										latestData.last_received_ts_ms
 											? // eslint-disable-next-line sonarjs/no-duplicate-string
-											  dayjs(latestData.last_received_ts_ms).format('DD MMM YYYY HH:mm')
+												dayjs(latestData.last_received_ts_ms).format('DD MMM YYYY HH:mm')
 											: ''
 									}
 									key={

@@ -3,9 +3,9 @@ import './styles.scss';
 import { Select } from 'antd';
 import {
 	RelativeDurationOptions,
-	Time,
+	type Time,
 } from 'container/TopNav/DateTimeSelection/config';
-import { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilter } from 'types/api/queryBuilder/queryBuilderData';
 
 import LogsCountInInterval from './components/LogsCountInInterval';
 

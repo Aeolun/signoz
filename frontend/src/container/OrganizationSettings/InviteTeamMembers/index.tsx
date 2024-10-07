@@ -2,7 +2,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import {
 	Button,
 	Form,
-	FormInstance,
+	type FormInstance,
 	Input,
 	Select,
 	Space,
@@ -11,7 +11,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { requireErrorMessage } from 'utils/form/requireErrorMessage';
 
-import { InviteMemberFormValues } from '../PendingInvitesContainer/index';
+import type { InviteMemberFormValues } from '../PendingInvitesContainer/index';
 import { SelectDrawer, SpaceContainer, TitleWrapper } from './styles';
 
 function InviteTeamMembers({ form, onFinish }: Props): JSX.Element {

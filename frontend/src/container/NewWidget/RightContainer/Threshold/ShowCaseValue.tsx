@@ -3,7 +3,7 @@ import './ShowCaseValue.styles.scss';
 import cx from 'classnames';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 
-import { ShowCaseValueProps } from './types';
+import type { ShowCaseValueProps } from './types';
 
 function ShowCaseValue({
 	width,
@@ -15,8 +15,8 @@ function ShowCaseValue({
 		<div
 			className={cx(
 				isDarkMode
-					? `show-case-container show-case-dark`
-					: `show-case-container show-case-light`,
+					? 'show-case-container show-case-dark'
+					: 'show-case-container show-case-light',
 				className,
 			)}
 			style={{ minWidth: width }}

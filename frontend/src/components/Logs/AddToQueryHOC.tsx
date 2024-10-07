@@ -3,8 +3,8 @@ import './AddToQueryHOC.styles.scss';
 import { Popover } from 'antd';
 import cx from 'classnames';
 import { OPERATORS } from 'constants/queryBuilder';
-import { FontSize } from 'container/OptionsMenu/types';
-import { memo, MouseEvent, ReactNode, useMemo } from 'react';
+import type { FontSize } from 'container/OptionsMenu/types';
+import { type MouseEvent, type ReactNode, memo, useMemo } from 'react';
 
 function AddToQueryHOC({
 	fieldKey,
@@ -18,9 +18,10 @@ function AddToQueryHOC({
 		onAddToQuery(fieldKey, fieldValue, OPERATORS['=']);
 	};
 
-	const popOverContent = useMemo(() => <span>Add to query: {fieldKey}</span>, [
-		fieldKey,
-	]);
+	const popOverContent = useMemo(
+		() => <span>Add to query: {fieldKey}</span>,
+		[fieldKey],
+	);
 
 	return (
 		// eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions

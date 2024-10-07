@@ -2,15 +2,15 @@
 import { LOCALSTORAGE } from 'constants/localStorage';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import getLabelName from 'lib/getLabelName';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
-import { QueryData } from 'types/api/widgets/getQuery';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { QueryData } from 'types/api/widgets/getQuery';
 
-import { LegendEntryProps } from './FullView/types';
+import type { LegendEntryProps } from './FullView/types';
 import {
 	showAllDataSet,
 	showAllDataSetFromApiResponse,
 } from './FullView/utils';
-import {
+import type {
 	GetGraphVisibilityStateOnLegendClickProps,
 	GraphVisibilityLegendEntryProps,
 	ToggleGraphsVisibilityInChartProps,
@@ -67,7 +67,8 @@ export const getLocalStorageGraphVisibilityState = ({
 						newGraphVisibilityStates[i + 1] = item.dataIndex[index].show;
 					}
 				});
-				visibilityStateAndLegendEntry.graphVisibilityStates = newGraphVisibilityStates;
+				visibilityStateAndLegendEntry.graphVisibilityStates =
+					newGraphVisibilityStates;
 			}
 		});
 	}
@@ -117,7 +118,8 @@ export const getGraphVisibilityStateOnDataChange = ({
 						}
 					}
 				});
-				visibilityStateAndLegendEntry.graphVisibilityStates = newGraphVisibilityStates;
+				visibilityStateAndLegendEntry.graphVisibilityStates =
+					newGraphVisibilityStates;
 			}
 		});
 	}

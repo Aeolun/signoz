@@ -1,20 +1,20 @@
 import { OPERATORS } from 'constants/queryBuilder';
 import {
-	BaseAutocompleteData,
+	type BaseAutocompleteData,
 	DataTypes,
 } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
 import {
 	DataSource,
 	MetricAggregateOperator,
-	QueryBuilderData,
+	type QueryBuilderData,
 } from 'types/common/queryBuilder';
 
-import { FORMULA, MetricsType, WidgetKeys } from '../constant';
-import {
+import type {
 	ExternalCallDurationByAddressProps,
 	ExternalCallProps,
 } from '../Tabs/types';
+import { FORMULA, MetricsType, WidgetKeys } from '../constant';
 import {
 	getQueryBuilderQueries,
 	getQueryBuilderQuerieswithFormula,

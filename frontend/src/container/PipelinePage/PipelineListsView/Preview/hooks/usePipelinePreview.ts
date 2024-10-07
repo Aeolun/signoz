@@ -1,11 +1,11 @@
 import simulatePipelineProcessing, {
-	PipelineSimulationResponse,
+	type PipelineSimulationResponse,
 } from 'api/pipeline/preview';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import { useQuery } from 'react-query';
-import { ILog } from 'types/api/logs/log';
-import { PipelineData } from 'types/api/pipeline/def';
+import type { ILog } from 'types/api/logs/log';
+import type { PipelineData } from 'types/api/pipeline/def';
 
 export interface PipelinePreviewRequest {
 	pipeline: PipelineData;

@@ -5,7 +5,7 @@ import { Tooltip } from 'antd';
 import { QueryParams } from 'constants/query';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { ArrowDownLeft, ArrowUpRight, Calendar } from 'lucide-react';
-import { AlertRuleStats } from 'types/api/alerts/def';
+import type { AlertRuleStats } from 'types/api/alerts/def';
 import { calculateChange } from 'utils/calculateChange';
 
 import StatsGraph from './StatsGraph/StatsGraph';
@@ -98,9 +98,8 @@ function StatsCard({
 	if (!displayTime) {
 		displayTime = '';
 	}
-	const formattedStartTimeForTooltip = convertTimestampToLocaleDateString(
-		startTime,
-	);
+	const formattedStartTimeForTooltip =
+		convertTimestampToLocaleDateString(startTime);
 	const formattedEndTimeForTooltip = convertTimestampToLocaleDateString(endTime);
 
 	return (

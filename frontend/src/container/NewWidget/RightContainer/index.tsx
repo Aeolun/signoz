@@ -6,22 +6,25 @@ import { Input, InputNumber, Select, Space, Switch, Typography } from 'antd';
 import TimePreference from 'components/TimePreferenceDropDown';
 import { PANEL_TYPES } from 'constants/queryBuilder';
 import GraphTypes, {
-	ItemsProps,
+	type ItemsProps,
 } from 'container/NewDashboard/ComponentsSlider/menuItems';
 import useCreateAlerts from 'hooks/queryBuilder/useCreateAlerts';
 import { useQueryBuilder } from 'hooks/queryBuilder/useQueryBuilder';
 import { ConciergeBell, Plus } from 'lucide-react';
 import {
-	Dispatch,
-	SetStateAction,
+	type Dispatch,
+	type SetStateAction,
 	useCallback,
 	useEffect,
 	useState,
 } from 'react';
-import { ColumnUnit, Widgets } from 'types/api/dashboard/getAll';
+import type { ColumnUnit, Widgets } from 'types/api/dashboard/getAll';
 import { DataSource } from 'types/common/queryBuilder';
 
 import { ColumnUnitSelector } from './ColumnUnitSelector/ColumnUnitSelector';
+import ThresholdSelector from './Threshold/ThresholdSelector';
+import type { ThresholdProps } from './Threshold/types';
+import YAxisUnitSelector from './YAxisUnitSelector';
 import {
 	panelTypeVsBucketConfig,
 	panelTypeVsColumnUnitPreferences,
@@ -33,10 +36,7 @@ import {
 	panelTypeVsThreshold,
 	panelTypeVsYAxisUnit,
 } from './constants';
-import ThresholdSelector from './Threshold/ThresholdSelector';
-import { ThresholdProps } from './Threshold/types';
-import { timePreferance } from './timeItems';
-import YAxisUnitSelector from './YAxisUnitSelector';
+import type { timePreferance } from './timeItems';
 
 const { TextArea } = Input;
 const { Option } = Select;

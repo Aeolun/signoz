@@ -1,5 +1,5 @@
-import { ColumnsType } from 'antd/es/table';
-import { ColumnType } from 'antd/lib/table';
+import type { ColumnsType } from 'antd/es/table';
+import type { ColumnType } from 'antd/lib/table';
 import {
 	initialClickHouseData,
 	initialFormulaBuilderFormValues,
@@ -7,20 +7,24 @@ import {
 	initialQueryPromQLData,
 } from 'constants/queryBuilder';
 import { FORMULA_REGEXP } from 'constants/regExp';
+import type { QueryTableProps } from 'container/QueryTable/QueryTable.intefaces';
 import { QUERY_TABLE_CONFIG } from 'container/QueryTable/config';
-import { QueryTableProps } from 'container/QueryTable/QueryTable.intefaces';
 import { get, isEqual, isNaN, isObject } from 'lodash-es';
-import { ReactNode } from 'react';
-import {
+import type { ReactNode } from 'react';
+import type {
 	IBuilderFormula,
 	IBuilderQuery,
 	IClickHouseQuery,
 	IPromQLQuery,
 	Query,
 } from 'types/api/queryBuilder/queryBuilderData';
-import { ListItem, QueryDataV3, SeriesItem } from 'types/api/widgets/getQuery';
+import type {
+	ListItem,
+	QueryDataV3,
+	SeriesItem,
+} from 'types/api/widgets/getQuery';
 import { EQueryType } from 'types/common/dashboard';
-import { QueryBuilderData } from 'types/common/queryBuilder';
+import type { QueryBuilderData } from 'types/common/queryBuilder';
 import { v4 as uuid } from 'uuid';
 
 type CreateTableDataFromQueryParams = Pick<
@@ -45,9 +49,7 @@ export type DynamicColumn = {
 
 type DynamicColumns = DynamicColumn[];
 
-type CreateTableDataFromQuery = (
-	params: CreateTableDataFromQueryParams,
-) => {
+type CreateTableDataFromQuery = (params: CreateTableDataFromQueryParams) => {
 	columns: ColumnsType<RowData>;
 	dataSource: RowData[];
 	rowsLength: number;
@@ -356,7 +358,7 @@ const fillAggregationData = (
 	value: string,
 	unusedColumnsKeys: Set<keyof RowData>,
 ): void => {
-	column.data.push(parseFloat(value).toFixed(2));
+	column.data.push(Number.parseFloat(value).toFixed(2));
 	unusedColumnsKeys.delete(column.field);
 };
 
@@ -423,7 +425,7 @@ const fillDataFromSeries = (
 
 				fillAggregationData(
 					column,
-					parseFloat(seria.values[0].value).toFixed(2),
+					Number.parseFloat(seria.values[0].value).toFixed(2),
 					unusedColumnsKeys,
 				);
 				return;
@@ -537,7 +539,7 @@ const generateTableColumns = (
 			dataIndex: item.dataIndex,
 			title: item.title,
 			width: QUERY_TABLE_CONFIG.width,
-			render: renderColumnCell && renderColumnCell[item.dataIndex],
+			render: renderColumnCell?.[item.dataIndex],
 			sorter: (a: RowData, b: RowData): number => {
 				const valueA = Number(
 					a[`${item.dataIndex}_without_unit`] ?? a[item.dataIndex],
@@ -611,7 +613,7 @@ export const createTableColumnsFromQuery: CreateTableDataFromQuery = ({
 				key: 'actions',
 				title: 'Actions',
 				render: (_, record): ReactNode => renderActionCell(record),
-		  }
+			}
 		: null;
 
 	if (actionsCell && dataSource.length > 0) {

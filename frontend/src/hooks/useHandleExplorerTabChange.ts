@@ -1,9 +1,9 @@
 import { QueryParams } from 'constants/query';
-import { initialAutocompleteData, PANEL_TYPES } from 'constants/queryBuilder';
-import ROUTES from 'constants/routes';
+import { PANEL_TYPES, initialAutocompleteData } from 'constants/queryBuilder';
+import type ROUTES from 'constants/routes';
 import { SIGNOZ_VALUE } from 'container/QueryBuilder/filters/OrderByFilter/constants';
 import { useCallback } from 'react';
-import { Query } from 'types/api/queryBuilder/queryBuilderData';
+import type { Query } from 'types/api/queryBuilder/queryBuilderData';
 import { DataSource } from 'types/common/queryBuilder';
 
 import { useGetSearchQueryParam } from './queryBuilder/useGetSearchQueryParam';
@@ -13,7 +13,7 @@ export const useHandleExplorerTabChange = (): {
 	handleExplorerTabChange: (
 		type: string,
 		querySearchParameters?: ICurrentQueryData,
-		redirectToUrl?: typeof ROUTES[keyof typeof ROUTES],
+		redirectToUrl?: (typeof ROUTES)[keyof typeof ROUTES],
 	) => void;
 } => {
 	const {
@@ -56,7 +56,7 @@ export const useHandleExplorerTabChange = (): {
 		(
 			type: string,
 			currentQueryData?: ICurrentQueryData,
-			redirectToUrl?: typeof ROUTES[keyof typeof ROUTES],
+			redirectToUrl?: (typeof ROUTES)[keyof typeof ROUTES],
 		) => {
 			const newPanelType = type as PANEL_TYPES;
 

@@ -1,9 +1,9 @@
 import { LOCALSTORAGE } from 'constants/localStorage';
 import getLabelName from 'lib/getLabelName';
-import { QueryData } from 'types/api/widgets/getQuery';
-import uPlot from 'uplot';
+import type { QueryData } from 'types/api/widgets/getQuery';
+import type uPlot from 'uplot';
 
-import {
+import type {
 	ExtendedChartDataset,
 	LegendEntryProps,
 	SaveLegendEntriesToLocalStoreProps,
@@ -13,11 +13,11 @@ function convertToTwoDecimalsOrZero(value: number): number {
 	if (
 		typeof value === 'number' &&
 		!Number.isNaN(value) &&
-		value !== Infinity &&
-		value !== -Infinity
+		value !== Number.POSITIVE_INFINITY &&
+		value !== Number.NEGATIVE_INFINITY
 	) {
 		const result = value ? value.toFixed(20).match(/^-?\d*\.?0*\d{0,2}/) : null;
-		return result ? parseFloat(result[0]) : 0;
+		return result ? Number.parseFloat(result[0]) : 0;
 	}
 	return 0;
 }

@@ -6,10 +6,10 @@ import cx from 'classnames';
 import { isEmpty, isObject } from 'lodash-es';
 import { Check, Zap } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
+import type { BaseAutocompleteData } from 'types/api/queryBuilder/queryAutocompleteResponse';
 
 import { getTagToken } from '../QueryBuilderSearch/utils';
-import { DropdownState } from './QueryBuilderSearchV2';
+import type { DropdownState } from './QueryBuilderSearchV2';
 
 interface ISuggestionsProps {
 	label: string;

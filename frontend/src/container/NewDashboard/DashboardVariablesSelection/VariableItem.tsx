@@ -17,20 +17,20 @@ import {
 	Tooltip,
 	Typography,
 } from 'antd';
-import { CheckboxChangeEvent } from 'antd/es/checkbox';
+import type { CheckboxChangeEvent } from 'antd/es/checkbox';
 import dashboardVariablesQuery from 'api/dashboard/variables/dashboardVariablesQuery';
 import { REACT_QUERY_KEY } from 'constants/reactQueryKeys';
 import { commaValuesParser } from 'lib/dashbaordVariables/customCommaValuesParser';
 import sortValues from 'lib/dashbaordVariables/sortVariableValues';
 import { debounce, isArray, isString } from 'lodash-es';
 import map from 'lodash-es/map';
-import { ChangeEvent, memo, useEffect, useMemo, useState } from 'react';
+import { type ChangeEvent, memo, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { IDashboardVariable } from 'types/api/dashboard/getAll';
-import { VariableResponseProps } from 'types/api/dashboard/variables/query';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { AppState } from 'store/reducers';
+import type { IDashboardVariable } from 'types/api/dashboard/getAll';
+import type { VariableResponseProps } from 'types/api/dashboard/variables/query';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { popupContainer } from 'utils/selectPopupContainer';
 
 import { variablePropsToPayloadVariables } from '../utils';
@@ -199,7 +199,7 @@ function VariableItem({
 								[value] = newOptionsData;
 							}
 
-							if (variableData && variableData?.name && variableData?.id) {
+							if (variableData?.name && variableData?.id) {
 								onValueUpdate(variableData.name, variableData.id, value, allSelected);
 							}
 						}
@@ -314,9 +314,9 @@ function VariableItem({
 		option: string | number | boolean,
 	): void => {
 		const newSelectedValue = Array.isArray(selectedValue)
-			? ((selectedValue.filter(
+			? (selectedValue.filter(
 					(val) => val.toString() !== option.toString(),
-			  ) as unknown) as string[])
+				) as unknown as string[])
 			: [];
 
 		if (
@@ -382,9 +382,7 @@ function VariableItem({
 		}
 	}
 
-	function retProps(
-		option: string,
-	): {
+	function retProps(option: string): {
 		onMouseOver: () => void;
 		onMouseOut: () => void;
 	} {

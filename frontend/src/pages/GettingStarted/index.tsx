@@ -1,7 +1,7 @@
 import { Typography } from 'antd';
 
-import { GetStartedContent } from './renderConfig';
 import DocSection from './Section';
+import { GetStartedContent } from './renderConfig';
 
 function InstrumentationPage(): JSX.Element {
 	return (

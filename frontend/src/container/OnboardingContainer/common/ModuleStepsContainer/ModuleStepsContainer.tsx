@@ -14,21 +14,21 @@ import logEvent from 'api/common/logEvent';
 import LaunchChatSupport from 'components/LaunchChatSupport/LaunchChatSupport';
 import { onboardingHelpMessage } from 'components/LaunchChatSupport/util';
 import ROUTES from 'constants/routes';
+import type { DataSourceType } from 'container/OnboardingContainer/Steps/DataSource/DataSource';
 import { stepsMap } from 'container/OnboardingContainer/constants/stepsConfig';
-import { DataSourceType } from 'container/OnboardingContainer/Steps/DataSource/DataSource';
 import { hasFrameworks } from 'container/OnboardingContainer/utils/dataSourceUtils';
 import history from 'lib/history';
 import { isEmpty, isNull } from 'lodash-es';
 import { UserPlus } from 'lucide-react';
-import { SetStateAction, useState } from 'react';
+import { type SetStateAction, useState } from 'react';
 
-import { useOnboardingContext } from '../../context/OnboardingContext';
 import {
-	ModuleProps,
+	type ModuleProps,
 	ModulesMap,
-	SelectedModuleStepProps,
+	type SelectedModuleStepProps,
 	useCases,
 } from '../../OnboardingContainer';
+import { useOnboardingContext } from '../../context/OnboardingContext';
 
 interface ModuleStepsContainerProps {
 	onReselectModule: any;
@@ -91,9 +91,8 @@ export default function ModuleStepsContainer({
 
 		const { step } = activeStep;
 
-		const {
-			name: selectedDataSourceName = '',
-		} = selectedDataSource as DataSourceType;
+		const { name: selectedDataSourceName = '' } =
+			selectedDataSource as DataSourceType;
 
 		if (
 			step.id === environmentDetailsStep &&

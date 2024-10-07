@@ -2,8 +2,8 @@ import { Divider, Space } from 'antd';
 import { FeatureKeys } from 'constants/features';
 import { useIsFeatureDisabled } from 'hooks/useFeatureFlag';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import AppReducer from 'types/reducer/app';
+import type { AppState } from 'store/reducers';
+import type AppReducer from 'types/reducer/app';
 
 import AuthDomains from './AuthDomains';
 import DisplayName from './DisplayName';

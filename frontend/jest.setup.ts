@@ -15,13 +15,11 @@ import { server } from './src/mocks-server/server';
 // Mock window.matchMedia
 window.matchMedia =
 	window.matchMedia ||
-	function (): any {
-		return {
-			matches: false,
-			addListener: function () {},
-			removeListener: function () {},
-		};
-	};
+	((): any => ({
+		matches: false,
+		addListener: () => {},
+		removeListener: () => {},
+	}));
 
 beforeAll(() => server.listen());
 

@@ -1,6 +1,6 @@
 import { SettingOutlined } from '@ant-design/icons';
 import { Popover } from 'antd';
-import { IServiceName } from 'container/MetricsApplication/Tabs/types';
+import type { IServiceName } from 'container/MetricsApplication/Tabs/types';
 import { useGetApDexSettings } from 'hooks/apDex/useGetApDexSettings';
 import useErrorNotification from 'hooks/useErrorNotification';
 import { useState } from 'react';

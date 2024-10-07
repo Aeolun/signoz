@@ -1,4 +1,4 @@
-import { Dashboard, DashboardTemplate } from 'types/api/dashboard/getAll';
+import type { Dashboard, DashboardTemplate } from 'types/api/dashboard/getAll';
 
 export const filterDashboard = (
 	searchValue: string,

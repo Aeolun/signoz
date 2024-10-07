@@ -7,7 +7,7 @@ import { isUndefined } from 'lodash-es';
 import { useEffect, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
+import type { AppState } from 'store/reducers';
 
 import TriggerComponent from './TriggeredAlert';
 

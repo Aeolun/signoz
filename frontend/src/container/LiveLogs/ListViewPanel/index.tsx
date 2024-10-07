@@ -2,12 +2,12 @@ import { Button, Popover, Select } from 'antd';
 import Spinner from 'components/Spinner';
 import { LOCALSTORAGE } from 'constants/localStorage';
 import { useOptionsMenu } from 'container/OptionsMenu';
+import PopoverContent from 'pages/Logs/PopoverContent';
 import {
 	defaultSelectStyle,
 	logsOptions,
 	viewModeOptionList,
 } from 'pages/Logs/config';
-import PopoverContent from 'pages/Logs/PopoverContent';
 import { useEventSource } from 'providers/EventSource';
 import { useCallback } from 'react';
 import { DataSource, StringOperators } from 'types/common/queryBuilder';

@@ -3,19 +3,19 @@ import { reverseParser } from 'lib/logql';
 import { flatten } from 'lodash-es';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AppState } from 'store/reducers';
-import { ILogsReducer } from 'types/reducer/logs';
+import type { AppState } from 'store/reducers';
+import type { ILogsReducer } from 'types/reducer/logs';
 
 import { SearchFieldsActionBar } from './ActionBar';
 import QueryBuilder from './QueryBuilder/QueryBuilder';
 import Suggestions from './Suggestions';
 import {
+	type QueryFields,
 	createParsedQueryStructure,
 	fieldsQueryIsvalid,
 	hashCode,
 	initQueryKOVPair,
 	prepareConditionOperator,
-	QueryFields,
 } from './utils';
 
 export interface SearchFieldsProps {

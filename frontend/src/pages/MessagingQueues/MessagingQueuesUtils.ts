@@ -1,10 +1,10 @@
 import { QueryParams } from 'constants/query';
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { GetWidgetQueryBuilderProps } from 'container/MetricsApplication/types';
-import { History, Location } from 'history';
+import type { GetWidgetQueryBuilderProps } from 'container/MetricsApplication/types';
+import type { History, Location } from 'history';
 import { isEmpty } from 'lodash-es';
 import { DataTypes } from 'types/api/queryBuilder/queryAutocompleteResponse';
-import { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
+import type { TagFilterItem } from 'types/api/queryBuilder/queryBuilderData';
 import { EQueryType } from 'types/common/dashboard';
 import { DataSource } from 'types/common/queryBuilder';
 import { v4 as uuid } from 'uuid';

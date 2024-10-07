@@ -2,22 +2,22 @@ import './Filter.styles.scss';
 
 import { Button, Collapse, Divider } from 'antd';
 import {
-	Dispatch,
-	MouseEvent,
-	SetStateAction,
+	type Dispatch,
+	type MouseEvent,
+	type SetStateAction,
 	useEffect,
 	useMemo,
 	useState,
 } from 'react';
 
 import { DurationSection } from './DurationSection';
-import {
-	AllTraceFilterKeys,
-	AllTraceFilterKeyValue,
-	FilterType,
-	HandleRunProps,
-} from './filterUtils';
 import { SectionBody } from './SectionContent';
+import {
+	AllTraceFilterKeyValue,
+	type AllTraceFilterKeys,
+	type FilterType,
+	type HandleRunProps,
+} from './filterUtils';
 
 interface SectionProps {
 	panelName: AllTraceFilterKeys;
@@ -82,7 +82,7 @@ export function Section(props: SectionProps): JSX.Element {
 										/>
 									),
 									label: AllTraceFilterKeyValue[panelName],
-							  }
+								}
 							: {
 									key: panelName,
 									children: (
@@ -94,7 +94,7 @@ export function Section(props: SectionProps): JSX.Element {
 										/>
 									),
 									label: AllTraceFilterKeyValue[panelName],
-							  },
+								},
 					]}
 				/>
 				<Button

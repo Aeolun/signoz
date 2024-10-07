@@ -1,9 +1,9 @@
 import axios from 'api';
 import { ErrorResponseHandler } from 'api/ErrorResponseHandler';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import omitBy from 'lodash-es/omitBy';
-import { ErrorResponse, SuccessResponse } from 'types/api';
-import { PayloadProps, Props } from 'types/api/trace/getSpans';
+import type { ErrorResponse, SuccessResponse } from 'types/api';
+import type { PayloadProps, Props } from 'types/api/trace/getSpans';
 
 const getSpans = async (
 	props: Props,
@@ -32,7 +32,7 @@ const getSpans = async (
 		const nonDuration = omitBy(other, (_, key) => key.startsWith('duration'));
 
 		const response = await axios.post<PayloadProps>(
-			`/getFilteredSpans/aggregates`,
+			'/getFilteredSpans/aggregates',
 			{
 				start: String(props.start),
 				end: String(props.end),

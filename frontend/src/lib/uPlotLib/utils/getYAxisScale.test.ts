@@ -1,8 +1,8 @@
 import { PANEL_TYPES } from 'constants/queryBuilder';
-import { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
-import { QueryDataV3 } from 'types/api/widgets/getQuery';
+import type { ThresholdProps } from 'container/NewWidget/RightContainer/Threshold/types';
+import type { QueryDataV3 } from 'types/api/widgets/getQuery';
 
-import { GetYAxisScale, getYAxisScale } from './getYAxisScale';
+import { type GetYAxisScale, getYAxisScale } from './getYAxisScale';
 
 describe('getYAxisScale', () => {
 	const mockThresholds: ThresholdProps[] = [

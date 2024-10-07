@@ -1,6 +1,6 @@
-import { Tabs, TabsProps } from 'antd';
+import { Tabs, type TabsProps } from 'antd';
 
-import { RouteTabProps } from './types';
+import type { RouteTabProps } from './types';
 
 function RouteTab({
 	routes,

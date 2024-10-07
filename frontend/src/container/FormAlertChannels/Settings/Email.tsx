@@ -1,20 +1,20 @@
 import { Form, Input } from 'antd';
-import { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { EmailChannel } from '../../CreateAlertChannels/config';
+import type { EmailChannel } from '../../CreateAlertChannels/config';
 
 function EmailForm({ setSelectedConfig }: EmailFormProps): JSX.Element {
 	const { t } = useTranslation('channels');
 
-	const handleInputChange = (field: string) => (
-		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	): void => {
-		setSelectedConfig((value) => ({
-			...value,
-			[field]: event.target.value,
-		}));
-	};
+	const handleInputChange =
+		(field: string) =>
+		(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+			setSelectedConfig((value) => ({
+				...value,
+				[field]: event.target.value,
+			}));
+		};
 
 	return (
 		<>

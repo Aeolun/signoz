@@ -7,7 +7,7 @@ import useUrlQuery from 'hooks/useUrlQuery';
 import { useMemo } from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import { Props as TraceDetailProps } from 'types/api/trace/getTraceItem';
+import type { Props as TraceDetailProps } from 'types/api/trace/getTraceItem';
 
 import { noEventMessage } from './constants';
 
@@ -23,7 +23,12 @@ function TraceDetail(): JSX.Element {
 		[urlQuery],
 	);
 
-	const { data: traceDetailResponse, error, isLoading, isError } = useQuery(
+	const {
+		data: traceDetailResponse,
+		error,
+		isLoading,
+		isError,
+	} = useQuery(
 		`getTraceItem/${id}`,
 		() => getTraceItem({ id, spanId, levelUp, levelDown }),
 		{
@@ -39,7 +44,7 @@ function TraceDetail(): JSX.Element {
 		);
 	}
 
-	if (isLoading || !(traceDetailResponse && traceDetailResponse.payload)) {
+	if (isLoading || !traceDetailResponse?.payload) {
 		return <Spinner tip="Loading.." />;
 	}
 

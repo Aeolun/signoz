@@ -2,9 +2,9 @@ import './MQConfigOptions.styles.scss';
 
 import { Color } from '@signozhq/design-tokens';
 import { Button, Select, Spin, Tooltip } from 'antd';
-import { DefaultOptionType } from 'antd/es/select';
+import type { DefaultOptionType } from 'antd/es/select';
 import { QueryParams } from 'constants/query';
-import { History, Location } from 'history';
+import type { History, Location } from 'history';
 import useDebouncedFn from 'hooks/useDebouncedFunction';
 import useUrlQuery from 'hooks/useUrlQuery';
 import { Check, Share2 } from 'lucide-react';

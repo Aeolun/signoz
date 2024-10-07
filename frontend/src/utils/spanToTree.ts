@@ -1,9 +1,13 @@
 /* eslint-disable no-restricted-syntax */
 import { cloneDeep } from 'lodash-es';
-import { ITraceForest, ITraceTree, Span } from 'types/api/trace/getTraceItem';
+import type {
+	ITraceForest,
+	ITraceTree,
+	Span,
+} from 'types/api/trace/getTraceItem';
 
 const getSpanReferences = (
-	rawReferences: string[] = [],
+	rawReferences: string[],
 	isChildReference: boolean,
 ): Record<string, string>[] => {
 	let filteredReferences = [];
@@ -85,8 +89,8 @@ export const spanToTreeUtil = (inputSpanList: Span[]): ITraceForest => {
 		const spanObject = {
 			id: span[1],
 			name: span[4],
-			value: parseInt(span[6], 10),
-			time: parseInt(span[6], 10),
+			value: Number.parseInt(span[6], 10),
+			time: Number.parseInt(span[6], 10),
 			startTime: span[0],
 			tags: getSpanTags(span),
 			children: [],

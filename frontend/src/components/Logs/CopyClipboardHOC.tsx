@@ -1,6 +1,6 @@
 import { Popover } from 'antd';
 import { useNotifications } from 'hooks/useNotifications';
-import { ReactNode, useCallback, useEffect } from 'react';
+import { type ReactNode, useCallback, useEffect } from 'react';
 import { useCopyToClipboard } from 'react-use';
 
 function CopyClipboardHOC({

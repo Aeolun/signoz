@@ -6,7 +6,7 @@ import EmptyLogsSearch from 'container/EmptyLogsSearch/EmptyLogsSearch';
 import LogsError from 'container/LogsError/LogsError';
 import { LogsLoading } from 'container/LogsLoading/LogsLoading';
 import NoLogs from 'container/NoLogs/NoLogs';
-import { CustomTimeType } from 'container/TopNav/DateTimeSelectionV2/config';
+import type { CustomTimeType } from 'container/TopNav/DateTimeSelectionV2/config';
 import { TracesLoading } from 'container/TracesExplorer/TraceLoading/TraceLoading';
 import { useIsDarkMode } from 'hooks/useDarkMode';
 import { useResizeObserver } from 'hooks/useDimensions';
@@ -21,11 +21,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { UpdateTimeInterval } from 'store/actions';
-import { AppState } from 'store/reducers';
-import { SuccessResponse } from 'types/api';
-import { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
+import type { AppState } from 'store/reducers';
+import type { SuccessResponse } from 'types/api';
+import type { MetricRangePayloadProps } from 'types/api/metrics/getQueryRange';
 import { DataSource } from 'types/common/queryBuilder';
-import { GlobalReducer } from 'types/reducer/globalTime';
+import type { GlobalReducer } from 'types/reducer/globalTime';
 import { getTimeRange } from 'utils/getTimeRange';
 
 import { Container } from './styles';
@@ -44,9 +44,10 @@ function TimeSeriesView({
 	const urlQuery = useUrlQuery();
 	const location = useLocation();
 
-	const chartData = useMemo(() => getUPlotChartData(data?.payload), [
-		data?.payload,
-	]);
+	const chartData = useMemo(
+		() => getUPlotChartData(data?.payload),
+		[data?.payload],
+	);
 
 	const isDarkMode = useIsDarkMode();
 	const containerDimensions = useResizeObserver(graphRef);
@@ -54,10 +55,11 @@ function TimeSeriesView({
 	const [minTimeScale, setMinTimeScale] = useState<number>();
 	const [maxTimeScale, setMaxTimeScale] = useState<number>();
 
-	const { minTime, maxTime, selectedTime: globalSelectedInterval } = useSelector<
-		AppState,
-		GlobalReducer
-	>((state) => state.globalTime);
+	const {
+		minTime,
+		maxTime,
+		selectedTime: globalSelectedInterval,
+	} = useSelector<AppState, GlobalReducer>((state) => state.globalTime);
 
 	useEffect((): void => {
 		const { startTime, endTime } = getTimeRange();
@@ -102,8 +104,8 @@ function TimeSeriesView({
 		} else if (startTime && endTime && startTime !== endTime) {
 			dispatch(
 				UpdateTimeInterval('custom', [
-					parseInt(getTimeString(startTime), 10),
-					parseInt(getTimeString(endTime), 10),
+					Number.parseInt(getTimeString(startTime), 10),
+					Number.parseInt(getTimeString(endTime), 10),
 				]),
 			);
 		}
@@ -145,8 +147,7 @@ function TimeSeriesView({
 				{isLoading &&
 					(dataSource === DataSource.LOGS ? <LogsLoading /> : <TracesLoading />)}
 
-				{chartData &&
-					chartData[0] &&
+				{chartData?.[0] &&
 					chartData[0]?.length === 0 &&
 					!isLoading &&
 					!isError &&
@@ -154,8 +155,7 @@ function TimeSeriesView({
 						<EmptyLogsSearch dataSource={dataSource} panelType="TIME_SERIES" />
 					)}
 
-				{chartData &&
-					chartData[0] &&
+				{chartData?.[0] &&
 					chartData[0]?.length === 0 &&
 					!isLoading &&
 					!isError &&

@@ -3,7 +3,8 @@ import './CodeCopyBtn.scss';
 
 import { CheckOutlined, CopyOutlined } from '@ant-design/icons';
 import cx from 'classnames';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 
 function CodeCopyBtn({
 	children,

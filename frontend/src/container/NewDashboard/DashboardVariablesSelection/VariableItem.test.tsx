@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import MockQueryClientProvider from 'providers/test/MockQueryClientProvider';
 import React, { useEffect } from 'react';
 import { act, fireEvent, render, screen, waitFor } from 'tests/test-utils';
-import { IDashboardVariable } from 'types/api/dashboard/getAll';
+import type { IDashboardVariable } from 'types/api/dashboard/getAll';
 
 import VariableItem from './VariableItem';
 

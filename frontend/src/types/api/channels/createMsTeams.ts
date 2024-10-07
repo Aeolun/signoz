@@ -1,4 +1,4 @@
-import { MsTeamsChannel } from 'container/CreateAlertChannels/config';
+import type { MsTeamsChannel } from 'container/CreateAlertChannels/config';
 
 export type Props = MsTeamsChannel;
 

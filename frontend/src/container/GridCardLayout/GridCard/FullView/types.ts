@@ -1,12 +1,12 @@
-import { CheckboxChangeEvent } from 'antd/es/checkbox';
-import { ToggleGraphProps } from 'components/Graph/types';
-import { UplotProps } from 'components/Uplot/Uplot';
-import { PANEL_TYPES } from 'constants/queryBuilder';
-import { RowData } from 'lib/query/createTableColumnsFromQuery';
-import { OnClickPluginOpts } from 'lib/uPlotLib/plugins/onClickPlugin';
-import { Dispatch, MutableRefObject, SetStateAction } from 'react';
-import { Widgets } from 'types/api/dashboard/getAll';
-import uPlot from 'uplot';
+import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import type { ToggleGraphProps } from 'components/Graph/types';
+import type { UplotProps } from 'components/Uplot/Uplot';
+import type { PANEL_TYPES } from 'constants/queryBuilder';
+import type { RowData } from 'lib/query/createTableColumnsFromQuery';
+import type { OnClickPluginOpts } from 'lib/uPlotLib/plugins/onClickPlugin';
+import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
+import type { Widgets } from 'types/api/dashboard/getAll';
+import type uPlot from 'uplot';
 
 export interface DataSetProps {
 	index: number;

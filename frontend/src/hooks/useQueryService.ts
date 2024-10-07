@@ -1,18 +1,18 @@
 import getService from 'api/metrics/getService';
-import { AxiosError } from 'axios';
-import { Time } from 'container/TopNav/DateTimeSelection/config';
-import {
+import type { AxiosError } from 'axios';
+import type { Time } from 'container/TopNav/DateTimeSelection/config';
+import type {
 	CustomTimeType,
 	Time as TimeV2,
 } from 'container/TopNav/DateTimeSelectionV2/config';
 import {
-	QueryKey,
+	type QueryKey,
+	type UseQueryOptions,
+	type UseQueryResult,
 	useQuery,
-	UseQueryOptions,
-	UseQueryResult,
 } from 'react-query';
-import { PayloadProps } from 'types/api/metrics/getService';
-import { Tags } from 'types/reducer/trace';
+import type { PayloadProps } from 'types/api/metrics/getService';
+import type { Tags } from 'types/reducer/trace';
 
 export const useQueryService = ({
 	minTime,

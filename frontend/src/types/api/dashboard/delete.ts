@@ -1,4 +1,4 @@
-import { Dashboard } from './getAll';
+import type { Dashboard } from './getAll';
 
 export type Props = {
 	uuid: Dashboard['uuid'];
