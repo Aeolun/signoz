@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"log"
 	"os"
+	"strings"
 	"text/template"
 	"time"
 
@@ -12,6 +14,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
 
+	"github.com/go-ldap/ldap/v3"
 	"go.signoz.io/signoz/pkg/query-service/constants"
 	"go.signoz.io/signoz/pkg/query-service/dao"
 	"go.signoz.io/signoz/pkg/query-service/model"
@@ -434,7 +437,14 @@ func Register(ctx context.Context, req *RegisterRequest) (*model.User, *model.Ap
 func Login(ctx context.Context, request *model.LoginRequest) (*model.LoginResponse, error) {
 	zap.L().Debug("Login method called for user", zap.String("email", request.Email))
 
-	user, err := authenticateLogin(ctx, request)
+	var user *model.UserPayload
+	var err error
+	if request.Method == "ldap" {
+		user, err = authenticateLdapLogin(ctx, request)
+	} else {
+		user, err = authenticateLogin(ctx, request)
+	}
+
 	if err != nil {
 		zap.L().Error("Failed to authenticate login request", zap.Error(err))
 		return nil, err
@@ -481,6 +491,67 @@ func authenticateLogin(ctx context.Context, req *model.LoginRequest) (*model.Use
 	if user == nil || !passwordMatch(user.Password, req.Password) {
 		return nil, ErrorInvalidCreds
 	}
+	return user, nil
+}
+
+func authenticateLdapLogin(ctx context.Context, req *model.LoginRequest) (*model.UserPayload, error) {
+	l, err := ldap.DialURL(os.Getenv("LDAP_URL"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer l.Close()
+
+	parts := strings.Split(req.Email, "@")
+	if len(parts) != 2 {
+		return nil, ErrorInvalidCreds
+	}
+
+	err = l.Bind(os.Getenv("LDAP_DOMAIN")+"\\"+parts[0], req.Password)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	group, apiErr := dao.DB().GetGroupByName(ctx, constants.AdminGroup)
+	if apiErr != nil {
+		zap.L().Error("GetGroupByName failed", zap.Error(apiErr.Err))
+		return nil, model.InternalError(model.ErrSignupFailed{})
+	}
+
+	user, getErr := dao.DB().GetUserByEmail(ctx, req.Email)
+	if getErr != nil {
+		zap.L().Error("GetUserByEmail failed", zap.Error(getErr))
+		return nil, model.InternalError(model.ErrSignupFailed{})
+	}
+
+	if user == nil {
+		userData := &model.User{
+			Id:                uuid.NewString(),
+			Name:              parts[0],
+			Email:             req.Email,
+			Password:          "",
+			CreatedAt:         time.Now().Unix(),
+			ProfilePictureURL: "", // Currently unused
+			GroupId:           group.Id,
+			OrgId:             os.Getenv("LDAP_ORG_ID"),
+		}
+
+		newUser, apiErr := dao.DB().CreateUser(ctx, userData, false)
+		if apiErr != nil {
+			zap.L().Error("CreateUser failed", zap.Error(apiErr.Err))
+			return nil, apiErr
+		}
+
+		user, err = dao.DB().GetUserByEmail(ctx, newUser.Email)
+		if err != nil {
+			zap.L().Error("GetUserByEmail failed", zap.Error(err))
+			return nil, model.InternalError(model.ErrSignupFailed{})
+		}
+	}
+
+	if user == nil {
+		return nil, ErrorInvalidCreds
+	}
+
 	return user, nil
 }
 

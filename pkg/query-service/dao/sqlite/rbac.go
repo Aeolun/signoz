@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"os"
+	"strings"
 	"time"
 
 	"github.com/google/uuid"
@@ -598,7 +600,13 @@ func (mds *ModelDaoSqlite) UpdateUserFlags(ctx context.Context, userId string, f
 
 func (mds *ModelDaoSqlite) PrecheckLogin(ctx context.Context, email, sourceUrl string) (*model.PrecheckResponse, model.BaseApiError) {
 	// assume user is valid unless proven otherwise and assign default values for rest of the fields
-	resp := &model.PrecheckResponse{IsUser: true, CanSelfRegister: false, SSO: false, SsoUrl: "", SsoError: ""}
+	resp := &model.PrecheckResponse{IsUser: true, CanSelfRegister: false, SSO: false, LDAP: false, SsoUrl: "", SsoError: ""}
+
+	// check if email ends with ldap domain
+	if strings.HasSuffix(email, os.Getenv("LDAP_EMAIL_DOMAIN")) {
+		resp.LDAP = true
+		resp.LdapDomain = os.Getenv("LDAP_DOMAIN")
+	}
 
 	// check if email is a valid user
 	userPayload, baseApiErr := mds.GetUserByEmail(ctx, email)

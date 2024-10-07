@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"github.com/joho/godotenv"
 	"os"
 	"os/signal"
 	"syscall"
@@ -83,6 +84,12 @@ func main() {
 		Cluster:           cluster,
 		UseLogsNewSchema:  useLogsNewSchema,
 	}
+
+	err := godotenv.Load()
+	if err != nil {
+		zap.L().Fatal("Error loading .env file")
+	}
+	zap.L().Info("Loaded environment variables from .env file")
 
 	// Read the jwt secret key
 	auth.JwtSecret = os.Getenv("SIGNOZ_JWT_SECRET")

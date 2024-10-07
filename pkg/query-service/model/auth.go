@@ -28,6 +28,7 @@ type InvitationResponseObject struct {
 }
 
 type LoginRequest struct {
+	Method       string `json:"method"`
 	Email        string `json:"email"`
 	Password     string `json:"password"`
 	RefreshToken string `json:"refreshToken"`
@@ -37,6 +38,8 @@ type LoginRequest struct {
 type PrecheckResponse struct {
 	SSO             bool   `json:"sso"`
 	SsoUrl          string `json:"ssoUrl"`
+	LDAP            bool   `json:"ldap"`
+	LdapDomain      string `json:"ldapDomain"`
 	CanSelfRegister bool   `json:"canSelfRegister"`
 	IsUser          bool   `json:"isUser"`
 	SsoError        string `json:"ssoError"`
