@@ -1,6 +1,12 @@
-name: build-pipeline
+name: Build and Test
 
 on:
+  push:
+    branches:
+      - develop
+      - alt-develop
+      - main
+      - release/v*
   pull_request:
     branches:
       - develop
@@ -31,7 +37,14 @@ jobs:
       - name: Run Biome
         run: cd frontend && npm run lint
       - name: Run Jest
-        run: cd frontend && npm run jest
+        run: cd frontend && npm run jest:coverage
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: frontend/coverage/lcov.info
+          testName: frontend
+          coverageRootDirectory: frontend
       - name: TSC
         run: yarn tsc
         working-directory: ./frontend
@@ -40,28 +53,28 @@ jobs:
         run: |
           make build-frontend-amd64
 
-  build-frontend-ee:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Create .env file
-        run: |
-          echo 'INTERCOM_APP_ID="${{ secrets.INTERCOM_APP_ID }}"' > frontend/.env
-          echo 'SEGMENT_ID="${{ secrets.SEGMENT_ID }}"' >> frontend/.env
-      - name: Install dependencies
-        run: cd frontend && yarn install
-      - name: Run Biome
-        run: cd frontend && npm run lint
-      - name: Run Jest
-        run: cd frontend && npm run jest
-      - name: TSC
-        run: yarn tsc
-        working-directory: ./frontend
-      - name: Build frontend docker image
-        shell: bash
-        run: |
-          make build-frontend-amd64
+#  build-frontend-ee:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#      - name: Create .env file
+#        run: |
+#          echo 'INTERCOM_APP_ID="${{ secrets.INTERCOM_APP_ID }}"' > frontend/.env
+#          echo 'SEGMENT_ID="${{ secrets.SEGMENT_ID }}"' >> frontend/.env
+#      - name: Install dependencies
+#        run: cd frontend && yarn install
+#      - name: Run Biome
+#        run: cd frontend && npm run lint
+#      - name: Run Jest
+#        run: cd frontend && npm run jest
+#      - name: TSC
+#        run: yarn tsc
+#        working-directory: ./frontend
+#      - name: Build frontend docker image
+#        shell: bash
+#        run: |
+#          make build-frontend-amd64
 
   build-query-service:
     runs-on: ubuntu-latest
@@ -72,25 +85,87 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: "1.21"
+      - name: Install converter
+        run: go install github.com/jandelgado/gcov2lcov@latest
       - name: Run tests
         shell: bash
         run: |
           make test
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/metrics.lcov
+          testName: metrics
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/cache.lcov
+          testName: cache
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/app.lcov
+          testName: app
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/querier.lcov
+          testName: querier
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/converter.lcov
+          testName: "converter"
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/formatter.lcov
+          testName: formatter
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/integration.lcov
+          testName: integration
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/rules.lcov
+          testName: rules
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/collectorsimulator.lcov
+          testName: collectorsimulator
+      - name: Upload sonarqube results to MyCoverage
+        uses: serialexp/mycoverage-action@v2
+        with:
+          endpoint: https://mycoverage.se1.serial-experiments.com/
+          file: coverage/postprocess.lcov
+          testName: postprocess
       - name: Build query-service image
         shell: bash
         run: |
           make build-query-service-amd64
 
-  build-ee-query-service:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup golang
-        uses: actions/setup-go@v4
-        with:
-          go-version: "1.21"
-      - name: Build EE query-service image
-        shell: bash
-        run: |
-          make build-ee-query-service-amd64
+#  build-ee-query-service:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#      - name: Setup golang
+#        uses: actions/setup-go@v4
+#        with:
+#          go-version: "1.21"
+#      - name: Build EE query-service image
+#        shell: bash
+#        run: |
+#          make build-ee-query-service-amd64

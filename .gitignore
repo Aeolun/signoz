@@ -53,6 +53,7 @@ ee/query-service/tests/test-deploy/data/
 /deploy/docker-swarm/clickhouse-setup/data/
 bin/
 docker-compose.local.yaml
+coverage/
 
 */query-service/queries.active
 

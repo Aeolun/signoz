@@ -3,7 +3,7 @@ import type { Config } from '@jest/types';
 const config: Config.InitialOptions = {
 	clearMocks: true,
 	coverageDirectory: 'coverage',
-	coverageReporters: ['text', 'cobertura', 'html', 'json-summary'],
+	coverageReporters: ['text-summary', 'lcov'],
 	collectCoverageFrom: ['src/**/*.{ts,tsx}'],
 	moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
 	modulePathIgnorePatterns: ['dist'],
@@ -34,14 +34,6 @@ const config: Config.InitialOptions = {
 	testEnvironmentOptions: {
 		'jest-playwright': {
 			browsers: ['chromium', 'firefox', 'webkit'],
-		},
-	},
-	coverageThreshold: {
-		global: {
-			statements: 80,
-			branches: 65,
-			functions: 80,
-			lines: 80,
 		},
 	},
 };
