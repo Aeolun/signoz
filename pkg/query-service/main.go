@@ -85,11 +85,16 @@ func main() {
 		UseLogsNewSchema:  useLogsNewSchema,
 	}
 
-	err := godotenv.Load()
-	if err != nil {
-		zap.L().Fatal("Error loading .env file")
+	_, err := os.OpenFile(".env", os.O_RDONLY, 0644)
+	if os.IsNotExist(err) {
+		zap.L().Info("No .env file found")
+	} else {
+		err := godotenv.Load()
+		if err != nil {
+			zap.L().Fatal("Error loading .env file")
+		}
+		zap.L().Info("Loaded environment variables from .env file")
 	}
-	zap.L().Info("Loaded environment variables from .env file")
 
 	emailDomain := os.Getenv("LDAP_EMAIL_DOMAIN")
 	zap.L().Info("LDAP signin", zap.String("emailDomain", emailDomain))
