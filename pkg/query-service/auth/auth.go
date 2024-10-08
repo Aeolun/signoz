@@ -508,7 +508,7 @@ func authenticateLdapLogin(ctx context.Context, req *model.LoginRequest) (*model
 
 	err = l.Bind(os.Getenv("LDAP_DOMAIN")+"\\"+parts[0], req.Password)
 	if err != nil {
-		log.Fatal(err)
+		return nil, errors.Wrap(err, "user not found")
 	}
 
 	group, apiErr := dao.DB().GetGroupByName(ctx, constants.AdminGroup)

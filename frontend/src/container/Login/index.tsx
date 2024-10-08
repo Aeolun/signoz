@@ -118,8 +118,8 @@ function Login({
 			if (response.statusCode === 200) {
 				setPrecheckResult({ ...precheckResult, ...response.payload });
 
-				const { isUser } = response.payload;
-				if (isUser) {
+				const { isUser, ldap } = response.payload;
+				if (isUser || ldap) {
 					setPrecheckComplete(true);
 				} else {
 					notifications.error({

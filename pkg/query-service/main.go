@@ -91,6 +91,9 @@ func main() {
 	}
 	zap.L().Info("Loaded environment variables from .env file")
 
+	emailDomain := os.Getenv("LDAP_EMAIL_DOMAIN")
+	zap.L().Info("LDAP signin", zap.String("emailDomain", emailDomain))
+
 	// Read the jwt secret key
 	auth.JwtSecret = os.Getenv("SIGNOZ_JWT_SECRET")
 
