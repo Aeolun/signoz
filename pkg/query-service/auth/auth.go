@@ -541,8 +541,9 @@ func authenticateLdapLogin(ctx context.Context, req *model.LoginRequest) (*model
 			return nil, apiErr
 		}
 
-		user, err = dao.DB().GetUserByEmail(ctx, newUser.Email)
-		if err != nil {
+		var getUserErr *model.ApiError
+		user, getUserErr = dao.DB().GetUserByEmail(ctx, newUser.Email)
+		if getUserErr != nil {
 			zap.L().Error("GetUserByEmail failed", zap.Error(err))
 			return nil, model.InternalError(model.ErrSignupFailed{})
 		}
