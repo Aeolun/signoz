@@ -23,6 +23,7 @@ export const SpanBorder = styled.div<Props>`
 	height: 0.625rem;
 	width: ${({ width }): string => `${width}%`};
 	left: ${({ leftOffset }): string => `${leftOffset}%`};
+    min-width: 1%;
 	top: 35%;
 	position: absolute;
 `;
